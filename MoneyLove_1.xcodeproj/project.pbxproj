@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */; };
-		EF3527181D2CAB5F009D6F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527171D2CAB5F009D6F58 /* ViewController.swift */; };
 		EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3527191D2CAB5F009D6F58 /* Main.storyboard */; };
 		EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */; };
 		EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */; };
 		EF3527231D2CAB5F009D6F58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */; };
 		EF35272E1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */; };
 		EF3527391D2CAB5F009D6F58 /* MoneyLove_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */; };
+		EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527501D2CB6D2009D6F58 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		EF3527121D2CAB5F009D6F58 /* MoneyLove_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyLove_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EF3527171D2CAB5F009D6F58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EF35271A1D2CAB5F009D6F58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF35271D1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyLove_1.xcdatamodel; sourceTree = "<group>"; };
 		EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		EF3527341D2CAB5F009D6F58 /* MoneyLove_1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyLove_1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyLove_1UITests.swift; sourceTree = "<group>"; };
 		EF35273A1D2CAB5F009D6F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF3527501D2CB6D2009D6F58 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */,
-				EF3527171D2CAB5F009D6F58 /* ViewController.swift */,
 				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
+				EF35274D1D2CB612009D6F58 /* Manager */,
+				EF35274C1D2CB604009D6F58 /* Controllers */,
+				EF35274F1D2CB626009D6F58 /* Model */,
+				EF35274E1D2CB619009D6F58 /* Resources */,
 				EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */,
 				EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */,
 				EF3527241D2CAB5F009D6F58 /* Info.plist */,
@@ -126,6 +129,35 @@
 				EF35273A1D2CAB5F009D6F58 /* Info.plist */,
 			);
 			path = MoneyLove_1UITests;
+			sourceTree = "<group>";
+		};
+		EF35274C1D2CB604009D6F58 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF3527501D2CB6D2009D6F58 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		EF35274D1D2CB612009D6F58 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		EF35274E1D2CB619009D6F58 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		EF35274F1D2CB626009D6F58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF3527181D2CAB5F009D6F58 /* ViewController.swift in Sources */,
+				EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */,
 				EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
 			);
@@ -485,6 +517,7 @@
 				EF35273F1D2CAB5F009D6F58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF3527401D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1Tests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +526,7 @@
 				EF3527421D2CAB5F009D6F58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF3527431D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1UITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +535,7 @@
 				EF3527451D2CAB5F009D6F58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
