@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */; };
+		EF3527181D2CAB5F009D6F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527171D2CAB5F009D6F58 /* ViewController.swift */; };
+		EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3527191D2CAB5F009D6F58 /* Main.storyboard */; };
+		EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */; };
+		EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */; };
+		EF3527231D2CAB5F009D6F58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */; };
+		EF35272E1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */; };
+		EF3527391D2CAB5F009D6F58 /* MoneyLove_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF35272A1D2CAB5F009D6F58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF35270A1D2CAB5F009D6F58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF3527111D2CAB5F009D6F58;
+			remoteInfo = MoneyLove_1;
+		};
+		EF3527351D2CAB5F009D6F58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF35270A1D2CAB5F009D6F58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF3527111D2CAB5F009D6F58;
+			remoteInfo = MoneyLove_1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF3527121D2CAB5F009D6F58 /* MoneyLove_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyLove_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF3527171D2CAB5F009D6F58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF35271A1D2CAB5F009D6F58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EF35271D1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyLove_1.xcdatamodel; sourceTree = "<group>"; };
+		EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF3527221D2CAB5F009D6F58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EF3527241D2CAB5F009D6F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF3527291D2CAB5F009D6F58 /* MoneyLove_1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyLove_1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyLove_1Tests.swift; sourceTree = "<group>"; };
+		EF35272F1D2CAB5F009D6F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF3527341D2CAB5F009D6F58 /* MoneyLove_1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyLove_1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyLove_1UITests.swift; sourceTree = "<group>"; };
+		EF35273A1D2CAB5F009D6F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF35270F1D2CAB5F009D6F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF3527261D2CAB5F009D6F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF3527311D2CAB5F009D6F58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF3527091D2CAB5F009D6F58 = {
+			isa = PBXGroup;
+			children = (
+				EF3527141D2CAB5F009D6F58 /* MoneyLove_1 */,
+				EF35272C1D2CAB5F009D6F58 /* MoneyLove_1Tests */,
+				EF3527371D2CAB5F009D6F58 /* MoneyLove_1UITests */,
+				EF3527131D2CAB5F009D6F58 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF3527131D2CAB5F009D6F58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF3527121D2CAB5F009D6F58 /* MoneyLove_1.app */,
+				EF3527291D2CAB5F009D6F58 /* MoneyLove_1Tests.xctest */,
+				EF3527341D2CAB5F009D6F58 /* MoneyLove_1UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF3527141D2CAB5F009D6F58 /* MoneyLove_1 */ = {
+			isa = PBXGroup;
+			children = (
+				EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */,
+				EF3527171D2CAB5F009D6F58 /* ViewController.swift */,
+				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
+				EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */,
+				EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */,
+				EF3527241D2CAB5F009D6F58 /* Info.plist */,
+				EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */,
+			);
+			path = MoneyLove_1;
+			sourceTree = "<group>";
+		};
+		EF35272C1D2CAB5F009D6F58 /* MoneyLove_1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */,
+				EF35272F1D2CAB5F009D6F58 /* Info.plist */,
+			);
+			path = MoneyLove_1Tests;
+			sourceTree = "<group>";
+		};
+		EF3527371D2CAB5F009D6F58 /* MoneyLove_1UITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */,
+				EF35273A1D2CAB5F009D6F58 /* Info.plist */,
+			);
+			path = MoneyLove_1UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF3527111D2CAB5F009D6F58 /* MoneyLove_1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF35273D1D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1" */;
+			buildPhases = (
+				EF35270E1D2CAB5F009D6F58 /* Sources */,
+				EF35270F1D2CAB5F009D6F58 /* Frameworks */,
+				EF3527101D2CAB5F009D6F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoneyLove_1;
+			productName = MoneyLove_1;
+			productReference = EF3527121D2CAB5F009D6F58 /* MoneyLove_1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF3527281D2CAB5F009D6F58 /* MoneyLove_1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF3527401D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1Tests" */;
+			buildPhases = (
+				EF3527251D2CAB5F009D6F58 /* Sources */,
+				EF3527261D2CAB5F009D6F58 /* Frameworks */,
+				EF3527271D2CAB5F009D6F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF35272B1D2CAB5F009D6F58 /* PBXTargetDependency */,
+			);
+			name = MoneyLove_1Tests;
+			productName = MoneyLove_1Tests;
+			productReference = EF3527291D2CAB5F009D6F58 /* MoneyLove_1Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF3527331D2CAB5F009D6F58 /* MoneyLove_1UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF3527431D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1UITests" */;
+			buildPhases = (
+				EF3527301D2CAB5F009D6F58 /* Sources */,
+				EF3527311D2CAB5F009D6F58 /* Frameworks */,
+				EF3527321D2CAB5F009D6F58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF3527361D2CAB5F009D6F58 /* PBXTargetDependency */,
+			);
+			name = MoneyLove_1UITests;
+			productName = MoneyLove_1UITests;
+			productReference = EF3527341D2CAB5F009D6F58 /* MoneyLove_1UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF35270A1D2CAB5F009D6F58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = vantientu;
+				TargetAttributes = {
+					EF3527111D2CAB5F009D6F58 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					EF3527281D2CAB5F009D6F58 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = EF3527111D2CAB5F009D6F58;
+					};
+					EF3527331D2CAB5F009D6F58 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = EF3527111D2CAB5F009D6F58;
+					};
+				};
+			};
+			buildConfigurationList = EF35270D1D2CAB5F009D6F58 /* Build configuration list for PBXProject "MoneyLove_1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF3527091D2CAB5F009D6F58;
+			productRefGroup = EF3527131D2CAB5F009D6F58 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF3527111D2CAB5F009D6F58 /* MoneyLove_1 */,
+				EF3527281D2CAB5F009D6F58 /* MoneyLove_1Tests */,
+				EF3527331D2CAB5F009D6F58 /* MoneyLove_1UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF3527101D2CAB5F009D6F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF3527231D2CAB5F009D6F58 /* LaunchScreen.storyboard in Resources */,
+				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
+				EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF3527271D2CAB5F009D6F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF3527321D2CAB5F009D6F58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF35270E1D2CAB5F009D6F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF3527181D2CAB5F009D6F58 /* ViewController.swift in Sources */,
+				EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */,
+				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF3527251D2CAB5F009D6F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF35272E1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF3527301D2CAB5F009D6F58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF3527391D2CAB5F009D6F58 /* MoneyLove_1UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF35272B1D2CAB5F009D6F58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF3527111D2CAB5F009D6F58 /* MoneyLove_1 */;
+			targetProxy = EF35272A1D2CAB5F009D6F58 /* PBXContainerItemProxy */;
+		};
+		EF3527361D2CAB5F009D6F58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF3527111D2CAB5F009D6F58 /* MoneyLove_1 */;
+			targetProxy = EF3527351D2CAB5F009D6F58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF3527191D2CAB5F009D6F58 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF35271A1D2CAB5F009D6F58 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF3527221D2CAB5F009D6F58 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF35273B1D2CAB5F009D6F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF35273C1D2CAB5F009D6F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF35273E1D2CAB5F009D6F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MoneyLove_1/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EF35273F1D2CAB5F009D6F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MoneyLove_1/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EF3527411D2CAB5F009D6F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MoneyLove_1Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyLove_1.app/MoneyLove_1";
+			};
+			name = Debug;
+		};
+		EF3527421D2CAB5F009D6F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MoneyLove_1Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyLove_1.app/MoneyLove_1";
+			};
+			name = Release;
+		};
+		EF3527441D2CAB5F009D6F58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MoneyLove_1UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MoneyLove_1;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		EF3527451D2CAB5F009D6F58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MoneyLove_1UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MoneyLove_1;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF35270D1D2CAB5F009D6F58 /* Build configuration list for PBXProject "MoneyLove_1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF35273B1D2CAB5F009D6F58 /* Debug */,
+				EF35273C1D2CAB5F009D6F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF35273D1D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF35273E1D2CAB5F009D6F58 /* Debug */,
+				EF35273F1D2CAB5F009D6F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EF3527401D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF3527411D2CAB5F009D6F58 /* Debug */,
+				EF3527421D2CAB5F009D6F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EF3527431D2CAB5F009D6F58 /* Build configuration list for PBXNativeTarget "MoneyLove_1UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF3527441D2CAB5F009D6F58 /* Debug */,
+				EF3527451D2CAB5F009D6F58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EF35271D1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodel */,
+			);
+			currentVersion = EF35271D1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodel */;
+			path = MoneyLove_1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EF35270A1D2CAB5F009D6F58 /* Project object */;
+}
