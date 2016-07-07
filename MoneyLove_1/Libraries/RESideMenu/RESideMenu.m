@@ -208,7 +208,7 @@
     
     if (self.leftMenuViewController) {
         [self addChildViewController:self.leftMenuViewController];
-        self.leftMenuViewController.view.frame = self.view.bounds;
+        self.leftMenuViewController.view.frame = CGRectMake(0, 0, self.view.bounds.size.width * _contentViewScaleValue, self.view.bounds.size.height); //self.view.bounds;
         self.leftMenuViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.menuViewContainer addSubview:self.leftMenuViewController.view];
         [self.leftMenuViewController didMoveToParentViewController:self];

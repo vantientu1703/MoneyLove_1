@@ -12,4 +12,5 @@ class TotalMoneyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelTotalMoney: UILabel!
     @IBOutlet weak var imageViewTotalMoney: UIImageView!
+    
 }

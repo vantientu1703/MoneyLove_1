@@ -71,4 +71,15 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    //MARK: UITableViewDelegate 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                let addWalletVC = AddWalletViewController()
+                let nav = UINavigationController(rootViewController: addWalletVC)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+        }
+    }
 }

@@ -33,6 +33,8 @@
 		EFCF633F1D2F7FFE002BB378 /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		EFE011D11D3385C1002AC9FC /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE011CF1D3385C1002AC9FC /* AddWalletViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EFE011D21D3385C1002AC9FC /* AddWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFE011D01D3385C1002AC9FC /* AddWalletViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletTableViewCell.xib; path = Controllers/MenuController/SelectWalletViewController/WalletTableViewCell.xib; sourceTree = "<group>"; };
 		EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTableViewCell.swift; path = Controllers/MenuController/SelectWalletViewController/BottomTableViewCell.swift; sourceTree = "<group>"; };
 		EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomTableViewCell.xib; path = Controllers/MenuController/SelectWalletViewController/BottomTableViewCell.xib; sourceTree = "<group>"; };
+		EFE011CF1D3385C1002AC9FC /* AddWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWalletViewController.swift; path = Controllers/AddWalletViewController/AddWalletViewController.swift; sourceTree = "<group>"; };
+		EFE011D01D3385C1002AC9FC /* AddWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWalletViewController.xib; path = Controllers/AddWalletViewController/AddWalletViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5C47FC1D2E49B50040B82E /* MenuViewController */,
+				EFE011CE1D33858E002AC9FC /* AddWalletViewController */,
 				EF5C48121D2E51EA0040B82E /* CategoriesViewController */,
 				EF3527501D2CB6D2009D6F58 /* ViewController.swift */,
 				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
@@ -261,6 +266,15 @@
 				EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */,
 			);
 			name = SelectWalletView;
+			sourceTree = "<group>";
+		};
+		EFE011CE1D33858E002AC9FC /* AddWalletViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFE011CF1D3385C1002AC9FC /* AddWalletViewController.swift */,
+				EFE011D01D3385C1002AC9FC /* AddWalletViewController.xib */,
+			);
+			name = AddWalletViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +385,7 @@
 				EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */,
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
 				EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */,
+				EFE011D21D3385C1002AC9FC /* AddWalletViewController.xib in Resources */,
 				EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */,
 				EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */,
 				EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */,
@@ -408,6 +423,7 @@
 				EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */,
 				EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */,
 				EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */,
+				EFE011D11D3385C1002AC9FC /* AddWalletViewController.swift in Sources */,
 				EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */,
 				EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */,
 				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,

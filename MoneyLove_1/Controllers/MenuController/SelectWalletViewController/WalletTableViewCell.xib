@@ -14,10 +14,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000.000 đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-ef-NXs">
-                        <rect key="frame" x="56" y="27" width="246" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSb-Bv-xpo">
+                        <rect key="frame" x="56" y="8" width="246" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="PUV-Fs-kX8"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zBL-cg-6pD">
@@ -28,13 +31,10 @@
                             <constraint firstAttribute="width" constant="40" id="Mqf-hu-NY6"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSb-Bv-xpo">
-                        <rect key="frame" x="56" y="8" width="246" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="PUV-Fs-kX8"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000.000 đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-ef-NXs">
+                        <rect key="frame" x="56" y="27" width="246" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -52,11 +52,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imageViewWallet" destination="zBL-cg-6pD" id="ENh-26-iFo"/>
-                <outlet property="labelNameWallet" destination="TSb-Bv-xpo" id="1ux-Cv-5Hg"/>
-                <outlet property="labelTotalMoneyOfWallet" destination="3O5-ef-NXs" id="Rik-DF-NlT"/>
+                <outlet property="imageViewWallet" destination="zBL-cg-6pD" id="ktc-si-Um1"/>
+                <outlet property="labelNameWallet" destination="TSb-Bv-xpo" id="Axy-Hf-daJ"/>
+                <outlet property="labelTotalMoneyOfWallet" destination="3O5-ef-NXs" id="kQW-JG-OQA"/>
             </connections>
-            <point key="canvasLocation" x="200" y="253.5"/>
+            <point key="canvasLocation" x="339" y="235.5"/>
         </tableViewCell>
     </objects>
 </document>

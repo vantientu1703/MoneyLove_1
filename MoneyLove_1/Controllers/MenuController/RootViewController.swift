@@ -23,15 +23,13 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.contentViewShadowOpacity = 0.6;
         self.contentViewShadowRadius = 12;
         self.contentViewShadowEnabled = true;
-        
         let categoriesVC = CategoriesViewController()
         let menuVC = MenuViewController()
         let nav = UINavigationController(rootViewController: categoriesVC)
         self.contentViewController = nav
-        self.leftMenuViewController = menuVC//self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuViewController")
+        self.leftMenuViewController = menuVC
     }
     
     func sideMenu(sideMenu: RESideMenu!, willShowMenuViewController menuViewController: UIViewController!) {
-        print("This will show the menu")
     }
 }

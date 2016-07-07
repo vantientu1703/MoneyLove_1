@@ -12,11 +12,8 @@ protocol MenuViewControllerDelegate: class {
     func showWalletViewController()
 }
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RESideMenuDelegate {
 
-    let HEIGHT_CELL_SECTION1: CGFloat = 60
-    let HEIGHT_CELL_SECTION2: CGFloat = 70
-    let HEIGHT_CELL_SECTION3: CGFloat = 44
     weak var delegate: MenuViewControllerDelegate?
     var selectVC: SelectWalletViewController!
     var isShowSelectWallet: Bool?
@@ -70,6 +67,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("Press button delegate")
     }
     
+    override func presentLeftMenuViewController(sender: AnyObject!) {
+        self.sideMenuViewController.presentLeftMenuViewController()
+    }
+
     @IBAction func pressSelectWalletFromView(sender: AnyObject) {
         self.initSelectWalletViewController()
     }

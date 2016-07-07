@@ -9,7 +9,7 @@
 import UIKit
 
 class WalletTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var imageViewWallet: UIImageView!
     @IBOutlet weak var labelNameWallet: UILabel!
     @IBOutlet weak var labelTotalMoneyOfWallet: UILabel!
