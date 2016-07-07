@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="KGk-i7-Jjw" customClass="WalletTableViewCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000.000 đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-ef-NXs">
+                        <rect key="frame" x="56" y="27" width="246" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zBL-cg-6pD">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="03e-ZM-aob"/>
+                            <constraint firstAttribute="width" constant="40" id="Mqf-hu-NY6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSb-Bv-xpo">
+                        <rect key="frame" x="56" y="8" width="246" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="PUV-Fs-kX8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3O5-ef-NXs" firstAttribute="top" secondItem="TSb-Bv-xpo" secondAttribute="bottom" constant="-2" id="9cb-Lp-ZFy"/>
+                    <constraint firstItem="3O5-ef-NXs" firstAttribute="leading" secondItem="zBL-cg-6pD" secondAttribute="trailing" constant="8" id="GQ2-kB-oKA"/>
+                    <constraint firstItem="zBL-cg-6pD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="L22-ZV-KTE"/>
+                    <constraint firstItem="TSb-Bv-xpo" firstAttribute="leading" secondItem="zBL-cg-6pD" secondAttribute="trailing" constant="8" id="MsI-uq-5ei"/>
+                    <constraint firstAttribute="bottom" secondItem="3O5-ef-NXs" secondAttribute="bottom" constant="8" id="Xhs-S0-dtt"/>
+                    <constraint firstAttribute="trailing" secondItem="TSb-Bv-xpo" secondAttribute="trailing" constant="18" id="ZRm-88-ePg"/>
+                    <constraint firstItem="zBL-cg-6pD" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="n8z-7a-u5a"/>
+                    <constraint firstAttribute="trailing" secondItem="3O5-ef-NXs" secondAttribute="trailing" constant="18" id="pLw-RH-uYL"/>
+                    <constraint firstItem="zBL-cg-6pD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="rdt-uv-8rl"/>
+                    <constraint firstItem="TSb-Bv-xpo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xWB-GU-WUp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageViewWallet" destination="zBL-cg-6pD" id="ENh-26-iFo"/>
+                <outlet property="labelNameWallet" destination="TSb-Bv-xpo" id="1ux-Cv-5Hg"/>
+                <outlet property="labelTotalMoneyOfWallet" destination="3O5-ef-NXs" id="Rik-DF-NlT"/>
+            </connections>
+            <point key="canvasLocation" x="200" y="253.5"/>
+        </tableViewCell>
+    </objects>
+</document>
