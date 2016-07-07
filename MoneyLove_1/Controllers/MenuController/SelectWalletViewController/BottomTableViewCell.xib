@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="47" id="KGk-i7-Jjw" customClass="BottomTableViewCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vVs-zx-rKk">
+                        <rect key="frame" x="8" y="8" width="30" height="30"/>
+                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="1vf-No-AT5"/>
+                            <constraint firstAttribute="width" constant="30" id="6wb-wX-1Ml"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THÊM VÍ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czm-2B-RlD">
+                        <rect key="frame" x="46" y="12" width="266" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="vVs-zx-rKk" secondAttribute="bottom" constant="8" id="61I-UD-xuK"/>
+                    <constraint firstItem="Czm-2B-RlD" firstAttribute="leading" secondItem="vVs-zx-rKk" secondAttribute="trailing" constant="8" id="B3n-cs-jFi"/>
+                    <constraint firstItem="vVs-zx-rKk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="oqz-cK-dTU"/>
+                    <constraint firstAttribute="bottom" secondItem="Czm-2B-RlD" secondAttribute="bottom" constant="13" id="p5d-fo-ff8"/>
+                    <constraint firstItem="vVs-zx-rKk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="rWn-HO-OlT"/>
+                    <constraint firstItem="Czm-2B-RlD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="viJ-Dc-uev"/>
+                    <constraint firstAttribute="trailing" secondItem="Czm-2B-RlD" secondAttribute="trailing" constant="8" id="w7O-SO-sF1"/>
+                    <constraint firstItem="Czm-2B-RlD" firstAttribute="leading" secondItem="vVs-zx-rKk" secondAttribute="trailing" constant="8" id="xhy-qp-aru"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageViewBottom" destination="vVs-zx-rKk" id="rVv-vc-qsu"/>
+                <outlet property="labelAddWallet" destination="Czm-2B-RlD" id="abb-qV-gXZ"/>
+            </connections>
+            <point key="canvasLocation" x="279" y="152.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -15,6 +15,30 @@
 		EF35272E1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */; };
 		EF3527391D2CAB5F009D6F58 /* MoneyLove_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */; };
 		EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527501D2CB6D2009D6F58 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C47FD1D2E49CA0040B82E /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */; settings = {ASSET_TAGS = (); }; };
+		EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48091D2E4ABF0040B82E /* RESideMenu.m */; settings = {ASSET_TAGS = (); }; };
+		EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */; settings = {ASSET_TAGS = (); }; };
+		EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48131D2E526B0040B82E /* CategoriesViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EF5C48161D2E526B0040B82E /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48141D2E526B0040B82E /* CategoriesViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48171D2E58890040B82E /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48181D2E58890040B82E /* MenuViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EFCDBAFF1D34A2E900A3F345 /* WalletManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCDBAFD1D34A2E900A3F345 /* WalletManagerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EFCDBB001D34A2E900A3F345 /* WalletManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCDBAFE1D34A2E900A3F345 /* WalletManagerViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EFCDBB031D34A66500A3F345 /* WalletManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCDBB011D34A66500A3F345 /* WalletManagerTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EFCDBB041D34A66500A3F345 /* WalletManagerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCDBB021D34A66500A3F345 /* WalletManagerTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF632F1D2F3FA1002BB378 /* ic_down.png */; settings = {ASSET_TAGS = (); }; };
+		EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */; settings = {ASSET_TAGS = (); }; };
+		EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63351D2F458E002BB378 /* SelectWalletViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63381D2F655B002BB378 /* TotalMoneyTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63391D2F655B002BB378 /* TotalMoneyTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF633C1D2F7FFE002BB378 /* WalletTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EFCF633F1D2F7FFE002BB378 /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		EFE011D11D3385C1002AC9FC /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE011CF1D3385C1002AC9FC /* AddWalletViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EFE011D21D3385C1002AC9FC /* AddWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFE011D01D3385C1002AC9FC /* AddWalletViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +73,34 @@
 		EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyLove_1UITests.swift; sourceTree = "<group>"; };
 		EF35273A1D2CAB5F009D6F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF3527501D2CB6D2009D6F58 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		EF5C47FD1D2E49CA0040B82E /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = Controllers/MenuController/RootViewController.swift; sourceTree = "<group>"; };
+		EF5C48061D2E4ABF0040B82E /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		EF5C48081D2E4ABF0040B82E /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		EF5C48091D2E4ABF0040B82E /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		EF5C480A1D2E4ABF0040B82E /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		EF5C48111D2E4D080040B82E /* MoneyLove_1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoneyLove_1-Bridging-Header.h"; sourceTree = "<group>"; };
+		EF5C48131D2E526B0040B82E /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesViewController.swift; path = Controllers/CategoriesViewController/CategoriesViewController.swift; sourceTree = "<group>"; };
+		EF5C48141D2E526B0040B82E /* CategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoriesViewController.xib; path = Controllers/CategoriesViewController/CategoriesViewController.xib; sourceTree = "<group>"; };
+		EF5C48171D2E58890040B82E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Controllers/MenuController/MenuViewController.swift; sourceTree = "<group>"; };
+		EF5C48181D2E58890040B82E /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = Controllers/MenuController/MenuViewController.xib; sourceTree = "<group>"; };
+		EFCDBAFD1D34A2E900A3F345 /* WalletManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletManagerViewController.swift; path = Controllers/WalletManagerViewController/WalletManagerViewController.swift; sourceTree = "<group>"; };
+		EFCDBAFE1D34A2E900A3F345 /* WalletManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletManagerViewController.xib; path = Controllers/WalletManagerViewController/WalletManagerViewController.xib; sourceTree = "<group>"; };
+		EFCDBB011D34A66500A3F345 /* WalletManagerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletManagerTableViewCell.swift; path = Controllers/WalletManagerViewController/WalletManagerTableViewCell.swift; sourceTree = "<group>"; };
+		EFCDBB021D34A66500A3F345 /* WalletManagerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletManagerTableViewCell.xib; path = Controllers/WalletManagerViewController/WalletManagerTableViewCell.xib; sourceTree = "<group>"; };
+		EFCF632F1D2F3FA1002BB378 /* ic_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_down.png; path = Resources/ic_down.png; sourceTree = "<group>"; };
+		EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_three_dots.png; path = Resources/ic_three_dots.png; sourceTree = "<group>"; };
+		EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectWalletViewController.swift; path = Controllers/MenuController/SelectWalletViewController/SelectWalletViewController.swift; sourceTree = "<group>"; };
+		EFCF63351D2F458E002BB378 /* SelectWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectWalletViewController.xib; path = Controllers/MenuController/SelectWalletViewController/SelectWalletViewController.xib; sourceTree = "<group>"; };
+		EFCF63381D2F655B002BB378 /* TotalMoneyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TotalMoneyTableViewCell.swift; path = Controllers/MenuController/SelectWalletViewController/TotalMoneyTableViewCell.swift; sourceTree = "<group>"; };
+		EFCF63391D2F655B002BB378 /* TotalMoneyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TotalMoneyTableViewCell.xib; path = Controllers/MenuController/SelectWalletViewController/TotalMoneyTableViewCell.xib; sourceTree = "<group>"; };
+		EFCF633C1D2F7FFE002BB378 /* WalletTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletTableViewCell.swift; path = Controllers/MenuController/SelectWalletViewController/WalletTableViewCell.swift; sourceTree = "<group>"; };
+		EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletTableViewCell.xib; path = Controllers/MenuController/SelectWalletViewController/WalletTableViewCell.xib; sourceTree = "<group>"; };
+		EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTableViewCell.swift; path = Controllers/MenuController/SelectWalletViewController/BottomTableViewCell.swift; sourceTree = "<group>"; };
+		EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomTableViewCell.xib; path = Controllers/MenuController/SelectWalletViewController/BottomTableViewCell.xib; sourceTree = "<group>"; };
+		EFE011CF1D3385C1002AC9FC /* AddWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWalletViewController.swift; path = Controllers/AddWalletViewController/AddWalletViewController.swift; sourceTree = "<group>"; };
+		EFE011D01D3385C1002AC9FC /* AddWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWalletViewController.xib; path = Controllers/AddWalletViewController/AddWalletViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,15 +152,16 @@
 			isa = PBXGroup;
 			children = (
 				EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */,
-				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
 				EF35274D1D2CB612009D6F58 /* Manager */,
 				EF35274C1D2CB604009D6F58 /* Controllers */,
 				EF35274F1D2CB626009D6F58 /* Model */,
 				EF35274E1D2CB619009D6F58 /* Resources */,
+				EF5C48041D2E4A340040B82E /* Libraries */,
 				EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */,
 				EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */,
 				EF3527241D2CAB5F009D6F58 /* Info.plist */,
 				EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */,
+				EF5C48111D2E4D080040B82E /* MoneyLove_1-Bridging-Header.h */,
 			);
 			path = MoneyLove_1;
 			sourceTree = "<group>";
@@ -134,7 +187,12 @@
 		EF35274C1D2CB604009D6F58 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EF5C47FC1D2E49B50040B82E /* MenuViewController */,
+				EFE011CE1D33858E002AC9FC /* AddWalletViewController */,
+				EFCDBAFC1D34A29A00A3F345 /* WalletManagerViewController */,
+				EF5C48121D2E51EA0040B82E /* CategoriesViewController */,
 				EF3527501D2CB6D2009D6F58 /* ViewController.swift */,
+				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -149,6 +207,8 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EFCF632F1D2F3FA1002BB378 /* ic_down.png */,
+				EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -158,6 +218,83 @@
 			children = (
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		EF5C47FC1D2E49B50040B82E /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF5C47FD1D2E49CA0040B82E /* RootViewController.swift */,
+				EF5C48171D2E58890040B82E /* MenuViewController.swift */,
+				EF5C48181D2E58890040B82E /* MenuViewController.xib */,
+				EFCF63331D2F4540002BB378 /* SelectWalletView */,
+			);
+			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		EF5C48041D2E4A340040B82E /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				EF5C48051D2E4ABF0040B82E /* RESideMenu */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		EF5C48051D2E4ABF0040B82E /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				EF5C48061D2E4ABF0040B82E /* RECommonFunctions.h */,
+				EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */,
+				EF5C48081D2E4ABF0040B82E /* RESideMenu.h */,
+				EF5C48091D2E4ABF0040B82E /* RESideMenu.m */,
+				EF5C480A1D2E4ABF0040B82E /* UIViewController+RESideMenu.h */,
+				EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */,
+			);
+			name = RESideMenu;
+			path = Libraries/RESideMenu;
+			sourceTree = "<group>";
+		};
+		EF5C48121D2E51EA0040B82E /* CategoriesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF5C48131D2E526B0040B82E /* CategoriesViewController.swift */,
+				EF5C48141D2E526B0040B82E /* CategoriesViewController.xib */,
+			);
+			name = CategoriesViewController;
+			sourceTree = "<group>";
+		};
+		EFCDBAFC1D34A29A00A3F345 /* WalletManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFCDBAFD1D34A2E900A3F345 /* WalletManagerViewController.swift */,
+				EFCDBAFE1D34A2E900A3F345 /* WalletManagerViewController.xib */,
+				EFCDBB011D34A66500A3F345 /* WalletManagerTableViewCell.swift */,
+				EFCDBB021D34A66500A3F345 /* WalletManagerTableViewCell.xib */,
+			);
+			name = WalletManagerViewController;
+			sourceTree = "<group>";
+		};
+		EFCF63331D2F4540002BB378 /* SelectWalletView */ = {
+			isa = PBXGroup;
+			children = (
+				EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */,
+				EFCF63351D2F458E002BB378 /* SelectWalletViewController.xib */,
+				EFCF63381D2F655B002BB378 /* TotalMoneyTableViewCell.swift */,
+				EFCF63391D2F655B002BB378 /* TotalMoneyTableViewCell.xib */,
+				EFCF633C1D2F7FFE002BB378 /* WalletTableViewCell.swift */,
+				EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */,
+				EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */,
+				EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */,
+			);
+			name = SelectWalletView;
+			sourceTree = "<group>";
+		};
+		EFE011CE1D33858E002AC9FC /* AddWalletViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFE011CF1D3385C1002AC9FC /* AddWalletViewController.swift */,
+				EFE011D01D3385C1002AC9FC /* AddWalletViewController.xib */,
+			);
+			name = AddWalletViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +400,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFCF633F1D2F7FFE002BB378 /* WalletTableViewCell.xib in Resources */,
+				EFCDBB001D34A2E900A3F345 /* WalletManagerViewController.xib in Resources */,
 				EF3527231D2CAB5F009D6F58 /* LaunchScreen.storyboard in Resources */,
+				EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */,
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
+				EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */,
+				EFE011D21D3385C1002AC9FC /* AddWalletViewController.xib in Resources */,
+				EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */,
+				EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */,
+				EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */,
+				EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */,
+				EF5C48161D2E526B0040B82E /* CategoriesViewController.xib in Resources */,
+				EFCDBB041D34A66500A3F345 /* WalletManagerTableViewCell.xib in Resources */,
 				EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,9 +438,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */,
+				EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */,
+				EFCDBAFF1D34A2E900A3F345 /* WalletManagerViewController.swift in Sources */,
+				EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */,
+				EFCDBB031D34A66500A3F345 /* WalletManagerTableViewCell.swift in Sources */,
+				EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */,
+				EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */,
 				EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */,
+				EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */,
+				EFE011D11D3385C1002AC9FC /* AddWalletViewController.swift in Sources */,
+				EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */,
 				EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */,
+				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
+				EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */,
+				EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +597,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MoneyLove_1/MoneyLove_1-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -447,6 +609,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MoneyLove_1/MoneyLove_1-Bridging-Header.h";
 			};
 			name = Release;
 		};
