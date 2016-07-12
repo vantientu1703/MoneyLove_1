@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HeaderOneTableViewCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oF1-bC-cRs">
+                        <rect key="frame" x="8" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="GCE-o6-h0X"/>
+                            <constraint firstAttribute="width" constant="40" id="JIG-J2-wXN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-eB-UFV">
+                        <rect key="frame" x="73" y="10" width="239" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="CUm-Vt-GiX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35d-hb-Hm4">
+                        <rect key="frame" x="73" y="30" width="239" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="35d-hb-Hm4" firstAttribute="top" secondItem="9yW-eB-UFV" secondAttribute="bottom" constant="-1" id="7sO-y9-ntj"/>
+                    <constraint firstItem="9yW-eB-UFV" firstAttribute="leading" secondItem="oF1-bC-cRs" secondAttribute="trailing" constant="25" id="9ZE-nX-Oeu"/>
+                    <constraint firstAttribute="trailing" secondItem="35d-hb-Hm4" secondAttribute="trailing" constant="8" id="B75-As-SFt"/>
+                    <constraint firstItem="35d-hb-Hm4" firstAttribute="top" secondItem="9yW-eB-UFV" secondAttribute="bottom" constant="-1" id="Gaf-tn-kMy"/>
+                    <constraint firstItem="9yW-eB-UFV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Iji-CD-iUv"/>
+                    <constraint firstAttribute="bottom" secondItem="oF1-bC-cRs" secondAttribute="bottom" constant="9" id="PGB-uz-t2J"/>
+                    <constraint firstAttribute="bottom" secondItem="35d-hb-Hm4" secondAttribute="bottom" constant="8" id="dMt-tw-WAS"/>
+                    <constraint firstAttribute="trailing" secondItem="9yW-eB-UFV" secondAttribute="trailing" constant="8" id="gi6-sf-0SD"/>
+                    <constraint firstItem="35d-hb-Hm4" firstAttribute="leading" secondItem="oF1-bC-cRs" secondAttribute="trailing" constant="25" id="hVu-Y1-Con"/>
+                    <constraint firstItem="oF1-bC-cRs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="jyb-gA-mAV"/>
+                    <constraint firstItem="oF1-bC-cRs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="yVc-uT-I6s"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="imageViewHeaderOne" destination="oF1-bC-cRs" id="6rN-BI-vcn"/>
+                <outlet property="labelAccount" destination="9yW-eB-UFV" id="p9f-AA-6vS"/>
+                <outlet property="labelStatusAccount" destination="35d-hb-Hm4" id="QbC-9t-VNz"/>
+            </connections>
+            <point key="canvasLocation" x="130" y="162"/>
+        </tableViewCell>
+    </objects>
+</document>
