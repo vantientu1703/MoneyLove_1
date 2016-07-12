@@ -15,6 +15,9 @@
 		EF35272E1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */; };
 		EF3527391D2CAB5F009D6F58 /* MoneyLove_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */; };
 		EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527501D2CB6D2009D6F58 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */; settings = {ASSET_TAGS = (); }; };
+		EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48091D2E4ABF0040B82E /* RESideMenu.m */; settings = {ASSET_TAGS = (); }; };
+		EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,13 @@
 		EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyLove_1UITests.swift; sourceTree = "<group>"; };
 		EF35273A1D2CAB5F009D6F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF3527501D2CB6D2009D6F58 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		EF5C48061D2E4ABF0040B82E /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		EF5C48081D2E4ABF0040B82E /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		EF5C48091D2E4ABF0040B82E /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		EF5C480A1D2E4ABF0040B82E /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		EF5C48111D2E4D080040B82E /* MoneyLove_1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoneyLove_1-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,15 +110,16 @@
 			isa = PBXGroup;
 			children = (
 				EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */,
-				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
 				EF35274D1D2CB612009D6F58 /* Manager */,
 				EF35274C1D2CB604009D6F58 /* Controllers */,
 				EF35274F1D2CB626009D6F58 /* Model */,
 				EF35274E1D2CB619009D6F58 /* Resources */,
+				EF5C48041D2E4A340040B82E /* Libraries */,
 				EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */,
 				EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */,
 				EF3527241D2CAB5F009D6F58 /* Info.plist */,
 				EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */,
+				EF5C48111D2E4D080040B82E /* MoneyLove_1-Bridging-Header.h */,
 			);
 			path = MoneyLove_1;
 			sourceTree = "<group>";
@@ -135,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				EF3527501D2CB6D2009D6F58 /* ViewController.swift */,
+				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -158,6 +170,28 @@
 			children = (
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		EF5C48041D2E4A340040B82E /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				EF5C48051D2E4ABF0040B82E /* RESideMenu */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		EF5C48051D2E4ABF0040B82E /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				EF5C48061D2E4ABF0040B82E /* RECommonFunctions.h */,
+				EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */,
+				EF5C48081D2E4ABF0040B82E /* RESideMenu.h */,
+				EF5C48091D2E4ABF0040B82E /* RESideMenu.m */,
+				EF5C480A1D2E4ABF0040B82E /* UIViewController+RESideMenu.h */,
+				EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */,
+			);
+			name = RESideMenu;
+			path = Libraries/RESideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,9 +324,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */,
 				EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */,
 				EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
+				EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */,
+				EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +473,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MoneyLove_1/MoneyLove_1-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -447,6 +485,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MoneyLove_1/MoneyLove_1-Bridging-Header.h";
 			};
 			name = Release;
 		};
