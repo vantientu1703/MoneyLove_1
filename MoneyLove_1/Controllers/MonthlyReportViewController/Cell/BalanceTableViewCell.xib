@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BalanceTableViewCell" rowHeight="66" id="KGk-i7-Jjw" customClass="BalanceTableViewCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="66"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="416" height="65"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opening balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAd-ku-IIV">
+                        <rect key="frame" x="8" y="8" width="130" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="5Ga-KB-xz8"/>
+                            <constraint firstAttribute="width" constant="130" id="hDT-5c-FiQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Ga-KB-xz8"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ending balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pM3-6t-gTM">
+                        <rect key="frame" x="8" y="37" width="130" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="TKX-86-nQM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCV-sA-50q">
+                        <rect key="frame" x="157" y="8" width="251" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Xfd-3B-tZR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.36141856706156494" green="0.63417336170321192" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Xfd-3B-tZR"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlu-3x-UNh">
+                        <rect key="frame" x="157" y="36" width="251" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.36141856709999998" green="0.63417336170000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pM3-6t-gTM" firstAttribute="top" secondItem="DAd-ku-IIV" secondAttribute="bottom" constant="8" id="0vA-Y9-HAe"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WCV-sA-50q" secondAttribute="trailing" id="CXc-mE-AB8"/>
+                    <constraint firstItem="pM3-6t-gTM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="D58-Au-LI8"/>
+                    <constraint firstAttribute="bottom" secondItem="pM3-6t-gTM" secondAttribute="bottom" constant="8" id="G6o-ce-piq"/>
+                    <constraint firstItem="DAd-ku-IIV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ity-69-PJF"/>
+                    <constraint firstItem="Dlu-3x-UNh" firstAttribute="leading" secondItem="pM3-6t-gTM" secondAttribute="trailing" constant="19" id="RMZ-1T-aHY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Dlu-3x-UNh" secondAttribute="trailing" id="TSP-wh-olS"/>
+                    <constraint firstItem="WCV-sA-50q" firstAttribute="leading" secondItem="DAd-ku-IIV" secondAttribute="trailing" constant="19" id="XSf-FR-GoD"/>
+                    <constraint firstAttribute="bottom" secondItem="Dlu-3x-UNh" secondAttribute="bottom" constant="8" id="Y3U-Ur-Ct9"/>
+                    <constraint firstItem="DAd-ku-IIV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="hGb-47-mIo"/>
+                    <constraint firstItem="WCV-sA-50q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jBj-hc-wbM"/>
+                    <constraint firstItem="Dlu-3x-UNh" firstAttribute="height" secondItem="WCV-sA-50q" secondAttribute="height" id="kbw-Qn-9nW"/>
+                    <constraint firstItem="Dlu-3x-UNh" firstAttribute="top" secondItem="WCV-sA-50q" secondAttribute="bottom" constant="7" id="oUN-yH-3OS"/>
+                    <constraint firstItem="pM3-6t-gTM" firstAttribute="height" secondItem="DAd-ku-IIV" secondAttribute="height" id="sMp-uU-RDM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="480" y="372"/>
+        </tableViewCell>
+    </objects>
+</document>
