@@ -8,15 +8,24 @@
 
 import UIKit
 
+protocol MenuViewControllerDelegate: class {
+    func showWalletViewController()
+}
+
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var tableView: UITableView!
     let HEIGHT_CELL_SECTION1: CGFloat = 60
     let HEIGHT_CELL_SECTION2: CGFloat = 70
     let HEIGHT_CELL_SECTION3: CGFloat = 44
+    weak var delegate: MenuViewControllerDelegate?
+    var selectVC: SelectWalletViewController!
+    var isShowSelectWallet: Bool?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonShowWalletList: UIButton!
     let arrTitle: Array = ["Transactions", "Debts", "Trends", "Monthly Report", "Categories"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        isShowSelectWallet = false
         tableView.delegate = self
         tableView.dataSource = self
         self.regisClassForCell()
@@ -24,51 +33,28 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func regisClassForCell() {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellDefault")
-        tableView.registerClass(HeaderOneTableViewCell.classForCoder(), forCellReuseIdentifier: "HeaderOneCell")
-        tableView.registerNib(UINib.init(nibName: "HeaderOneTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderOneCell")
-        tableView.registerClass(ShowWalletListTableViewCell.classForCoder(), forCellReuseIdentifier: "ShowWalletListTableViewCell")
-        tableView.registerNib(UINib.init(nibName: "ShowWalletListTableViewCell", bundle: nil), forCellReuseIdentifier: "ShowWalletListTableViewCell")
     }
     // MARK: UITableViewDataSources
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1 {
-            return 1
-        } else {
-            return arrTitle.count
-        }
+        return arrTitle.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let headerOneCell = tableView.dequeueReusableCellWithIdentifier("HeaderOneCell", forIndexPath: indexPath)
-            return headerOneCell
-        } else if indexPath.section == 1 {
-            let showWalletListCell = tableView.dequeueReusableCellWithIdentifier("ShowWalletListTableViewCell", forIndexPath: indexPath)
-            return showWalletListCell
-        } else {
-            let identifier = "CellDefault"
-            let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
-            cell.textLabel?.text = arrTitle[indexPath.row]
-            return cell
-        }
+        let identifier = "CellDefault"
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath:indexPath)
+        cell.textLabel?.text = arrTitle[indexPath.row]
+        return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return HEIGHT_CELL_SECTION1
-        } else if indexPath.section == 1 {
-            return HEIGHT_CELL_SECTION2
-        } else {
-            return HEIGHT_CELL_SECTION3
-        }
+        return 44
     }
     //MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        
         switch indexPath.row {
             case 4:
                 let categoriesVC = CategoriesViewController()
@@ -79,5 +65,39 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
         }
     }
-
+    //MARK: ShowWalletListTableViewCellDelegate
+    func showWalletController() {
+        print("Press button delegate")
+    }
+    
+    @IBAction func pressSelectWalletFromView(sender: AnyObject) {
+        self.initSelectWalletViewController()
+    }
+    @IBAction func pressSelectWallet(sender: AnyObject) {
+        self.initSelectWalletViewController()
+    }
+    //MARK init SelectWalletViewController
+    func initSelectWalletViewController() {
+        if self.isShowSelectWallet == false {
+            selectVC = SelectWalletViewController()
+            selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, 0)
+            UIView.animateWithDuration(10, animations: { () -> Void in
+                self.selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, UIScreen.mainScreen().bounds.size.height - 130)
+                }) { Bool -> Void in
+                    self.addChildViewController(self.selectVC)
+                    self.selectVC.didMoveToParentViewController(self)
+                    self.view.addSubview(self.selectVC.view)
+            }
+            self.isShowSelectWallet = true
+            self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+            
+        } else {
+            
+            self.isShowSelectWallet = false
+            self.selectVC.removeFromParentViewController()
+            self.selectVC.view.removeFromSuperview()
+            self.selectVC = nil
+            self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 2))
+        }
+    }
 }
