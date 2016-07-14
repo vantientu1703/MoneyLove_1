@@ -3,6 +3,6 @@ use_frameworks!
 
 target 'MoneyLove_1' do
   pod 'TabPageViewController'
-  pod 'Charts'
+  pod 'Charts', '2.1.5'
 
 end

@@ -1,17 +1,15 @@
 PODS:
-  - Charts (2.2.4):
-    - Charts/Core (= 2.2.4)
-  - Charts/Core (2.2.4)
+  - Charts (2.1.5)
   - TabPageViewController (0.1.1)
 
 DEPENDENCIES:
-  - Charts
+  - Charts (= 2.1.5)
   - TabPageViewController
 
 SPEC CHECKSUMS:
-  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
+  Charts: d2c4099ed2b7e8c35df9561386bb6e3ca6608ba6
   TabPageViewController: 10fa70daf5d743127cadfd9ef9b3c1354a54c57c
 
-PODFILE CHECKSUM: 5e5951a8006e1d67acacb078218303c583cedb23
+PODFILE CHECKSUM: 7a5779388f830b333bc1e75aa283eb3cf8e16027
 
 COCOAPODS: 1.0.1
