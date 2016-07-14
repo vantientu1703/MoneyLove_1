@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WalletManagerViewController" customModule="MoneyLove_1" customModuleProvider="target">
+            <connections>
+                <outlet property="addButtonWallet" destination="sLB-jD-BoJ" id="466-Zp-g6Y"/>
+                <outlet property="tableView" destination="EBn-hX-RXb" id="m5z-1H-dH9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EBn-hX-RXb">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="cUo-LP-NLb"/>
+                        <outlet property="delegate" destination="-1" id="xUe-x4-v5p"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLB-jD-BoJ">
+                    <rect key="frame" x="140" y="514" width="40" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="PZ8-Qj-dfm"/>
+                        <constraint firstAttribute="width" constant="40" id="x0R-h2-dcf"/>
+                    </constraints>
+                    <state key="normal" title="+"/>
+                    <connections>
+                        <action selector="addWalletPress:" destination="-1" eventType="touchUpInside" id="JcH-Py-duQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="EBn-hX-RXb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fkc-z9-6ad"/>
+                <constraint firstAttribute="trailing" secondItem="EBn-hX-RXb" secondAttribute="trailing" id="MEe-kC-FYE"/>
+                <constraint firstItem="sLB-jD-BoJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bGr-0a-GgT"/>
+                <constraint firstAttribute="bottom" secondItem="EBn-hX-RXb" secondAttribute="bottom" id="hRo-Bc-2J6"/>
+                <constraint firstAttribute="bottom" secondItem="sLB-jD-BoJ" secondAttribute="bottom" constant="14" id="oMe-yZ-1pA"/>
+                <constraint firstItem="EBn-hX-RXb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tOE-9s-Y8k"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="405" y="236"/>
+        </view>
+    </objects>
+</document>

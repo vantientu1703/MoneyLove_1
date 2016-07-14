@@ -82,6 +82,10 @@
 		EF5C481D1D2E5D5D0040B82E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		EF76F9421D37478100175D5C /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76F9401D37478100175D5C /* AddWalletViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EF76F9431D37478100175D5C /* AddWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF76F9411D37478100175D5C /* AddWalletViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EF76F9471D37764A00175D5C /* WalletManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76F9451D37764A00175D5C /* WalletManagerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EF76F9481D37764A00175D5C /* WalletManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF76F9461D37764A00175D5C /* WalletManagerViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EF76F94B1D3776AD00175D5C /* WalletManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76F9491D3776AD00175D5C /* WalletManagerTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EF76F94C1D3776AD00175D5C /* WalletManagerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF76F94A1D3776AD00175D5C /* WalletManagerTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF632F1D2F3FA1002BB378 /* ic_down.png */; settings = {ASSET_TAGS = (); }; };
 		EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */; settings = {ASSET_TAGS = (); }; };
 		EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -198,6 +202,10 @@
 		EF5C48181D2E58890040B82E /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = Controllers/MenuController/MenuViewController.xib; sourceTree = "<group>"; };
 		EF76F9401D37478100175D5C /* AddWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWalletViewController.swift; path = Controllers/AddWalletViewController/AddWalletViewController.swift; sourceTree = "<group>"; };
 		EF76F9411D37478100175D5C /* AddWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWalletViewController.xib; path = Controllers/AddWalletViewController/AddWalletViewController.xib; sourceTree = "<group>"; };
+		EF76F9451D37764A00175D5C /* WalletManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletManagerViewController.swift; path = Controllers/WalletManagerViewController/WalletManagerViewController.swift; sourceTree = "<group>"; };
+		EF76F9461D37764A00175D5C /* WalletManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletManagerViewController.xib; path = Controllers/WalletManagerViewController/WalletManagerViewController.xib; sourceTree = "<group>"; };
+		EF76F9491D3776AD00175D5C /* WalletManagerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletManagerTableViewCell.swift; path = Controllers/WalletManagerViewController/WalletManagerTableViewCell.swift; sourceTree = "<group>"; };
+		EF76F94A1D3776AD00175D5C /* WalletManagerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WalletManagerTableViewCell.xib; path = Controllers/WalletManagerViewController/WalletManagerTableViewCell.xib; sourceTree = "<group>"; };
 		EFCF632F1D2F3FA1002BB378 /* ic_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_down.png; path = Resources/ic_down.png; sourceTree = "<group>"; };
 		EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_three_dots.png; path = Resources/ic_three_dots.png; sourceTree = "<group>"; };
 		EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectWalletViewController.swift; path = Controllers/MenuController/SelectWalletViewController/SelectWalletViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +455,7 @@
 				51510A931D34EE56004CAD82 /* ViewController.swift */,
 				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
 				EF76F93F1D37474500175D5C /* AddWalletViewController */,
+				EF76F9441D37760700175D5C /* WalletManagerViewController */,
 				51FC24A01D2DE5710067CC71 /* DebtViewController */,
 				51FC24A91D2DE6160067CC71 /* TrendTableViewController */,
 				51FC24AE1D2DE6860067CC71 /* MonthlyReportViewController */,
@@ -538,6 +547,17 @@
 				EF76F9411D37478100175D5C /* AddWalletViewController.xib */,
 			);
 			name = AddWalletViewController;
+			sourceTree = "<group>";
+		};
+		EF76F9441D37760700175D5C /* WalletManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF76F9451D37764A00175D5C /* WalletManagerViewController.swift */,
+				EF76F9461D37764A00175D5C /* WalletManagerViewController.xib */,
+				EF76F9491D3776AD00175D5C /* WalletManagerTableViewCell.swift */,
+				EF76F94A1D3776AD00175D5C /* WalletManagerTableViewCell.xib */,
+			);
+			name = WalletManagerViewController;
 			sourceTree = "<group>";
 		};
 		EFCF63331D2F4540002BB378 /* SelectWalletView */ = {
@@ -683,6 +703,8 @@
 				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
 				516040E01D3767F100AB9A74 /* DetailGroupSelected.xib in Resources */,
 				51312F0A1D35CD8B00775EFD /* PageReportViewController.xib in Resources */,
+				EF76F9481D37764A00175D5C /* WalletManagerViewController.xib in Resources */,
+				EF76F94C1D3776AD00175D5C /* WalletManagerTableViewCell.xib in Resources */,
 				51FC252C1D2E07A90067CC71 /* PayReceiavableTableViewController.xib in Resources */,
 				51FC25371D2E36350067CC71 /* ActionTableViewCell.xib in Resources */,
 				5153B1FC1D2F8B9000413269 /* TrendTableViewCell.xib in Resources */,
@@ -804,6 +826,7 @@
 				5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */,
 				5153B1EB1D2F8B2400413269 /* ItemReportTableViewCell.swift in Sources */,
 				51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */,
+				EF76F94B1D3776AD00175D5C /* WalletManagerTableViewCell.swift in Sources */,
 				51312F091D35CD8B00775EFD /* PageReportViewController.swift in Sources */,
 				516040DE1D3767F100AB9A74 /* CustomTabPageViewController.swift in Sources */,
 				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
@@ -816,6 +839,7 @@
 				516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */,
 				51510A941D34EE56004CAD82 /* ViewController.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
+				EF76F9471D37764A00175D5C /* WalletManagerViewController.swift in Sources */,
 				51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */,
 				5194B3201D333EE600F419FC /* DataPageView.swift in Sources */,
 			);
