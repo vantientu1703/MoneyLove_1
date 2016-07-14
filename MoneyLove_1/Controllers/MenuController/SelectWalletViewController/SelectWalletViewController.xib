@@ -19,8 +19,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="i5M-Pr-FkT" id="iAV-cT-ar5"/>
-                        <outlet property="delegate" destination="i5M-Pr-FkT" id="p6W-A7-6Zd"/>
+                        <outlet property="dataSource" destination="-1" id="Jg2-jE-g9c"/>
+                        <outlet property="delegate" destination="-1" id="snM-we-F6p"/>
                     </connections>
                 </tableView>
             </subviews>

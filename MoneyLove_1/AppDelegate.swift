@@ -15,13 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let debtVC = PageReportViewController(nibName: "PageReportViewController", bundle: nil)
-        let nav = UINavigationController(rootViewController: debtVC)
-        
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = nav
-        window!.makeKeyAndVisible()
-        
         return true
     }
 

@@ -13,20 +13,23 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
     let HEIGHT_SECTION0: CGFloat = 99
     let HEIGHT_SECTION1: CGFloat = 57
     let HEIGHT_SECTION2: CGFloat = 47
+    let IDENTIFIER_TOTALMONEYTABLEVIEWCELL = "TotalMoneyTableViewCell"
+    let IDENTIFIER_WALETTTABLEVIEWCELL = "WalletTableViewCell"
+    let IDENTIFIER_BOTTOMTABLEVIEWCELL = "BottomTableViewCell"
+    let TITLE_ADD_WALLET = "ADD WALLET"
+    let TITLE_WALLET_MANAGER = "WALLET MANAGER"
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         self.configRegisterForCell()
     }
     func configRegisterForCell() {
-        tableView.registerClass(TotalMoneyTableViewCell.classForCoder(), forCellReuseIdentifier: "TotalMoneyTableViewCell")
-        tableView.registerNib(UINib.init(nibName: "TotalMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: "TotalMoneyTableViewCell")
-        tableView.registerClass(WalletTableViewCell.classForCoder(), forCellReuseIdentifier: "WalletTableViewCell")
-        tableView.registerNib(UINib.init(nibName: "WalletTableViewCell", bundle: nil), forCellReuseIdentifier: "WalletTableViewCell")
-        tableView.registerClass(BottomTableViewCell.classForCoder(), forCellReuseIdentifier: "BottomTableViewCell")
-        tableView.registerNib(UINib.init(nibName: "BottomTableViewCell", bundle: nil), forCellReuseIdentifier: "BottomTableViewCell")
+        tableView.registerClass(TotalMoneyTableViewCell.classForCoder(), forCellReuseIdentifier: IDENTIFIER_TOTALMONEYTABLEVIEWCELL)
+        tableView.registerNib(UINib.init(nibName: IDENTIFIER_TOTALMONEYTABLEVIEWCELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_TOTALMONEYTABLEVIEWCELL)
+        tableView.registerClass(WalletTableViewCell.classForCoder(), forCellReuseIdentifier: IDENTIFIER_WALETTTABLEVIEWCELL)
+        tableView.registerNib(UINib.init(nibName: IDENTIFIER_WALETTTABLEVIEWCELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_WALETTTABLEVIEWCELL)
+        tableView.registerClass(BottomTableViewCell.classForCoder(), forCellReuseIdentifier: IDENTIFIER_BOTTOMTABLEVIEWCELL)
+        tableView.registerNib(UINib.init(nibName: IDENTIFIER_BOTTOMTABLEVIEWCELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_BOTTOMTABLEVIEWCELL)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -45,17 +48,17 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let totalMoneyCell = tableView.dequeueReusableCellWithIdentifier("TotalMoneyTableViewCell", forIndexPath: indexPath)
+            let totalMoneyCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_TOTALMONEYTABLEVIEWCELL, forIndexPath: indexPath)
             return totalMoneyCell
         } else if indexPath.section == 1 {
-            let walletCell = tableView.dequeueReusableCellWithIdentifier("WalletTableViewCell", forIndexPath: indexPath)
+            let walletCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_WALETTTABLEVIEWCELL, forIndexPath: indexPath)
             return walletCell
         } else {
-            let bottomCell = tableView.dequeueReusableCellWithIdentifier("BottomTableViewCell", forIndexPath: indexPath) as! BottomTableViewCell
+            let bottomCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_BOTTOMTABLEVIEWCELL, forIndexPath: indexPath) as! BottomTableViewCell
             if indexPath.row == 0 {
-                bottomCell.labelAddWallet.text = "ADD WALLET"
+                bottomCell.labelAddWallet.text = TITLE_ADD_WALLET
             } else {
-                bottomCell.labelAddWallet.text = "WALLET MANAGER"
+                bottomCell.labelAddWallet.text = TITLE_WALLET_MANAGER
             }
             return bottomCell
         }
@@ -68,6 +71,18 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
             return HEIGHT_SECTION1
         } else {
             return HEIGHT_SECTION2
+        }
+    }
+    
+    //MARK: UITableViewDelagate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                let addWalletVC = AddWalletViewController()
+                let nav = UINavigationController(rootViewController: addWalletVC)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
         }
     }
     

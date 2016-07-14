@@ -56,6 +56,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         switch indexPath.row {
+            case 1:
+                let debtsVC = DebtViewController()
+                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: debtsVC), animated: true)
+                self.sideMenuViewController.hideMenuViewController()
+                break
+            case 2:
+                let trendsVC = TrendTableViewController()
+                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: trendsVC), animated: true)
+                self.sideMenuViewController.hideMenuViewController()
+                break
+            case 3:
+                let mothlyReportVC = PageReportViewController()
+                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: mothlyReportVC), animated: true)
+                self.sideMenuViewController.hideMenuViewController()
+                break
             case 4:
                 let categoriesVC = CategoriesViewController()
                 self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: categoriesVC), animated: true)
@@ -71,13 +86,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func pressSelectWalletFromView(sender: AnyObject) {
-        self.initSelectWalletViewController()
+        self.showSelectWalletViewController()
     }
     @IBAction func pressSelectWallet(sender: AnyObject) {
-        self.initSelectWalletViewController()
+        self.showSelectWalletViewController()
     }
     //MARK init SelectWalletViewController
-    func initSelectWalletViewController() {
+    func showSelectWalletViewController() {
         if self.isShowSelectWallet == false {
             selectVC = SelectWalletViewController()
             selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, 0)
@@ -90,9 +105,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.isShowSelectWallet = true
             self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-            
         } else {
-            
             self.isShowSelectWallet = false
             self.selectVC.removeFromParentViewController()
             self.selectVC.view.removeFromSuperview()
