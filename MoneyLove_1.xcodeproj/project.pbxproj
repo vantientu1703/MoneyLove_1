@@ -30,6 +30,13 @@
 		5153B1FB1D2F8B9000413269 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1F71D2F8B9000413269 /* TrendTableViewCell.swift */; };
 		5153B1FC1D2F8B9000413269 /* TrendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1F81D2F8B9000413269 /* TrendTableViewCell.xib */; };
 		5153B1FE1D2F8BE600413269 /* restaurent.png in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1FD1D2F8BE600413269 /* restaurent.png */; };
+		516040A51D37494400AB9A74 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040A31D37494400AB9A74 /* Transaction+CoreDataProperties.swift */; };
+		516040A61D37494400AB9A74 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040A41D37494400AB9A74 /* Transaction.swift */; };
+		516040A91D37495F00AB9A74 /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040A71D37495F00AB9A74 /* Group+CoreDataProperties.swift */; };
+		516040AA1D37495F00AB9A74 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040A81D37495F00AB9A74 /* Group.swift */; };
+		516040AD1D37497500AB9A74 /* Wallet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AB1D37497500AB9A74 /* Wallet+CoreDataProperties.swift */; };
+		516040AE1D37497500AB9A74 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AC1D37497500AB9A74 /* Wallet.swift */; };
+		516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AF1D374B5D00AB9A74 /* DataManager.swift */; };
 		5194B3201D333EE600F419FC /* DataPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194B31F1D333EE600F419FC /* DataPageView.swift */; };
 		51F9D2CC1D363C2500FD2055 /* Extension_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9D2CB1D363C2500FD2055 /* Extension_UIColor.swift */; };
 		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
@@ -47,29 +54,25 @@
 		EF3527231D2CAB5F009D6F58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */; };
 		EF35272E1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35272D1D2CAB5F009D6F58 /* MoneyLove_1Tests.swift */; };
 		EF3527391D2CAB5F009D6F58 /* MoneyLove_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527381D2CAB5F009D6F58 /* MoneyLove_1UITests.swift */; };
-		EF3527511D2CB6D2009D6F58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527501D2CB6D2009D6F58 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C47FD1D2E49CA0040B82E /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */; settings = {ASSET_TAGS = (); }; };
-		EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48091D2E4ABF0040B82E /* RESideMenu.m */; settings = {ASSET_TAGS = (); }; };
-		EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */; settings = {ASSET_TAGS = (); }; };
-		EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48131D2E526B0040B82E /* CategoriesViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EF5C48161D2E526B0040B82E /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48141D2E526B0040B82E /* CategoriesViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48171D2E58890040B82E /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48181D2E58890040B82E /* MenuViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF632F1D2F3FA1002BB378 /* ic_down.png */; settings = {ASSET_TAGS = (); }; };
-		EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */; settings = {ASSET_TAGS = (); }; };
-		EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63351D2F458E002BB378 /* SelectWalletViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63381D2F655B002BB378 /* TotalMoneyTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63391D2F655B002BB378 /* TotalMoneyTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF633C1D2F7FFE002BB378 /* WalletTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		EFCF633F1D2F7FFE002BB378 /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		EF5C481D1D2E5D5D0040B82E /* HeaderOneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C481B1D2E5D5D0040B82E /* HeaderOneTableViewCell.swift */; };
-		EF5C481E1D2E5D5D0040B82E /* HeaderOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C481C1D2E5D5D0040B82E /* HeaderOneTableViewCell.xib */; };
-		EF5C48211D2E67530040B82E /* ShowWalletListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C481F1D2E67530040B82E /* ShowWalletListTableViewCell.swift */; };
-		EF5C48221D2E67530040B82E /* ShowWalletListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48201D2E67530040B82E /* ShowWalletListTableViewCell.xib */; };
+		EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C47FD1D2E49CA0040B82E /* RootViewController.swift */; };
+		EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48071D2E4ABF0040B82E /* RECommonFunctions.m */; };
+		EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48091D2E4ABF0040B82E /* RESideMenu.m */; };
+		EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5C480B1D2E4ABF0040B82E /* UIViewController+RESideMenu.m */; };
+		EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48131D2E526B0040B82E /* CategoriesViewController.swift */; };
+		EF5C48161D2E526B0040B82E /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48141D2E526B0040B82E /* CategoriesViewController.xib */; };
+		EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C48171D2E58890040B82E /* MenuViewController.swift */; };
+		EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF5C48181D2E58890040B82E /* MenuViewController.xib */; };
+		EF5C481D1D2E5D5D0040B82E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF632F1D2F3FA1002BB378 /* ic_down.png */; };
+		EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */; };
+		EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63341D2F458E002BB378 /* SelectWalletViewController.swift */; };
+		EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63351D2F458E002BB378 /* SelectWalletViewController.xib */; };
+		EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63381D2F655B002BB378 /* TotalMoneyTableViewCell.swift */; };
+		EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63391D2F655B002BB378 /* TotalMoneyTableViewCell.xib */; };
+		EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF633C1D2F7FFE002BB378 /* WalletTableViewCell.swift */; };
+		EFCF633F1D2F7FFE002BB378 /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF633D1D2F7FFE002BB378 /* WalletTableViewCell.xib */; };
+		EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF63401D2F878D002BB378 /* BottomTableViewCell.swift */; };
+		EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCF63411D2F878D002BB378 /* BottomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,13 @@
 		5153B1F71D2F8B9000413269 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendTableViewCell.swift; path = Controllers/TrendTableViewController/Cell/TrendTableViewCell.swift; sourceTree = "<group>"; };
 		5153B1F81D2F8B9000413269 /* TrendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrendTableViewCell.xib; path = Controllers/TrendTableViewController/Cell/TrendTableViewCell.xib; sourceTree = "<group>"; };
 		5153B1FD1D2F8BE600413269 /* restaurent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = restaurent.png; path = Resources/restaurent.png; sourceTree = "<group>"; };
+		516040A31D37494400AB9A74 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		516040A41D37494400AB9A74 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		516040A71D37495F00AB9A74 /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		516040A81D37495F00AB9A74 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		516040AB1D37497500AB9A74 /* Wallet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Wallet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		516040AC1D37497500AB9A74 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		516040AF1D374B5D00AB9A74 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5194B31F1D333EE600F419FC /* DataPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataPageView.swift; path = Manager/DataPageView.swift; sourceTree = "<group>"; };
 		51F9D2CB1D363C2500FD2055 /* Extension_UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_UIColor.swift; sourceTree = "<group>"; };
 		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
@@ -321,8 +331,6 @@
 				EF35271F1D2CAB5F009D6F58 /* Assets.xcassets */,
 				EF3527211D2CAB5F009D6F58 /* LaunchScreen.storyboard */,
 				EF3527241D2CAB5F009D6F58 /* Info.plist */,
-				EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */,
-				EF5C48111D2E4D080040B82E /* MoneyLove_1-Bridging-Header.h */,
 			);
 			path = MoneyLove_1;
 			sourceTree = "<group>";
@@ -362,6 +370,7 @@
 		EF35274D1D2CB612009D6F58 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				516040AF1D374B5D00AB9A74 /* DataManager.swift */,
 				5194B31F1D333EE600F419FC /* DataPageView.swift */,
 			);
 			name = Manager;
@@ -380,6 +389,14 @@
 		EF35274F1D2CB626009D6F58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EF35271C1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld */,
+				516040AB1D37497500AB9A74 /* Wallet+CoreDataProperties.swift */,
+				516040AC1D37497500AB9A74 /* Wallet.swift */,
+				516040A71D37495F00AB9A74 /* Group+CoreDataProperties.swift */,
+				516040A81D37495F00AB9A74 /* Group.swift */,
+				516040A31D37494400AB9A74 /* Transaction+CoreDataProperties.swift */,
+				516040A41D37494400AB9A74 /* Transaction.swift */,
+				EF5C48111D2E4D080040B82E /* MoneyLove_1-Bridging-Header.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -647,7 +664,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516040A51D37494400AB9A74 /* Transaction+CoreDataProperties.swift in Sources */,
 				EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */,
+				516040AD1D37497500AB9A74 /* Wallet+CoreDataProperties.swift in Sources */,
 				51312EFE1D35CAD500775EFD /* AppDelegate.swift in Sources */,
 				EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */,
 				EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */,
@@ -655,9 +674,9 @@
 				EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */,
 				EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */,
 				EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */,
-				EF3527161D2CAB5F009D6F58 /* AppDelegate.swift in Sources */,
 				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,
-				EF5C481D1D2E5D5D0040B82E /* HeaderOneTableViewCell.swift in Sources */,
+				EF5C481D1D2E5D5D0040B82E /* (null) in Sources */,
+				516040A61D37494400AB9A74 /* Transaction.swift in Sources */,
 				51312F071D35CD8B00775EFD /* MyPageViewController.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
 				EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */,
@@ -666,15 +685,19 @@
 				5153B1ED1D2F8B2400413269 /* NetIcomeTableViewCell.swift in Sources */,
 				5153B1F31D2F8B5B00413269 /* ItemReportViewController.swift in Sources */,
 				5153B1F91D2F8B9000413269 /* BarChartTableViewCell.swift in Sources */,
+				516040AE1D37497500AB9A74 /* Wallet.swift in Sources */,
 				5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */,
 				5153B1EB1D2F8B2400413269 /* ItemReportTableViewCell.swift in Sources */,
 				51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */,
 				51312F091D35CD8B00775EFD /* PageReportViewController.swift in Sources */,
 				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
+				516040A91D37495F00AB9A74 /* Group+CoreDataProperties.swift in Sources */,
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,
 				51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */,
+				516040AA1D37495F00AB9A74 /* Group.swift in Sources */,
 				5153B1EF1D2F8B2400413269 /* PieChartTableViewCell.swift in Sources */,
 				5153B1FB1D2F8B9000413269 /* TrendTableViewCell.swift in Sources */,
+				516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */,
 				51510A941D34EE56004CAD82 /* ViewController.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
 				51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */,
