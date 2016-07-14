@@ -11,7 +11,5 @@ import CoreData
 
 
 class Transaction: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+   static let DATE_VARIABLE_NAME = "date"
 }

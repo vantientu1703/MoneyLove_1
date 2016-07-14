@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllTransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdf-ZS-B2g">
+                    <rect key="frame" x="137" y="518" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="clickToAddTrans:" destination="-1" eventType="touchUpInside" id="mO0-qE-Vew"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oo6-v7-76b">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pdf-ZS-B2g" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="A0w-XN-iWG"/>
+                <constraint firstAttribute="trailing" secondItem="oo6-v7-76b" secondAttribute="trailing" id="CQ3-hL-5yd"/>
+                <constraint firstItem="oo6-v7-76b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SxN-QP-uSp"/>
+                <constraint firstItem="pdf-ZS-B2g" firstAttribute="top" secondItem="oo6-v7-76b" secondAttribute="bottom" id="WP0-f0-7rp"/>
+                <constraint firstAttribute="bottom" secondItem="pdf-ZS-B2g" secondAttribute="bottom" constant="20" id="eV0-My-8Ck"/>
+                <constraint firstItem="oo6-v7-76b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zlu-F0-R4y"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

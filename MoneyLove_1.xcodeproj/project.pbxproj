@@ -37,6 +37,23 @@
 		516040AD1D37497500AB9A74 /* Wallet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AB1D37497500AB9A74 /* Wallet+CoreDataProperties.swift */; };
 		516040AE1D37497500AB9A74 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AC1D37497500AB9A74 /* Wallet.swift */; };
 		516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AF1D374B5D00AB9A74 /* DataManager.swift */; };
+		516040C91D37600500AB9A74 /* AllTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040C71D37600500AB9A74 /* AllTransactionViewController.swift */; };
+		516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040C81D37600500AB9A74 /* AllTransactionViewController.xib */; };
+		516040CF1D37608C00AB9A74 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040CB1D37608C00AB9A74 /* DateCell.swift */; };
+		516040D01D37608C00AB9A74 /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040CC1D37608C00AB9A74 /* DateCell.xib */; };
+		516040D11D37608C00AB9A74 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040CD1D37608C00AB9A74 /* TextCell.swift */; };
+		516040D21D37608C00AB9A74 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040CE1D37608C00AB9A74 /* TextCell.xib */; };
+		516040D51D37609400AB9A74 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040D31D37609400AB9A74 /* TransactionViewController.swift */; };
+		516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040D41D37609400AB9A74 /* TransactionViewController.xib */; };
+		516040DE1D3767F100AB9A74 /* CustomTabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040D91D3767F100AB9A74 /* CustomTabPageViewController.swift */; };
+		516040DF1D3767F100AB9A74 /* DetailGroupSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040DA1D3767F100AB9A74 /* DetailGroupSelected.swift */; };
+		516040E01D3767F100AB9A74 /* DetailGroupSelected.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040DB1D3767F100AB9A74 /* DetailGroupSelected.xib */; };
+		516040E11D3767F100AB9A74 /* SearchGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040DC1D3767F100AB9A74 /* SearchGroupViewController.swift */; };
+		516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040DD1D3767F100AB9A74 /* SearchGroupViewController.xib */; };
+		516040E61D3768FC00AB9A74 /* ContactData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040E31D3768FC00AB9A74 /* ContactData.swift */; };
+		516040E71D3768FC00AB9A74 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040E41D3768FC00AB9A74 /* ContactViewController.swift */; };
+		516040E81D3768FC00AB9A74 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040E51D3768FC00AB9A74 /* ContactViewController.xib */; };
+		516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 516040E91D3769B500AB9A74 /* cancel-cross.png */; };
 		5194B3201D333EE600F419FC /* DataPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194B31F1D333EE600F419FC /* DataPageView.swift */; };
 		51F9D2CC1D363C2500FD2055 /* Extension_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F9D2CB1D363C2500FD2055 /* Extension_UIColor.swift */; };
 		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
@@ -125,6 +142,23 @@
 		516040AB1D37497500AB9A74 /* Wallet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Wallet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		516040AC1D37497500AB9A74 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		516040AF1D374B5D00AB9A74 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		516040C71D37600500AB9A74 /* AllTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllTransactionViewController.swift; path = Controllers/AllTransactionViewController.swift; sourceTree = "<group>"; };
+		516040C81D37600500AB9A74 /* AllTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AllTransactionViewController.xib; path = Controllers/AllTransactionViewController.xib; sourceTree = "<group>"; };
+		516040CB1D37608C00AB9A74 /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = "Controllers/Transaction/Transaction Cells/DateCell.swift"; sourceTree = "<group>"; };
+		516040CC1D37608C00AB9A74 /* DateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DateCell.xib; path = "Controllers/Transaction/Transaction Cells/DateCell.xib"; sourceTree = "<group>"; };
+		516040CD1D37608C00AB9A74 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextCell.swift; path = "Controllers/Transaction/Transaction Cells/TextCell.swift"; sourceTree = "<group>"; };
+		516040CE1D37608C00AB9A74 /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextCell.xib; path = "Controllers/Transaction/Transaction Cells/TextCell.xib"; sourceTree = "<group>"; };
+		516040D31D37609400AB9A74 /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionViewController.swift; path = Controllers/Transaction/TransactionViewController.swift; sourceTree = "<group>"; };
+		516040D41D37609400AB9A74 /* TransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransactionViewController.xib; path = Controllers/Transaction/TransactionViewController.xib; sourceTree = "<group>"; };
+		516040D91D3767F100AB9A74 /* CustomTabPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabPageViewController.swift; path = Controllers/Transaction/GroupSelected/CustomTabPageViewController.swift; sourceTree = "<group>"; };
+		516040DA1D3767F100AB9A74 /* DetailGroupSelected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailGroupSelected.swift; path = Controllers/Transaction/GroupSelected/DetailGroupSelected.swift; sourceTree = "<group>"; };
+		516040DB1D3767F100AB9A74 /* DetailGroupSelected.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailGroupSelected.xib; path = Controllers/Transaction/GroupSelected/DetailGroupSelected.xib; sourceTree = "<group>"; };
+		516040DC1D3767F100AB9A74 /* SearchGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchGroupViewController.swift; path = Controllers/Transaction/GroupSelected/SearchGroupViewController.swift; sourceTree = "<group>"; };
+		516040DD1D3767F100AB9A74 /* SearchGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchGroupViewController.xib; path = Controllers/Transaction/GroupSelected/SearchGroupViewController.xib; sourceTree = "<group>"; };
+		516040E31D3768FC00AB9A74 /* ContactData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactData.swift; path = Controllers/Transaction/Contact/ContactData.swift; sourceTree = "<group>"; };
+		516040E41D3768FC00AB9A74 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = Controllers/Transaction/Contact/ContactViewController.swift; sourceTree = "<group>"; };
+		516040E51D3768FC00AB9A74 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactViewController.xib; path = Controllers/Transaction/Contact/ContactViewController.xib; sourceTree = "<group>"; };
+		516040E91D3769B500AB9A74 /* cancel-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancel-cross.png"; path = "Resources/cancel-cross.png"; sourceTree = "<group>"; };
 		5194B31F1D333EE600F419FC /* DataPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataPageView.swift; path = Manager/DataPageView.swift; sourceTree = "<group>"; };
 		51F9D2CB1D363C2500FD2055 /* Extension_UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_UIColor.swift; sourceTree = "<group>"; };
 		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +267,51 @@
 				5153B1E81D2F8B2400413269 /* PieChartTableViewCell.xib */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		516040C51D37553E00AB9A74 /* Transaction Cells */ = {
+			isa = PBXGroup;
+			children = (
+				516040CB1D37608C00AB9A74 /* DateCell.swift */,
+				516040CC1D37608C00AB9A74 /* DateCell.xib */,
+				516040CD1D37608C00AB9A74 /* TextCell.swift */,
+				516040CE1D37608C00AB9A74 /* TextCell.xib */,
+			);
+			name = "Transaction Cells";
+			sourceTree = "<group>";
+		};
+		516040C61D37555100AB9A74 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				516040D31D37609400AB9A74 /* TransactionViewController.swift */,
+				516040D41D37609400AB9A74 /* TransactionViewController.xib */,
+				516040D81D3767A800AB9A74 /* GroupSelected */,
+				516040D71D37679500AB9A74 /* Contact */,
+				516040C51D37553E00AB9A74 /* Transaction Cells */,
+			);
+			name = Transaction;
+			sourceTree = "<group>";
+		};
+		516040D71D37679500AB9A74 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				516040E31D3768FC00AB9A74 /* ContactData.swift */,
+				516040E41D3768FC00AB9A74 /* ContactViewController.swift */,
+				516040E51D3768FC00AB9A74 /* ContactViewController.xib */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		516040D81D3767A800AB9A74 /* GroupSelected */ = {
+			isa = PBXGroup;
+			children = (
+				516040D91D3767F100AB9A74 /* CustomTabPageViewController.swift */,
+				516040DA1D3767F100AB9A74 /* DetailGroupSelected.swift */,
+				516040DB1D3767F100AB9A74 /* DetailGroupSelected.xib */,
+				516040DC1D3767F100AB9A74 /* SearchGroupViewController.swift */,
+				516040DD1D3767F100AB9A74 /* SearchGroupViewController.xib */,
+			);
+			name = GroupSelected;
 			sourceTree = "<group>";
 		};
 		51FC24A01D2DE5710067CC71 /* DebtViewController */ = {
@@ -360,6 +439,9 @@
 		EF35274C1D2CB604009D6F58 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				516040C71D37600500AB9A74 /* AllTransactionViewController.swift */,
+				516040C81D37600500AB9A74 /* AllTransactionViewController.xib */,
+				516040C61D37555100AB9A74 /* Transaction */,
 				EF5C47FC1D2E49B50040B82E /* MenuViewController */,
 				EF5C48121D2E51EA0040B82E /* CategoriesViewController */,
 				51510A931D34EE56004CAD82 /* ViewController.swift */,
@@ -384,6 +466,7 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				516040E91D3769B500AB9A74 /* cancel-cross.png */,
 				EFCF632F1D2F3FA1002BB378 /* ic_down.png */,
 				EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */,
 				5153B1FD1D2F8BE600413269 /* restaurent.png */,
@@ -587,12 +670,18 @@
 				EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */,
 				EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */,
 				EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */,
+				516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */,
+				516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */,
 				EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */,
 				EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */,
 				EF5C48161D2E526B0040B82E /* CategoriesViewController.xib in Resources */,
+				516040D21D37608C00AB9A74 /* TextCell.xib in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */,
+				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
 				5153B1EE1D2F8B2400413269 /* NetIcomeTableViewCell.xib in Resources */,
 				51312F081D35CD8B00775EFD /* MyPageViewController.xib in Resources */,
+				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
+				516040E01D3767F100AB9A74 /* DetailGroupSelected.xib in Resources */,
 				51312F0A1D35CD8B00775EFD /* PageReportViewController.xib in Resources */,
 				51FC252C1D2E07A90067CC71 /* PayReceiavableTableViewController.xib in Resources */,
 				51FC25371D2E36350067CC71 /* ActionTableViewCell.xib in Resources */,
@@ -601,10 +690,12 @@
 				51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */,
 				5153B1EC1D2F8B2400413269 /* ItemReportTableViewCell.xib in Resources */,
 				51FC24A41D2DE58E0067CC71 /* DebtViewController.xib in Resources */,
+				516040E81D3768FC00AB9A74 /* ContactViewController.xib in Resources */,
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
 				5153B1EA1D2F8B2400413269 /* BalanceTableViewCell.xib in Resources */,
 				5153B1F41D2F8B5B00413269 /* ItemReportViewController.xib in Resources */,
 				EF76F9431D37478100175D5C /* AddWalletViewController.xib in Resources */,
+				516040D01D37608C00AB9A74 /* DateCell.xib in Resources */,
 				5153B1FE1D2F8BE600413269 /* restaurent.png in Resources */,
 				EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */,
 			);
@@ -682,12 +773,18 @@
 				516040A51D37494400AB9A74 /* Transaction+CoreDataProperties.swift in Sources */,
 				EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */,
 				516040AD1D37497500AB9A74 /* Wallet+CoreDataProperties.swift in Sources */,
+				516040CF1D37608C00AB9A74 /* DateCell.swift in Sources */,
+				516040D11D37608C00AB9A74 /* TextCell.swift in Sources */,
 				51312EFE1D35CAD500775EFD /* AppDelegate.swift in Sources */,
 				EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */,
 				EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */,
 				EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */,
 				EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */,
 				EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */,
+				516040E71D3768FC00AB9A74 /* ContactViewController.swift in Sources */,
+				516040DF1D3767F100AB9A74 /* DetailGroupSelected.swift in Sources */,
+				516040C91D37600500AB9A74 /* AllTransactionViewController.swift in Sources */,
+				516040E61D3768FC00AB9A74 /* ContactData.swift in Sources */,
 				EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */,
 				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,
 				516040A61D37494400AB9A74 /* Transaction.swift in Sources */,
@@ -695,17 +792,20 @@
 				EF5C481D1D2E5D5D0040B82E /* (null) in Sources */,
 				51312F071D35CD8B00775EFD /* MyPageViewController.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
+				516040D51D37609400AB9A74 /* TransactionViewController.swift in Sources */,
 				EF5C480C1D2E4ABF0040B82E /* RECommonFunctions.m in Sources */,
 				EF5C480E1D2E4ABF0040B82E /* UIViewController+RESideMenu.m in Sources */,
 				51F9D2CC1D363C2500FD2055 /* Extension_UIColor.swift in Sources */,
 				5153B1ED1D2F8B2400413269 /* NetIcomeTableViewCell.swift in Sources */,
 				5153B1F31D2F8B5B00413269 /* ItemReportViewController.swift in Sources */,
+				516040E11D3767F100AB9A74 /* SearchGroupViewController.swift in Sources */,
 				5153B1F91D2F8B9000413269 /* BarChartTableViewCell.swift in Sources */,
 				516040AE1D37497500AB9A74 /* Wallet.swift in Sources */,
 				5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */,
 				5153B1EB1D2F8B2400413269 /* ItemReportTableViewCell.swift in Sources */,
 				51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */,
 				51312F091D35CD8B00775EFD /* PageReportViewController.swift in Sources */,
+				516040DE1D3767F100AB9A74 /* CustomTabPageViewController.swift in Sources */,
 				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
 				516040A91D37495F00AB9A74 /* Group+CoreDataProperties.swift in Sources */,
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,

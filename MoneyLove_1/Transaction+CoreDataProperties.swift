@@ -13,12 +13,10 @@ import Foundation
 import CoreData
 
 extension Transaction {
-
     @NSManaged var date: NSTimeInterval
-    @NSManaged var moneyNumber: Int32
+    @NSManaged var moneyNumber: Double
     @NSManaged var note: String?
     @NSManaged var personRelated: String?
     @NSManaged var group: Group?
     @NSManaged var wallet: Wallet?
-
 }
