@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddCategoriesTableViewCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSs-dv-TpQ">
+                        <rect key="frame" x="8" y="5" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="DbT-c0-tB1"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="buttonCategoryImagePress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XZB-bI-a93"/>
+                        </connections>
+                    </button>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3V-Bt-zNk">
+                        <rect key="frame" x="56" y="10" width="256" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QSs-dv-TpQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1LI-Yp-ggf"/>
+                    <constraint firstItem="c3V-Bt-zNk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3Vi-8W-YqX"/>
+                    <constraint firstAttribute="bottom" secondItem="c3V-Bt-zNk" secondAttribute="bottom" constant="9" id="Aqn-Pq-Cvk"/>
+                    <constraint firstItem="QSs-dv-TpQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Cxk-yt-oqH"/>
+                    <constraint firstItem="c3V-Bt-zNk" firstAttribute="leading" secondItem="QSs-dv-TpQ" secondAttribute="trailing" constant="8" id="OMc-qB-XLw"/>
+                    <constraint firstAttribute="bottom" secondItem="QSs-dv-TpQ" secondAttribute="bottom" constant="4" id="SRE-B3-3JW"/>
+                    <constraint firstAttribute="trailing" secondItem="c3V-Bt-zNk" secondAttribute="trailing" constant="8" id="nUV-ko-5gq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="buttonImageCategory" destination="QSs-dv-TpQ" id="VQN-BB-KjP"/>
+                <outlet property="txtCategoryName" destination="c3V-Bt-zNk" id="Un9-ge-Dhe"/>
+            </connections>
+            <point key="canvasLocation" x="-147" y="243"/>
+        </tableViewCell>
+    </objects>
+</document>

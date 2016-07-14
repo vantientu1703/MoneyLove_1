@@ -20,7 +20,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE_WALLET_MANAGER
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: TITLE_BUTTON_LEFT, style: UIBarButtonItemStyle.Plain, target: self, action: "cancelButton:");
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: TITLE_BUTTON_LEFT, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(WalletManagerViewController.cancelButton(_:)));
         self.configRegisterForCell()
         addButtonWallet.layer.cornerRadius = 20.0
     }

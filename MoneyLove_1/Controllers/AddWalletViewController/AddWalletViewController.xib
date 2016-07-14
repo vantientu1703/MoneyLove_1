@@ -107,7 +107,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="E3t-DB-i4T" appends="YES" id="hBW-lP-7rP"/>
             </connections>
-            <point key="canvasLocation" x="432" y="275"/>
+            <point key="canvasLocation" x="642" y="268"/>
         </view>
         <tapGestureRecognizer id="E3t-DB-i4T">
             <connections>

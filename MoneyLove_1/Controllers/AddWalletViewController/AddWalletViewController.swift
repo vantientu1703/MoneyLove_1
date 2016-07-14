@@ -15,8 +15,8 @@ class AddWalletViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonImageWallet: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelButton:")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "addWalletButton:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.cancelButton(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.addWalletButton(_:)))
     }
     
     func cancelButton(sender: AnyObject) {

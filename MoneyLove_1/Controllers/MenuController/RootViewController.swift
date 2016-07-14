@@ -28,7 +28,7 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         let menuVC = MenuViewController()
         let nav = UINavigationController(rootViewController: categoriesVC)
         self.contentViewController = nav
-        self.leftMenuViewController = menuVC//self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuViewController")
+        self.leftMenuViewController = menuVC
     }
     
     func sideMenu(sideMenu: RESideMenu!, willShowMenuViewController menuViewController: UIViewController!) {
