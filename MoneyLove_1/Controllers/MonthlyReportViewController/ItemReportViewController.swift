@@ -8,12 +8,12 @@
 
 import UIKit
 
-let HEIGHT_CELL_BALANCE: CGFloat = 100
-let HEIGHT_CELL_PIECHART: CGFloat = 350
-let HEIGHT_CELL_DEFAULT: CGFloat = 65
-let HEIGHT_HEADER: CGFloat = 40
-
 class ItemReportViewController: UIViewController {
+    
+    let HEIGHT_CELL_BALANCE: CGFloat = 100.0
+    let HEIGHT_CELL_PIECHART: CGFloat = 350.0
+    let HEIGHT_CELL_DEFAULT: CGFloat = 65.0
+    let HEIGHT_HEADER: CGFloat = 40.0
 
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -100,7 +100,6 @@ extension ItemReportViewController: UITableViewDelegate, UITableViewDataSource  
         return HEIGHT_HEADER
     }
     
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 2 {
             return "BIGGEST EXPENSE"
@@ -108,5 +107,4 @@ extension ItemReportViewController: UITableViewDelegate, UITableViewDataSource  
             return ""
         }
     }
-    
 }

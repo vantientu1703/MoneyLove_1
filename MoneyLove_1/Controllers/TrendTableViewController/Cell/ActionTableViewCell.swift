@@ -9,7 +9,11 @@
 import UIKit
 
 class ActionTableViewCell: UITableViewCell {
-
+    
+    var actionHandler: ((nameAction: String) -> Void)!
+    @IBOutlet weak var btnDateFrom: UIButton!
+    @IBOutlet weak var btnDateTo: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,11 @@ class ActionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func dateFromAction(sender: AnyObject) {
+        actionHandler(nameAction: "From")
+    }
+    
+    @IBAction func dateToAction(sender: AnyObject) {
+        actionHandler(nameAction: "To")
+    }
 }
