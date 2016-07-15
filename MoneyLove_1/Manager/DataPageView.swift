@@ -10,8 +10,9 @@ import UIKit
 
 class DataPageView: NSObject {
     static var numberPage = 0
-    static func getMonthPage(monthsToAdd: Int) -> (NSDate, String) {
-        let calculatedDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Month, value: monthsToAdd, toDate: NSDate(), options: NSCalendarOptions.init(rawValue: 0))
+
+    static func getMonthPage(monthsToAdd: Int, toDate: NSDate) -> (NSDate, String) {
+        let calculatedDate = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Month, value: monthsToAdd, toDate: toDate, options: NSCalendarOptions.init(rawValue: 0))
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM/yyyy"
         return (calculatedDate!, dateFormatter.stringFromDate(calculatedDate!))

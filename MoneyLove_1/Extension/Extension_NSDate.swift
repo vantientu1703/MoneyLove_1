@@ -2,7 +2,7 @@
 //  Extension_NSDate.swift
 //  MoneyLove_1
 //
-//  Created by macmini-0017 on 7/22/16.
+//  Created by framgia on 7/20/16.
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 
@@ -44,7 +44,6 @@ extension NSDate {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.stringFromDate(date)
     }
-
     
     // Returns the amount of months from another date
     func months(from date: NSDate) -> Int {
@@ -67,6 +66,12 @@ extension NSDate {
         comp.day -= 1
         comp.to12pm()
         return cal.dateByAddingComponents(comp, toDate: self.startOfMonth()!, options: [])!
+    }
+    
+    class func getMonthStringFromDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/yyyy"
+        return dateFormatter.stringFromDate(date)
     }
 }
 

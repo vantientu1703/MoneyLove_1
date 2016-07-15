@@ -56,8 +56,8 @@ class PieChartTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         //default state of cell
-        dataEntries = nil
-        pieChartView = nil
+//        dataEntries = nil
+//        pieChartView = nil
     }
 }
 

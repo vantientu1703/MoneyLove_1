@@ -8,7 +8,11 @@
 
 import UIKit
 
-class PayReceiavableTableView: UITableViewCell {
+class PayReceiavableTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var nameDebts: UILabel!
+    @IBOutlet weak var numberTransaction: UILabel!
+    @IBOutlet weak var totalDebts: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

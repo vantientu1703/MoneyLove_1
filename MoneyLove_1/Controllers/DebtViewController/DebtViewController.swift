@@ -11,10 +11,10 @@ import TabPageViewController
 
 class DebtViewController: UIViewController {
 
+    let tabPageVC = TabPageViewController.create()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tabPageVC = TabPageViewController.create()
         let payableVC = UIViewController()
         payableVC.view.backgroundColor = UIColor.whiteColor()
         let receivableVC = PayReceiavableTableViewController(nibName: "PayReceiavableTableViewController", bundle: nil)
@@ -25,7 +25,7 @@ class DebtViewController: UIViewController {
         option.tabBackgroundColor = UIColor.greenColor()
         tabPageVC.option = option
         tabPageVC.title = "DEBTS"
-        self.navigationController?.pushViewController(tabPageVC, animated: true)
+//        self.navigationController?.pushViewController(tabPageVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

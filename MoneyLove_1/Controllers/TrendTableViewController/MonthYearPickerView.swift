@@ -16,7 +16,7 @@ class MonthYearPickerView: UIPickerView {
     var years: [Int]!
     var month: Int = 0 {
         didSet {
-            selectRow(month-1, inComponent: 0, animated: false)
+            selectRow(month, inComponent: 0, animated: false)
         }
     }
     var year: Int = 0 {
@@ -24,7 +24,8 @@ class MonthYearPickerView: UIPickerView {
             selectRow(years.indexOf(year)!, inComponent: 1, animated: true)
         }
     }
-    var onDateSelected: ((nameMonth: String, year: Int) -> Void)?
+    var onDateSelected: ((nameMonth: String, indexMonth: Int, year: Int) -> Void)?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +38,7 @@ class MonthYearPickerView: UIPickerView {
     }
     
     func commonSetup() {
+        
         var years: [Int] = []
         if years.count == 0 {
             for year in MIN_YEAR...MAX_YEAR {
@@ -81,11 +83,11 @@ extension MonthYearPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let month = self.selectedRowInComponent(0)+1
+        let month = self.selectedRowInComponent(0)
         let nameMonth = months[month]
         let year = years[self.selectedRowInComponent(1)]
         if let block = onDateSelected {
-            block(nameMonth: nameMonth, year: year)
+            block(nameMonth: nameMonth, indexMonth: month+1, year: year)
         }
         self.month = month
         self.year = year

@@ -44,10 +44,10 @@ extension NSPredicate {
         var predicate:NSPredicate? = nil
         switch categoryType {
         case .Expense:
-            predicate = NSPredicate(format: "group.type == true", argumentArray: nil)
+            predicate = NSPredicate(format: "group.type == false", argumentArray: nil)
             break
         case .Income:
-            predicate = NSPredicate(format: "group.type == false", argumentArray: nil)
+            predicate = NSPredicate(format: "group.type == true", argumentArray: nil)
             break
         default:
             break
