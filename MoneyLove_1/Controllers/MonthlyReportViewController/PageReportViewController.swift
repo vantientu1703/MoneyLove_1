@@ -14,7 +14,7 @@ class PageReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: UIBarButtonItemStyle.Plain, target: self, action: "presentLeftMenuViewController:")
         let pageViewVC = MyPageViewController()
         self.addChildViewController(pageViewVC)
         self.view.addSubview((pageViewVC.view))
@@ -53,5 +53,11 @@ extension PageReportViewController: UIPageViewControllerDataSource {
         var index = itemReportVC.pageIndex as Int
         index += 1
         return self.viewControllerAtIndex(index)
+    }
+}
+
+extension PageReportViewController: RESideMenuDelegate {
+    override func presentLeftMenuViewController(sender: AnyObject!) {
+        self.sideMenuViewController.presentLeftMenuViewController()
     }
 }

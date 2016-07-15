@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let SQLITE_URL_PATH = "MoneyLover.sqlite"
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         return true
     }
 

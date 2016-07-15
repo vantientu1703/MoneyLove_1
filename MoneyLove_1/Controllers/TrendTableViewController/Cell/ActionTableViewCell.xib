@@ -72,6 +72,9 @@
                             <constraint firstAttribute="width" constant="145" id="LjM-6V-fjJ"/>
                         </constraints>
                         <state key="normal" title="August 2016"/>
+                        <connections>
+                            <action selector="dateToAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ycc-A8-HI6"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iP-dN-LWg">
                         <rect key="frame" x="8" y="176" width="145" height="30"/>
@@ -79,6 +82,9 @@
                             <constraint firstAttribute="width" constant="145" id="fTU-cY-nfk"/>
                         </constraints>
                         <state key="normal" title="December 2016"/>
+                        <connections>
+                            <action selector="dateFromAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cxr-HJ-sLr"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -103,6 +109,10 @@
                     <constraint firstItem="Gwo-ZF-Mf4" firstAttribute="top" secondItem="VTi-Gg-4M6" secondAttribute="bottom" constant="19" id="ynB-3l-rvJ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btnDateFrom" destination="6iP-dN-LWg" id="lK0-7H-W4W"/>
+                <outlet property="btnDateTo" destination="ZlT-4F-iLv" id="8JY-zX-lYd"/>
+            </connections>
             <point key="canvasLocation" x="566.5" y="535"/>
         </tableViewCell>
     </objects>

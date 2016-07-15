@@ -52,6 +52,7 @@
                     <exclude reference="qFV-nI-myt"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="411" y="289"/>
         </view>
     </objects>
 </document>

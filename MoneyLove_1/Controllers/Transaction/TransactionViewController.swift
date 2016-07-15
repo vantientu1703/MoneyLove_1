@@ -28,6 +28,7 @@ enum RowType: Int  {
 class TransactionViewController: UIViewController, NSFetchedResultsControllerDelegate {
     let NUMBER_ROW = 5
     let HEIGHT_CELL_TRANSACTION_DEFAULT: CGFloat = 50.0
+    let HEIGHT_CELL_DEFAULT: CGFloat = 65
     let TEXT_CELL_INDENTIFIER = "TextCell"
     let DATE_CELL_IDENTIFIER = "DateCell"
     let LABEL_CELL_IDENTIFIER = "LabelCell"
