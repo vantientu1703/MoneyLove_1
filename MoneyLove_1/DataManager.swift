@@ -26,7 +26,7 @@ class DataManager {
         let context = fetchedResultsController.managedObjectContext
         let entity = NSEntityDescription.entityForName(Wallet.CLASS_NAME, inManagedObjectContext: context)
         let wallet = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Wallet
-        
+
         do {
             try context.save()
             return wallet
@@ -109,5 +109,9 @@ class DataManager {
             print("\(saveError), \(saveError.userInfo)")
             abort()
         }
+    }
+    
+    func addCategoriesDefault() {
+        
     }
 }

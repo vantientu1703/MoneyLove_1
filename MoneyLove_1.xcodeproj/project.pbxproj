@@ -22,6 +22,8 @@
 		5145182C1D3C926A00185609 /* CustomDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5145182A1D3C926A00185609 /* CustomDateViewController.swift */; };
 		5145182D1D3C926A00185609 /* CustomDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5145182B1D3C926A00185609 /* CustomDateViewController.xib */; };
 		514518311D3CE5AC00185609 /* Extension_NSPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514518301D3CE5AC00185609 /* Extension_NSPredicate.swift */; };
+		5147835E1D429ED500E50A04 /* ic_debts.png in Resources */ = {isa = PBXBuildFile; fileRef = 5147835C1D429ED500E50A04 /* ic_debts.png */; };
+		5147835F1D429ED500E50A04 /* ic_trends.png in Resources */ = {isa = PBXBuildFile; fileRef = 5147835D1D429ED500E50A04 /* ic_trends.png */; };
 		5149388A1D3F06070010BDF4 /* Extension_NSFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514938891D3F06070010BDF4 /* Extension_NSFetchRequest.swift */; };
 		5149388D1D3F0C000010BDF4 /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149388B1D3F0C000010BDF4 /* Group+CoreDataProperties.swift */; };
 		5149388E1D3F0C000010BDF4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5149388C1D3F0C000010BDF4 /* Group.swift */; };
@@ -85,6 +87,7 @@
 		E5AD1A901D3F18FA0088BBF7 /* IconItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A8F1D3F18FA0088BBF7 /* IconItem.swift */; };
 		E5AD1A921D3F193C0088BBF7 /* ManagerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A911D3F193C0088BBF7 /* ManagerIcon.swift */; };
 		E5AD1A941D3F19C80088BBF7 /* Icon.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5AD1A931D3F19C80088BBF7 /* Icon.plist */; };
+		E5C4CBA51D423F8E00D9FAE8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C4CBA41D423F8E00D9FAE8 /* Constant.swift */; };
 		E5FEA4D61D3F4CB2001A806E /* purse.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CB1D3F4CB2001A806E /* purse.png */; };
 		E5FEA4D71D3F4CB2001A806E /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CC1D3F4CB2001A806E /* wallet.png */; };
 		E5FEA4D81D3F4CB2001A806E /* wallet1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CD1D3F4CB2001A806E /* wallet1.png */; };
@@ -133,8 +136,6 @@
 		EF5C481D1D2E5D5D0040B82E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		EF6E9BFE1D37DCFF00DB6F71 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6E9BFC1D37DCFF00DB6F71 /* CategoriesTableViewCell.swift */; };
 		EF6E9BFF1D37DCFF00DB6F71 /* CategoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6E9BFD1D37DCFF00DB6F71 /* CategoriesTableViewCell.xib */; };
-		EF6E9C021D37DFC500DB6F71 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6E9C001D37DFC500DB6F71 /* DetailTableViewCell.swift */; };
-		EF6E9C031D37DFC500DB6F71 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6E9C011D37DFC500DB6F71 /* DetailTableViewCell.xib */; };
 		EF76F9421D37478100175D5C /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76F9401D37478100175D5C /* AddWalletViewController.swift */; };
 		EF76F9431D37478100175D5C /* AddWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF76F9411D37478100175D5C /* AddWalletViewController.xib */; };
 		EF76F9471D37764A00175D5C /* WalletManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76F9451D37764A00175D5C /* WalletManagerViewController.swift */; };
@@ -190,6 +191,8 @@
 		5145182A1D3C926A00185609 /* CustomDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateViewController.swift; sourceTree = "<group>"; };
 		5145182B1D3C926A00185609 /* CustomDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDateViewController.xib; sourceTree = "<group>"; };
 		514518301D3CE5AC00185609 /* Extension_NSPredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSPredicate.swift; sourceTree = "<group>"; };
+		5147835C1D429ED500E50A04 /* ic_debts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_debts.png; path = Resources/ic_debts.png; sourceTree = "<group>"; };
+		5147835D1D429ED500E50A04 /* ic_trends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_trends.png; path = Resources/ic_trends.png; sourceTree = "<group>"; };
 		514938891D3F06070010BDF4 /* Extension_NSFetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_NSFetchRequest.swift; sourceTree = "<group>"; };
 		5149388B1D3F0C000010BDF4 /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5149388C1D3F0C000010BDF4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 		E5AD1A8F1D3F18FA0088BBF7 /* IconItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconItem.swift; path = Model/IconItem.swift; sourceTree = "<group>"; };
 		E5AD1A911D3F193C0088BBF7 /* ManagerIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerIcon.swift; path = Controllers/IconManagerViewController/ManagerIcon.swift; sourceTree = "<group>"; };
 		E5AD1A931D3F19C80088BBF7 /* Icon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Icon.plist; sourceTree = "<group>"; };
+		E5C4CBA41D423F8E00D9FAE8 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E5FEA4CB1D3F4CB2001A806E /* purse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purse.png; path = Resources/wallet/purse.png; sourceTree = "<group>"; };
 		E5FEA4CC1D3F4CB2001A806E /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wallet.png; path = Resources/wallet/wallet.png; sourceTree = "<group>"; };
 		E5FEA4CD1D3F4CB2001A806E /* wallet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wallet1.png; path = Resources/wallet/wallet1.png; sourceTree = "<group>"; };
@@ -312,8 +316,6 @@
 		EF5C48181D2E58890040B82E /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = Controllers/MenuController/MenuViewController.xib; sourceTree = "<group>"; };
 		EF6E9BFC1D37DCFF00DB6F71 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesTableViewCell.swift; path = Controllers/CategoriesViewController/CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		EF6E9BFD1D37DCFF00DB6F71 /* CategoriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoriesTableViewCell.xib; path = Controllers/CategoriesViewController/CategoriesTableViewCell.xib; sourceTree = "<group>"; };
-		EF6E9C001D37DFC500DB6F71 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTableViewCell.swift; path = Controllers/CategoriesViewController/DetailTableViewCell.swift; sourceTree = "<group>"; };
-		EF6E9C011D37DFC500DB6F71 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailTableViewCell.xib; path = Controllers/CategoriesViewController/DetailTableViewCell.xib; sourceTree = "<group>"; };
 		EF76F9401D37478100175D5C /* AddWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddWalletViewController.swift; path = Controllers/AddWalletViewController/AddWalletViewController.swift; sourceTree = "<group>"; };
 		EF76F9411D37478100175D5C /* AddWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddWalletViewController.xib; path = Controllers/AddWalletViewController/AddWalletViewController.xib; sourceTree = "<group>"; };
 		EF76F9451D37764A00175D5C /* WalletManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletManagerViewController.swift; path = Controllers/WalletManagerViewController/WalletManagerViewController.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				51F9D2CB1D363C2500FD2055 /* Extension_UIColor.swift */,
 				514518301D3CE5AC00185609 /* Extension_NSPredicate.swift */,
 				514938891D3F06070010BDF4 /* Extension_NSFetchRequest.swift */,
+				E5C4CBA41D423F8E00D9FAE8 /* Constant.swift */,
 				EF35274D1D2CB612009D6F58 /* Manager */,
 				EF35274C1D2CB604009D6F58 /* Controllers */,
 				EF35274F1D2CB626009D6F58 /* Model */,
@@ -696,6 +699,8 @@
 				EFCF63301D2F3FA1002BB378 /* ic_three_dots.png */,
 				5153B1FD1D2F8BE600413269 /* restaurent.png */,
 				E5FEA5031D3F56B8001A806E /* ic_money.png */,
+				5147835C1D429ED500E50A04 /* ic_debts.png */,
+				5147835D1D429ED500E50A04 /* ic_trends.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -756,8 +761,6 @@
 				EF5C48141D2E526B0040B82E /* CategoriesViewController.xib */,
 				EF6E9BFC1D37DCFF00DB6F71 /* CategoriesTableViewCell.swift */,
 				EF6E9BFD1D37DCFF00DB6F71 /* CategoriesTableViewCell.xib */,
-				EF6E9C001D37DFC500DB6F71 /* DetailTableViewCell.swift */,
-				EF6E9C011D37DFC500DB6F71 /* DetailTableViewCell.xib */,
 			);
 			name = CategoriesViewController;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				E5FEA4DD1D3F4CB2001A806E /* wallet6.png in Resources */,
 				EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */,
 				516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */,
+				5147835E1D429ED500E50A04 /* ic_debts.png in Resources */,
 				516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */,
 				E5FEA5061D3F5AB0001A806E /* ic_question.png in Resources */,
 				E5FEA4ED1D3F4CC3001A806E /* salad.png in Resources */,
@@ -957,6 +961,7 @@
 				51312F0A1D35CD8B00775EFD /* PageReportViewController.xib in Resources */,
 				E5FEA4E91D3F4CC3001A806E /* apple.png in Resources */,
 				E5FEA4E01D3F4CB2001A806E /* wallet9.png in Resources */,
+				5147835F1D429ED500E50A04 /* ic_trends.png in Resources */,
 				E5FEA5021D3F4DAA001A806E /* pricetag.png in Resources */,
 				E5FEA4DE1D3F4CB2001A806E /* wallet7.png in Resources */,
 				E5FEA4D71D3F4CB2001A806E /* wallet.png in Resources */,
@@ -992,7 +997,6 @@
 				EF76F9431D37478100175D5C /* AddWalletViewController.xib in Resources */,
 				516040D01D37608C00AB9A74 /* DateCell.xib in Resources */,
 				5153B1FE1D2F8BE600413269 /* restaurent.png in Resources */,
-				EF6E9C031D37DFC500DB6F71 /* DetailTableViewCell.xib in Resources */,
 				EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */,
 				E5FEA4DF1D3F4CB2001A806E /* wallet8.png in Resources */,
 				E5FEA4EC1D3F4CC3001A806E /* milk.png in Resources */,
@@ -1092,7 +1096,6 @@
 				516040C91D37600500AB9A74 /* AllTransactionViewController.swift in Sources */,
 				516040E61D3768FC00AB9A74 /* ContactData.swift in Sources */,
 				EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */,
-				EF6E9C021D37DFC500DB6F71 /* DetailTableViewCell.swift in Sources */,
 				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,
 				EF76F9421D37478100175D5C /* AddWalletViewController.swift in Sources */,
 				EF5C481D1D2E5D5D0040B82E /* (null) in Sources */,
@@ -1110,6 +1113,7 @@
 				5153B1ED1D2F8B2400413269 /* NetIcomeTableViewCell.swift in Sources */,
 				5153B1F31D2F8B5B00413269 /* ItemReportViewController.swift in Sources */,
 				516040E11D3767F100AB9A74 /* SearchGroupViewController.swift in Sources */,
+				E5C4CBA51D423F8E00D9FAE8 /* Constant.swift in Sources */,
 				5149388E1D3F0C000010BDF4 /* Group.swift in Sources */,
 				5153B1F91D2F8B9000413269 /* BarChartTableViewCell.swift in Sources */,
 				5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */,

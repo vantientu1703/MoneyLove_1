@@ -9,5 +9,8 @@
 import UIKit
 
 class WalletManagerTableViewCell: UITableViewCell {
-    
+    @IBOutlet weak var buttonShowEdit: UIButton!
+    @IBOutlet weak var imageViewWallet: UIImageView!
+    @IBOutlet weak var labelTotalMoney: UILabel!
+    @IBOutlet weak var labelWalletName: UILabel!
 }

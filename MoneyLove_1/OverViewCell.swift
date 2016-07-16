@@ -56,7 +56,8 @@ class OverViewCell: UITableViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        color = UIColor.whiteColor()
+        super.init(coder: aDecoder)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

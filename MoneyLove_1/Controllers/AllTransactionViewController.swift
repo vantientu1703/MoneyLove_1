@@ -52,6 +52,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
         startDate = dateFormatter.dateFromString(strDate)
         endDate = NSDate()
         myTableView.allowsSelection = false
+        self.title = "Transcation"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
         self.configureNavigationBar()
         self.performRequest()
@@ -79,9 +80,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     }
     
     func configureNavigationBar() {
-        let leftButton = UIBarButtonItem(title:"Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AllTransactionViewController.clickToCancel(_:)))
         let rightButton = UIBarButtonItem(title:"...", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
-        self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton
     }
     

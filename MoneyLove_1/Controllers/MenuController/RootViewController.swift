@@ -23,11 +23,11 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.contentViewShadowOpacity = 0.6;
         self.contentViewShadowRadius = 12;
         self.contentViewShadowEnabled = true;
-        let appDeleagate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let transactionVC = AllTransactionViewController()
-        transactionVC.managedObjectContext = appDeleagate.managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryVC = CategoriesViewController()
+        categoryVC.managedObjectContext = appDelegate.managedObjectContext
         let menuVC = MenuViewController()
-        let nav = UINavigationController(rootViewController: transactionVC)
+        let nav = UINavigationController(rootViewController: categoryVC)
         self.contentViewController = nav
         self.leftMenuViewController = menuVC
     }

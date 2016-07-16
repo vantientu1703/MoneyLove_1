@@ -72,7 +72,8 @@ class DateRequestedCell: UITableViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        color = UIColor.whiteColor()
+        super.init(coder: aDecoder)
     }
     
     func configureCell(indexPath: NSIndexPath, data: DataTransaction?, isHeader: Bool) {
