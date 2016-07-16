@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 enum IndexPathSection: Int {
     case Section_TotalMoney
     case Section_Wallet
     case Section_Bottom
+    static let arrSection = [Section_TotalMoney, Section_Wallet, Section_Bottom]
 }
-class SelectWalletViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+class SelectWalletViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    let CACHE_NAME = "MONEY_LOVER_CACHE"
     let HEIGHT_SECTION0: CGFloat = 99.0
     let HEIGHT_SECTION1: CGFloat = 57.0
     let HEIGHT_SECTION2: CGFloat = 47.0
@@ -23,11 +26,32 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
     let IDENTIFIER_BOTTOMTABLEVIEWCELL = "BottomTableViewCell"
     let TITLE_ADD_WALLET = "ADD WALLET"
     let TITLE_WALLET_MANAGER = "WALLET MANAGER"
+    let arrSections = IndexPathSection.arrSection
     @IBOutlet weak var tableView: UITableView!
+    var managedObjectContext: NSManagedObjectContext!
+    lazy var fetchedResultController: NSFetchedResultsController = {
+        let fetchedRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName(Wallet.CLASS_NAME, inManagedObjectContext: self.managedObjectContext)
+        fetchedRequest.entity = entity
+        fetchedRequest.fetchBatchSize = 20
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let arraySortDescriptor = [sortDescriptor]
+        fetchedRequest.sortDescriptors = arraySortDescriptor
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchedRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: self.CACHE_NAME)
+        aFetchedResultsController.delegate = self
+        return aFetchedResultsController
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configRegisterForCell()
+        do {
+            try self.fetchedResultController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+        }
     }
+    
     func configRegisterForCell() {
         tableView.registerClass(TotalMoneyTableViewCell.classForCoder(), forCellReuseIdentifier: IDENTIFIER_TOTALMONEYTABLEVIEWCELL)
         tableView.registerNib(UINib.init(nibName: IDENTIFIER_TOTALMONEYTABLEVIEWCELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_TOTALMONEYTABLEVIEWCELL)
@@ -37,8 +61,9 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
         tableView.registerNib(UINib.init(nibName: IDENTIFIER_BOTTOMTABLEVIEWCELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_BOTTOMTABLEVIEWCELL)
     }
     
+    //MARK: UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return arrSections.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,7 +71,13 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
             case IndexPathSection.Section_TotalMoney.rawValue:
                 return 1
             case IndexPathSection.Section_Wallet.rawValue:
-                return 10
+                if let sections = self.fetchedResultController.sections {
+                    let arrWallets = sections[0]
+                    print(arrWallets.objects)
+                    return arrWallets.numberOfObjects
+                } else {
+                    return 0
+                }
             case IndexPathSection.Section_Bottom.rawValue:
                 return 2
             default:
@@ -60,7 +91,12 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
                 let totalMoneyCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_TOTALMONEYTABLEVIEWCELL, forIndexPath: indexPath)
                 return totalMoneyCell
             case IndexPathSection.Section_Wallet.rawValue:
-                let walletCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_WALETTTABLEVIEWCELL, forIndexPath: indexPath)
+                let walletCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_WALETTTABLEVIEWCELL, forIndexPath: indexPath) as! WalletTableViewCell
+                let indexPath2 = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section - 1)
+                let wallet = self.fetchedResultController.objectAtIndexPath(indexPath2) as! Wallet
+                walletCell.labelNameWallet.text = wallet.name
+                walletCell.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber)đ"
+                walletCell.imageViewWallet.image = UIImage(named: wallet.imageName!)
                 return walletCell
             case IndexPathSection.Section_Bottom.rawValue:
                 let bottomCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_BOTTOMTABLEVIEWCELL, forIndexPath: indexPath) as! BottomTableViewCell
@@ -93,14 +129,51 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
         if indexPath.section == IndexPathSection.Section_Bottom.rawValue {
             if indexPath.row == 0 {
                 let addWalletVC = AddWalletViewController()
+//                addWalletVC.delegate = self
+                addWalletVC.fetchedResultController = self.fetchedResultController
                 let nav = UINavigationController(rootViewController: addWalletVC)
                 self.presentViewController(nav, animated: true, completion: nil)
             } else if indexPath.row == 1 {
                 let walletManagerVC = WalletManagerViewController()
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                walletManagerVC.managedObjectContext = appDelegate.managedObjectContext
                 let nav = UINavigationController(rootViewController: walletManagerVC)
                 self.presentViewController(nav, animated: true, completion: nil)
             }
         }
     }
-    
+}
+
+extension SelectWalletViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        var indexPathNew: NSIndexPath?
+        var indexPath1: NSIndexPath?
+        if let indexPath = indexPath {
+            indexPath1 = NSIndexPath(forRow: indexPath.row, inSection: 1)
+        }
+        if let newIndexPath = newIndexPath {
+             indexPathNew = NSIndexPath(forRow: newIndexPath.row, inSection: 1)
+        }
+        switch (type) {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([indexPathNew!], withRowAnimation: .Fade)
+            break;
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath1!], withRowAnimation: .Fade)
+            break;
+        case .Update:
+            tableView.rectForRowAtIndexPath(indexPath1!)
+            break;
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath1!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([indexPathNew!], withRowAnimation: .Fade)
+            break;
+        }
+    }
 }

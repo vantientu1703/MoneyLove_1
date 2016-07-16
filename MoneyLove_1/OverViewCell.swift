@@ -22,6 +22,7 @@ class OverViewCell: UITableViewCell {
             }
         }
     }
+
     var income: String? {
         didSet {
             if let income = income {
@@ -31,6 +32,7 @@ class OverViewCell: UITableViewCell {
             }
         }
     }
+
     var net: String? {
         didSet {
             if let net = net {
@@ -40,11 +42,13 @@ class OverViewCell: UITableViewCell {
             }
         }
     }
+
     var color: UIColor {
         didSet {
             self.backgroundColor = UIColor.darkGrayColor()
         }
     }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,9 +60,10 @@ class OverViewCell: UITableViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        color = UIColor.whiteColor()
+        super.init(coder: aDecoder)
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -68,7 +73,18 @@ class OverViewCell: UITableViewCell {
         let result = data!.getSumOfAllExpenseAndIncome()
         expense = "\(result.0)"
         income = "\(result.1)"
+        let netNumber = result.1 - result.0
+        if netNumber < 0 {
+            netLabel.textColor = UIColor.redColor()
+        } else {
+            netLabel.textColor = UIColor.blueColor()
+        }
         net = "\(abs(result.0 - result.1))"
-        color = UIColor.lightGrayColor()
+        if result.0 + result.1 == Double(0) {
+            self.hidden = true
+        } else {
+            color = UIColor.lightGrayColor()
+            self.hidden = false
+        }
     }
 }

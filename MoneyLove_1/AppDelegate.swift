@@ -14,11 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let SQLITE_URL_PATH = "MoneyLover.sqlite"
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        DataManager.shareInstance.addWalletDefault()
+        DataManager.shareInstance.addCategoriesDefault()
+        DataManager.shareInstance.currentWallet = DataManager.shareInstance.getWalletDefault()
         return true
     }
-    var shareInstance:AppDelegate {
+
+    class var shareInstance:AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -42,9 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
     // MARK: - Core Data stack
-
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.vantientu.MoneyLove_1" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
@@ -78,7 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
         }
-        
         return coordinator
     }()
 
@@ -91,7 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
     func saveContext () {
         if managedObjectContext.hasChanges {
             do {

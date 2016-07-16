@@ -49,6 +49,13 @@ class CategoryRequestedCell: UITableViewCell {
             self.backgroundColor = color
         }
     }
+    
+    var moneyLabelTextColor: UIColor = UIColor.blackColor() {
+        didSet {
+            moneyNumberLabel.textColor = moneyLabelTextColor
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         moneyNumber = "0.000"
         color = UIColor.whiteColor()
@@ -56,7 +63,9 @@ class CategoryRequestedCell: UITableViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        moneyNumber = "0.000"
+        color = UIColor.whiteColor()
+        super.init(coder: aDecoder)
     }
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,11 +81,25 @@ class CategoryRequestedCell: UITableViewCell {
     func configureCell(indexPath: NSIndexPath, data: DataTransaction?, isHeader: Bool) {
         if isHeader {
             categoryName = data?.getHeaderTitleInIndexPath(indexPath.section)
-            moneyNumber = "\(data?.getSumOfAllMoneyInIndexPath(indexPath.section))"
+            let money = data!.getSumOfAllMoneyInIndexPath(indexPath.section)
+            if money < 0 {
+                moneyLabelTextColor = UIColor.redColor()
+            } else {
+                moneyLabelTextColor = UIColor.blueColor()
+            }
+            moneyNumber = "\(money)"
             color = UIColor.lightGrayColor()
         } else {
             categoryName = data?.getCategoryNameForTransaction(indexPath)
-            moneyNumber =  "\(data?.getMoneyNumberInIndexPath(indexPath))"
+            let money = data!.getMoneyNumberInIndexPath(indexPath)
+            let type = data!.getCategoryTypeInIndexPath(indexPath)!
+            if !type  {
+                moneyLabelTextColor = UIColor.redColor()
+            } else {
+                moneyLabelTextColor = UIColor.blueColor()
+            }
+            moneyNumber =  "\(money)"
+            imagePath = data?.getCategoryImageNameForTransaction(indexPath)
             color = UIColor.whiteColor()
         }
     }

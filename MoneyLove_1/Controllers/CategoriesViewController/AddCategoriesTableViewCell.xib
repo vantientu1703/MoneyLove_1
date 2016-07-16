@@ -14,30 +14,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSs-dv-TpQ">
-                        <rect key="frame" x="8" y="5" width="40" height="40"/>
+                        <rect key="frame" x="8" y="4" width="40" height="41.5"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="DbT-c0-tB1"/>
+                            <constraint firstAttribute="width" constant="40" id="s6c-ed-tRG"/>
                         </constraints>
                         <state key="normal">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DbT-c0-tB1"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <action selector="buttonCategoryImagePress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XZB-bI-a93"/>
                         </connections>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3V-Bt-zNk">
-                        <rect key="frame" x="56" y="10" width="256" height="30"/>
+                        <rect key="frame" x="60" y="0.0" width="252" height="49.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QSs-dv-TpQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1LI-Yp-ggf"/>
-                    <constraint firstItem="c3V-Bt-zNk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3Vi-8W-YqX"/>
-                    <constraint firstAttribute="bottom" secondItem="c3V-Bt-zNk" secondAttribute="bottom" constant="9" id="Aqn-Pq-Cvk"/>
-                    <constraint firstItem="QSs-dv-TpQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Cxk-yt-oqH"/>
-                    <constraint firstItem="c3V-Bt-zNk" firstAttribute="leading" secondItem="QSs-dv-TpQ" secondAttribute="trailing" constant="8" id="OMc-qB-XLw"/>
+                    <constraint firstItem="c3V-Bt-zNk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3Vi-8W-YqX"/>
+                    <constraint firstAttribute="bottom" secondItem="c3V-Bt-zNk" secondAttribute="bottom" id="Aqn-Pq-Cvk"/>
+                    <constraint firstItem="QSs-dv-TpQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Cxk-yt-oqH"/>
+                    <constraint firstItem="c3V-Bt-zNk" firstAttribute="leading" secondItem="QSs-dv-TpQ" secondAttribute="trailing" constant="12" id="OMc-qB-XLw"/>
                     <constraint firstAttribute="bottom" secondItem="QSs-dv-TpQ" secondAttribute="bottom" constant="4" id="SRE-B3-3JW"/>
                     <constraint firstAttribute="trailing" secondItem="c3V-Bt-zNk" secondAttribute="trailing" constant="8" id="nUV-ko-5gq"/>
                 </constraints>
@@ -46,7 +52,7 @@
                 <outlet property="buttonImageCategory" destination="QSs-dv-TpQ" id="VQN-BB-KjP"/>
                 <outlet property="txtCategoryName" destination="c3V-Bt-zNk" id="Un9-ge-Dhe"/>
             </connections>
-            <point key="canvasLocation" x="-147" y="243"/>
+            <point key="canvasLocation" x="-84" y="376"/>
         </tableViewCell>
     </objects>
 </document>

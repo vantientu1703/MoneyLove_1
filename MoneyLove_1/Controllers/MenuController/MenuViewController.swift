@@ -34,10 +34,9 @@ enum VIEWCONTROLLER: Int {
     func viewController() -> UIViewController {
         switch self {
         case .TransactionViewControllers:
-            let appDeleagate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let transactionVC = AllTransactionViewController()
-            transactionVC.managedObjectContext = appDeleagate.managedObjectContext
-            return transactionVC
+            let customPageVC = CustomPageViewController()
+            let menuVC = MenuViewController()
+            return customPageVC
         case DebtsViewControllers:
             let debtsVC = DebtViewController()
             return debtsVC
@@ -48,7 +47,9 @@ enum VIEWCONTROLLER: Int {
             let mothlyReportVC = PageReportViewController()
             return mothlyReportVC
         case CategoriesViewControllers:
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let categoriesVC = CategoriesViewController()
+            categoriesVC.managedObjectContext = appDelegate.managedObjectContext
             return categoriesVC
         }
     }
@@ -115,9 +116,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func showSelectWalletViewController() {
         if self.isShowSelectWallet == false {
             selectVC = SelectWalletViewController()
-            selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, 0)
-            UIView.animateWithDuration(10, animations: { () -> Void in
-                self.selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, UIScreen.mainScreen().bounds.size.height - 130)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            selectVC.managedObjectContext = appDelegate.managedObjectContext
+            selectVC.view.frame = CGRectMake(0.0, 130.0, UIScreen.mainScreen().bounds.size.width - 100.0, 0.0)
+            UIView.animateWithDuration(10.0, animations: { () -> Void in
+                self.selectVC.view.frame = CGRectMake(0.0, 130.0, UIScreen.mainScreen().bounds.size.width - 100.0, UIScreen.mainScreen().bounds.size.height - 130.0)
             }) { Bool -> Void in
                 self.addChildViewController(self.selectVC)
                 self.selectVC.didMoveToParentViewController(self)

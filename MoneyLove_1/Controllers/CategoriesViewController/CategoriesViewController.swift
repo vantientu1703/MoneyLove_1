@@ -6,8 +6,8 @@
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 
-import UIKit  
-
+import UIKit
+import CoreData
 enum SectionName: Int {
     case EXPENSE
     case INCOME
@@ -26,30 +26,81 @@ enum SectionName: Int {
     }
 }
 
-class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableViewDelegate, UITableViewDataSource {
+protocol CategoriesViewControllerDelegate: class {
+    func delegateDoWhenRowSelected(group: Group)
+}
 
+class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var addButtonCategories: UIButton!
     @IBOutlet weak var tableView: UITableView!
     let IDENTIFIER_CATEGORIES_TABLEVIEWCELL = "CategoriesTableViewCell"
     let HEIGHT_CELL_CATEGORIES: CGFloat = 50.0
-    let HEIGHT_SECTION: CGFloat = 25.0
     let TITLE_CATEGORIES = "Categories"
+    let CACHE_NAME = "Group_Cache"
+
     let arrTitileCategories = SectionName.allSections
+    var numberOfSectionInCoreData: Int = 0
+    var managedObjectContext: NSManagedObjectContext!
+    var typeExpense: Bool = false
+    var isFromTransaction = false
+    var delegate: CategoriesViewControllerDelegate!
+    lazy var fetchedResultController: NSFetchedResultsController = {
+        let fetchedRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: self.managedObjectContext)
+        fetchedRequest.entity = entity
+        fetchedRequest.fetchBatchSize = 20
+        let sortDescriptor = NSSortDescriptor(key: "subType", ascending: true)
+        let arraySortDescriptor = [sortDescriptor]
+        fetchedRequest.sortDescriptors = arraySortDescriptor
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchedRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "subType", cacheName: self.CACHE_NAME)
+        aFetchedResultsController.delegate = self
+        return aFetchedResultsController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE_CATEGORIES
         self.view.backgroundColor = UIColor.grayColor()
         addButtonCategories.layer.cornerRadius = 20.0
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+        self.configureNavigationBar()
         self.configTableViewCell()
+        self.performRequest()
+    }
+    
+    func performRequest() {
+        NSFetchedResultsController.deleteCacheWithName(self.CACHE_NAME)
+        do {
+            try self.fetchedResultController.performFetch()
+        } catch {
+            let performError = error as NSError
+            print("\(performError), \(performError.userInfo)")
+        }
+    }
+    
+    func configureNavigationBar() {
+        if !isFromTransaction {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+        } else {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CategoriesViewController.clickToBack(_:)))
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
     }
     
     override func presentLeftMenuViewController(sender: AnyObject!) {
         self.sideMenuViewController.presentLeftMenuViewController()
     }
-   
+    
+    func clickToBack(sender: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     @IBAction func buttonAddCategoriesPress(sender: AnyObject) {
         let addCategoriesVC = AddCategoriesViewController()
+        addCategoriesVC.fetchedResultController = self.fetchedResultController
+        addCategoriesVC.delegate = self
         self.navigationController?.pushViewController(addCategoriesVC, animated: true)
     }
     
@@ -58,33 +109,117 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         tableView.registerNib(UINib.init(nibName: IDENTIFIER_CATEGORIES_TABLEVIEWCELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_CATEGORIES_TABLEVIEWCELL)
     }
     
+    
     //MARK: UITableViewDataSources
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return arrTitileCategories.count
+        if let sections = self.fetchedResultController.sections {
+                return sections.count
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let sections = self.fetchedResultController.sections {
+            let group = sections[section]
+            return group.numberOfObjects
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let categoriesCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_CATEGORIES_TABLEVIEWCELL,
-            forIndexPath: indexPath)
-        // TODO
+        let categoriesCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_CATEGORIES_TABLEVIEWCELL, forIndexPath: indexPath) as!CategoriesTableViewCell
+        let categoryItem = self.fetchedResultController.objectAtIndexPath(indexPath) as! Group
+        let name = categoryItem.name
+        categoriesCell.labelMainCategories.text = name
+        categoriesCell.imageViewCategories.image = UIImage(named: categoryItem.imageName!)
         return categoriesCell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // TODO
-        return HEIGHT_CELL_CATEGORIES * 6
+        return HEIGHT_CELL_CATEGORIES
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionName = arrTitileCategories[section]
-        return sectionName.title()
+        if let sections = self.fetchedResultController.sections {
+            let group = sections[section]
+            let title = group.indexTitle!
+            switch title {
+            case "0":
+                return "Expense"
+            case "1":
+                return "Income"
+            default:
+                return "Debt And Loan"
+            }
+        }
+        return ""
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return HEIGHT_SECTION
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if isFromTransaction {
+            let group = fetchedResultController.objectAtIndexPath(indexPath) as! Group
+            delegate.delegateDoWhenRowSelected(group)
+        }
+    }
+}
+
+extension CategoriesViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        let indexSet = NSIndexSet(index: sectionIndex)
+        switch type {
+        case NSFetchedResultsChangeType.Insert:
+            tableView.insertSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            break
+        case NSFetchedResultsChangeType.Delete:
+            tableView.deleteSections(indexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            break
+        case NSFetchedResultsChangeType.Update:
+            tableView.reloadSections(indexSet, withRowAnimation: .Fade)
+            break
+        case NSFetchedResultsChangeType.Move:
+            break
+        }
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch (type) {
+        case .Insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Update:
+            if let indexPath = indexPath {
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Move:
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+}
+
+extension CategoriesViewController: AddCategoriesViewControllerDelegate {
+    func delegateDoWhenDelete(groupDeleted: Group) {
+        
     }
 }

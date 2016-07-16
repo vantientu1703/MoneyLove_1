@@ -8,19 +8,26 @@
 
 import UIKit
 
-protocol AddCategoriesTableViewCellDelegate {
+protocol AddCategoriesTableViewCellDelegate: class {
     func pressButtonSelectImage(indexPath: NSIndexPath)
 }
 class AddCategoriesTableViewCell: UITableViewCell {
-    
     var indexPath: NSIndexPath!
-    var delegate: AddCategoriesTableViewCellDelegate!
+    weak var delegate: AddCategoriesTableViewCellDelegate!
     @IBOutlet weak var buttonImageCategory: UIButton!
     @IBOutlet weak var txtCategoryName: UITextField!
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
     
     @IBAction func buttonCategoryImagePress(sender: AnyObject) {
         self.delegate.pressButtonSelectImage(self.indexPath)

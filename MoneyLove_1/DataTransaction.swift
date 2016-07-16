@@ -41,22 +41,26 @@ class DataTransaction : NSObject {
     }
     
     func getSumOfAllMoneyInIndexPath(section: Int) -> Double {
+        print("Group:")
         if let sections = fetchedResultsController.sections {
-            let section = sections[section]
-            let resultsInSection = section.objects
-            var sum = 0.0
-            if let results = resultsInSection {
-                for item in results {
-                    let trans = item as! Transaction
-                    if let group = trans.group {
-                        if group.type {
-                            sum += trans.moneyNumber
-                        } else {
-                            sum -= trans.moneyNumber
+            if sections.count > 0 {
+                let group = sections[section]
+                let resultsInSection = group.objects
+                var sum = 0.0
+                if let results = resultsInSection {
+                    for item in results {
+                        let trans = item as! Transaction
+                        if let group = trans.group {
+                            print("\(group.type) --- \(trans.moneyNumber) ---- \(trans.group?.name)")
+                            if group.type {
+                                sum += trans.moneyNumber
+                            } else {
+                                sum -= trans.moneyNumber
+                            }
                         }
                     }
+                    return sum
                 }
-                return sum
             }
         }
         return 0
@@ -64,12 +68,13 @@ class DataTransaction : NSObject {
     
     func getHeaderTitleInIndexPath(section: Int) -> String {
         if let sections = fetchedResultsController.sections {
-            let section = sections[section]
-            let title = section.name
-            return title
-        } else {
-            return ""
+            if sections.count > 0 {
+                let group = sections[section]
+                let title = group.name
+                return title
+            }
         }
+        return ""
     }
     
     func getMoneyNumberInIndexPath(indexPath: NSIndexPath) -> Double {
@@ -87,10 +92,30 @@ class DataTransaction : NSObject {
         return "Category Name"
     }
     
+    
+    func getCategoryTypeInIndexPath(indexPath: NSIndexPath) -> Bool? {
+        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+        if let group = result.group {
+            let categoryType = group.type
+            return categoryType
+        }
+        return nil
+    }
+    
     func getTimeForTransaction(indexPath: NSIndexPath) -> String {
         let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
         let dayString = result.dayString
         return dayString!
+    }
+    
+    func getCategoryImageNameForTransaction(indexPath: NSIndexPath) -> String {
+        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+        if let group = result.group {
+            let categoryImageName = group.imageName
+            return categoryImageName!
+        }
+        
+        return ""
     }
     
 }
