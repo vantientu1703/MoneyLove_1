@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllTransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
+                <outlet property="myTableView" destination="oo6-v7-76b" id="hL1-bF-N3S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,8 +23,12 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oo6-v7-76b">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="454"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="SBW-ua-nWg"/>
+                        <outlet property="delegate" destination="-1" id="J2e-R8-70N"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -33,7 +38,7 @@
                 <constraint firstItem="oo6-v7-76b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SxN-QP-uSp"/>
                 <constraint firstItem="pdf-ZS-B2g" firstAttribute="top" secondItem="oo6-v7-76b" secondAttribute="bottom" id="WP0-f0-7rp"/>
                 <constraint firstAttribute="bottom" secondItem="pdf-ZS-B2g" secondAttribute="bottom" constant="20" id="eV0-My-8Ck"/>
-                <constraint firstItem="oo6-v7-76b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zlu-F0-R4y"/>
+                <constraint firstItem="oo6-v7-76b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="zlu-F0-R4y"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

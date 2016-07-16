@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class DataManager {
     class var shareInstance: DataManager {
@@ -15,53 +16,98 @@ class DataManager {
         }
         return Singleton.instance
     }
+    var manageObjectContext: NSManagedObjectContext
+    init() {
+        manageObjectContext = AppDelegate().managedObjectContext
+    }
     //MARK: Wallet
-    func addNewWallet(newWallet: Wallet) {
-        //TODO
-    }
-    
-    func removeWallet(walletRemoved: Wallet) {
-        //TODO
-
-    }
-    
-    func replaceWallet(oldWallet: Wallet, newWallet: Wallet) {
-        //TODO
-
-    }
-    
-    
-    //Mark: Group
-    func addNewGroup(newGroup: Group) {
-        //TODO
-
-    }
-    
-    func removeGroup(groupRemoved: Group){
-        //TODO
-
-    }
-    
-    func replaceGroup(oldGroup: Group, newGroup: Group) {
-        //TODO
-
-    }
-    //MARK: Transaction
-    func addNewTransaction(newTrans: Transaction) {
-        //TODO
-
-    }
-    
-    func removeTrans(transRemoved: Transaction) {
-        //TODO
-
-    }
-    
-    func replaceTrans(old: Transaction, new: Transaction) {
-        //TODO
-
-    }
-    
+    func addNewWallet(fetchedResultsController: NSFetchedResultsController) -> Wallet? {
+        let context = fetchedResultsController.managedObjectContext
+        let entity = NSEntityDescription.entityForName(Wallet.CLASS_NAME, inManagedObjectContext: context)
+        let wallet = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Wallet
         
+        do {
+            try context.save()
+            return wallet
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+        return nil
+    }
     
+    func removeWallet(walletRemoved: Wallet, fetchedResultsController: NSFetchedResultsController) {
+        let context = fetchedResultsController.managedObjectContext
+        context.deleteObject(walletRemoved)
+        do {
+            try context.save()
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+    }
+
+    //Mark: Group
+    func addNewGroup(fetchedResultsController: NSFetchedResultsController) -> Group? {
+        let context = fetchedResultsController.managedObjectContext
+        let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: context)
+        let group = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Group
+        
+        do {
+            try context.save()
+            return group
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+        return nil
+    }
+    
+    func removeGroup(groupRemoved: Group, fetchedResultsController: NSFetchedResultsController) {
+        let context = fetchedResultsController.managedObjectContext
+        context.deleteObject(groupRemoved)
+        do {
+            try context.save()
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+    }
+    
+    //MARK: Transaction
+    func addNewTransaction(fetchedResultController: NSFetchedResultsController) -> Transaction? {
+        let context = fetchedResultController.managedObjectContext
+        let entity = NSEntityDescription.entityForName(Transaction.CLASS_NAME, inManagedObjectContext: context)
+        let trans = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Transaction
+        do {
+            try context.save()
+            return trans
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+        return nil
+    }
+    
+    func removeTrans(transRemoved: Transaction, fetchedResultsController: NSFetchedResultsController) {
+        let context = fetchedResultsController.managedObjectContext
+        context.deleteObject(transRemoved)
+        do {
+            try context.save()
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+    }
+    
+    
+    func saveManagedObjectContext() {
+        do {
+            try manageObjectContext.save()
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            abort()
+        }
+    }
 }
