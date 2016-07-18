@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
+                <outlet property="deleteButton" destination="cfm-L5-qCs" id="cRc-N0-hP1"/>
                 <outlet property="myTableView" destination="6PK-h0-rUN" id="cUT-0c-prA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,13 +24,22 @@
                         <outlet property="delegate" destination="-1" id="NPX-QZ-UCO"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfm-L5-qCs">
+                    <rect key="frame" x="265" y="528" width="45" height="30"/>
+                    <state key="normal" title="Delete"/>
+                    <connections>
+                        <action selector="clickToDelete:" destination="-1" eventType="touchUpInside" id="k9L-FK-yNw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6PK-h0-rUN" secondAttribute="trailing" constant="10" id="7sX-tN-MDy"/>
+                <constraint firstAttribute="trailing" secondItem="cfm-L5-qCs" secondAttribute="trailing" constant="10" id="8Mp-h5-EtP"/>
                 <constraint firstItem="6PK-h0-rUN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Oiz-0E-bzC"/>
                 <constraint firstAttribute="bottom" secondItem="6PK-h0-rUN" secondAttribute="bottom" constant="100" id="QHG-KC-oEI"/>
                 <constraint firstItem="6PK-h0-rUN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="XmM-bt-QTU"/>
+                <constraint firstAttribute="bottom" secondItem="cfm-L5-qCs" secondAttribute="bottom" constant="10" id="eLy-MN-4E3"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="417" y="462"/>

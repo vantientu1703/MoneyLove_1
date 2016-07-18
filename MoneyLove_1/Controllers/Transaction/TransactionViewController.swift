@@ -13,8 +13,8 @@ import WWCalendarTimeSelector
 import SwiftMoment
 
 protocol TransactionViewControllerDelegate: class {
-    func delegateDoWhenCancel(trans: Transaction?)
-    func delegateDoWhenSave(trans: Transaction?)
+    func delegateDoWhenCancel()
+    func delegateDoWhenDeleteTrans(transRemoved: Transaction, indexPath: NSIndexPath)
 }
 
 enum RowType: Int  {
@@ -40,24 +40,28 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     let DEBT_AND_LOAN_TITLE = "DEBT AND LOAN"
     let NOTE_TEXT_FIELD_TAG = 2
     let MONEY_NUMBER_TEXT_FIELD_TAG = 1
-    @IBOutlet weak var myTableView: UITableView!
-    var managedObjectContext: NSManagedObjectContext!
-    var managedTransactionObject: Transaction!
-    var peopleRelated: String?
-    weak var delegate: TransactionViewControllerDelegate?
     
+    @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var deleteButton: UIButton!
+    var managedTransactionObject:Transaction!
+    weak var delegate: TransactionViewControllerDelegate?
+    var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money:Double, group: Group?, wallet: Wallet?) = ("", 0.0, "", 0.0, nil, nil)
+    var isNewTransaction = true
+    var indexPath:NSIndexPath?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         self.automaticallyAdjustsScrollViewInsets = false
         self.configureNavigationBar()
         self.registerCell()
+        self.assignFromManagedObjectToCache()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        peopleRelated = self.managedTransactionObject.personRelated
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        deleteButton.hidden = isNewTransaction
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,18 +77,52 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     func registerCell() {
-        myTableView.registerClass(TextCell.classForCoder(), forCellReuseIdentifier: TEXT_CELL_INDENTIFIER)
         myTableView.registerNib(UINib.init(nibName: "TextCell", bundle: nil), forCellReuseIdentifier: TEXT_CELL_INDENTIFIER)
-        myTableView.registerClass(DateCell.classForCoder(), forCellReuseIdentifier: DATE_CELL_IDENTIFIER)
         myTableView.registerNib(UINib.init(nibName: "DateCell", bundle: nil), forCellReuseIdentifier: DATE_CELL_IDENTIFIER)
     }
     
+    func assignFromManagedObjectToCache() {
+        transactionCache.date = managedTransactionObject.date
+        transactionCache.note = managedTransactionObject.note
+        transactionCache.money = managedTransactionObject.moneyNumber
+        transactionCache.people = managedTransactionObject.personRelated
+        transactionCache.group = managedTransactionObject.group
+        transactionCache.wallet = managedTransactionObject.wallet
+    }
+    
+    func assignFromCacheToManagedObject() {
+        managedTransactionObject.date = transactionCache.date
+        managedTransactionObject.note = transactionCache.note
+        managedTransactionObject.moneyNumber = transactionCache.money
+        managedTransactionObject.personRelated = transactionCache.people
+        managedTransactionObject.group = transactionCache.group
+        managedTransactionObject.wallet = transactionCache.wallet
+    }
+    func retrieveTextFromTextField() {
+        let moneyIndexPath = NSIndexPath(forRow: RowType.MoneyNumber.rawValue, inSection: 0)
+        let noteIndexPath = NSIndexPath(forRow: RowType.Note.rawValue, inSection: 0)
+        let moneyTextField = myTableView.cellForRowAtIndexPath(moneyIndexPath) as! TextCell
+        let noteTextField = myTableView.cellForRowAtIndexPath(noteIndexPath) as! TextCell
+        if let moneyNumber = Double(moneyTextField.myTextField.text!) {
+            transactionCache.money = moneyNumber
+        } else {
+            transactionCache.money = 0.0
+        }
+        transactionCache.note = noteTextField.myTextField.text
+    }
     @IBAction func clickToCancel(sender: AnyObject) {
-        delegate?.delegateDoWhenCancel(managedTransactionObject)
+        delegate?.delegateDoWhenCancel()
     }
     
     @IBAction func clickToSave(sender: AnyObject) {
-        delegate?.delegateDoWhenSave(managedTransactionObject)
+        self.retrieveTextFromTextField()
+        self.assignFromCacheToManagedObject()
+        DataManager.shareInstance.saveManagedObjectContext()
+        delegate?.delegateDoWhenCancel()
+    }
+    
+    @IBAction func clickToDelete(sender: AnyObject) {
+        delegate?.delegateDoWhenDeleteTrans(managedTransactionObject, indexPath: indexPath!)
     }
 }
 extension TransactionViewController: UITableViewDelegate, UITableViewDataSource {
@@ -100,16 +138,26 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                 labelCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: LABEL_CELL_IDENTIFIER)
             }
             if indexPath.row == RowType.Category.rawValue{
-                if (managedTransactionObject.group?.name?.isEmpty)! {
-                    labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
+                if let group = transactionCache.group {
+                    let groupName = group.name!
+                    if groupName.isEmpty {
+                        labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
+                    } else {
+                        labelCell?.textLabel?.text = groupName
+                    }
                 } else {
-                    labelCell?.textLabel?.text = managedTransactionObject.group?.name
+                    labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
                 }
             } else {
-                if peopleRelated!.isEmpty {
+                if let people = transactionCache.people {
+                    if people.isEmpty {
+                        labelCell?.textLabel?.text = CONTACT_LABEL_TEXT
+                    } else {
+                        labelCell?.textLabel?.text = transactionCache.people
+                        
+                    }
+                }else {
                     labelCell?.textLabel?.text = CONTACT_LABEL_TEXT
-                } else {
-                    labelCell?.textLabel?.text = peopleRelated
                 }
             }
             return labelCell!
@@ -119,17 +167,21 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                 textCell.myTextField.placeholder = NOTE_LABEL_TEXT
                 textCell.myTextField.keyboardType = UIKeyboardType.Default
                 textCell.myTextField.tag = NOTE_TEXT_FIELD_TAG
-                textCell.myTextField.text = managedTransactionObject.note
+                if let note = transactionCache.note {
+                    textCell.myTextField.text = note
+                } else {
+                    textCell.myTextField.text = ""
+                }
             } else {
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
-                textCell.myTextField.text = "\(managedTransactionObject.moneyNumber)"
+                textCell.myTextField.text = "\(transactionCache.money)"
             }
             textCell.myTextField.delegate = self
             return textCell
         case RowType.Date.rawValue:
             let dateCell = tableView.dequeueReusableCellWithIdentifier(DATE_CELL_IDENTIFIER, forIndexPath: indexPath) as! DateCell
-            let dateMoment = moment(NSDate(timeIntervalSince1970: managedTransactionObject.date))
+            let dateMoment = moment(NSDate(timeIntervalSince1970: transactionCache.date))
             let date = dateMoment.weekdayName
             let month = dateMoment.monthName
             let year = dateMoment.year
@@ -166,7 +218,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
         case RowType.Date.rawValue:
             let selector = WWCalendarTimeSelector.instantiate()
             selector.delegate = self
-            selector.optionCurrentDate = NSDate(timeIntervalSince1970: managedTransactionObject.date)
+            selector.optionCurrentDate = NSDate(timeIntervalSince1970: transactionCache.date)
             selector.optionStyles = [.Date, .Year]
             self.navigationController?.pushViewController(selector, animated: true)
         default:
@@ -177,8 +229,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension TransactionViewController: TransactionVCDelegate {
     func displayContact(newName: String?) {
-        peopleRelated = newName
-        managedTransactionObject.personRelated = peopleRelated
+        transactionCache.people = newName
         let indexPath = NSIndexPath(forRow: RowType.Contact.rawValue, inSection: 0)
         dispatch_async(dispatch_get_main_queue()) {
             self.myTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -188,7 +239,7 @@ extension TransactionViewController: TransactionVCDelegate {
 
 extension TransactionViewController: WWCalendarTimeSelectorProtocol {
     func WWCalendarTimeSelectorDone(selector: WWCalendarTimeSelector, date: NSDate) {
-        managedTransactionObject.date = date.timeIntervalSince1970
+        transactionCache.date = date.timeIntervalSince1970
         self.navigationController?.popViewControllerAnimated(true)
         myTableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: RowType.Date.rawValue, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
@@ -208,28 +259,24 @@ extension TransactionViewController: WWCalendarTimeSelectorProtocol {
 
 extension TransactionViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing",textField.text)
         return true
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        print("textFieldShouldEndEditing",textField.text)
         return true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        if textField.tag == MONEY_NUMBER_TEXT_FIELD_TAG {
-            let moneyNumberStr = textField.text
-            let moneyNumber = Double(moneyNumberStr!)
-            managedTransactionObject.moneyNumber = moneyNumber!
-        } else {
-            managedTransactionObject.note = textField.text
-        }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        //TODO
+        print("textFieldDidBeginEditing",textField.text)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print(textField.text)
         return true
     }
     

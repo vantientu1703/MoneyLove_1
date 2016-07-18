@@ -2,7 +2,7 @@
 //  Wallet+CoreDataProperties.swift
 //  MoneyLove_1
 //
-//  Created by macmini-0017 on 7/14/16.
+//  Created by macmini-0017 on 7/16/16.
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,8 +14,9 @@ import CoreData
 
 extension Wallet {
 
-    @NSManaged var firstNumber: Int32
+    @NSManaged var firstNumber: Double
     @NSManaged var name: String?
+    @NSManaged var imageName: String?
     @NSManaged var group: NSSet?
     @NSManaged var transaction: NSSet?
 
