@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="KGk-i7-Jjw" customClass="CategoryRequestedCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="99"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="302" height="98"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vls-Ip-8h3">
+                        <rect key="frame" x="100" y="39" width="117" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfJ-fu-wp3">
+                        <rect key="frame" x="229" y="39" width="45" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTU-mE-ZaL">
+                        <rect key="frame" x="18" y="18" width="62" height="62"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="HTU-mE-ZaL" secondAttribute="height" multiplier="1:1" id="5dq-Ib-4Yw"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="vls-Ip-8h3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0hQ-Lw-T54"/>
+                    <constraint firstItem="HTU-mE-ZaL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="CLX-SL-4Jh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="HTU-mE-ZaL" secondAttribute="bottom" constant="10" id="Gtq-bz-MvU"/>
+                    <constraint firstItem="HTU-mE-ZaL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="H4m-se-edX"/>
+                    <constraint firstItem="HTU-mE-ZaL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="P7L-Ro-dPZ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="EfJ-fu-wp3" secondAttribute="trailing" constant="20" id="kci-hT-9Qd"/>
+                    <constraint firstItem="vls-Ip-8h3" firstAttribute="leading" secondItem="HTU-mE-ZaL" secondAttribute="trailing" constant="20" id="lhO-i5-wRi"/>
+                    <constraint firstItem="EfJ-fu-wp3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mYL-pT-DTv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="categoryImageView" destination="HTU-mE-ZaL" id="17Y-fm-3FK"/>
+                <outlet property="categoryNameLabel" destination="vls-Ip-8h3" id="Jes-ef-NJL"/>
+                <outlet property="moneyNumberLabel" destination="EfJ-fu-wp3" id="WiT-a0-106"/>
+            </connections>
+            <point key="canvasLocation" x="493" y="407.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -18,7 +18,8 @@ class DataManager {
     }
     var manageObjectContext: NSManagedObjectContext
     init() {
-        manageObjectContext = AppDelegate().managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        manageObjectContext = appDelegate.managedObjectContext
     }
     //MARK: Wallet
     func addNewWallet(fetchedResultsController: NSFetchedResultsController) -> Wallet? {
@@ -46,7 +47,7 @@ class DataManager {
             print("\(saveError), \(saveError.userInfo)")
         }
     }
-
+    
     //Mark: Group
     func addNewGroup(fetchedResultsController: NSFetchedResultsController) -> Group? {
         let context = fetchedResultsController.managedObjectContext
@@ -99,7 +100,6 @@ class DataManager {
             print("\(saveError), \(saveError.userInfo)")
         }
     }
-    
     
     func saveManagedObjectContext() {
         do {

@@ -9,7 +9,7 @@
 import UIKit
 
 class AddWalletViewController: UIViewController {
-
+    
     @IBOutlet weak var buttonIcon: UIButton!
     @IBOutlet weak var txtStartMoneyWallet: UITextField!
     @IBOutlet weak var txtNameWallet: UITextField!
