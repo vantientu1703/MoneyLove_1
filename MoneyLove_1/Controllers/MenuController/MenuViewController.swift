@@ -12,17 +12,54 @@ protocol MenuViewControllerDelegate: class {
     func showWalletViewController()
 }
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+enum VIEWCONTROLLER: Int {
+    case TransactionViewControllers, DebtsViewControllers, TrendsViewControllers, MonthlyReportViewControllers, CategoriesViewControllers
+    static let allViewControlles = [TransactionViewControllers, DebtsViewControllers, TrendsViewControllers, MonthlyReportViewControllers, CategoriesViewControllers]
+    
+    func title() -> String {
+        switch self {
+        case .TransactionViewControllers:
+            return "Transactions"
+        case DebtsViewControllers:
+            return "Debts"
+        case TrendsViewControllers:
+            return "Trends"
+        case MonthlyReportViewControllers:
+            return "Monthly Report"
+        case CategoriesViewControllers:
+            return "Categories"
+        }
+    }
+    
+    func viewController() -> UIViewController {
+        switch self {
+        case .TransactionViewControllers:
+            let transactionVC = TransactionViewController()
+            return transactionVC
+        case DebtsViewControllers:
+            let debtsVC = DebtViewController()
+            return debtsVC
+        case TrendsViewControllers:
+            let trendsVC = TrendTableViewController()
+            return trendsVC
+        case MonthlyReportViewControllers:
+            let mothlyReportVC = PageReportViewController()
+            return mothlyReportVC
+        case CategoriesViewControllers:
+            let categoriesVC = CategoriesViewController()
+            return categoriesVC
+        }
+    }
+}
 
-    let HEIGHT_CELL_SECTION1: CGFloat = 60
-    let HEIGHT_CELL_SECTION2: CGFloat = 70
-    let HEIGHT_CELL_SECTION3: CGFloat = 44
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     weak var delegate: MenuViewControllerDelegate?
     var selectVC: SelectWalletViewController!
     var isShowSelectWallet: Bool?
+    let arrViewControllers = VIEWCONTROLLER.allViewControlles
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonShowWalletList: UIButton!
-    let arrTitle: Array = ["Transactions", "Debts", "Trends", "Monthly Report", "Categories"]
     override func viewDidLoad() {
         super.viewDidLoad()
         isShowSelectWallet = false
@@ -40,13 +77,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrTitle.count
+        return arrViewControllers.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = "CellDefault"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath:indexPath)
-        cell.textLabel?.text = arrTitle[indexPath.row]
+        let titleIndex = arrViewControllers[indexPath.row]
+        cell.textLabel?.text = titleIndex.title()
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -55,30 +93,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        switch indexPath.row {
-            case 1:
-                let debtsVC = DebtViewController()
-                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: debtsVC), animated: true)
-                self.sideMenuViewController.hideMenuViewController()
-                break
-            case 2:
-                let trendsVC = TrendTableViewController()
-                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: trendsVC), animated: true)
-                self.sideMenuViewController.hideMenuViewController()
-                break
-            case 3:
-                let mothlyReportVC = PageReportViewController()
-                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: mothlyReportVC), animated: true)
-                self.sideMenuViewController.hideMenuViewController()
-                break
-            case 4:
-                let categoriesVC = CategoriesViewController()
-                self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: categoriesVC), animated: true)
-                self.sideMenuViewController.hideMenuViewController()
-                break
-            default:
-                break
-        }
+        let viewControllerIndex = arrViewControllers[indexPath.row]
+        let vc: UIViewController = viewControllerIndex.viewController()
+        self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: vc), animated: true)
+        self.sideMenuViewController.hideMenuViewController()
     }
     //MARK: ShowWalletListTableViewCellDelegate
     func showWalletController() {
@@ -98,10 +116,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, 0)
             UIView.animateWithDuration(10, animations: { () -> Void in
                 self.selectVC.view.frame = CGRectMake(0, 130, UIScreen.mainScreen().bounds.size.width - 100, UIScreen.mainScreen().bounds.size.height - 130)
-                }) { Bool -> Void in
-                    self.addChildViewController(self.selectVC)
-                    self.selectVC.didMoveToParentViewController(self)
-                    self.view.addSubview(self.selectVC.view)
+            }) { Bool -> Void in
+                self.addChildViewController(self.selectVC)
+                self.selectVC.didMoveToParentViewController(self)
+                self.view.addSubview(self.selectVC.view)
             }
             self.isShowSelectWallet = true
             self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))

@@ -14,12 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let SQLITE_URL_PATH = "MoneyLover.sqlite"
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let rootVC = AllTransactionViewController(nibName: "AllTransactionViewController", bundle: nil)
-        let nav = UINavigationController(rootViewController: rootVC)
-        window?.rootViewController = nav
-        rootVC.managedObjectContext = managedObjectContext
-        window?.makeKeyAndVisible()
         return true
     }
 
