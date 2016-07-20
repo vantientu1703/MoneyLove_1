@@ -8,14 +8,21 @@
 
 import UIKit
 
+protocol AddCategoriesTableViewCellDelegate {
+    func pressButtonSelectImage(indexPath: NSIndexPath)
+}
 class AddCategoriesTableViewCell: UITableViewCell {
-
+    
+    var indexPath: NSIndexPath!
+    var delegate: AddCategoriesTableViewCellDelegate!
     @IBOutlet weak var buttonImageCategory: UIButton!
     @IBOutlet weak var txtCategoryName: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    
     @IBAction func buttonCategoryImagePress(sender: AnyObject) {
+        self.delegate.pressButtonSelectImage(self.indexPath)
     }
 }

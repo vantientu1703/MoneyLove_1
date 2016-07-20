@@ -34,7 +34,9 @@ enum VIEWCONTROLLER: Int {
     func viewController() -> UIViewController {
         switch self {
         case .TransactionViewControllers:
-            let transactionVC = TransactionViewController()
+            let appDeleagate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let transactionVC = AllTransactionViewController()
+            transactionVC.managedObjectContext = appDeleagate.managedObjectContext
             return transactionVC
         case DebtsViewControllers:
             let debtsVC = DebtViewController()
