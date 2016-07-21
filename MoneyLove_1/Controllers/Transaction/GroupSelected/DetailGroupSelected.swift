@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import TabPageViewController
+
 enum TypeCategory {
     case LoanAndDebt
     case Expense
@@ -26,32 +28,10 @@ class DetailGroupSelected: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    func configureNavigationBar() {
-        let leftButton = UIBarButtonItem(title: "B", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DetailGroupSelected.clickToBack(_:)))
-        let searchButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DetailGroupSelected.clickToSearch(_:)))
-        let subModeButton = UIBarButtonItem(title: "Change Mode", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DetailGroupSelected.clickToChangeModeDisplay(_:)))
-        navigationItem.leftBarButtonItem = leftButton
-        navigationItem.rightBarButtonItem = searchButton
-    }
-    
-    func clickToBack(sender: UIBarButtonItem) {
-        delegate?.doWhenClickBack()
-    }
-    
-    func clickToSearch(sender: UIBarButtonItem) {
-        let searchGroupVC = SearchGroupViewController(nibName: "SearchGroupViewController", bundle: nil)
-    }
-    
-    func clickToChangeModeDisplay(sender: UIBarButtonItem) {
-        //TODO
     }
 }
 

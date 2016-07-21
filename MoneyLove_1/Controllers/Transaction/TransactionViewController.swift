@@ -13,8 +13,7 @@ import WWCalendarTimeSelector
 import SwiftMoment
 
 protocol TransactionViewControllerDelegate: class {
-    func delegateDoWhenCancel()
-    func delegateDoWhenDeleteTrans(transRemoved: Transaction, indexPath: NSIndexPath)
+    func delegateDoWhenDeleteTrans(transRemoved: Transaction)
 }
 
 enum RowType: Int  {
@@ -47,7 +46,6 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     weak var delegate: TransactionViewControllerDelegate?
     var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money:Double, group: Group?, wallet: Wallet?) = ("", 0.0, "", 0.0, nil, nil)
     var isNewTransaction = true
-    var indexPath:NSIndexPath?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
@@ -82,7 +80,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     func assignFromManagedObjectToCache() {
-        transactionCache.date = managedTransactionObject.date
+        transactionCache.date = managedTransactionObject.date == 0 ? NSDate().timeIntervalSinceReferenceDate : managedTransactionObject.date
         transactionCache.note = managedTransactionObject.note
         transactionCache.money = managedTransactionObject.moneyNumber
         transactionCache.people = managedTransactionObject.personRelated
@@ -91,12 +89,16 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     func assignFromCacheToManagedObject() {
-        managedTransactionObject.date = transactionCache.date
         managedTransactionObject.note = transactionCache.note
+        managedTransactionObject.date = transactionCache.date
         managedTransactionObject.moneyNumber = transactionCache.money
         managedTransactionObject.personRelated = transactionCache.people
         managedTransactionObject.group = transactionCache.group
         managedTransactionObject.wallet = transactionCache.wallet
+        let currentDate = NSDate(timeIntervalSinceReferenceDate: managedTransactionObject.date)
+        let calender = NSCalendar.currentCalendar()
+        let components = calender.components([.Year, .Month, .Day], fromDate: currentDate)
+        managedTransactionObject.dayString = "\(components.day)" + "-" + "\(components.month)" + "-" + "\(components.year)"        
     }
     func retrieveTextFromTextField() {
         let moneyIndexPath = NSIndexPath(forRow: RowType.MoneyNumber.rawValue, inSection: 0)
@@ -111,18 +113,21 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         transactionCache.note = noteTextField.myTextField.text
     }
     @IBAction func clickToCancel(sender: AnyObject) {
-        delegate?.delegateDoWhenCancel()
+        if isNewTransaction {
+            delegate?.delegateDoWhenDeleteTrans(managedTransactionObject)            
+        }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func clickToSave(sender: AnyObject) {
         self.retrieveTextFromTextField()
         self.assignFromCacheToManagedObject()
         DataManager.shareInstance.saveManagedObjectContext()
-        delegate?.delegateDoWhenCancel()
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func clickToDelete(sender: AnyObject) {
-        delegate?.delegateDoWhenDeleteTrans(managedTransactionObject, indexPath: indexPath!)
+        delegate?.delegateDoWhenDeleteTrans(managedTransactionObject)
     }
 }
 extension TransactionViewController: UITableViewDelegate, UITableViewDataSource {
@@ -181,7 +186,8 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             return textCell
         case RowType.Date.rawValue:
             let dateCell = tableView.dequeueReusableCellWithIdentifier(DATE_CELL_IDENTIFIER, forIndexPath: indexPath) as! DateCell
-            let dateMoment = moment(NSDate(timeIntervalSince1970: transactionCache.date))
+            let dateObj = NSDate(timeIntervalSinceReferenceDate: transactionCache.date)
+            let dateMoment = moment(dateObj)
             let date = dateMoment.weekdayName
             let month = dateMoment.monthName
             let year = dateMoment.year
@@ -203,6 +209,12 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
         switch indexPath.row {
         case RowType.Category.rawValue:
             let tc = TabPageViewController.create()
+            tc.navigationController?.setNavigationBarHidden(false, animated: true)
+            let leftButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: tc, action: #selector(TabPageViewController.clickToBack(_:)))
+            let searchButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: tc, action: #selector(TabPageViewController.clickToSearch(_:)))
+            let subModeButton = UIBarButtonItem(title: "Change Mode", style: UIBarButtonItemStyle.Plain, target: tc, action: #selector(TabPageViewController.clickToChangeModeDisplay(_:)))
+            tc.navigationItem.leftBarButtonItem = leftButton
+            tc.navigationItem.rightBarButtonItems = [searchButton, subModeButton]
             let debtVC = DetailGroupSelected(nibName: "DetailGroupSelected", bundle: nil)
             let expenseVC = DetailGroupSelected(nibName: "DetailGroupSelected", bundle: nil)
             let incomeVC = DetailGroupSelected(nibName: "DetailGroupSelected", bundle: nil)
@@ -218,9 +230,9 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
         case RowType.Date.rawValue:
             let selector = WWCalendarTimeSelector.instantiate()
             selector.delegate = self
-            selector.optionCurrentDate = NSDate(timeIntervalSince1970: transactionCache.date)
+            selector.optionCurrentDate = NSDate(timeIntervalSinceReferenceDate: transactionCache.date)
             selector.optionStyles = [.Date, .Year]
-            self.navigationController?.pushViewController(selector, animated: true)
+            self.presentViewController(selector, animated: true, completion: nil)
         default:
             break
         }
@@ -239,12 +251,12 @@ extension TransactionViewController: TransactionVCDelegate {
 
 extension TransactionViewController: WWCalendarTimeSelectorProtocol {
     func WWCalendarTimeSelectorDone(selector: WWCalendarTimeSelector, date: NSDate) {
-        transactionCache.date = date.timeIntervalSince1970
-        self.navigationController?.popViewControllerAnimated(true)
+        transactionCache.date = date.timeIntervalSinceReferenceDate
+        self.dismissViewControllerAnimated(true, completion: nil)
         myTableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: RowType.Date.rawValue, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     func WWCalendarTimeSelectorCancel(selector: WWCalendarTimeSelector, date: NSDate) {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     func WWCalendarTimeSelectorShouldSelectDate(selector: WWCalendarTimeSelector, date: NSDate) -> Bool {
         return true
@@ -286,5 +298,30 @@ extension TransactionViewController: UITextFieldDelegate {
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
         return true
+    }
+}
+
+extension TabPageViewController {
+    func clickToBack(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func clickToSearch(sender: UIBarButtonItem) {
+        let searchGroupVC = SearchGroupViewController(nibName: "SearchGroupViewController", bundle: nil)
+        self.navigationController?.pushViewController(searchGroupVC, animated: true)
+    }
+    
+    func clickToChangeModeDisplay(sender: UIBarButtonItem) {
+        //TODO
+    }
+}
+
+extension TabPageViewController: SearchGroupDelegate {
+    func doWhenClickBack() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func doWhenRowSelected(group: Group) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }
