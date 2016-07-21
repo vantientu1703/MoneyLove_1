@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Yc-pu-nus">
-                        <rect key="frame" x="47" y="58" width="363" height="155"/>
+                        <rect key="frame" x="47" y="50" width="363" height="163"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qb-59-mRj">
@@ -62,7 +62,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3Yc-pu-nus" firstAttribute="top" secondItem="8Qb-59-mRj" secondAttribute="bottom" constant="8" id="Bai-Qi-f2M"/>
+                    <constraint firstItem="3Yc-pu-nus" firstAttribute="top" secondItem="8Qb-59-mRj" secondAttribute="bottom" id="Bai-Qi-f2M"/>
                     <constraint firstAttribute="trailing" secondItem="8Qb-59-mRj" secondAttribute="trailing" id="Id8-nG-F32"/>
                     <constraint firstItem="8Qb-59-mRj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="duO-h5-yX3"/>
                     <constraint firstAttribute="trailingMargin" secondItem="3Yc-pu-nus" secondAttribute="trailing" constant="-8" id="hE0-xM-qnO"/>

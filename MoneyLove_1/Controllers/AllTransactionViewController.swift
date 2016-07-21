@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AllTransactionViewController: UIViewController {
+class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     let CACHE_NAME = "MONEY_LOVER_CACHE"
     var managedObjectContext:NSManagedObjectContext!
     lazy var fetchedResultController: NSFetchedResultsController = {
@@ -27,6 +27,7 @@ class AllTransactionViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
         do {
             try self.fetchedResultController.performFetch()
         } catch {
@@ -35,6 +36,9 @@ class AllTransactionViewController: UIViewController {
         }
     }
     
+    override func presentLeftMenuViewController(sender: AnyObject!) {
+        self.sideMenuViewController.presentLeftMenuViewController()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

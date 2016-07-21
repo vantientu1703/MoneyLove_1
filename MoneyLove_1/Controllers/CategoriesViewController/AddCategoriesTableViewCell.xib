@@ -15,10 +15,13 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSs-dv-TpQ">
                         <rect key="frame" x="8" y="5" width="40" height="40"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="DbT-c0-tB1"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                         <connections>
                             <action selector="buttonCategoryImagePress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XZB-bI-a93"/>
                         </connections>
