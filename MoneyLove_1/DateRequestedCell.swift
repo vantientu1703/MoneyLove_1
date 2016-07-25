@@ -20,7 +20,7 @@ class DateRequestedCell: UITableViewCell {
             if let money = money {
                 moneyNumberLAbel.text = money
             } else {
-                moneyNumberLAbel.text = "0.000"
+                moneyNumberLAbel.text = "0.0"
             }
         }
     }
@@ -51,13 +51,20 @@ class DateRequestedCell: UITableViewCell {
             }
         }
     }
-    var color : UIColor {
+    var color: UIColor =  UIColor.whiteColor() {
         didSet {
             self.backgroundColor = color
             containerView.backgroundColor = color
         }
     }
 
+    var moneyLabelTextColor: UIColor = UIColor.blackColor() {
+        didSet {
+            if let moneyNumberLAbel = moneyNumberLAbel {
+                moneyNumberLAbel.textColor = moneyLabelTextColor
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -67,23 +74,49 @@ class DateRequestedCell: UITableViewCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        color = UIColor.whiteColor()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func configureCell(indexPath: NSIndexPath, data: DataTransaction?, isHeader: Bool) {
         if isHeader {
-            let sum = data?.getSumOfAllMoneyInIndexPath(indexPath.section)
-            dateStr = data?.getHeaderTitleInIndexPath(indexPath.section)
-            money = "\(sum!)"
+            var sum = data?.getSumOfAllMoneyInIndexPath(indexPath.section)
+            let stringOfDate = data?.getHeaderTitleInIndexPath(indexPath.section)
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let date = dateFormatter.dateFromString(stringOfDate!)
+            let dateComponents = stringOfDate?.componentsSeparatedByString("-")
+            dateStr = dateComponents![0]
+            monthAndYear = dateComponents![1] + " - " + dateComponents![2]
+            weekDay = NSDate.dayOfTheWeek(date!)
+            if sum < 0 {
+                moneyLabelTextColor = UIColor.redColor()
+                sum = sum! * -1
+            } else {
+                moneyLabelTextColor = UIColor.blueColor()
+            }
             color = UIColor.lightGrayColor()
+            money = "\(sum!)"
         } else {
-            dateStr = data?.getTimeForTransaction(indexPath)
-            money = "\(data?.getMoneyNumberInIndexPath(indexPath))"
+            let stringOfDate = data?.getTimeForTransaction(indexPath)
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let date = dateFormatter.dateFromString(stringOfDate!)
+            let dateComponents = stringOfDate?.componentsSeparatedByString("-")
+            dateStr = dateComponents![0]
+            monthAndYear = dateComponents![1] + " - " + dateComponents![2]
+            weekDay = NSDate.dayOfTheWeek(date!)
+            var moneyNumber = data!.getMoneyNumberInIndexPath(indexPath)
+            if moneyNumber < 0 {
+                moneyLabelTextColor = UIColor.redColor()
+                moneyNumber = moneyNumber * -1
+            } else {
+                moneyLabelTextColor = UIColor.blueColor()
+            }
+            money = "\(moneyNumber)"
             color = UIColor.whiteColor()
         }
     }

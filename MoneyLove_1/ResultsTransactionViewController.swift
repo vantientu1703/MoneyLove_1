@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  ResultsTransactionViewController.swift
 //  MoneyLove_1
 //
-//  Created by framgia on 7/12/16.
+//  Created by macmini-0017 on 7/22/16.
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ResultsTransactionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

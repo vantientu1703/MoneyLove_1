@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="buttonIcon" destination="7PY-8u-iPq" id="fbs-VY-Xhc"/>
                 <outlet property="buttonImageWallet" destination="7PY-8u-iPq" id="9UX-Nh-SpB"/>
+                <outlet property="labelNote" destination="xHk-Kh-e0X" id="mwm-3X-LXy"/>
                 <outlet property="txtNameWallet" destination="gcf-A5-tzb" id="hKL-N7-Ikw"/>
                 <outlet property="txtStartMoneyWallet" destination="3d2-pa-Ut9" id="RWd-Dp-e8x"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -97,10 +98,22 @@
                         <constraint firstItem="gcf-A5-tzb" firstAttribute="top" secondItem="pex-bm-RzB" secondAttribute="top" constant="18" id="zRX-MV-Af8"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHk-Kh-e0X">
+                    <rect key="frame" x="8" y="216" width="304" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="hGb-uK-ICc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="xHk-Kh-e0X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="EST-ov-fJA"/>
+                <constraint firstAttribute="trailing" secondItem="xHk-Kh-e0X" secondAttribute="trailing" constant="8" id="P9G-f3-ewK"/>
+                <constraint firstItem="xHk-Kh-e0X" firstAttribute="top" secondItem="pex-bm-RzB" secondAttribute="bottom" constant="8" id="UXq-fK-j1J"/>
                 <constraint firstAttribute="trailing" secondItem="pex-bm-RzB" secondAttribute="trailing" constant="8" id="lmc-bI-qUb"/>
                 <constraint firstItem="pex-bm-RzB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="nUD-60-zrP"/>
                 <constraint firstItem="pex-bm-RzB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="rK1-nM-jhs"/>
@@ -109,7 +122,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="E3t-DB-i4T" appends="YES" id="hBW-lP-7rP"/>
             </connections>
-            <point key="canvasLocation" x="478" y="206"/>
+            <point key="canvasLocation" x="447" y="195"/>
         </view>
         <tapGestureRecognizer id="E3t-DB-i4T">
             <connections>

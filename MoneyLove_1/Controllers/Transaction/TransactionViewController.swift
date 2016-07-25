@@ -24,6 +24,12 @@ enum RowType: Int  {
     case Date
 }
 
+enum ErrorValue {
+    case Pass
+    case NoMoney
+    case NoCategory
+}
+
 class TransactionViewController: UIViewController, NSFetchedResultsControllerDelegate {
     let NUMBER_ROW = 5
     let HEIGHT_CELL_TRANSACTION_DEFAULT: CGFloat = 50.0
@@ -32,6 +38,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     let DATE_CELL_IDENTIFIER = "DateCell"
     let LABEL_CELL_IDENTIFIER = "LabelCell"
     let CATEGORY_LABEL_TEXT = "Select Category"
+    let MONEY_PLACE_HOLDER = "Enter amount of money"
     let CONTACT_LABEL_TEXT = "With"
     let NOTE_LABEL_TEXT = "Note"
     let INCOME_TITLE = "INCOME"
@@ -39,10 +46,12 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     let DEBT_AND_LOAN_TITLE = "DEBT AND LOAN"
     let NOTE_TEXT_FIELD_TAG = 2
     let MONEY_NUMBER_TEXT_FIELD_TAG = 1
-    
+    var isSelectedCategory = false
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     var managedTransactionObject:Transaction!
+    var fetchedResultsController: NSFetchedResultsController?
     weak var delegate: TransactionViewControllerDelegate?
     var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money:Double, group: Group?, wallet: Wallet?) = ("", 0.0, "", 0.0, nil, nil)
     var isNewTransaction = true
@@ -52,7 +61,12 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         self.automaticallyAdjustsScrollViewInsets = false
         self.configureNavigationBar()
         self.registerCell()
-        self.assignFromManagedObjectToCache()
+        if !isNewTransaction {
+            self.assignFromManagedObjectToCache()
+        } else {
+            transactionCache.date = NSDate().timeIntervalSinceReferenceDate
+            transactionCache.wallet = DataManager.shareInstance.currentWallet
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -96,10 +110,19 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         managedTransactionObject.group = transactionCache.group
         managedTransactionObject.wallet = transactionCache.wallet
         let currentDate = NSDate(timeIntervalSinceReferenceDate: managedTransactionObject.date)
-        let calender = NSCalendar.currentCalendar()
-        let components = calender.components([.Year, .Month, .Day], fromDate: currentDate)
-        managedTransactionObject.dayString = "\(components.day)" + "-" + "\(components.month)" + "-" + "\(components.year)"        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        managedTransactionObject.dayString = dateFormatter.stringFromDate(currentDate)
     }
+    
+    func insertTransaction() {
+        if let newTrans = DataManager.shareInstance.addNewTransaction(fetchedResultsController!) {
+            managedTransactionObject = newTrans
+        } else {
+            errorLabel.text = "Unable to insert new transaction"
+        }
+    }
+    
     func retrieveTextFromTextField() {
         let moneyIndexPath = NSIndexPath(forRow: RowType.MoneyNumber.rawValue, inSection: 0)
         let noteIndexPath = NSIndexPath(forRow: RowType.Note.rawValue, inSection: 0)
@@ -112,18 +135,46 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         }
         transactionCache.note = noteTextField.myTextField.text
     }
-    @IBAction func clickToCancel(sender: AnyObject) {
-        if isNewTransaction {
-            delegate?.delegateDoWhenDeleteTrans(managedTransactionObject)            
+    
+    func checkValue() -> ErrorValue {
+        let moneyIndexPath = NSIndexPath(forRow: RowType.MoneyNumber.rawValue, inSection: 0)
+        let moneyTextField = myTableView.cellForRowAtIndexPath(moneyIndexPath) as! TextCell
+        if let moneyString = moneyTextField.myTextField.text {
+            if let moneyNumber = Double(moneyString) {
+                if moneyNumber == 0.0 {
+                    return .NoMoney
+                }
+            }
         }
+        if !isSelectedCategory {
+            return .NoCategory
+        }
+        return .Pass
+    }
+    
+    @IBAction func clickToCancel(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func clickToSave(sender: AnyObject) {
         self.retrieveTextFromTextField()
-        self.assignFromCacheToManagedObject()
-        DataManager.shareInstance.saveManagedObjectContext()
-        navigationController?.popViewControllerAnimated(true)
+        switch self.checkValue()  {
+        case .Pass:
+            errorLabel.text = ""
+            if isNewTransaction {
+                self.insertTransaction()
+            }
+            self.assignFromCacheToManagedObject()
+            DataManager.shareInstance.saveManagedObjectContext()
+            navigationController?.popViewControllerAnimated(true)
+            break
+        case .NoCategory:
+            errorLabel.text = "You did not select category"
+            break
+        case .NoMoney:
+            errorLabel.text = "You did not select amount of money"
+            break
+        }
     }
     
     @IBAction func clickToDelete(sender: AnyObject) {
@@ -144,8 +195,8 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             }
             if indexPath.row == RowType.Category.rawValue{
                 if let group = transactionCache.group {
-                    let groupName = group.name!
-                    if groupName.isEmpty {
+                    let groupName = group.name
+                    if groupName!.isEmpty {
                         labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
                     } else {
                         labelCell?.textLabel?.text = groupName
@@ -180,7 +231,8 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
-                textCell.myTextField.text = "\(transactionCache.money)"
+                textCell.myTextField.placeholder = MONEY_PLACE_HOLDER
+
             }
             textCell.myTextField.delegate = self
             return textCell
@@ -208,21 +260,11 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case RowType.Category.rawValue:
-            let tc = TabPageViewController.create()
-            tc.navigationController?.setNavigationBarHidden(false, animated: true)
-            let leftButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: tc, action: #selector(TabPageViewController.clickToBack(_:)))
-            let searchButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: tc, action: #selector(TabPageViewController.clickToSearch(_:)))
-            let subModeButton = UIBarButtonItem(title: "Change Mode", style: UIBarButtonItemStyle.Plain, target: tc, action: #selector(TabPageViewController.clickToChangeModeDisplay(_:)))
-            tc.navigationItem.leftBarButtonItem = leftButton
-            tc.navigationItem.rightBarButtonItems = [searchButton, subModeButton]
-            let debtVC = DetailGroupSelected(nibName: "DetailGroupSelected", bundle: nil)
-            let expenseVC = DetailGroupSelected(nibName: "DetailGroupSelected", bundle: nil)
-            let incomeVC = DetailGroupSelected(nibName: "DetailGroupSelected", bundle: nil)
-            tc.tabItems = [(debtVC, DEBT_AND_LOAN_TITLE), (expenseVC, EXPENSE_TITLE), (incomeVC, INCOME_TITLE)]
-            var option = TabPageOption()
-            option.tabWidth = UIScreen.mainScreen().bounds.size.width/CGFloat(tc.tabItems.count)
-            tc.option = option
-            self.navigationController?.pushViewController(tc, animated: true)
+            let categoryVC = CategoriesViewController(nibName: "CategoriesViewController", bundle: nil)
+            categoryVC.managedObjectContext = AppDelegate.shareInstance.managedObjectContext
+            categoryVC.isFromTransaction = true
+            categoryVC.delegate = self
+            self.navigationController?.pushViewController(categoryVC, animated: true)
         case RowType.Contact.rawValue:
             let contactVC = ContactViewController(nibName: "ContactViewController", bundle: nil)
             contactVC.delegate = self
@@ -322,6 +364,17 @@ extension TabPageViewController: SearchGroupDelegate {
     }
     
     func doWhenRowSelected(group: Group) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+}
+
+extension TransactionViewController: CategoriesViewControllerDelegate {
+    func delegateDoWhenRowSelected(group: Group) {
+        let categoryCell = myTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        categoryCell?.imageView?.image = UIImage(named: group.imageName!)
+        categoryCell?.textLabel?.text = group.name
+        transactionCache.group = group
+        isSelectedCategory = true
         self.navigationController?.popViewControllerAnimated(true)
     }
 }

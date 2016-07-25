@@ -2,10 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddCategoriesViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
+                <outlet property="labelNote" destination="ZRq-38-g03" id="dY3-nz-uer"/>
                 <outlet property="tableView" destination="fqI-Ji-vkA" id="sG3-7I-uJz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,24 +18,49 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fqI-Ji-vkA">
-                    <rect key="frame" x="8" y="8" width="304" height="260"/>
+                    <rect key="frame" x="8" y="70" width="304" height="150"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="150" id="RdT-9f-13n"/>
                         <constraint firstAttribute="height" constant="260" id="bNt-cT-Xcb"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="bNt-cT-Xcb"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="uYL-KM-ZjM"/>
                         <outlet property="delegate" destination="-1" id="Dck-un-QXQ"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRq-38-g03">
+                    <rect key="frame" x="8" y="228" width="304" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="7if-7v-HBM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="fqI-Ji-vkA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Kfd-rC-Qxj"/>
+                <constraint firstItem="fqI-Ji-vkA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="QRm-Gx-aGv"/>
                 <constraint firstAttribute="trailing" secondItem="fqI-Ji-vkA" secondAttribute="trailing" constant="8" id="eWJ-zQ-bXt"/>
-                <constraint firstItem="fqI-Ji-vkA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="sAi-NZ-UBH"/>
+                <constraint firstItem="ZRq-38-g03" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="fwz-50-YOK"/>
+                <constraint firstItem="ZRq-38-g03" firstAttribute="top" secondItem="fqI-Ji-vkA" secondAttribute="bottom" constant="8" id="mWw-ty-XEi"/>
+                <constraint firstItem="fqI-Ji-vkA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="sAi-NZ-UBH"/>
+                <constraint firstAttribute="trailing" secondItem="ZRq-38-g03" secondAttribute="trailing" constant="8" id="sBd-Wd-7x9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="QRm-Gx-aGv"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="41" y="198"/>
         </view>
     </objects>
 </document>

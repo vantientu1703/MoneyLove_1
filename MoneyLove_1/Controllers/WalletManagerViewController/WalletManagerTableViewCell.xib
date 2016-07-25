@@ -13,13 +13,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-Yb-GA0">
-                        <rect key="frame" x="8" y="10" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="XsQ-5A-Soi"/>
-                            <constraint firstAttribute="width" constant="40" id="hKu-XN-rWE"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isc-h4-rD8">
                         <rect key="frame" x="56" y="10" width="207" height="21"/>
                         <constraints>
@@ -42,7 +35,24 @@
                             <constraint firstAttribute="height" constant="30" id="2iR-Xt-ZcB"/>
                         </constraints>
                         <state key="normal" title="Button"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2iR-Xt-ZcB"/>
+                            </mask>
+                        </variation>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-Yb-GA0">
+                        <rect key="frame" x="8" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="XsQ-5A-Soi"/>
+                            <constraint firstAttribute="width" constant="40" id="hKu-XN-rWE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XsQ-5A-Soi"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GBQ-h1-9fc" firstAttribute="top" secondItem="Isc-h4-rD8" secondAttribute="bottom" constant="-1" id="CHe-pY-lE3"/>
@@ -60,6 +70,13 @@
                     <constraint firstItem="0b6-Yb-GA0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="zU4-Xn-e8g"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="buttonShowEdit" destination="pLn-sc-cMf" id="cAg-C1-PLA"/>
+                <outlet property="imageViewWallet" destination="0b6-Yb-GA0" id="W0o-mW-bIS"/>
+                <outlet property="labelTotalMoney" destination="GBQ-h1-9fc" id="Zox-Yj-STX"/>
+                <outlet property="labelWalletName" destination="Isc-h4-rD8" id="PNP-m2-GH7"/>
+            </connections>
+            <point key="canvasLocation" x="213" y="288"/>
         </tableViewCell>
     </objects>
 </document>
