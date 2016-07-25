@@ -54,4 +54,10 @@ extension NSPredicate {
         }
         return predicate
     }
+    
+    class func predicateWithDebtOrLoanTransaction(isDebt: Bool) -> NSPredicate {
+        let stringToFetch = isDebt ? "Debt" : "Loan"
+        let predicate = NSPredicate(format: "group.name == %@", stringToFetch)
+        return predicate
+    }
 }

@@ -62,6 +62,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         self.configureNavigationBar()
         self.registerCell()
         if !isNewTransaction {
+            isSelectedCategory = true
             self.assignFromManagedObjectToCache()
         } else {
             transactionCache.date = NSDate().timeIntervalSinceReferenceDate
@@ -197,14 +198,21 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             }
             if indexPath.row == RowType.Category.rawValue{
                 if let group = transactionCache.group {
-                    let groupName = group.name
-                    if groupName!.isEmpty {
+                    let groupName = group.name!
+                    if groupName.isEmpty {
                         labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
                     } else {
                         labelCell?.textLabel?.text = groupName
                     }
+                    let groupImageName = group.imageName!
+                    if !groupImageName.isEmpty {
+                        labelCell?.imageView?.image = UIImage(named: groupImageName)
+                    } else {
+                        labelCell?.imageView?.image = UIImage(named: "default")
+                    }
                 } else {
                     labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
+                    labelCell?.imageView?.image = UIImage(named: "default")
                 }
             } else {
                 if let people = transactionCache.people {
@@ -234,7 +242,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
                 textCell.myTextField.placeholder = MONEY_PLACE_HOLDER
-
+                textCell.myTextField.text = "\(transactionCache.money)"
             }
             textCell.myTextField.delegate = self
             return textCell

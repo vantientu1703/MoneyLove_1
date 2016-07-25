@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchTransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
-                <outlet property="myTableView" destination="U3D-4y-TnW" id="lgV-Ib-tG8"/>
+                <outlet property="tableView" destination="U3D-4y-TnW" id="Av7-Sf-FYQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,20 +17,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-4y-TnW">
-                    <rect key="frame" x="0.0" y="64" width="320" height="284"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="379"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="YxX-gq-e9B"/>
+                        <outlet property="delegate" destination="-1" id="6qN-Al-hgA"/>
+                    </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brF-d4-Z9y">
-                    <rect key="frame" x="0.0" y="368" width="320" height="30"/>
-                    <state key="normal" title="Search"/>
+                    <rect key="frame" x="0.0" y="463" width="320" height="30"/>
+                    <state key="normal" title="Search Transaction"/>
                     <connections>
-                        <action selector="searchTransaction:" destination="-1" eventType="touchUpInside" id="iVc-IR-a04"/>
+                        <action selector="clickToSearch:" destination="-1" eventType="touchUpInside" id="dHf-F7-m1u"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="U3D-4y-TnW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Oeq-Wv-3AF"/>
+                <constraint firstItem="U3D-4y-TnW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="2/3" id="Oeq-Wv-3AF"/>
                 <constraint firstAttribute="trailing" secondItem="brF-d4-Z9y" secondAttribute="trailing" id="TIc-hv-mgt"/>
                 <constraint firstItem="U3D-4y-TnW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UCR-Ha-iIR"/>
                 <constraint firstItem="brF-d4-Z9y" firstAttribute="top" secondItem="U3D-4y-TnW" secondAttribute="bottom" constant="20" id="atq-EF-hBh"/>

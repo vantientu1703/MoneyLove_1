@@ -42,12 +42,14 @@ class CustomDateView: UIView {
         let owner = CustomDateViewOwner()
         NSBundle.mainBundle().loadNibNamed("CustomDateView", owner: owner, options: nil)
         owner.customDateView.delegate = viewController
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CustomDateView.clickToShowCalendar(_:)))
-        owner.customDateView.startingDate.addGestureRecognizer(tapGesture)
-        owner.customDateView.endingDate.addGestureRecognizer(tapGesture)
+        let tapGestureOfStartingDate = UITapGestureRecognizer(target: owner.customDateView, action: #selector(CustomDateView.clickToShowCalendar(_:)))
+        let tapGestureOfEndingDate = UITapGestureRecognizer(target: owner.customDateView, action: #selector(CustomDateView.clickToShowCalendar(_:)))
+        owner.customDateView.startingDate.addGestureRecognizer(tapGestureOfStartingDate)
+        owner.customDateView.endingDate.addGestureRecognizer(tapGestureOfEndingDate)
         let vc = viewController as? AllTransactionViewController
         if let vc = vc {
             owner.customDateView.frame = vc.view.bounds
+            owner.customDateView.tag = 5
             vc.view.addSubview(owner.customDateView)
         }
     }

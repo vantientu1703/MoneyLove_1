@@ -103,7 +103,7 @@ class TrendTableViewController: UITableViewController {
                                                      fromDate: fromDate,
                                                      toDate: toDate,
                                                      categoryType: categoryType,
-                                                     wallet: wallet,
+                                                     wallet: wallet,sortBy: SortBy.Date,
                                                      groupBy: groupBy,
                                                      functionType: functionType,
                                                      resultType: resultType)

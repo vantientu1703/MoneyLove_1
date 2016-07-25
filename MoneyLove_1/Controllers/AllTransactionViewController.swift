@@ -44,16 +44,16 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     let SEARCH_ACTION_TITLE = "Search"
     let CATEGORY_MODE = "Category Mode"
     let TIME_MODE = "Time Mode"
-    let HEIGHT_OF_NORMALCELL: CGFloat = 80
-    let HEIGHT_OF_HEADERCELL: CGFloat = 80
-    let HEIGHT_OF_OVERVIEWCELL: CGFloat = 200
+    let HEIGHT_OF_NORMALCELL: CGFloat = 50.0
+    let HEIGHT_OF_HEADERCELL: CGFloat = 50.0
+    let HEIGHT_OF_OVERVIEWCELL: CGFloat = 150.0
     var startDate: NSDate?
     var endDate: NSDate?
     var isSelectedStartDateLabel: Bool!
     var isCategoryMode = false {
         didSet {
             if fetchRequest != nil && managedObjectContext != nil {
-                fetchedResultController =  NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: isCategoryMode ? "group" : "dayString" , cacheName: CACHE_NAME)
+                fetchRequest = NSFetchRequest.getFetchRequest(Transaction.CLASS_NAME, fromDate: startDate, toDate: endDate, categoryType: .All, wallet: DataManager.shareInstance.currentWallet, sortBy: isCategoryMode ? .Category : .Date)
             }
         }
     }
@@ -64,7 +64,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
         didSet {
             if let titleLabel = titleLabel {
                 titleLabel.text = dateString
-                fetchRequest = NSFetchRequest.getFetchRequest(Transaction.CLASS_NAME, fromDate: startDate, toDate: endDate, categoryType: .All, wallet: DataManager.shareInstance.currentWallet)
+                fetchRequest = NSFetchRequest.getFetchRequest(Transaction.CLASS_NAME, fromDate: startDate, toDate: endDate, categoryType: .All, wallet: DataManager.shareInstance.currentWallet, sortBy: isCategoryMode ? .Category : .Date)
             }
         }
     }
@@ -86,7 +86,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     }
     var fetchRequest: NSFetchRequest! {
         didSet {
-            fetchedResultController =  NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: isCategoryMode ? "group" : "dayString", cacheName: self.CACHE_NAME)
+            fetchedResultController =  NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: isCategoryMode ? "group.name" : "dayString", cacheName: self.CACHE_NAME)
         }
     }
     var fetchedResultController: NSFetchedResultsController!
@@ -123,12 +123,11 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     
     func setUp() {
         dataTransaction = DataTransaction(frc: fetchedResultController, managedObjectContext: managedObjectContext)
-        myTableView.allowsSelection = false
         title = Transaction.CLASS_NAME
     }
     
     func changeWallet(notifi: NSNotification) {
-        fetchRequest = NSFetchRequest.getFetchRequest(Transaction.CLASS_NAME, fromDate: startDate, toDate: endDate, categoryType: .All, wallet: DataManager.shareInstance.currentWallet)
+        fetchRequest = NSFetchRequest.getFetchRequest(Transaction.CLASS_NAME, fromDate: startDate, toDate: endDate, categoryType: .All, wallet: DataManager.shareInstance.currentWallet, sortBy: isCategoryMode ? .Category : .Date)
     }
     
     func getRangeTime(index: Int, mode: TimeMode) {
@@ -157,6 +156,11 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
             startDate = month.0.startOfMonth()
             endDate = month.0.endOfMonth()
             dateString = month.1
+            break
+        case .Custom:
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            dateString = "\(dateFormatter.stringFromDate(startDate!)) - \(dateFormatter.stringFromDate(endDate!))"
             break
         default:
             startDate = NSDate.startOfDay(NSDate())
@@ -212,12 +216,10 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
                 self?.timeMode = .Month
                 })
             let custom = UIAlertAction(title: self?.CUSTOM_ACTION_TITLE, style: UIAlertActionStyle.Default, handler: {[weak self] (alertAction) -> () in
-                self?.timeMode = .Custom
                 dispatch_async(dispatch_get_main_queue(), {
                     CustomDateView.presentInViewController(self!)
                 })
                 })
-            
             rangeTimeAlertVC .addAction(day)
             rangeTimeAlertVC.addAction(week)
             rangeTimeAlertVC.addAction(month)
@@ -296,7 +298,6 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
 }
 
 extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
-    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         myTableView.beginUpdates()
     }
@@ -305,7 +306,6 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
         let indexSet = NSIndexSet(index: sectionIndex + 1)
         switch type {
         case NSFetchedResultsChangeType.Insert:
-            print(sectionIndex)
             myTableView.insertSections(indexSet, withRowAnimation: .Fade)
             break
         case NSFetchedResultsChangeType.Delete:
@@ -331,7 +331,6 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
         switch (type) {
         case .Insert:
             if let newIndexPathOfTableView = newIndexPathOfTableView {
-                print("\(newIndexPathOfTableView.row) - \(newIndexPathOfTableView.section)")
                 myTableView.insertRowsAtIndexPaths([newIndexPathOfTableView], withRowAnimation: .Fade)
             }
             break;
@@ -358,8 +357,8 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         myTableView.endUpdates()
+        DataManager.shareInstance.currentWallet.firstNumber = DataManager.shareInstance.getMoneyOfCurrentWallet()
     }
-    
 }
 
 extension AllTransactionViewController: TransactionViewControllerDelegate {
@@ -437,19 +436,30 @@ extension AllTransactionViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if indexPath.section != SectionType.OverviewSection.rawValue && indexPath.row != CellType.Header.rawValue {
+            let indexPathInFRC = self.convertIndexPathOfTableViewToIndexPathOfFetchedResultsController(indexPath)
+            let trans = fetchedResultController.objectAtIndexPath(indexPathInFRC)
+            let transVC = TransactionViewController(nibName: "TransactionViewController", bundle: nil)
+            transVC.delegate = self
+            transVC.isNewTransaction = false
+            transVC.managedTransactionObject = trans as! Transaction
+            navigationController?.pushViewController(transVC, animated: true)
+        }
     }
 }
 
 extension AllTransactionViewController: WalletManagerViewControllerDelegate {
     func didSelectWallet(wallet: Wallet) {
         DataManager.shareInstance.currentWallet = wallet
+        DataManager.shareInstance.saveManagedObjectContext()
     }
 }
 
 extension AllTransactionViewController: CustomDateViewDelegate {
     func delegateDoWhenSave(startingDate: NSDate, endingDate: NSDate) {
-        
+        startDate = startingDate
+        endDate = endingDate
+        timeMode = .Custom
     }
     
     func delegateDoWhenShowCalendarVC(label: UILabel) {
@@ -464,9 +474,21 @@ extension AllTransactionViewController: CustomDateViewDelegate {
 extension AllTransactionViewController: WWCalendarTimeSelectorProtocol {
     func WWCalendarTimeSelectorDone(selector: WWCalendarTimeSelector, date: NSDate) {
         if isSelectedStartDateLabel! {
-            startDate = date
+            if let customDateView = self.view.viewWithTag(5) as? CustomDateView {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                let startDateStr = dateFormatter.stringFromDate(date)
+                customDateView.startingDate.text = startDateStr
+                customDateView.start = date
+            }
         } else {
-            endDate = date
+            if let customDateView = self.view.viewWithTag(5) as? CustomDateView {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                let endDateStr = dateFormatter.stringFromDate(date)
+                customDateView.endingDate.text = endDateStr
+                customDateView.end = date
+            }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }

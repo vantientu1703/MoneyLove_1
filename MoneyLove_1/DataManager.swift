@@ -201,7 +201,7 @@ class DataManager : NSObject {
     
     func getMoneyOfCurrentWallet() -> Double {
         let currentWallet = self.currentWallet
-        var sum = self.currentWallet.firstNumber
+        var sum = 0.0
         if let setOfTransactions = currentWallet.transaction {
             for transaction in setOfTransactions {
                 let trans = transaction as! Transaction
@@ -233,4 +233,18 @@ class DataManager : NSObject {
         }
         return sum
     }
+    
+    func getAllWallets() -> [Wallet]? {
+        let fetchRequest = NSFetchRequest(entityName: Wallet.CLASS_NAME)
+        do {
+            if let wallets = try manageObjectContext.executeFetchRequest(fetchRequest) as? [Wallet] {
+                return wallets
+            }
+        } catch {
+            let requestError = error as NSError
+            print("\(requestError), \(requestError.userInfo)")
+        }
+        return nil
+    }
+
 }
