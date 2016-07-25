@@ -57,6 +57,7 @@ protocol AddCategoriesViewControllerDelegate: class {
 class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var labelNote: UILabel!
+    var statusEdit: String!
     var newIndexPath: NSIndexPath!
     let HEIGHT_CELL_ADDCATEGORIES: CGFloat = 50.0
     let IDENTIFIER_ADDCATEGORIES_TABLEVIEWCELL = "AddCategoriesTableViewCell"
@@ -74,6 +75,11 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
     var fetchedResultController: NSFetchedResultsController!
     weak var delegate: AddCategoriesViewControllerDelegate?
     let CACHE_NAME = "Group_Cache"
+    let CELL_DEFAULT = "CellDefault"
+    let EXPENSE = "Expense"
+    let INCOME = "Income"
+    var categoryItem: Group!
+    var arrTiltes: [String]!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configForCell()
@@ -83,6 +89,11 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
         self.view.addGestureRecognizer(tapGesture)
         self.automaticallyAdjustsScrollViewInsets = false
         tapGesture.delegate = self
+        if statusEdit == EDIT {
+            typeBool = self.categoryItem.type
+            self.imageNameWallet = (self.categoryItem.wallet?.imageName)!
+            self.imageNameCategory = self.categoryItem.imageName!
+        }
     }
     
     func tapped(sender: AnyObject) {
@@ -90,31 +101,60 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func doneAddCategotiesPress(sender: AnyObject) {
-        //TODO
         var pass: Bool = true
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
-        if (cell.txtCategoryName.text?.isEmpty)! {
-            self.labelNote.text = FILL_CATEGORY_NAME
-            pass = false
-        }
-        if imageNameCategory.isEmpty {
-            self.labelNote.text = SELECT_IMAGE_CATEGORY
-            pass = false
-        }
-        if imageNameWallet.isEmpty {
-            self.labelNote.text = SELECT_WALLET
-            pass = false
-        }
-        if pass {
-            let newCategory = DataManager.shareInstance.addNewGroup(self.fetchedResultController)
-            newCategory?.name = cell.txtCategoryName.text!
-            newCategory?.imageName = imageNameCategory
-            newCategory?.wallet = DataManager.shareInstance.currentWallet
-            newCategory?.type = typeBool
-            newCategory?.subType = typeBool ? 1 : 0
-            DataManager.shareInstance.saveManagedObjectContext()
-            self.navigationController?.popViewControllerAnimated(true)
+        if statusEdit == EDIT {
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
+            if let name = cell.txtCategoryName.text {
+                if name.isEmpty {
+                    self.labelNote.text = FILL_CATEGORY_NAME
+                    pass = false
+                }
+            } else {
+                pass = false
+            }
+            if imageNameCategory.isEmpty {
+                self.labelNote.text = SELECT_IMAGE_CATEGORY
+                pass = false
+            }
+            if imageNameWallet.isEmpty {
+                self.labelNote.text = SELECT_WALLET
+                pass = false
+            }
+            if pass {
+                self.categoryItem.name = cell.txtCategoryName.text!
+                self.categoryItem.imageName = imageNameCategory
+                self.categoryItem.wallet = DataManager.shareInstance.currentWallet
+                self.categoryItem.type = typeBool
+                self.categoryItem.subType = typeBool ? 1 : 0
+                DataManager.shareInstance.saveManagedObjectContext()
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        } else {
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
+            if (cell.txtCategoryName.text?.isEmpty)! {
+                self.labelNote.text = FILL_CATEGORY_NAME
+                pass = false
+            }
+            if imageNameCategory.isEmpty {
+                self.labelNote.text = SELECT_IMAGE_CATEGORY
+                pass = false
+            }
+            if imageNameWallet.isEmpty {
+                self.labelNote.text = SELECT_WALLET
+                pass = false
+            }
+            if pass {
+                let newCategory = DataManager.shareInstance.addNewGroup(self.fetchedResultController)
+                newCategory?.name = cell.txtCategoryName.text!
+                newCategory?.imageName = imageNameCategory
+                newCategory?.wallet = DataManager.shareInstance.currentWallet
+                newCategory?.type = typeBool
+                newCategory?.subType = typeBool ? 1 : 0
+                DataManager.shareInstance.saveManagedObjectContext()
+                self.navigationController?.popViewControllerAnimated(true)
+            }
         }
     }
     
@@ -133,27 +173,44 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
             let addCategoriesCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_ADDCATEGORIES_TABLEVIEWCELL, forIndexPath: indexPath) as! AddCategoriesTableViewCell
             addCategoriesCell.delegate = self
             addCategoriesCell.indexPath = indexPath
-            addCategoriesCell.txtCategoryName.placeholder = rowIndex.title()
+            if statusEdit == EDIT {
+                addCategoriesCell.txtCategoryName.text = self.categoryItem.name
+                addCategoriesCell.buttonImageCategory.setBackgroundImage(UIImage(named: self.categoryItem.imageName!), forState: UIControlState.Normal)
+            } else {
+                addCategoriesCell.txtCategoryName.placeholder = rowIndex.title()
+                addCategoriesCell.buttonImageCategory.setBackgroundImage(UIImage(named: rowIndex.imageName()), forState: UIControlState.Normal)
+            }
             addCategoriesCell.txtCategoryName.font = UIFont.systemFontOfSize(rowIndex.fontSize())
             addCategoriesCell.txtCategoryName.delegate = self
-            addCategoriesCell.buttonImageCategory.setBackgroundImage(UIImage(named: rowIndex.imageName()), forState: UIControlState.Normal)
             return addCategoriesCell
         } else {
-            var cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+            var cell = tableView.dequeueReusableCellWithIdentifier(CELL_DEFAULT)
             if cell == nil {
-                cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+                cell = UITableViewCell(style: .Default, reuseIdentifier: CELL_DEFAULT)
             }
-            cell?.imageView?.image = UIImage(named: rowIndex.imageName())
-            cell?.textLabel?.text = rowIndex.title()
+            if statusEdit == EDIT {
+                if indexPath.row == 1 {
+                    if self.categoryItem.type {
+                        cell!.textLabel!.text = EXPENSE
+                    } else {
+                        cell!.textLabel!.text = INCOME
+                    }
+                    cell!.imageView!.image = UIImage(named: rowIndex.imageName())
+                } else {
+                    cell!.imageView!.image = UIImage(named: (self.categoryItem.wallet?.imageName)!)
+                    cell!.textLabel!.text = self.categoryItem.wallet?.name
+                }
+            } else {
+                cell?.imageView?.image = UIImage(named: rowIndex.imageName())
+                cell?.textLabel?.text = rowIndex.title()
+            }
             return cell!
         }
-        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return HEIGHT_CELL_ADDCATEGORIES
     }
-    
     //MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         typeBool = !typeBool
@@ -163,9 +220,9 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
         case Row.CategoryType.rawValue:
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             if typeBool {
-                cell?.textLabel?.text = "Expense"
+                cell?.textLabel?.text = EXPENSE
             } else {
-                cell?.textLabel?.text = "Income"
+                cell?.textLabel?.text = INCOME
             }
             break
         case Row.CategoryWallet.rawValue:

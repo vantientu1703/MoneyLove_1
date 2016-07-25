@@ -19,6 +19,8 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     let IDENTIFIER_WALLET_MANAGER = "WalletManagerTableViewCell"
     let TITLE_WALLET_MANAGER = "Wallet Manager"
     let TITLE_BUTTON_LEFT = "Left"
+    let ACTION_DELETE = "Delete"
+    let ACTION_EDIT = "Edit"
     let HEIHT_CELL_WALLETMANAGER: CGFloat = 60.0
     weak var delegate: WalletManagerViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
@@ -76,7 +78,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
         tableView.registerClass(WalletManagerTableViewCell.classForCoder(), forCellReuseIdentifier: IDENTIFIER_WALLET_MANAGER)
         tableView.registerNib(UINib.init(nibName: IDENTIFIER_WALLET_MANAGER, bundle: nil), forCellReuseIdentifier: IDENTIFIER_WALLET_MANAGER)
     }
-        
+    
     func cancelButton(sender: AnyObject) {
         if statusPush == "push"{
             self.navigationController?.popViewControllerAnimated(true)
@@ -100,12 +102,47 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
         return HEIHT_CELL_WALLETMANAGER
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .Normal, title: ACTION_DELETE) { (action, index) in
+            let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete wallet?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
+                let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath)
+                DataManager.shareInstance.removeWallet(walletItem as! Wallet, fetchedResultsController: self!.fetchedResultController)
+                })
+            let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Destructive, handler: { (UIAlertAction) in
+            })
+            alertControlelr.addAction(actionOk)
+            alertControlelr.addAction(actionCancel)
+            self.presentViewController(alertControlelr, animated: true, completion: nil)
+        }
+        deleteAction.backgroundColor = UIColor.redColor()
+        
+        let editAction = UITableViewRowAction(style: .Normal, title: ACTION_EDIT) { [weak self](action, index) in
+            let addWalletVC = AddWalletViewController()
+            addWalletVC.statusEdit = EDIT
+            let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath) as! Wallet
+            addWalletVC.walletItem = walletItem
+            self!.presentViewController(UINavigationController.init(rootViewController: addWalletVC), animated: true, completion: nil)
+        }
+        editAction.backgroundColor = UIColor.greenColor()
+        return [deleteAction, editAction]
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if statusPush == "push" {
-            let wallet = self.fetchedResultController.objectAtIndexPath(indexPath) as! Wallet
-            self.delegate?.didSelectWallet(wallet)
-            self.navigationController?.popViewControllerAnimated(true)
+            if let wallet = self.fetchedResultController.objectAtIndexPath(indexPath) as? Wallet {
+                self.delegate?.didSelectWallet(wallet)
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        } else {
+            if let walletItem = self.fetchedResultController.objectAtIndexPath(indexPath) as? Wallet {
+                DataManager.shareInstance.currentWallet = walletItem
+            }
         }
     }
 }

@@ -89,6 +89,7 @@
 		E5E060681D44FF6700AF95F9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E060661D44FF6700AF95F9 /* Group.swift */; };
 		E5E0606B1D44FF8A00AF95F9 /* Wallet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E060691D44FF8A00AF95F9 /* Wallet+CoreDataProperties.swift */; };
 		E5E0606C1D44FF8A00AF95F9 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0606A1D44FF8A00AF95F9 /* Wallet.swift */; };
+		E5E0606E1D4631AF00AF95F9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0606D1D4631AF00AF95F9 /* Constant.swift */; };
 		E5FEA4D61D3F4CB2001A806E /* purse.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CB1D3F4CB2001A806E /* purse.png */; };
 		E5FEA4D71D3F4CB2001A806E /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CC1D3F4CB2001A806E /* wallet.png */; };
 		E5FEA4D81D3F4CB2001A806E /* wallet1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CD1D3F4CB2001A806E /* wallet1.png */; };
@@ -260,6 +261,7 @@
 		E5E060661D44FF6700AF95F9 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E5E060691D44FF8A00AF95F9 /* Wallet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Wallet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5E0606A1D44FF8A00AF95F9 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		E5E0606D1D4631AF00AF95F9 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = Controllers/Constant.swift; sourceTree = "<group>"; };
 		E5FEA4CB1D3F4CB2001A806E /* purse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purse.png; path = Resources/wallet/purse.png; sourceTree = "<group>"; };
 		E5FEA4CC1D3F4CB2001A806E /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wallet.png; path = Resources/wallet/wallet.png; sourceTree = "<group>"; };
 		E5FEA4CD1D3F4CB2001A806E /* wallet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wallet1.png; path = Resources/wallet/wallet1.png; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 			children = (
 				EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */,
 				EF3527191D2CAB5F009D6F58 /* Main.storyboard */,
+				E5E0606D1D4631AF00AF95F9 /* Constant.swift */,
 				514783441D42004000E50A04 /* Extension */,
 				EF35274D1D2CB612009D6F58 /* Manager */,
 				EF35274C1D2CB604009D6F58 /* Controllers */,
@@ -1146,6 +1149,7 @@
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,
 				51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */,
 				5153B1EF1D2F8B2400413269 /* PieChartTableViewCell.swift in Sources */,
+				E5E0606E1D4631AF00AF95F9 /* Constant.swift in Sources */,
 				514938981D3F632E0010BDF4 /* DataTransaction.swift in Sources */,
 				5153B1FB1D2F8B9000413269 /* TrendTableViewCell.swift in Sources */,
 				516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */,
