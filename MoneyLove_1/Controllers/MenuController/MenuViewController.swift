@@ -35,7 +35,6 @@ enum VIEWCONTROLLER: Int {
         switch self {
         case .TransactionViewControllers:
             let customPageVC = CustomPageViewController()
-            let menuVC = MenuViewController()
             return customPageVC
         case DebtsViewControllers:
             let debtsVC = DebtViewController()
@@ -53,14 +52,33 @@ enum VIEWCONTROLLER: Int {
             return categoriesVC
         }
     }
+    
+    func imageName() -> String {
+        switch self {
+        case .TransactionViewControllers:
+            return "ic_transaction"
+        case DebtsViewControllers:
+            return "ic_debt"
+        case TrendsViewControllers:
+            return "ic_trends"
+        case MonthlyReportViewControllers:
+            return "ic_report"
+        case CategoriesViewControllers:
+            return "ic_category"
+        }
+    }
 }
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var labelTotalMoneyOfWallet: UILabel!
+    @IBOutlet weak var labelWalletName: UILabel!
+    @IBOutlet weak var imageViewWallet: UIImageView!
     weak var delegate: MenuViewControllerDelegate?
     var selectVC: SelectWalletViewController!
     var isShowSelectWallet: Bool?
     let arrViewControllers = VIEWCONTROLLER.allViewControlles
+    let IDENTIFIER_MENU_TABLEVIEW_CELL = "MenuViewControllerTableViewCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonShowWalletList: UIButton!
     override func viewDidLoad() {
@@ -69,10 +87,33 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         self.regisClassForCell()
+        self.getWalletDefault()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.getWalletDefault), name: POST_CURRENT_WALLET, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.hiddenSelectWalletViewController), name: MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+    }
+    
+    func hiddenSelectWalletViewController() {
+        self.isShowSelectWallet = true
+        self.showSelectWalletViewController()
+    }
+    
+    func getWalletDefault() {
+        if let wallet = DataManager.shareInstance.currentWallet {
+            self.imageViewWallet.image = UIImage(named: wallet.imageName!)
+            self.labelWalletName.text = wallet.name
+            if wallet.firstNumber >= 0 {
+                self.labelTotalMoneyOfWallet.textColor = UIColor.blueColor()
+                self.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber) đ"
+            } else {
+                self.labelTotalMoneyOfWallet.textColor = UIColor.redColor()
+                self.labelTotalMoneyOfWallet.text = "\(-wallet.firstNumber) đ"
+            }
+        }
     }
     
     func regisClassForCell() {
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellDefault")
+        tableView.registerClass(MenuViewControllerTableViewCell.classForCoder(), forCellReuseIdentifier: IDENTIFIER_MENU_TABLEVIEW_CELL)
+        tableView.registerNib(UINib(nibName: IDENTIFIER_MENU_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: IDENTIFIER_MENU_TABLEVIEW_CELL)
     }
     // MARK: UITableViewDataSources
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -84,10 +125,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = "CellDefault"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath:indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_MENU_TABLEVIEW_CELL, forIndexPath:indexPath) as! MenuViewControllerTableViewCell
         let titleIndex = arrViewControllers[indexPath.row]
-        cell.textLabel?.text = titleIndex.title()
+        cell.labelTitle?.text = titleIndex.title()
+        cell.iamgeViewControlelr.image = UIImage(named: titleIndex.imageName())
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -120,7 +161,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             selectVC.managedObjectContext = appDelegate.managedObjectContext
             selectVC.view.frame = CGRectMake(0.0, 130.0, UIScreen.mainScreen().bounds.size.width - 100.0, 0.0)
             UIView.animateWithDuration(10.0, animations: { () -> Void in
-                self.selectVC.view.frame = CGRectMake(0.0, 130.0, UIScreen.mainScreen().bounds.size.width - 100.0, UIScreen.mainScreen().bounds.size.height - 130.0)
+                self.selectVC.view.frame = CGRectMake(0.0, 125.0, UIScreen.mainScreen().bounds.size.width - 100.0, UIScreen.mainScreen().bounds.size.height - 130.0)
             }) { Bool -> Void in
                 self.addChildViewController(self.selectVC)
                 self.selectVC.didMoveToParentViewController(self)
@@ -130,10 +171,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         } else {
             self.isShowSelectWallet = false
-            self.selectVC.removeFromParentViewController()
-            self.selectVC.view.removeFromSuperview()
-            self.selectVC = nil
-            self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 2))
+            if self.selectVC != nil {
+                self.selectVC.removeFromParentViewController()
+                self.selectVC.view.removeFromSuperview()
+                self.selectVC = nil
+                self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 2))
+            }
         }
     }
 }
+
+

@@ -74,6 +74,17 @@
 		51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC25341D2E36350067CC71 /* ActionTableViewCell.swift */; };
 		51FC25371D2E36350067CC71 /* ActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC25351D2E36350067CC71 /* ActionTableViewCell.xib */; };
 		8D89A8B7CFEB1A8D61159DD5 /* Pods_MoneyLove_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB1894169015666F2C78750 /* Pods_MoneyLove_1.framework */; };
+		E5279F0B1D46F76A0018F9BE /* ic_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F0A1D46F76A0018F9BE /* ic_cloud.png */; };
+		E5279F0D1D46FCA60018F9BE /* ic_total_money.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F0C1D46FCA60018F9BE /* ic_total_money.png */; };
+		E5279F101D46FE760018F9BE /* ic_add.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F0E1D46FE760018F9BE /* ic_add.png */; };
+		E5279F111D46FE760018F9BE /* ic_manager.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F0F1D46FE760018F9BE /* ic_manager.png */; };
+		E5279F171D4703450018F9BE /* ic_category.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F121D4703450018F9BE /* ic_category.png */; };
+		E5279F181D4703450018F9BE /* ic_debt.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F131D4703450018F9BE /* ic_debt.png */; };
+		E5279F191D4703450018F9BE /* ic_report.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F141D4703450018F9BE /* ic_report.png */; };
+		E5279F1A1D4703450018F9BE /* ic_transaction.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F151D4703450018F9BE /* ic_transaction.png */; };
+		E5279F1B1D4703450018F9BE /* ic_trends.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F161D4703450018F9BE /* ic_trends.png */; };
+		E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5279F1C1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift */; };
+		E5279F1F1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5279F1D1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib */; };
 		E5AD1A891D3F0F480088BBF7 /* IconManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A871D3F0F480088BBF7 /* IconManagerViewController.swift */; };
 		E5AD1A8A1D3F0F480088BBF7 /* IconManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AD1A881D3F0F480088BBF7 /* IconManagerViewController.xib */; };
 		E5AD1A8D1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A8B1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift */; };
@@ -246,6 +257,17 @@
 		51FC25351D2E36350067CC71 /* ActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActionTableViewCell.xib; path = Controllers/TrendTableViewController/Cell/ActionTableViewCell.xib; sourceTree = "<group>"; };
 		9452D473482F06A265D66385 /* Pods-MoneyLove_1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyLove_1.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyLove_1/Pods-MoneyLove_1.release.xcconfig"; sourceTree = "<group>"; };
 		DDB1894169015666F2C78750 /* Pods_MoneyLove_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyLove_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5279F0A1D46F76A0018F9BE /* ic_cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_cloud.png; path = Resources/ic_cloud.png; sourceTree = "<group>"; };
+		E5279F0C1D46FCA60018F9BE /* ic_total_money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_total_money.png; path = Resources/ic_total_money.png; sourceTree = "<group>"; };
+		E5279F0E1D46FE760018F9BE /* ic_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_add.png; path = Resources/ic_add.png; sourceTree = "<group>"; };
+		E5279F0F1D46FE760018F9BE /* ic_manager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_manager.png; path = Resources/ic_manager.png; sourceTree = "<group>"; };
+		E5279F121D4703450018F9BE /* ic_category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_category.png; path = Resources/ic_category.png; sourceTree = "<group>"; };
+		E5279F131D4703450018F9BE /* ic_debt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_debt.png; path = Resources/ic_debt.png; sourceTree = "<group>"; };
+		E5279F141D4703450018F9BE /* ic_report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_report.png; path = Resources/ic_report.png; sourceTree = "<group>"; };
+		E5279F151D4703450018F9BE /* ic_transaction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_transaction.png; path = Resources/ic_transaction.png; sourceTree = "<group>"; };
+		E5279F161D4703450018F9BE /* ic_trends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_trends.png; path = Resources/ic_trends.png; sourceTree = "<group>"; };
+		E5279F1C1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewControllerTableViewCell.swift; path = Controllers/MenuController/MenuViewControllerTableViewCell.swift; sourceTree = "<group>"; };
+		E5279F1D1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewControllerTableViewCell.xib; path = Controllers/MenuController/MenuViewControllerTableViewCell.xib; sourceTree = "<group>"; };
 		E5AD1A871D3F0F480088BBF7 /* IconManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconManagerViewController.swift; path = Controllers/IconManagerViewController/IconManagerViewController.swift; sourceTree = "<group>"; };
 		E5AD1A881D3F0F480088BBF7 /* IconManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IconManagerViewController.xib; path = Controllers/IconManagerViewController/IconManagerViewController.xib; sourceTree = "<group>"; };
 		E5AD1A8B1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconManagerCollectionViewCell.swift; path = Controllers/IconManagerViewController/IconManagerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -711,6 +733,15 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5279F121D4703450018F9BE /* ic_category.png */,
+				E5279F131D4703450018F9BE /* ic_debt.png */,
+				E5279F141D4703450018F9BE /* ic_report.png */,
+				E5279F151D4703450018F9BE /* ic_transaction.png */,
+				E5279F161D4703450018F9BE /* ic_trends.png */,
+				E5279F0E1D46FE760018F9BE /* ic_add.png */,
+				E5279F0F1D46FE760018F9BE /* ic_manager.png */,
+				E5279F0C1D46FCA60018F9BE /* ic_total_money.png */,
+				E5279F0A1D46F76A0018F9BE /* ic_cloud.png */,
 				E5FEA4CA1D3F4C97001A806E /* shopping */,
 				E5FEA4C91D3F4C92001A806E /* wallet */,
 				E5FEA4C81D3F4C89001A806E /* food */,
@@ -748,6 +779,8 @@
 				EF5C47FD1D2E49CA0040B82E /* RootViewController.swift */,
 				EF5C48171D2E58890040B82E /* MenuViewController.swift */,
 				EF5C48181D2E58890040B82E /* MenuViewController.xib */,
+				E5279F1C1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift */,
+				E5279F1D1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib */,
 				EFCF63331D2F4540002BB378 /* SelectWalletView */,
 			);
 			name = MenuViewController;
@@ -941,6 +974,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCF633F1D2F7FFE002BB378 /* WalletTableViewCell.xib in Resources */,
+				E5279F0B1D46F76A0018F9BE /* ic_cloud.png in Resources */,
 				E5FEA4FB1D3F4CD6001A806E /* cart.png in Resources */,
 				E5FEA50A1D3F5BD0001A806E /* ic_type.png in Resources */,
 				E5FEA4EE1D3F4CC3001A806E /* scarf.png in Resources */,
@@ -951,8 +985,10 @@
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
 				EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */,
 				EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */,
+				E5279F181D4703450018F9BE /* ic_debt.png in Resources */,
 				E5FEA4DD1D3F4CB2001A806E /* wallet6.png in Resources */,
 				EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */,
+				E5279F0D1D46FCA60018F9BE /* ic_total_money.png in Resources */,
 				516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */,
 				516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */,
 				E5FEA5061D3F5AB0001A806E /* ic_question.png in Resources */,
@@ -975,14 +1011,19 @@
 				E5FEA5001D3F4CD6001A806E /* store.png in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */,
 				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
+				E5279F101D46FE760018F9BE /* ic_add.png in Resources */,
 				5153B1EE1D2F8B2400413269 /* NetIcomeTableViewCell.xib in Resources */,
 				E5FEA4F01D3F4CC3001A806E /* watermelon.png in Resources */,
+				E5279F111D46FE760018F9BE /* ic_manager.png in Resources */,
+				E5279F171D4703450018F9BE /* ic_category.png in Resources */,
 				E5FEA4DC1D3F4CB2001A806E /* wallet5.png in Resources */,
 				51312F081D35CD8B00775EFD /* MyPageViewController.xib in Resources */,
 				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
 				514518201D3C6E0F00185609 /* DateRequestedCell.xib in Resources */,
+				E5279F191D4703450018F9BE /* ic_report.png in Resources */,
 				51312F0A1D35CD8B00775EFD /* PageReportViewController.xib in Resources */,
 				E5FEA4E91D3F4CC3001A806E /* apple.png in Resources */,
+				E5279F1A1D4703450018F9BE /* ic_transaction.png in Resources */,
 				E5FEA4E01D3F4CB2001A806E /* wallet9.png in Resources */,
 				E5FEA5021D3F4DAA001A806E /* pricetag.png in Resources */,
 				E5FEA4DE1D3F4CB2001A806E /* wallet7.png in Resources */,
@@ -1002,6 +1043,7 @@
 				5153B1F01D2F8B2400413269 /* PieChartTableViewCell.xib in Resources */,
 				51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */,
 				E5FEA4FA1D3F4CD6001A806E /* car.png in Resources */,
+				E5279F1F1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib in Resources */,
 				E5FEA5091D3F5BD0001A806E /* ic_parent.png in Resources */,
 				51F0E6E01D3779E900102190 /* DatePickerView.xib in Resources */,
 				5153B1EC1D2F8B2400413269 /* ItemReportTableViewCell.xib in Resources */,
@@ -1011,6 +1053,7 @@
 				516040E81D3768FC00AB9A74 /* ContactViewController.xib in Resources */,
 				5145181C1D3C6BA100185609 /* OverViewCell.xib in Resources */,
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
+				E5279F1B1D4703450018F9BE /* ic_trends.png in Resources */,
 				E5FEA4D61D3F4CB2001A806E /* purse.png in Resources */,
 				E5FEA4EB1D3F4CC3001A806E /* groceries.png in Resources */,
 				5153B1EA1D2F8B2400413269 /* BalanceTableViewCell.xib in Resources */,
@@ -1146,6 +1189,7 @@
 				51312F091D35CD8B00775EFD /* PageReportViewController.swift in Sources */,
 				E5E0605F1D44FEC700AF95F9 /* Transaction+CoreDataProperties.swift in Sources */,
 				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
+				E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */,
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,
 				51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */,
 				5153B1EF1D2F8B2400413269 /* PieChartTableViewCell.swift in Sources */,

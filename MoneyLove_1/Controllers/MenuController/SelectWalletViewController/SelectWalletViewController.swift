@@ -26,6 +26,8 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
     let IDENTIFIER_BOTTOMTABLEVIEWCELL = "BottomTableViewCell"
     let TITLE_ADD_WALLET = "ADD WALLET"
     let TITLE_WALLET_MANAGER = "WALLET MANAGER"
+    let IC_ADD_WALLET = "ic_add"
+    let IC_MANAGER_WALLET = "ic_manager"
     let arrSections = IndexPathSection.arrSection
     @IBOutlet weak var tableView: UITableView!
     var managedObjectContext: NSManagedObjectContext!
@@ -97,7 +99,7 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
                 let indexPath2 = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section - 1)
                 let wallet = self.fetchedResultController.objectAtIndexPath(indexPath2) as! Wallet
                 walletCell.labelNameWallet.text = wallet.name
-                if wallet.firstNumber > 0 {
+                if wallet.firstNumber >= 0 {
                     walletCell.labelTotalMoneyOfWallet.textColor = UIColor.blueColor()
                     walletCell.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber) đ"
                 } else {
@@ -111,8 +113,10 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
                 let bottomCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_BOTTOMTABLEVIEWCELL, forIndexPath: indexPath) as! BottomTableViewCell
                 if indexPath.row == 0 {
                     bottomCell.labelAddWallet.text = TITLE_ADD_WALLET
+                    bottomCell.imageViewBottom.image = UIImage(named: IC_ADD_WALLET)
                 } else {
                     bottomCell.labelAddWallet.text = TITLE_WALLET_MANAGER
+                    bottomCell.imageViewBottom.image = UIImage(named: IC_MANAGER_WALLET)
                 }
                 return bottomCell
             default:
@@ -152,6 +156,8 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
             let insteaIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
             let walletItem = self.fetchedResultController.objectAtIndexPath(insteaIndexPath) as! Wallet
             DataManager.shareInstance.currentWallet = walletItem
+            DataManager.shareInstance.saveManagedObjectContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
         }
     }
 }
