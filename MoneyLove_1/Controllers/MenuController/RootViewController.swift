@@ -25,8 +25,20 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.contentViewShadowEnabled = true
         let customPageVC = CustomPageViewController()
         let menuVC = MenuViewController()
-        let nav = UINavigationController(rootViewController:customPageVC)
-        self.contentViewController = nav
+        if let arrWallets = DataManager.shareInstance.getAllWallets() {
+            let number = arrWallets.count
+            if number != 0 {
+                let nav = UINavigationController(rootViewController:customPageVC)
+                self.contentViewController = nav
+            } else {
+                let walletManagerVC = WalletManagerViewController()
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                walletManagerVC.managedObjectContext = appDelegate.managedObjectContext
+                walletManagerVC.statusPush = WALLET_MANAGER_ISEMPTY
+                let nav = UINavigationController(rootViewController:walletManagerVC)
+                self.contentViewController = nav
+            }
+        }
         self.leftMenuViewController = menuVC
     }
     

@@ -16,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         DataManager.shareInstance.addWalletDefault()
         DataManager.shareInstance.addCategoriesDefault()
-        DataManager.shareInstance.currentWallet = DataManager.shareInstance.getWalletDefault()
+        if let arrWallets = DataManager.shareInstance.getAllWallets() {
+            let number = arrWallets.count
+            if number > 0 {
+                DataManager.shareInstance.currentWallet = DataManager.shareInstance.getWalletDefault()
+            }
+        }
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = UIColor.whiteColor()
         navigationBarAppearace.barTintColor = UIColor.greenColor()

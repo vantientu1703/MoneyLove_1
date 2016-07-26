@@ -101,11 +101,14 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
                 walletCell.labelNameWallet.text = wallet.name
                 if wallet.firstNumber >= 0 {
                     walletCell.labelTotalMoneyOfWallet.textColor = UIColor.blueColor()
-                    walletCell.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber) đ"
+                    let number = Int(wallet.firstNumber)
+                    let myString = number.stringFormatedWithSepator
+                    walletCell.labelTotalMoneyOfWallet.text = "\(myString) đ"
                 } else {
-                    let money = -wallet.firstNumber
                     walletCell.labelTotalMoneyOfWallet.textColor = UIColor.redColor()
-                    walletCell.labelTotalMoneyOfWallet.text = "\(money) đ"
+                    let number = Int(-wallet.firstNumber)
+                    let myString = number.stringFormatedWithSepator
+                    walletCell.labelTotalMoneyOfWallet.text = "\(myString) đ"
                 }
                 walletCell.imageViewWallet.image = UIImage(named: wallet.imageName!)
                 return walletCell

@@ -17,7 +17,17 @@ class WalletManagerTableViewCell: UITableViewCell {
     func configureCell(data: DataWalletManager, indexPath: NSIndexPath) {
         let wallet = data.getObjectAtIndexPath(indexPath)
         self.labelWalletName.text = wallet.name
-        self.labelTotalMoney.text = "\(wallet.firstNumber)"
+        if wallet.firstNumber >= 0 {
+            let number = Int(wallet.firstNumber)
+            let myString = number.stringFormatedWithSepator
+            self.labelTotalMoney.text = "\(myString) đ"
+            self.labelTotalMoney.textColor = UIColor.blueColor()
+        } else {
+            let number = Int(-wallet.firstNumber)
+            let myString = number.stringFormatedWithSepator
+            self.labelTotalMoney.text = "\(myString) đ"
+            self.labelTotalMoney.textColor = UIColor.redColor()
+        }
         self.imageViewWallet.image = UIImage(named: wallet.imageName!)
 
     }

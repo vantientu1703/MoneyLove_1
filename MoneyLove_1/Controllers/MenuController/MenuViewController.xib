@@ -19,11 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NYC-8O-dAO">
-                    <rect key="frame" x="0.0" y="0.0" width="220" height="60"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYC-8O-dAO">
+                    <rect key="frame" x="0.0" y="0.0" width="220" height="58"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_cloud.png" translatesAutoresizingMaskIntoConstraints="NO" id="P2X-uL-5Tm">
-                            <rect key="frame" x="8" y="10" width="40" height="40"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cloud.png" translatesAutoresizingMaskIntoConstraints="NO" id="P2X-uL-5Tm">
+                            <rect key="frame" x="8" y="10" width="40" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="TI9-Ry-cRz"/>
                                 <constraint firstAttribute="height" constant="40" id="ggx-zi-EKd"/>
@@ -55,7 +55,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="P2X-uL-5Tm" secondAttribute="bottom" constant="10" id="0el-9w-BTe"/>
+                        <constraint firstAttribute="bottom" secondItem="P2X-uL-5Tm" secondAttribute="bottom" id="0el-9w-BTe"/>
                         <constraint firstItem="Zin-1A-Bfu" firstAttribute="leading" secondItem="P2X-uL-5Tm" secondAttribute="trailing" constant="8" id="4ba-OL-bWP"/>
                         <constraint firstItem="0Jh-BD-Bi7" firstAttribute="leading" secondItem="P2X-uL-5Tm" secondAttribute="trailing" constant="8" id="FG0-qI-NMD"/>
                         <constraint firstItem="0Jh-BD-Bi7" firstAttribute="top" secondItem="NYC-8O-dAO" secondAttribute="top" constant="15" id="N7s-rW-NhD"/>
@@ -73,8 +73,8 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGh-qc-AME">
-                    <rect key="frame" x="0.0" y="65" width="220" height="55"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGh-qc-AME">
+                    <rect key="frame" x="0.0" y="63" width="220" height="55"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uX-Q0-T5j" customClass="UIButton">
                             <rect key="frame" x="0.0" y="0.0" width="220" height="55"/>
@@ -152,8 +152,8 @@
                         <constraint firstAttribute="height" constant="55" id="uMl-RO-oHq"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9oW-e0-wBN">
-                    <rect key="frame" x="0.0" y="120" width="220" height="440"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9oW-e0-wBN">
+                    <rect key="frame" x="0.0" y="118" width="220" height="442"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>

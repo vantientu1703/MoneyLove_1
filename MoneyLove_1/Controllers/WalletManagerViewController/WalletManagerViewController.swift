@@ -43,6 +43,16 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
         super.viewDidLoad()
         addButtonWallet.layer.cornerRadius = 20.0
         self.automaticallyAdjustsScrollViewInsets = false
+        if let arrWallets = DataManager.shareInstance.getAllWallets() {
+            let number = arrWallets.count
+            if number == 0 {
+                let addWallet = AddWalletViewController()
+                addWallet.fetchedResultController = self.fetchedResultController
+                addWallet.statusEdit = WALLET_MANAGER_ISEMPTY
+                let nav = UINavigationController(rootViewController: addWallet)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+        }
         self.configureNavigationBar()
         self.performRequest()
     }
@@ -70,7 +80,8 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     
     func configureNavigationBar() {
         self.title = TITLE_WALLET_MANAGER
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(WalletManagerViewController.cancelButton(_:)));
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain,
+            target: self, action: #selector(WalletManagerViewController.cancelButton(_:)));
         self.configRegisterForCell()
     }
     
@@ -80,13 +91,18 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     }
     
     func cancelButton(sender: AnyObject) {
-        if statusPush == "push"{
+        if statusPush == "push" {
             self.navigationController?.popViewControllerAnimated(true)
+        } else if statusPush == WALLET_MANAGER_ISEMPTY {
+            self.sideMenuViewController.presentLeftMenuViewController()
         } else {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
+    override func presentLeftMenuViewController(sender: AnyObject!) {
+        self.sideMenuViewController.presentLeftMenuViewController()
+    }
     //MARK: UITableViewDataSources
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.getNumberOfObject()
@@ -104,11 +120,30 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .Normal, title: ACTION_DELETE) { (action, index) in
-            let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete wallet?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete wallet?",
+                preferredStyle: UIAlertControllerStyle.ActionSheet)
             let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
                 let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath)
                 DataManager.shareInstance.removeWallet(walletItem as! Wallet, fetchedResultsController: self!.fetchedResultController)
                 NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+                DataManager.shareInstance.saveManagedObjectContext()
+                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+                if let arrWallets = DataManager.shareInstance.getAllWallets() {
+                    let number = arrWallets.count
+                    if number == 0 {
+                        let addWalletVC = AddWalletViewController()
+                        addWalletVC.fetchedResultController = self?.fetchedResultController
+                        addWalletVC.statusEdit = WALLET_MANAGER_ISEMPTY
+                        let nav = UINavigationController(rootViewController: addWalletVC)
+                        self?.presentViewController(nav, animated: true, completion: nil)
+                    } else {
+                        if walletItem as! Wallet == DataManager.shareInstance.currentWallet {
+                            let randomIndex = Int(arc4random_uniform(UInt32(arrWallets.count)))
+                            DataManager.shareInstance.currentWallet = arrWallets[randomIndex]
+                            NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
+                        }
+                    }
+                }
                 })
             let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: { (UIAlertAction) in
             })
@@ -122,6 +157,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
             let addWalletVC = AddWalletViewController()
             addWalletVC.statusEdit = EDIT
             let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath) as! Wallet
+            addWalletVC.walletItem = walletItem
             self!.presentViewController(UINavigationController.init(rootViewController: addWalletVC), animated: true, completion: nil)
         }
         editAction.backgroundColor = UIColor.greenColor()
