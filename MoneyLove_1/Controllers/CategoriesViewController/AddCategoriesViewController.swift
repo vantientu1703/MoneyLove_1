@@ -57,7 +57,7 @@ protocol AddCategoriesViewControllerDelegate: class {
 class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var labelNote: UILabel!
-    var statusEdit: String!
+    var statusEdit = ""
     var newIndexPath: NSIndexPath!
     let HEIGHT_CELL_ADDCATEGORIES: CGFloat = 50.0
     let IDENTIFIER_ADDCATEGORIES_TABLEVIEWCELL = "AddCategoriesTableViewCell"

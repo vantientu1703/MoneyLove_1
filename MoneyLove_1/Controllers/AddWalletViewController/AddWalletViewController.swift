@@ -74,6 +74,7 @@ class AddWalletViewController: UIViewController {
             walletItem?.firstNumber = Double(txtStartMoneyWallet.text!)!
             walletItem?.imageName = self.imageName
             DataManager.shareInstance.saveManagedObjectContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -99,6 +100,7 @@ class AddWalletViewController: UIViewController {
             walletItem?.firstNumber = Double(txtStartMoneyWallet.text!)!
             walletItem?.imageName = self.imageName
             DataManager.shareInstance.saveManagedObjectContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
