@@ -26,7 +26,7 @@ class TrendTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
     }
 
     override func didReceiveMemoryWarning() {

@@ -70,7 +70,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     
     func configureNavigationBar() {
         self.title = TITLE_WALLET_MANAGER
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: TITLE_BUTTON_LEFT, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(WalletManagerViewController.cancelButton(_:)));
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(WalletManagerViewController.cancelButton(_:)));
         self.configRegisterForCell()
     }
     
@@ -108,8 +108,9 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
             let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
                 let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath)
                 DataManager.shareInstance.removeWallet(walletItem as! Wallet, fetchedResultsController: self!.fetchedResultController)
+                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
                 })
-            let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Destructive, handler: { (UIAlertAction) in
+            let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: { (UIAlertAction) in
             })
             alertControlelr.addAction(actionOk)
             alertControlelr.addAction(actionCancel)
@@ -180,4 +181,3 @@ extension WalletManagerViewController: NSFetchedResultsControllerDelegate {
         }
     }
 }
-

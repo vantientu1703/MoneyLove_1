@@ -235,6 +235,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete category?", preferredStyle: UIAlertControllerStyle.ActionSheet)
         let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
             DataManager.shareInstance.removeGroup(categoryItem, fetchedResultsController: self!.fetchedResultController)
+            NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
         })
         let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: nil)
         alertControlelr.addAction(actionOk)
