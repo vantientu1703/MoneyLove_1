@@ -88,14 +88,23 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
             case IndexPathSection.Section_TotalMoney.rawValue:
-                let totalMoneyCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_TOTALMONEYTABLEVIEWCELL, forIndexPath: indexPath)
+                let totalMoneyCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_TOTALMONEYTABLEVIEWCELL, forIndexPath: indexPath) as! TotalMoneyTableViewCell
+                let numberOfMoney = DataManager.shareInstance.getMoneyOfAllWallets()
+                totalMoneyCell.labelTotalMoney.text = "\(numberOfMoney) đ"
                 return totalMoneyCell
             case IndexPathSection.Section_Wallet.rawValue:
                 let walletCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_WALETTTABLEVIEWCELL, forIndexPath: indexPath) as! WalletTableViewCell
                 let indexPath2 = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section - 1)
                 let wallet = self.fetchedResultController.objectAtIndexPath(indexPath2) as! Wallet
                 walletCell.labelNameWallet.text = wallet.name
-                walletCell.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber)đ"
+                if wallet.firstNumber > 0 {
+                    walletCell.labelTotalMoneyOfWallet.textColor = UIColor.blueColor()
+                    walletCell.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber) đ"
+                } else {
+                    let money = -wallet.firstNumber
+                    walletCell.labelTotalMoneyOfWallet.textColor = UIColor.redColor()
+                    walletCell.labelTotalMoneyOfWallet.text = "\(money) đ"
+                }
                 walletCell.imageViewWallet.image = UIImage(named: wallet.imageName!)
                 return walletCell
             case IndexPathSection.Section_Bottom.rawValue:
@@ -129,7 +138,6 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
         if indexPath.section == IndexPathSection.Section_Bottom.rawValue {
             if indexPath.row == 0 {
                 let addWalletVC = AddWalletViewController()
-//                addWalletVC.delegate = self
                 addWalletVC.fetchedResultController = self.fetchedResultController
                 let nav = UINavigationController(rootViewController: addWalletVC)
                 self.presentViewController(nav, animated: true, completion: nil)
@@ -140,6 +148,10 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
                 let nav = UINavigationController(rootViewController: walletManagerVC)
                 self.presentViewController(nav, animated: true, completion: nil)
             }
+        } else if indexPath.section == IndexPathSection.Section_Wallet.rawValue {
+            let insteaIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+            let walletItem = self.fetchedResultController.objectAtIndexPath(insteaIndexPath) as! Wallet
+            DataManager.shareInstance.currentWallet = walletItem
         }
     }
 }

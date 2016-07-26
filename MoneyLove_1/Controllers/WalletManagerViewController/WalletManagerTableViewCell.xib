@@ -28,13 +28,13 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLn-sc-cMf">
-                        <rect key="frame" x="274" y="15" width="46" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLn-sc-cMf">
+                        <rect key="frame" x="274" y="15" width="46" height="31"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="1vn-gS-fCK"/>
                             <constraint firstAttribute="height" constant="30" id="2iR-Xt-ZcB"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="ic_three_dots.png"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="2iR-Xt-ZcB"/>
@@ -79,4 +79,7 @@
             <point key="canvasLocation" x="213" y="288"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_three_dots.png" width="32" height="32"/>
+    </resources>
 </document>

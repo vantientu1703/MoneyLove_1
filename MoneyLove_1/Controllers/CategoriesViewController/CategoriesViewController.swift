@@ -37,7 +37,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     let HEIGHT_CELL_CATEGORIES: CGFloat = 50.0
     let TITLE_CATEGORIES = "Categories"
     let CACHE_NAME = "Group_Cache"
-
+    
     let arrTitileCategories = SectionName.allSections
     var numberOfSectionInCoreData: Int = 0
     var managedObjectContext: NSManagedObjectContext!
@@ -113,7 +113,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     //MARK: UITableViewDataSources
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let sections = self.fetchedResultController.sections {
-                return sections.count
+            return sections.count
         }
         return 0
     }
@@ -132,7 +132,76 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         let name = categoryItem.name
         categoriesCell.labelMainCategories.text = name
         categoriesCell.imageViewCategories.image = UIImage(named: categoryItem.imageName!)
+        print(categoryItem.imageName)
         return categoriesCell
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        if let numberOfSections = self.fetchedResultController.sections?.count {
+            if numberOfSections == 1 {
+                return nil
+            } else if numberOfSections == 2 {
+                if indexPath.section == 1 {
+                    return nil
+                } else {
+                    let categoryItem = self.fetchedResultController.objectAtIndexPath(indexPath) as! Group
+                    let editAction = UITableViewRowAction(style: .Default, title: EDIT) { [weak self](action, index) in
+                        let addCategoriesVC = AddCategoriesViewController()
+                        addCategoriesVC.statusEdit = EDIT
+                        addCategoriesVC.categoryItem = categoryItem
+                        self?.navigationController?.pushViewController(addCategoriesVC, animated: true)
+                    }
+                    editAction.backgroundColor = UIColor.greenColor()
+                    
+                    let deleteAction = UITableViewRowAction(style: .Default, title: DELETE_TITLE) { [weak self](action, index) in
+                        self!.showAlertController(categoryItem)
+                    }
+                    deleteAction.backgroundColor = UIColor.redColor()
+                    return [deleteAction, editAction]
+                }
+            } else {
+                if indexPath.section == 2 {
+                    return nil
+                } else {
+                    let categoryItem = self.fetchedResultController.objectAtIndexPath(indexPath) as! Group
+                    let deleteAction = UITableViewRowAction(style: .Default, title: DELETE_TITLE) { [weak self](action, index) in
+                        self!.showAlertController(categoryItem)
+                    }
+                    deleteAction.backgroundColor = UIColor.redColor()
+                    
+                    let editAction = UITableViewRowAction(style: .Default, title: EDIT) { [weak self](action, index) in
+                        let addCategoriesVC = AddCategoriesViewController()
+                        addCategoriesVC.statusEdit = EDIT
+                        addCategoriesVC.categoryItem = categoryItem
+                        self?.navigationController?.pushViewController(addCategoriesVC, animated: true)
+                    }
+                    editAction.backgroundColor = UIColor.greenColor()
+                    return [deleteAction, editAction]
+                }
+            }
+        }
+        return nil
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if let numberOfSections = self.fetchedResultController.sections?.count {
+            if numberOfSections == 1 {
+                return false
+            } else if numberOfSections == 2 {
+                if indexPath.section == 1 {
+                    return false
+                } else {
+                    return true
+                }
+            } else {
+                if indexPath.section == 2 {
+                    return false
+                } else {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -160,6 +229,17 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
             let group = fetchedResultController.objectAtIndexPath(indexPath) as! Group
             delegate.delegateDoWhenRowSelected(group)
         }
+    }
+    //MARK DELETE CategoryItem
+    func showAlertController(categoryItem: Group) {
+        let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete category?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
+            DataManager.shareInstance.removeGroup(categoryItem, fetchedResultsController: self!.fetchedResultController)
+        })
+        let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: nil)
+        alertControlelr.addAction(actionOk)
+        alertControlelr.addAction(actionCancel)
+        self.presentViewController(alertControlelr, animated: true, completion: nil)
     }
 }
 

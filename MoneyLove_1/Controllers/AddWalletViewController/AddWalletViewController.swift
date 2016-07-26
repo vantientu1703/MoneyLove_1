@@ -15,8 +15,8 @@ class AddWalletViewController: UIViewController {
     @IBOutlet weak var buttonIcon: UIButton!
     @IBOutlet weak var txtStartMoneyWallet: UITextField!
     @IBOutlet weak var txtNameWallet: UITextField!
-    @IBOutlet weak var buttonImageWallet: UIButton!
     @IBOutlet weak var labelNote: UILabel!
+    var statusEdit: String?
     var fetchedResultController: NSFetchedResultsController!
     let FILL_WALLET_NAME = "Fill wallet name,please!"
     let FILL_MONEY = "Fill amount money,please!"
@@ -25,8 +25,16 @@ class AddWalletViewController: UIViewController {
     var imageName = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.cancelButton(_:)))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.addWalletButton(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: CANCEL_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.cancelButton(_:)))
+        if statusEdit == EDIT {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: DONE_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.doneButton(_:)))
+            self.imageName = self.walletItem!.imageName!
+            self.buttonIcon.setImage(UIImage(named: self.imageName), forState: UIControlState.Normal)
+            self.txtNameWallet.text = self.walletItem?.name
+            self.txtStartMoneyWallet.text = "\(self.walletItem!.firstNumber)"
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: ADD_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddWalletViewController.addWalletButton(_:)))
+        }
         txtNameWallet.delegate = self
         txtStartMoneyWallet.delegate = self
         txtStartMoneyWallet.keyboardType = UIKeyboardType.NumberPad
@@ -38,13 +46,43 @@ class AddWalletViewController: UIViewController {
         self.navigationController?.pushViewController(iconManagerVC, animated: true)
     }
     
+    func doneButton(sender: AnyObject) {
+        var pass = true
+        if let name = txtNameWallet.text {
+            if name.isEmpty {
+                labelNote.text = FILL_WALLET_NAME
+                pass = false
+            }
+        
+        } else {
+            pass = false
+        }
+        if let money = txtStartMoneyWallet.text {
+            if money.isEmpty {
+                labelNote.text = FILL_MONEY
+                pass = false
+            }
+        } else {
+            pass = false
+        }
+        if self.imageName.isEmpty {
+            labelNote.text = SELECT_IMAGE_WALLET
+            pass = false
+        }
+        if pass {
+            walletItem?.name = txtNameWallet.text
+            walletItem?.firstNumber = Double(txtStartMoneyWallet.text!)!
+            walletItem?.imageName = self.imageName
+            DataManager.shareInstance.saveManagedObjectContext()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
     func cancelButton(sender: AnyObject) {
-        print("Cancel")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func addWalletButton(sender: AnyObject) {
-        print("Add Wallet")
         self.setWalletInfo()
     }
     
@@ -63,9 +101,6 @@ class AddWalletViewController: UIViewController {
             DataManager.shareInstance.saveManagedObjectContext()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-    }
-    
-    @IBAction func pressButtonImageWallet(sender: AnyObject) {
     }
     
     @IBAction func hidenKeyboard(sender: AnyObject) {

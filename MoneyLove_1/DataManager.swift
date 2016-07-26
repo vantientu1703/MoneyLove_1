@@ -132,12 +132,12 @@ class DataManager : NSObject {
             let loanCategory = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Group
             loanCategory.name = "Loan"
             loanCategory.type = false
-            loanCategory.imageName = ""
+            loanCategory.imageName = "store"
             loanCategory.subType = 2
             let debtCategory = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Group
             debtCategory.name = "Debt"
             debtCategory.type = true
-            debtCategory.imageName = ""
+            debtCategory.imageName = "photo"
             debtCategory.subType = 2
             do {
                 try context.save()
@@ -156,11 +156,11 @@ class DataManager : NSObject {
             let entity = NSEntityDescription.entityForName(Wallet.CLASS_NAME, inManagedObjectContext: context)
             let cashWallet = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Wallet
             cashWallet.name = "Cash"
-            cashWallet.imageName = ""
+            cashWallet.imageName = "wallet"
             cashWallet.firstNumber = 0
             let atmWallet = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Wallet
             atmWallet.name = "ATM"
-            atmWallet.imageName = ""
+            atmWallet.imageName = "wallet"
             atmWallet.firstNumber = 0
             do {
                 try context.save()
@@ -199,4 +199,38 @@ class DataManager : NSObject {
         return nil
     }
     
+    func getMoneyOfCurrentWallet() -> Double {
+        let currentWallet = self.currentWallet
+        var sum = self.currentWallet.firstNumber
+        if let setOfTransactions = currentWallet.transaction {
+            for transaction in setOfTransactions {
+                let trans = transaction as! Transaction
+                if let group = trans.group {
+                    if group.type {
+                        sum += trans.moneyNumber
+                    } else {
+                        sum -= trans.moneyNumber
+                    }
+                }
+            }
+        }
+        return sum
+    }
+    
+    func getMoneyOfAllWallets() -> Double {
+        let fetchRequest = NSFetchRequest(entityName: Wallet.CLASS_NAME)
+        var sum = 0.0
+        do {
+            if let wallets = try manageObjectContext.executeFetchRequest(fetchRequest) as? [Wallet] {
+                for  item in wallets {
+                    let wallet = item
+                    sum += wallet.firstNumber
+                }
+            }
+        } catch {
+            let requestError = error as NSError
+            print("\(requestError), \(requestError.userInfo)")
+        }
+        return sum
+    }
 }

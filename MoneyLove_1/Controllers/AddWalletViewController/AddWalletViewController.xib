@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddWalletViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
                 <outlet property="buttonIcon" destination="7PY-8u-iPq" id="fbs-VY-Xhc"/>
-                <outlet property="buttonImageWallet" destination="7PY-8u-iPq" id="9UX-Nh-SpB"/>
                 <outlet property="labelNote" destination="xHk-Kh-e0X" id="mwm-3X-LXy"/>
                 <outlet property="txtNameWallet" destination="gcf-A5-tzb" id="hKL-N7-Ikw"/>
                 <outlet property="txtStartMoneyWallet" destination="3d2-pa-Ut9" id="RWd-Dp-e8x"/>
@@ -32,7 +31,6 @@
                             <state key="normal" image="briefcase.png"/>
                             <connections>
                                 <action selector="pressButtonIcon:" destination="-1" eventType="touchUpInside" id="pQn-2s-TFi"/>
-                                <action selector="pressButtonImageWallet:" destination="-1" eventType="touchUpInside" id="XwH-aN-sZh"/>
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcf-A5-tzb">
