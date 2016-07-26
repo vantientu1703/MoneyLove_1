@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 class CustomPageViewController: UIPageViewController {
-    
     var isCategoryMode: Bool! = false
     var timeMode:TimeMode! = .Day
         override func viewDidLoad() {
@@ -46,7 +45,6 @@ class CustomPageViewController: UIPageViewController {
         self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton
     }
-    
 }
 
 extension CustomPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {

@@ -21,10 +21,6 @@
 		5147834E1D4200EC00E50A04 /* Extension_NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147834D1D4200EC00E50A04 /* Extension_NSDate.swift */; };
 		514783501D42260000E50A04 /* CustomDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5147834F1D42260000E50A04 /* CustomDateView.xib */; };
 		514783521D422BF900E50A04 /* CustomDateViewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514783511D422BF900E50A04 /* CustomDateViewOwner.swift */; };
-		514783551D4241E100E50A04 /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514783531D4241E100E50A04 /* SearchTransactionViewController.swift */; };
-		514783561D4241E100E50A04 /* SearchTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514783541D4241E100E50A04 /* SearchTransactionViewController.xib */; };
-		514783591D42420400E50A04 /* ResultsTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514783571D42420300E50A04 /* ResultsTransactionViewController.swift */; };
-		5147835A1D42420400E50A04 /* ResultsTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514783581D42420400E50A04 /* ResultsTransactionViewController.xib */; };
 		514938981D3F632E0010BDF4 /* DataTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514938971D3F632E0010BDF4 /* DataTransaction.swift */; };
 		5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1C91D2F48C800413269 /* PayReceiavableTableViewCell.xib */; };
 		5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1E11D2F8B2400413269 /* BalanceTableViewCell.swift */; };
@@ -58,6 +54,20 @@
 		516040E71D3768FC00AB9A74 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040E41D3768FC00AB9A74 /* ContactViewController.swift */; };
 		516040E81D3768FC00AB9A74 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040E51D3768FC00AB9A74 /* ContactViewController.xib */; };
 		516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 516040E91D3769B500AB9A74 /* cancel-cross.png */; };
+		517A0C651D4764820008626D /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C571D4764820008626D /* NoteCell.swift */; };
+		517A0C661D4764820008626D /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C581D4764820008626D /* NoteCell.xib */; };
+		517A0C671D4764820008626D /* ResultsTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C591D4764820008626D /* ResultsTransactionViewController.swift */; };
+		517A0C681D4764820008626D /* ResultsTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C5A1D4764820008626D /* ResultsTransactionViewController.xib */; };
+		517A0C691D4764820008626D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C5B1D4764820008626D /* SearchCell.swift */; };
+		517A0C6A1D4764820008626D /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C5C1D4764820008626D /* SearchCell.xib */; };
+		517A0C6B1D4764820008626D /* SearchExactlyMoneyOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C5D1D4764820008626D /* SearchExactlyMoneyOwner.swift */; };
+		517A0C6C1D4764820008626D /* SearchExactlyMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C5E1D4764820008626D /* SearchExactlyMoneyView.xib */; };
+		517A0C6D1D4764820008626D /* SearchMoneySelectOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C5F1D4764820008626D /* SearchMoneySelectOwner.swift */; };
+		517A0C6E1D4764820008626D /* SearchMoneySelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C601D4764820008626D /* SearchMoneySelectView.xib */; };
+		517A0C6F1D4764820008626D /* SearchSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C611D4764820008626D /* SearchSelectTableViewController.swift */; };
+		517A0C701D4764820008626D /* SearchSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C621D4764820008626D /* SearchSelectTableViewController.xib */; };
+		517A0C711D4764820008626D /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C631D4764820008626D /* SearchTransactionViewController.swift */; };
+		517A0C721D4764820008626D /* SearchTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C641D4764820008626D /* SearchTransactionViewController.xib */; };
 		5194B3201D333EE600F419FC /* DataPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194B31F1D333EE600F419FC /* DataPageView.swift */; };
 		51C5A4A51D40CB5D0060A5C5 /* MonthlyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51312F031D35CD8B00775EFD /* MonthlyReportViewController.swift */; };
 		51F0E6DE1D37772F00102190 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0E6DD1D37772F00102190 /* MonthYearPickerView.swift */; };
@@ -200,10 +210,6 @@
 		5147834D1D4200EC00E50A04 /* Extension_NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension_NSDate.swift; path = Extension/Extension_NSDate.swift; sourceTree = "<group>"; };
 		5147834F1D42260000E50A04 /* CustomDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDateView.xib; sourceTree = "<group>"; };
 		514783511D422BF900E50A04 /* CustomDateViewOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateViewOwner.swift; sourceTree = "<group>"; };
-		514783531D4241E100E50A04 /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTransactionViewController.swift; sourceTree = "<group>"; };
-		514783541D4241E100E50A04 /* SearchTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTransactionViewController.xib; sourceTree = "<group>"; };
-		514783571D42420300E50A04 /* ResultsTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTransactionViewController.swift; sourceTree = "<group>"; };
-		514783581D42420400E50A04 /* ResultsTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsTransactionViewController.xib; sourceTree = "<group>"; };
 		514938971D3F632E0010BDF4 /* DataTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransaction.swift; sourceTree = "<group>"; };
 		5153B1C81D2F48C800413269 /* PayReceiavableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayReceiavableTableViewCell.swift; path = Controllers/DebtViewController/PayReceiavableTableViewController/Cell/PayReceiavableTableViewCell.swift; sourceTree = "<group>"; };
 		5153B1C91D2F48C800413269 /* PayReceiavableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayReceiavableTableViewCell.xib; path = Controllers/DebtViewController/PayReceiavableTableViewController/Cell/PayReceiavableTableViewCell.xib; sourceTree = "<group>"; };
@@ -237,6 +243,20 @@
 		516040E41D3768FC00AB9A74 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = Controllers/Transaction/Contact/ContactViewController.swift; sourceTree = "<group>"; };
 		516040E51D3768FC00AB9A74 /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactViewController.xib; path = Controllers/Transaction/Contact/ContactViewController.xib; sourceTree = "<group>"; };
 		516040E91D3769B500AB9A74 /* cancel-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancel-cross.png"; path = "Resources/cancel-cross.png"; sourceTree = "<group>"; };
+		517A0C571D4764820008626D /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteCell.swift; path = "Controllers/Transaction/Search Transaction ViewController/NoteCell.swift"; sourceTree = "<group>"; };
+		517A0C581D4764820008626D /* NoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteCell.xib; path = "Controllers/Transaction/Search Transaction ViewController/NoteCell.xib"; sourceTree = "<group>"; };
+		517A0C591D4764820008626D /* ResultsTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsTransactionViewController.swift; path = "Controllers/Transaction/Search Transaction ViewController/ResultsTransactionViewController.swift"; sourceTree = "<group>"; };
+		517A0C5A1D4764820008626D /* ResultsTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultsTransactionViewController.xib; path = "Controllers/Transaction/Search Transaction ViewController/ResultsTransactionViewController.xib"; sourceTree = "<group>"; };
+		517A0C5B1D4764820008626D /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCell.swift; path = "Controllers/Transaction/Search Transaction ViewController/SearchCell.swift"; sourceTree = "<group>"; };
+		517A0C5C1D4764820008626D /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchCell.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchCell.xib"; sourceTree = "<group>"; };
+		517A0C5D1D4764820008626D /* SearchExactlyMoneyOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchExactlyMoneyOwner.swift; path = "Controllers/Transaction/Search Transaction ViewController/SearchExactlyMoneyOwner.swift"; sourceTree = "<group>"; };
+		517A0C5E1D4764820008626D /* SearchExactlyMoneyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchExactlyMoneyView.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchExactlyMoneyView.xib"; sourceTree = "<group>"; };
+		517A0C5F1D4764820008626D /* SearchMoneySelectOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchMoneySelectOwner.swift; path = "Controllers/Transaction/Search Transaction ViewController/SearchMoneySelectOwner.swift"; sourceTree = "<group>"; };
+		517A0C601D4764820008626D /* SearchMoneySelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchMoneySelectView.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchMoneySelectView.xib"; sourceTree = "<group>"; };
+		517A0C611D4764820008626D /* SearchSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchSelectTableViewController.swift; path = "Controllers/Transaction/Search Transaction ViewController/SearchSelectTableViewController.swift"; sourceTree = "<group>"; };
+		517A0C621D4764820008626D /* SearchSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchSelectTableViewController.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchSelectTableViewController.xib"; sourceTree = "<group>"; };
+		517A0C631D4764820008626D /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTransactionViewController.swift; path = "Controllers/Transaction/Search Transaction ViewController/SearchTransactionViewController.swift"; sourceTree = "<group>"; };
+		517A0C641D4764820008626D /* SearchTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTransactionViewController.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchTransactionViewController.xib"; sourceTree = "<group>"; };
 		5194B31F1D333EE600F419FC /* DataPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataPageView.swift; path = Manager/DataPageView.swift; sourceTree = "<group>"; };
 		51F0E6DD1D37772F00102190 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Controllers/TrendTableViewController/MonthYearPickerView.swift; sourceTree = "<group>"; };
 		51F0E6DF1D3779E900102190 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
@@ -433,10 +453,14 @@
 		5147835B1D42420A00E50A04 /* Search Transaction ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				514783531D4241E100E50A04 /* SearchTransactionViewController.swift */,
-				514783541D4241E100E50A04 /* SearchTransactionViewController.xib */,
-				514783571D42420300E50A04 /* ResultsTransactionViewController.swift */,
-				514783581D42420400E50A04 /* ResultsTransactionViewController.xib */,
+				517A0C631D4764820008626D /* SearchTransactionViewController.swift */,
+				517A0C641D4764820008626D /* SearchTransactionViewController.xib */,
+				517A0C611D4764820008626D /* SearchSelectTableViewController.swift */,
+				517A0C621D4764820008626D /* SearchSelectTableViewController.xib */,
+				517A0C731D4769B00008626D /* Search Cell */,
+				517A0C741D4769C40008626D /* Search Select View */,
+				517A0C591D4764820008626D /* ResultsTransactionViewController.swift */,
+				517A0C5A1D4764820008626D /* ResultsTransactionViewController.xib */,
 			);
 			name = "Search Transaction ViewController";
 			sourceTree = "<group>";
@@ -506,6 +530,28 @@
 				516040DD1D3767F100AB9A74 /* SearchGroupViewController.xib */,
 			);
 			name = GroupSelected;
+			sourceTree = "<group>";
+		};
+		517A0C731D4769B00008626D /* Search Cell */ = {
+			isa = PBXGroup;
+			children = (
+				517A0C5B1D4764820008626D /* SearchCell.swift */,
+				517A0C5C1D4764820008626D /* SearchCell.xib */,
+				517A0C571D4764820008626D /* NoteCell.swift */,
+				517A0C581D4764820008626D /* NoteCell.xib */,
+			);
+			name = "Search Cell";
+			sourceTree = "<group>";
+		};
+		517A0C741D4769C40008626D /* Search Select View */ = {
+			isa = PBXGroup;
+			children = (
+				517A0C5D1D4764820008626D /* SearchExactlyMoneyOwner.swift */,
+				517A0C5E1D4764820008626D /* SearchExactlyMoneyView.xib */,
+				517A0C5F1D4764820008626D /* SearchMoneySelectOwner.swift */,
+				517A0C601D4764820008626D /* SearchMoneySelectView.xib */,
+			);
+			name = "Search Select View";
 			sourceTree = "<group>";
 		};
 		51FC24A01D2DE5710067CC71 /* DebtViewController */ = {
@@ -966,7 +1012,6 @@
 				E5FEA4FB1D3F4CD6001A806E /* cart.png in Resources */,
 				E5FEA50A1D3F5BD0001A806E /* ic_type.png in Resources */,
 				E5FEA4EE1D3F4CC3001A806E /* scarf.png in Resources */,
-				5147835A1D42420400E50A04 /* ResultsTransactionViewController.xib in Resources */,
 				5153B1FA1D2F8B9000413269 /* BarChartTableViewCell.xib in Resources */,
 				EF3527231D2CAB5F009D6F58 /* LaunchScreen.storyboard in Resources */,
 				EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */,
@@ -985,6 +1030,7 @@
 				EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */,
 				EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */,
 				EF5C48161D2E526B0040B82E /* CategoriesViewController.xib in Resources */,
+				517A0C701D4764820008626D /* SearchSelectTableViewController.xib in Resources */,
 				E5FEA4DA1D3F4CB2001A806E /* wallet3.png in Resources */,
 				E5FEA4FE1D3F4CD6001A806E /* photo.png in Resources */,
 				E5FEA4D91D3F4CB2001A806E /* wallet2.png in Resources */,
@@ -994,17 +1040,23 @@
 				E5FEA4FC1D3F4CD6001A806E /* cocktail.png in Resources */,
 				E5FEA5041D3F56B8001A806E /* ic_money.png in Resources */,
 				516040D21D37608C00AB9A74 /* TextCell.xib in Resources */,
-				514783561D4241E100E50A04 /* SearchTransactionViewController.xib in Resources */,
 				E5FEA4EF1D3F4CC3001A806E /* stand.png in Resources */,
 				E5FEA5001D3F4CD6001A806E /* store.png in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
+				517A0C6A1D4764820008626D /* SearchCell.xib in Resources */,
+				5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */,
 				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
 				E5279F101D46FE760018F9BE /* ic_add.png in Resources */,
 				5153B1EE1D2F8B2400413269 /* NetIcomeTableViewCell.xib in Resources */,
 				E5FEA4F01D3F4CC3001A806E /* watermelon.png in Resources */,
 				E5279F111D46FE760018F9BE /* ic_manager.png in Resources */,
 				E5279F171D4703450018F9BE /* ic_category.png in Resources */,
+				517A0C721D4764820008626D /* SearchTransactionViewController.xib in Resources */,
+				517A0C661D4764820008626D /* NoteCell.xib in Resources */,
 				E5FEA4DC1D3F4CB2001A806E /* wallet5.png in Resources */,
+				51312F081D35CD8B00775EFD /* MyPageViewController.xib in Resources */,
+				517A0C681D4764820008626D /* ResultsTransactionViewController.xib in Resources */,
+				517A0C6C1D4764820008626D /* SearchExactlyMoneyView.xib in Resources */,
 				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
 				514518201D3C6E0F00185609 /* DateRequestedCell.xib in Resources */,
 				E5279F191D4703450018F9BE /* ic_report.png in Resources */,
@@ -1021,6 +1073,7 @@
 				EF76F94C1D3776AD00175D5C /* WalletManagerTableViewCell.xib in Resources */,
 				514518241D3C6E2200185609 /* CategoryRequestedCell.xib in Resources */,
 				51FC252C1D2E07A90067CC71 /* PayReceiavableTableViewController.xib in Resources */,
+				517A0C6E1D4764820008626D /* SearchMoneySelectView.xib in Resources */,
 				51FC25371D2E36350067CC71 /* ActionTableViewCell.xib in Resources */,
 				E5AD1A8E1D3F10930088BBF7 /* IconManagerCollectionViewCell.xib in Resources */,
 				E5FEA4FD1D3F4CD6001A806E /* grocery.png in Resources */,
@@ -1125,6 +1178,7 @@
 				EFCF633E1D2F7FFE002BB378 /* WalletTableViewCell.swift in Sources */,
 				5147834A1D42007500E50A04 /* Extension_UIColor.swift in Sources */,
 				516040CF1D37608C00AB9A74 /* DateCell.swift in Sources */,
+				517A0C651D4764820008626D /* NoteCell.swift in Sources */,
 				E5AD1A901D3F18FA0088BBF7 /* IconItem.swift in Sources */,
 				5147834E1D4200EC00E50A04 /* Extension_NSDate.swift in Sources */,
 				516040D11D37608C00AB9A74 /* TextCell.swift in Sources */,
@@ -1136,6 +1190,7 @@
 				514783481D42007500E50A04 /* Extension_NSFetchRequest.swift in Sources */,
 				514783491D42007500E50A04 /* Extension_NSPredicate.swift in Sources */,
 				EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */,
+				517A0C671D4764820008626D /* ResultsTransactionViewController.swift in Sources */,
 				51F0E6DE1D37772F00102190 /* MonthYearPickerView.swift in Sources */,
 				5145181F1D3C6E0F00185609 /* DateRequestedCell.swift in Sources */,
 				EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */,
@@ -1144,7 +1199,6 @@
 				EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */,
 				5145181B1D3C6BA100185609 /* OverViewCell.swift in Sources */,
 				516040E71D3768FC00AB9A74 /* ContactViewController.swift in Sources */,
-				514783551D4241E100E50A04 /* SearchTransactionViewController.swift in Sources */,
 				516040C91D37600500AB9A74 /* AllTransactionViewController.swift in Sources */,
 				516040E61D3768FC00AB9A74 /* ContactData.swift in Sources */,
 				EF5C48191D2E58890040B82E /* MenuViewController.swift in Sources */,
@@ -1152,6 +1206,7 @@
 				EF76F9421D37478100175D5C /* AddWalletViewController.swift in Sources */,
 				EF5C481D1D2E5D5D0040B82E /* (null) in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
+				517A0C691D4764820008626D /* SearchCell.swift in Sources */,
 				E5AD1A921D3F193C0088BBF7 /* ManagerIcon.swift in Sources */,
 				EF8CD2351D38790700890491 /* AddCategoriesViewController.swift in Sources */,
 				E5E060681D44FF6700AF95F9 /* Group.swift in Sources */,
@@ -1177,19 +1232,22 @@
 				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
 				E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */,
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,
+				517A0C6D1D4764820008626D /* SearchMoneySelectOwner.swift in Sources */,
 				51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */,
+				517A0C6B1D4764820008626D /* SearchExactlyMoneyOwner.swift in Sources */,
 				5153B1EF1D2F8B2400413269 /* PieChartTableViewCell.swift in Sources */,
 				E5E0606E1D4631AF00AF95F9 /* Constant.swift in Sources */,
 				514938981D3F632E0010BDF4 /* DataTransaction.swift in Sources */,
 				5153B1FB1D2F8B9000413269 /* TrendTableViewCell.swift in Sources */,
 				516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */,
 				E5E0606C1D44FF8A00AF95F9 /* Wallet.swift in Sources */,
+				517A0C6F1D4764820008626D /* SearchSelectTableViewController.swift in Sources */,
 				E5AD1A8D1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift in Sources */,
 				E5E060601D44FEC700AF95F9 /* Transaction.swift in Sources */,
 				EF8CD2401D38843D00890491 /* AddCategoriesTableViewCell.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
-				514783591D42420400E50A04 /* ResultsTransactionViewController.swift in Sources */,
 				EF76F9471D37764A00175D5C /* WalletManagerViewController.swift in Sources */,
+				517A0C711D4764820008626D /* SearchTransactionViewController.swift in Sources */,
 				51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */,
 				5194B3201D333EE600F419FC /* DataPageView.swift in Sources */,
 			);

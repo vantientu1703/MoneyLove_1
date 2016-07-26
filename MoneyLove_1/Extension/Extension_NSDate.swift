@@ -44,7 +44,12 @@ extension NSDate {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.stringFromDate(date)
     }
-    
+
+    class func getMonthStringFromDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/yyyy"
+        return dateFormatter.stringFromDate(date)
+    }
     // Returns the amount of months from another date
     func months(from date: NSDate) -> Int {
         return NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: date, toDate: self, options: []).month ?? 0
@@ -66,12 +71,6 @@ extension NSDate {
         comp.day -= 1
         comp.to12pm()
         return cal.dateByAddingComponents(comp, toDate: self.startOfMonth()!, options: [])!
-    }
-    
-    class func getMonthStringFromDate(date: NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM/yyyy"
-        return dateFormatter.stringFromDate(date)
     }
 }
 

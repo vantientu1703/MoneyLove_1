@@ -109,10 +109,10 @@ class DateRequestedCell: UITableViewCell {
             dateStr = dateComponents![0]
             monthAndYear = dateComponents![1] + " - " + dateComponents![2]
             weekDay = NSDate.dayOfTheWeek(date!)
-            var moneyNumber = data!.getMoneyNumberInIndexPath(indexPath)
-            if moneyNumber < 0 {
+            let moneyNumber = data!.getMoneyNumberInIndexPath(indexPath)
+            let type = data!.getCategoryTypeInIndexPath(indexPath)!
+            if !type {
                 moneyLabelTextColor = UIColor.redColor()
-                moneyNumber = moneyNumber * -1
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }

@@ -37,7 +37,6 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     let HEIGHT_CELL_CATEGORIES: CGFloat = 50.0
     let TITLE_CATEGORIES = "Categories"
     let CACHE_NAME = "Group_Cache"
-    
     let arrTitileCategories = SectionName.allSections
     var numberOfSectionInCoreData: Int = 0
     var managedObjectContext: NSManagedObjectContext!
@@ -132,7 +131,6 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         let name = categoryItem.name
         categoriesCell.labelMainCategories.text = name
         categoriesCell.imageViewCategories.image = UIImage(named: categoryItem.imageName!)
-        print(categoryItem.imageName)
         return categoriesCell
     }
     

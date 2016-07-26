@@ -122,7 +122,6 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
             let addWalletVC = AddWalletViewController()
             addWalletVC.statusEdit = EDIT
             let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath) as! Wallet
-            addWalletVC.walletItem = walletItem
             self!.presentViewController(UINavigationController.init(rootViewController: addWalletVC), animated: true, completion: nil)
         }
         editAction.backgroundColor = UIColor.greenColor()

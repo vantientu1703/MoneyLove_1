@@ -77,45 +77,59 @@ class DataTransaction : NSObject {
         return ""
     }
     
-    func getMoneyNumberInIndexPath(indexPath: NSIndexPath) -> Double {
-        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
-        let money = result.moneyNumber
-        return money
-    }
-    
-    func getCategoryNameForTransaction(indexPath: NSIndexPath) -> String {
-        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
-        if let group = result.group {
-            let categoryName = group.name
-            return categoryName!
+    func getCategoryImagePathInSection(section: Int) -> String {
+        if let sections = fetchedResultsController.sections {
+            if sections.count > 0 {
+                let group = sections[section]
+                if let objects = group.objects {
+                    if let object = objects[0] as? Transaction {
+                        return object.group!.imageName!
+                    }
+                }
+            }
         }
-        return "Category Name"
+        return "default"
     }
     
-    
-    func getCategoryTypeInIndexPath(indexPath: NSIndexPath) -> Bool? {
-        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
-        if let group = result.group {
-            let categoryType = group.type
-            return categoryType
-        }
-        return nil
+func getMoneyNumberInIndexPath(indexPath: NSIndexPath) -> Double {
+    let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+    let money = result.moneyNumber
+    return money
+}
+
+func getCategoryNameForTransaction(indexPath: NSIndexPath) -> String {
+    let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+    if let group = result.group {
+        let categoryName = group.name
+        return categoryName!
+    }
+    return "Category Name"
+}
+
+
+func getCategoryTypeInIndexPath(indexPath: NSIndexPath) -> Bool? {
+    let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+    if let group = result.group {
+        let categoryType = group.type
+        return categoryType
+    }
+    return nil
+}
+
+func getTimeForTransaction(indexPath: NSIndexPath) -> String {
+    let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+    let dayString = result.dayString
+    return dayString!
+}
+
+func getCategoryImageNameForTransaction(indexPath: NSIndexPath) -> String {
+    let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
+    if let group = result.group {
+        let categoryImageName = group.imageName
+        return categoryImageName!
     }
     
-    func getTimeForTransaction(indexPath: NSIndexPath) -> String {
-        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
-        let dayString = result.dayString
-        return dayString!
-    }
-    
-    func getCategoryImageNameForTransaction(indexPath: NSIndexPath) -> String {
-        let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
-        if let group = result.group {
-            let categoryImageName = group.imageName
-            return categoryImageName!
-        }
-        
-        return ""
-    }
-    
+    return ""
+}
+
 }

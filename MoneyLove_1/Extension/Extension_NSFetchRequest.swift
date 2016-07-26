@@ -25,12 +25,23 @@ enum FunctionType {
     case Sum
     case Max
 }
+
+enum SortBy {
+    case Category
+    case Date
+}
 extension NSFetchRequest {
-    class func getFetchRequest(entityName: String, fromDate: NSDate?, toDate: NSDate?, categoryType: CategoryType, wallet: Wallet) -> NSFetchRequest {
+    class func getFetchRequest(entityName: String, fromDate: NSDate?, toDate: NSDate?, categoryType: CategoryType, wallet: Wallet, sortBy: SortBy) -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: Transaction.CLASS_NAME)
         fetchRequest.fetchBatchSize = 20
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-        let arraySortDescriptor = [sortDescriptor]
+        let firstSortDescriptor = NSSortDescriptor(key: "group.name", ascending: false)
+        let secondSortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        let arraySortDescriptor:[NSSortDescriptor]
+        if sortBy == .Category {
+            arraySortDescriptor = [firstSortDescriptor, secondSortDescriptor]
+        } else {
+            arraySortDescriptor = [secondSortDescriptor]
+        }
         fetchRequest.sortDescriptors = arraySortDescriptor
         var predicate:NSPredicate?
         var datePredicate: NSPredicate?
@@ -67,8 +78,8 @@ extension NSFetchRequest {
         return fetchRequest
     }
     
-    class func getFetchRequest(entityName: String, fromDate: NSDate?, toDate: NSDate?, categoryType: CategoryType, wallet: Wallet, groupBy: GroupBy, functionType: FunctionType, resultType: NSFetchRequestResultType) -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest.getFetchRequest(entityName, fromDate: fromDate, toDate: toDate, categoryType: categoryType, wallet: wallet)
+    class func getFetchRequest(entityName: String, fromDate: NSDate?, toDate: NSDate?, categoryType: CategoryType, wallet: Wallet, sortBy: SortBy, groupBy: GroupBy, functionType: FunctionType, resultType: NSFetchRequestResultType) -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest.getFetchRequest(entityName, fromDate: fromDate, toDate: toDate, categoryType: categoryType, wallet: wallet, sortBy: sortBy)
         switch functionType {
         case .Sum:
             let sumExpression = NSExpression(format: "sum:(moneyNumber)")

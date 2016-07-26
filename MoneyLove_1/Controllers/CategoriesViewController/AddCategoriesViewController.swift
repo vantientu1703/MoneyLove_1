@@ -211,6 +211,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return HEIGHT_CELL_ADDCATEGORIES
     }
+    
     //MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         typeBool = !typeBool

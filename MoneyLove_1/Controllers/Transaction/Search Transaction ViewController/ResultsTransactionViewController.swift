@@ -1,5 +1,5 @@
 //
-//  SearchTransactionViewController.swift
+//  ResultsTransactionViewController.swift
 //  MoneyLove_1
 //
 //  Created by macmini-0017 on 7/22/16.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SearchTransactionViewController: UIViewController {
+class ResultsTransactionViewController: UIViewController {
 
-    @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +21,4 @@ class SearchTransactionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func searchTransaction(sender: AnyObject) {
-    }
 }

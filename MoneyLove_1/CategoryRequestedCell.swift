@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryRequestedCell: UITableViewCell {
-
+    
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var moneyNumberLabel: UILabel!
@@ -20,7 +20,7 @@ class CategoryRequestedCell: UITableViewCell {
             } else {
                 categoryNameLabel.text = ""
             }
-
+            
         }
     }
     var imagePath: String? {
@@ -30,12 +30,11 @@ class CategoryRequestedCell: UITableViewCell {
                 if let image = image {
                     categoryImageView.image = image
                 } else {
-                    categoryImageView.image = UIImage()
+                    categoryImageView.image = UIImage(named: "default")
                 }
             } else {
-                categoryImageView.image = UIImage()
+                categoryImageView.image = UIImage(named: "default")
             }
-
         }
     }
     var moneyNumber: String {
@@ -71,23 +70,25 @@ class CategoryRequestedCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-   
+    
     func configureCell(indexPath: NSIndexPath, data: DataTransaction?, isHeader: Bool) {
         if isHeader {
             categoryName = data?.getHeaderTitleInIndexPath(indexPath.section)
-            let money = data!.getSumOfAllMoneyInIndexPath(indexPath.section)
+            var money = data!.getSumOfAllMoneyInIndexPath(indexPath.section)
             if money < 0 {
                 moneyLabelTextColor = UIColor.redColor()
+                money = money * -1
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }
             moneyNumber = "\(money)"
+            imagePath = data!.getCategoryImagePathInSection(indexPath.section)
             color = UIColor.lightGrayColor()
         } else {
             categoryName = data?.getCategoryNameForTransaction(indexPath)
