@@ -163,6 +163,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
             errorLabel.text = ""
             if isNewTransaction {
                 self.insertTransaction()
+                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
             }
             self.assignFromCacheToManagedObject()
             DataManager.shareInstance.saveManagedObjectContext()

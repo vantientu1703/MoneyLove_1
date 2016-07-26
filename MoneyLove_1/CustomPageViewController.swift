@@ -41,7 +41,7 @@ class CustomPageViewController: UIPageViewController {
         self.sideMenuViewController.presentLeftMenuViewController()
     }
     func configureNavigationBar() {
-        let leftButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self.getCurrentViewController(), action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
+        let leftButton = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self.getCurrentViewController(), action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
         let rightButton = UIBarButtonItem(title:"...", style: UIBarButtonItemStyle.Plain, target: self.getCurrentViewController() , action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
         self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton

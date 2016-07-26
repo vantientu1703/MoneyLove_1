@@ -13,4 +13,9 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var imageViewWallet: UIImageView!
     @IBOutlet weak var labelNameWallet: UILabel!
     @IBOutlet weak var labelTotalMoneyOfWallet: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = UIColor.groupTableViewBackgroundColor()
+    }
 }

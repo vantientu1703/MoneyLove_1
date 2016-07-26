@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataManager.shareInstance.addWalletDefault()
         DataManager.shareInstance.addCategoriesDefault()
         DataManager.shareInstance.currentWallet = DataManager.shareInstance.getWalletDefault()
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = UIColor.whiteColor()
+        navigationBarAppearace.barTintColor = UIColor.greenColor()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         return true
     }
 

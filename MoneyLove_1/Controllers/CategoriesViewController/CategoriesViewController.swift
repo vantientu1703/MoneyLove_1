@@ -79,9 +79,9 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     
     func configureNavigationBar() {
         if !isFromTransaction {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
         } else {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CategoriesViewController.clickToBack(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CategoriesViewController.clickToBack(_:)))
         }
     }
     
