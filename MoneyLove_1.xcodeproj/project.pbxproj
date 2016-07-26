@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		512D19BF1D3DDADA00BB287C /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D19BD1D3DDADA00BB287C /* CustomPageViewController.swift */; };
 		51312EFE1D35CAD500775EFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3527151D2CAB5F009D6F58 /* AppDelegate.swift */; };
-		51312F071D35CD8B00775EFD /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51312F031D35CD8B00775EFD /* MyPageViewController.swift */; };
-		51312F081D35CD8B00775EFD /* MyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51312F041D35CD8B00775EFD /* MyPageViewController.xib */; };
-		51312F091D35CD8B00775EFD /* PageReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51312F051D35CD8B00775EFD /* PageReportViewController.swift */; };
-		51312F0A1D35CD8B00775EFD /* PageReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51312F061D35CD8B00775EFD /* PageReportViewController.xib */; };
 		5145181B1D3C6BA100185609 /* OverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514518191D3C6BA100185609 /* OverViewCell.swift */; };
 		5145181C1D3C6BA100185609 /* OverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5145181A1D3C6BA100185609 /* OverViewCell.xib */; };
 		5145181F1D3C6E0F00185609 /* DateRequestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5145181D1D3C6E0F00185609 /* DateRequestedCell.swift */; };
@@ -30,8 +26,7 @@
 		514783591D42420400E50A04 /* ResultsTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514783571D42420300E50A04 /* ResultsTransactionViewController.swift */; };
 		5147835A1D42420400E50A04 /* ResultsTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514783581D42420400E50A04 /* ResultsTransactionViewController.xib */; };
 		514938981D3F632E0010BDF4 /* DataTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514938971D3F632E0010BDF4 /* DataTransaction.swift */; };
-		5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1C81D2F48C800413269 /* PayReceiavableTableView.swift */; };
-		5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1C91D2F48C800413269 /* PayReceiavableTableView.xib */; };
+		5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1C91D2F48C800413269 /* PayReceiavableTableViewCell.xib */; };
 		5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1E11D2F8B2400413269 /* BalanceTableViewCell.swift */; };
 		5153B1EA1D2F8B2400413269 /* BalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1E21D2F8B2400413269 /* BalanceTableViewCell.xib */; };
 		5153B1EB1D2F8B2400413269 /* ItemReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1E31D2F8B2400413269 /* ItemReportTableViewCell.swift */; };
@@ -47,6 +42,7 @@
 		5153B1FB1D2F8B9000413269 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1F71D2F8B9000413269 /* TrendTableViewCell.swift */; };
 		5153B1FC1D2F8B9000413269 /* TrendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1F81D2F8B9000413269 /* TrendTableViewCell.xib */; };
 		5153B1FE1D2F8BE600413269 /* restaurent.png in Resources */ = {isa = PBXBuildFile; fileRef = 5153B1FD1D2F8BE600413269 /* restaurent.png */; };
+		515AAD151D3CC8E800DA65EC /* PayReceiavableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5153B1C81D2F48C800413269 /* PayReceiavableTableViewCell.swift */; };
 		516040B01D374B5D00AB9A74 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040AF1D374B5D00AB9A74 /* DataManager.swift */; };
 		516040C91D37600500AB9A74 /* AllTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516040C71D37600500AB9A74 /* AllTransactionViewController.swift */; };
 		516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040C81D37600500AB9A74 /* AllTransactionViewController.xib */; };
@@ -63,10 +59,10 @@
 		516040E81D3768FC00AB9A74 /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516040E51D3768FC00AB9A74 /* ContactViewController.xib */; };
 		516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 516040E91D3769B500AB9A74 /* cancel-cross.png */; };
 		5194B3201D333EE600F419FC /* DataPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194B31F1D333EE600F419FC /* DataPageView.swift */; };
+		51C5A4A51D40CB5D0060A5C5 /* MonthlyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51312F031D35CD8B00775EFD /* MonthlyReportViewController.swift */; };
 		51F0E6DE1D37772F00102190 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0E6DD1D37772F00102190 /* MonthYearPickerView.swift */; };
 		51F0E6E01D3779E900102190 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F0E6DF1D3779E900102190 /* DatePickerView.xib */; };
 		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
-		51FC24A41D2DE58E0067CC71 /* DebtViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC24A21D2DE58E0067CC71 /* DebtViewController.xib */; };
 		51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */; };
 		51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */; };
 		51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC25291D2E07A90067CC71 /* PayReceiavableTableViewController.swift */; };
@@ -191,10 +187,7 @@
 /* Begin PBXFileReference section */
 		1760546B05A7131B4A574D9E /* Pods-MoneyLove_1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyLove_1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyLove_1/Pods-MoneyLove_1.debug.xcconfig"; sourceTree = "<group>"; };
 		512D19BD1D3DDADA00BB287C /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
-		51312F031D35CD8B00775EFD /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPageViewController.swift; path = Controllers/MonthlyReportViewController/MyPageViewController.swift; sourceTree = "<group>"; };
-		51312F041D35CD8B00775EFD /* MyPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyPageViewController.xib; path = Controllers/MonthlyReportViewController/MyPageViewController.xib; sourceTree = "<group>"; };
-		51312F051D35CD8B00775EFD /* PageReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageReportViewController.swift; path = Controllers/MonthlyReportViewController/PageReportViewController.swift; sourceTree = "<group>"; };
-		51312F061D35CD8B00775EFD /* PageReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PageReportViewController.xib; path = Controllers/MonthlyReportViewController/PageReportViewController.xib; sourceTree = "<group>"; };
+		51312F031D35CD8B00775EFD /* MonthlyReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyReportViewController.swift; path = Controllers/MonthlyReportViewController/MonthlyReportViewController.swift; sourceTree = "<group>"; };
 		514518191D3C6BA100185609 /* OverViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverViewCell.swift; sourceTree = "<group>"; };
 		5145181A1D3C6BA100185609 /* OverViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverViewCell.xib; sourceTree = "<group>"; };
 		5145181D1D3C6E0F00185609 /* DateRequestedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRequestedCell.swift; sourceTree = "<group>"; };
@@ -212,8 +205,8 @@
 		514783571D42420300E50A04 /* ResultsTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTransactionViewController.swift; sourceTree = "<group>"; };
 		514783581D42420400E50A04 /* ResultsTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsTransactionViewController.xib; sourceTree = "<group>"; };
 		514938971D3F632E0010BDF4 /* DataTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransaction.swift; sourceTree = "<group>"; };
-		5153B1C81D2F48C800413269 /* PayReceiavableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayReceiavableTableView.swift; path = Controllers/DebtViewController/PayReceiavableTableViewController/Cell/PayReceiavableTableView.swift; sourceTree = "<group>"; };
-		5153B1C91D2F48C800413269 /* PayReceiavableTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayReceiavableTableView.xib; path = Controllers/DebtViewController/PayReceiavableTableViewController/Cell/PayReceiavableTableView.xib; sourceTree = "<group>"; };
+		5153B1C81D2F48C800413269 /* PayReceiavableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayReceiavableTableViewCell.swift; path = Controllers/DebtViewController/PayReceiavableTableViewController/Cell/PayReceiavableTableViewCell.swift; sourceTree = "<group>"; };
+		5153B1C91D2F48C800413269 /* PayReceiavableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayReceiavableTableViewCell.xib; path = Controllers/DebtViewController/PayReceiavableTableViewController/Cell/PayReceiavableTableViewCell.xib; sourceTree = "<group>"; };
 		5153B1E11D2F8B2400413269 /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BalanceTableViewCell.swift; path = Controllers/MonthlyReportViewController/Cell/BalanceTableViewCell.swift; sourceTree = "<group>"; };
 		5153B1E21D2F8B2400413269 /* BalanceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BalanceTableViewCell.xib; path = Controllers/MonthlyReportViewController/Cell/BalanceTableViewCell.xib; sourceTree = "<group>"; };
 		5153B1E31D2F8B2400413269 /* ItemReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemReportTableViewCell.swift; path = Controllers/MonthlyReportViewController/Cell/ItemReportTableViewCell.swift; sourceTree = "<group>"; };
@@ -248,7 +241,6 @@
 		51F0E6DD1D37772F00102190 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Controllers/TrendTableViewController/MonthYearPickerView.swift; sourceTree = "<group>"; };
 		51F0E6DF1D3779E900102190 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
-		51FC24A21D2DE58E0067CC71 /* DebtViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DebtViewController.xib; path = Controllers/DebtViewController/DebtViewController.xib; sourceTree = "<group>"; };
 		51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendTableViewController.swift; path = Controllers/TrendTableViewController/TrendTableViewController.swift; sourceTree = "<group>"; };
 		51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrendTableViewController.xib; path = Controllers/TrendTableViewController/TrendTableViewController.xib; sourceTree = "<group>"; };
 		51FC25291D2E07A90067CC71 /* PayReceiavableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayReceiavableTableViewController.swift; path = Controllers/DebtViewController/PayReceiavableTableViewController/PayReceiavableTableViewController.swift; sourceTree = "<group>"; };
@@ -452,8 +444,8 @@
 		5153B1C31D2F478D00413269 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5153B1C81D2F48C800413269 /* PayReceiavableTableView.swift */,
-				5153B1C91D2F48C800413269 /* PayReceiavableTableView.xib */,
+				5153B1C81D2F48C800413269 /* PayReceiavableTableViewCell.swift */,
+				5153B1C91D2F48C800413269 /* PayReceiavableTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -520,7 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */,
-				51FC24A21D2DE58E0067CC71 /* DebtViewController.xib */,
 				51FC252D1D2E07B50067CC71 /* PayReceiavableTableViewController */,
 			);
 			name = DebtViewController;
@@ -541,10 +532,7 @@
 		51FC24AE1D2DE6860067CC71 /* MonthlyReportViewController */ = {
 			isa = PBXGroup;
 			children = (
-				51312F031D35CD8B00775EFD /* MyPageViewController.swift */,
-				51312F041D35CD8B00775EFD /* MyPageViewController.xib */,
-				51312F051D35CD8B00775EFD /* PageReportViewController.swift */,
-				51312F061D35CD8B00775EFD /* PageReportViewController.xib */,
+				51312F031D35CD8B00775EFD /* MonthlyReportViewController.swift */,
 				5153B1F11D2F8B5B00413269 /* ItemReportViewController.swift */,
 				5153B1F21D2F8B5B00413269 /* ItemReportViewController.xib */,
 				5153B1CC1D2F4F0700413269 /* Cell */,
@@ -1009,7 +997,7 @@
 				514783561D4241E100E50A04 /* SearchTransactionViewController.xib in Resources */,
 				E5FEA4EF1D3F4CC3001A806E /* stand.png in Resources */,
 				E5FEA5001D3F4CD6001A806E /* store.png in Resources */,
-				5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */,
+				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
 				E5279F101D46FE760018F9BE /* ic_add.png in Resources */,
 				5153B1EE1D2F8B2400413269 /* NetIcomeTableViewCell.xib in Resources */,
@@ -1017,7 +1005,6 @@
 				E5279F111D46FE760018F9BE /* ic_manager.png in Resources */,
 				E5279F171D4703450018F9BE /* ic_category.png in Resources */,
 				E5FEA4DC1D3F4CB2001A806E /* wallet5.png in Resources */,
-				51312F081D35CD8B00775EFD /* MyPageViewController.xib in Resources */,
 				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
 				514518201D3C6E0F00185609 /* DateRequestedCell.xib in Resources */,
 				E5279F191D4703450018F9BE /* ic_report.png in Resources */,
@@ -1049,7 +1036,6 @@
 				5153B1EC1D2F8B2400413269 /* ItemReportTableViewCell.xib in Resources */,
 				E5FEA4F91D3F4CD6001A806E /* briefcase.png in Resources */,
 				E5AD1A8A1D3F0F480088BBF7 /* IconManagerViewController.xib in Resources */,
-				51FC24A41D2DE58E0067CC71 /* DebtViewController.xib in Resources */,
 				516040E81D3768FC00AB9A74 /* ContactViewController.xib in Resources */,
 				5145181C1D3C6BA100185609 /* OverViewCell.xib in Resources */,
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
@@ -1154,6 +1140,7 @@
 				5145181F1D3C6E0F00185609 /* DateRequestedCell.swift in Sources */,
 				EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */,
 				EF5C47FE1D2E49CA0040B82E /* RootViewController.swift in Sources */,
+				51C5A4A51D40CB5D0060A5C5 /* MonthlyReportViewController.swift in Sources */,
 				EF5C48151D2E526B0040B82E /* CategoriesViewController.swift in Sources */,
 				5145181B1D3C6BA100185609 /* OverViewCell.swift in Sources */,
 				516040E71D3768FC00AB9A74 /* ContactViewController.swift in Sources */,
@@ -1164,7 +1151,6 @@
 				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,
 				EF76F9421D37478100175D5C /* AddWalletViewController.swift in Sources */,
 				EF5C481D1D2E5D5D0040B82E /* (null) in Sources */,
-				51312F071D35CD8B00775EFD /* MyPageViewController.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
 				E5AD1A921D3F193C0088BBF7 /* ManagerIcon.swift in Sources */,
 				EF8CD2351D38790700890491 /* AddCategoriesViewController.swift in Sources */,
@@ -1184,9 +1170,9 @@
 				5153B1E91D2F8B2400413269 /* BalanceTableViewCell.swift in Sources */,
 				5153B1EB1D2F8B2400413269 /* ItemReportTableViewCell.swift in Sources */,
 				512D19BF1D3DDADA00BB287C /* CustomPageViewController.swift in Sources */,
+				515AAD151D3CC8E800DA65EC /* PayReceiavableTableViewCell.swift in Sources */,
 				51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */,
 				EF76F94B1D3776AD00175D5C /* WalletManagerTableViewCell.swift in Sources */,
-				51312F091D35CD8B00775EFD /* PageReportViewController.swift in Sources */,
 				E5E0605F1D44FEC700AF95F9 /* Transaction+CoreDataProperties.swift in Sources */,
 				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
 				E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */,

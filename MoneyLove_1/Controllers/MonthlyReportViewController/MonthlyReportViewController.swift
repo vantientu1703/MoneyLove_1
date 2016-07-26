@@ -1,31 +1,27 @@
 //
-//  PageReportViewController.swift
+//  MonthlyReportViewController.swift
 //  MoneyLove_1
 //
-//  Created by framgia on 7/11/16.
+//  Created by framgia on 7/13/16.
 //  Copyright © 2016 vantientu. All rights reserved.
 //
 
 import UIKit
 
-class PageReportViewController: UIViewController {
-    
-    var pageViewController : UIPageViewController!
-    
+class MonthlyReportViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
-        let pageViewVC = MyPageViewController()
-        self.addChildViewController(pageViewVC)
-        self.view.addSubview((pageViewVC.view))
-        pageViewController = pageViewVC as UIPageViewController
-        pageViewController.dataSource = self
-        pageViewController.setViewControllers([viewControllerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
-        pageViewController.didMoveToParentViewController(self)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MonthlyReportViewController.presentLeftMenuViewController(_:)))
+        self.setViewControllers([viewControllerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
+        self.didMoveToParentViewController(self)
+        self.dataSource = self
+        self.delegate = self
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        pageViewController.view.frame = self.view.frame
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func viewControllerAtIndex(index: Int) -> UIViewController {
@@ -33,14 +29,7 @@ class PageReportViewController: UIViewController {
         itemReportVC.pageIndex = index
         return itemReportVC
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
 
-extension PageReportViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let itemReportVC = viewController as! ItemReportViewController
         var index = itemReportVC.pageIndex as Int
@@ -56,7 +45,7 @@ extension PageReportViewController: UIPageViewControllerDataSource {
     }
 }
 
-extension PageReportViewController: RESideMenuDelegate {
+extension MonthlyReportViewController: RESideMenuDelegate {
     override func presentLeftMenuViewController(sender: AnyObject!) {
         self.sideMenuViewController.presentLeftMenuViewController()
     }

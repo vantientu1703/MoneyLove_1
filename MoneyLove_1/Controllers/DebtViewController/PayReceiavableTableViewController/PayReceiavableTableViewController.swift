@@ -10,12 +10,22 @@ import UIKit
 import TabPageViewController
 
 class PayReceiavableTableViewController: UITableViewController {
-        
+    
+    let IDENTIFIER_CELL_PAY_RECEIAVABLE = "PayReceiavableTableViewCell"
+    let arr = ["A","B","C","D","E"]
+    var color: UIColor!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let navigationHeight = navigationController?.navigationBar.frame.maxY ?? 0.0
         tableView.contentInset.top = navigationHeight + TabPageOption().tabHeight
+        self.tableView.registerNib(UINib.init(nibName: IDENTIFIER_CELL_PAY_RECEIAVABLE, bundle: nil), forCellReuseIdentifier: IDENTIFIER_CELL_PAY_RECEIAVABLE)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        //TODO
+        //reload data
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,13 +42,17 @@ class PayReceiavableTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return arr.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "PayReceiavableCell")
-        cell.detailTextLabel?.text = String(indexPath.row)
-        cell.detailTextLabel?.text = String(indexPath.row - 1)
+        let cell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_CELL_PAY_RECEIAVABLE, forIndexPath: indexPath) as! PayReceiavableTableViewCell
+        cell.nameDebts.text = "\(arr[indexPath.row])"
+        cell.numberTransaction.text = "1 Transaction"
+        cell.totalDebts.text = "\(indexPath.row)"
+        if (color != nil) {
+            cell.totalDebts.textColor = color
+        }
         return cell
     }
 }

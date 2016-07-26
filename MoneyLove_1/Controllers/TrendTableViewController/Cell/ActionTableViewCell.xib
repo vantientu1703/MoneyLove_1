@@ -14,20 +14,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="457" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xDP-cx-bkQ">
-                        <rect key="frame" x="8" y="40" width="441" height="29"/>
-                        <segments>
-                            <segment title="Expense"/>
-                            <segment title="Income"/>
-                            <segment title="Net Income"/>
-                        </segments>
-                    </segmentedControl>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-Gg-4M6">
                         <rect key="frame" x="8" y="93" width="441" height="29"/>
                         <segments>
                             <segment title="Over time"/>
                             <segment title="By Category"/>
                         </segments>
+                        <connections>
+                            <action selector="segmentGroupByAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="70c-kX-oZt"/>
+                        </connections>
                     </segmentedControl>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-CO-3li">
                         <rect key="frame" x="8" y="8" width="87" height="21"/>
@@ -86,6 +81,17 @@
                             <action selector="dateFromAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cxr-HJ-sLr"/>
                         </connections>
                     </button>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xDP-cx-bkQ">
+                        <rect key="frame" x="8" y="40" width="441" height="29"/>
+                        <segments>
+                            <segment title="Expense"/>
+                            <segment title="Income"/>
+                            <segment title="Net Income"/>
+                        </segments>
+                        <connections>
+                            <action selector="segmentGroupTypeAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="alp-ku-hIo"/>
+                        </connections>
+                    </segmentedControl>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="topMargin" secondItem="Xsp-CO-3li" secondAttribute="top" id="3G0-y0-P4I"/>
@@ -112,6 +118,8 @@
             <connections>
                 <outlet property="btnDateFrom" destination="6iP-dN-LWg" id="lK0-7H-W4W"/>
                 <outlet property="btnDateTo" destination="ZlT-4F-iLv" id="8JY-zX-lYd"/>
+                <outlet property="segmentGroupBy" destination="VTi-Gg-4M6" id="1k3-SN-G7p"/>
+                <outlet property="segmentGroupType" destination="xDP-cx-bkQ" id="R4H-Sh-WFQ"/>
             </connections>
             <point key="canvasLocation" x="566.5" y="535"/>
         </tableViewCell>

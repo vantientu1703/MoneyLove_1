@@ -11,7 +11,8 @@ import UIKit
 class TrendTableViewCell: UITableViewCell {
 
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var moneyIcomeLabel: UILabel!
+    @IBOutlet weak var moneyExpenseLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,13 +27,31 @@ class TrendTableViewCell: UITableViewCell {
     
     func setDataTrendCell(month: String, money: Double) {
         monthLabel.text = month
-        moneyLabel.text = "\(money)"
+        moneyIcomeLabel.text = "\(money)"
+    }
+    
+    func setDataTrendCellDefault(dataDic: Dictionary<String, AnyObject>) {
+        let nameMonth = dataDic["monthString"] as! String
+        let moneyIcome = dataDic["sumOfAmount"] as! Int
+        monthLabel.text = nameMonth
+        moneyIcomeLabel.text = "\(moneyIcome)"
+        moneyExpenseLabel.hidden = true
+    }
+    
+    func setDataTrendCellNetIncome(dataDic: Dictionary<String, AnyObject>) {
+        moneyExpenseLabel.hidden = false
+        let nameMonth = dataDic["monthString"] as! String
+        let moneyIcome = dataDic["income"] as! Double
+        let moneyExpense = dataDic["expense"] as! Double
+        monthLabel.text = nameMonth
+        moneyIcomeLabel.text = "\(moneyIcome)"
+        moneyExpenseLabel.text = "\(moneyExpense)"
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         //default state of cell
-        moneyLabel.text = ""
+        moneyIcomeLabel.text = ""
         monthLabel.text = ""
     }
     

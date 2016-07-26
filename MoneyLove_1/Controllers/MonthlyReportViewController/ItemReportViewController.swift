@@ -22,7 +22,8 @@ class ItemReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        monthLabel.text = "\(DataPageView.getMonthPage(pageIndex))"
+        self.tableView.allowsSelection = false
+        monthLabel.text = "\(DataPageView.getMonthPage(pageIndex, toDate: NSDate()))"
         
     }
 

@@ -1,24 +1,26 @@
 PODS:
   - CalendarView (1.1.2):
     - SwiftMoment (~> 0.1)
-  - Charts (2.1.5)
+  - Charts (2.2.5):
+    - Charts/Core (= 2.2.5)
+  - Charts/Core (2.2.5)
   - SwiftMoment (0.5.1)
   - TabPageViewController (0.2.0)
   - WWCalendarTimeSelector (1.1.6)
 
 DEPENDENCIES:
   - CalendarView
-  - Charts (= 2.1.5)
+  - Charts (~> 2.2.5)
   - TabPageViewController
   - WWCalendarTimeSelector (~> 1.1)
 
 SPEC CHECKSUMS:
   CalendarView: 35d51b70586213604edec22a585d105273f6e191
-  Charts: d2c4099ed2b7e8c35df9561386bb6e3ca6608ba6
+  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
   SwiftMoment: 469c0734b5d4d6631a15a91f8093cf436c3cbb7c
   TabPageViewController: bbf6e2a15bfbd7ccfc269daf182d9d0e8815ba13
   WWCalendarTimeSelector: 70ba96464e3bab652fb4746c992de1cd638cf900
 
-PODFILE CHECKSUM: 86eaf8377e54417f82fd7275b8d5391c806f0e71
+PODFILE CHECKSUM: 5998ca8a572eee5b94aa9b1201af3448ccb884bd
 
 COCOAPODS: 1.0.1

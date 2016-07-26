@@ -113,6 +113,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         managedTransactionObject.dayString = dateFormatter.stringFromDate(currentDate)
+        managedTransactionObject.monthString = NSDate.getMonthStringFromDate(NSDate(timeIntervalSinceReferenceDate: managedTransactionObject.date))
     }
     
     func insertTransaction() {

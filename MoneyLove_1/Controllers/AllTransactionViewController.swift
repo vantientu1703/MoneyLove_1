@@ -153,7 +153,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
             dateString = weekTuple.2
             break
         case .Month:
-            let month = DataPageView.getMonthPage(index)
+            let month = DataPageView.getMonthPage(index,toDate: NSDate())
             startDate = month.0.startOfMonth()
             endDate = month.0.endOfMonth()
             dateString = month.1

@@ -42,14 +42,14 @@ extension NSFetchRequest {
             if fromDate!.isEqualToDate(toDate!) {
                 datePredicate = NSPredicate.predicateAtDay(fromDate!)
             } else {
+                print("\(fromDate)---\(toDate)")
                 datePredicate = NSPredicate.predicateFromADayToOtherDay(fromDate!, end: toDate!, ignoreStartDate: false, ignoreEndDate: false)
             }
         } else {
             datePredicate = nil
         }
         let categoryPredicate = NSPredicate.predicateWithCategoryType(categoryType)
-        
-        let walletPredicate = NSPredicate(format: "wallet == %@", DataManager.shareInstance.currentWallet)        
+        let walletPredicate = NSPredicate(format: "wallet == %@", wallet)
         if let categoryPre = categoryPredicate {
             if let datePre = datePredicate {
                 predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [datePre, categoryPre, walletPredicate])
@@ -76,7 +76,7 @@ extension NSFetchRequest {
             sumED.expression = sumExpression
             sumED.name = "sumOfAmount"
             sumED.expressionResultType = .DoubleAttributeType
-            fetchRequest.propertiesToFetch = ["dayString", sumED]
+            fetchRequest.propertiesToFetch = ["monthString", sumED]
             break
         case .Max:
             let sumExpression = NSExpression(format: "max:(moneyNumber)")

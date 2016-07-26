@@ -22,7 +22,7 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.contentViewShadowOffset = CGSizeMake(0, 0);
         self.contentViewShadowOpacity = 0.6;
         self.contentViewShadowRadius = 12;
-        self.contentViewShadowEnabled = true;
+        self.contentViewShadowEnabled = true
         let customPageVC = CustomPageViewController()
         let menuVC = MenuViewController()
         let nav = UINavigationController(rootViewController:customPageVC)
