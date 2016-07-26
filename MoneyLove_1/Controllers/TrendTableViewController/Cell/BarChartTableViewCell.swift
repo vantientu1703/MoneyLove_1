@@ -28,20 +28,21 @@ class BarChartTableViewCell: UITableViewCell {
     }
     
     //MARK: CHART EXPENSEN INCOME
-    func setDataDictionaryExpenseIncome(dataDic: [Dictionary<String, NSObject>], fromDate: NSDate, toDate: NSDate) {
+    func setDataDictionaryExpenseIncome(dataDic: [Dictionary<String, AnyObject>], fromDate: NSDate, toDate: NSDate, currentCategoryType: CategoryType) {
         months = [String]()
         unitsSoldDic = [Double]()
         for dic in dataDic {
             let nameMonth = dic["monthString"] as! String
-            let value = dic["sumOfAmount"] as! Double
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "MM/yyyy"
-            let date = dateFormatter.dateFromString(nameMonth)
-            if date?.compare(fromDate) == NSComparisonResult.OrderedDescending {
-                if date?.compare(toDate) == NSComparisonResult.OrderedAscending {
-                    months.append(nameMonth)
-                    unitsSoldDic.append(value)
-                }
+            if currentCategoryType == CategoryType.Expense {
+                let expenseValue = dic["expense"] as! Double
+                months.append(nameMonth)
+                unitsSoldDic.append(expenseValue)
+            }
+            
+            if currentCategoryType == CategoryType.Income {
+                let incomeValue = dic["income"] as! Double
+                months.append(nameMonth)
+                unitsSoldDic.append(incomeValue)
             }
         }
         setChart(months, values: unitsSoldDic, fromDate: fromDate, toDate: toDate)

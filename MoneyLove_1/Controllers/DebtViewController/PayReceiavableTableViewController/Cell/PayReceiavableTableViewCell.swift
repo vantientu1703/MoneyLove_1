@@ -25,8 +25,17 @@ class PayReceiavableTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setDataPayReceiavableCell() {
-        
+    func setDataPayReceiavableCell(tran: Transaction, color: UIColor?) {
+        if tran.personRelated != "" {
+            nameDebts.text = tran.personRelated
+        } else {
+            nameDebts.text = "Someone"
+        }
+        numberTransaction.text = NSDate.convertTimeIntervalToDateString(tran.date)
+        totalDebts.text = "\(Int(tran.moneyNumber))"
+        if (color != nil) {
+            totalDebts.textColor = color
+        }
     }
     
 }
