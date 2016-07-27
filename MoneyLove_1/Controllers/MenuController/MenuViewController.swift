@@ -39,11 +39,13 @@ enum VIEWCONTROLLER: Int {
             return customPageVC
         case DebtsViewControllers:
             let tabPageVC: TabPageViewController = TabPageViewController.create()
-            tabPageVC.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Left", style: UIBarButtonItemStyle.Plain, target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
+            tabPageVC.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
             tabPageVC.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Add, target: tabPageVC, action: #selector(TabPageViewController.add(_:)))
             let payableVC = PayReceiavableTableViewController(nibName: "PayReceiavableTableViewController", bundle: nil)
+            payableVC.isDebt = true
             payableVC.color = UIColor.greenColor()
             let receivableVC = PayReceiavableTableViewController(nibName: "PayReceiavableTableViewController", bundle: nil)
+            receivableVC.isDebt = false
             payableVC.color = UIColor.redColor()
             tabPageVC.tabItems = [(payableVC, "Payable"), (receivableVC, "Receivable")]
             var option = TabPageOption()

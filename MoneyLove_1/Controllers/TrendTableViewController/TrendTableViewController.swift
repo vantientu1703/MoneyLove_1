@@ -19,26 +19,20 @@ class TrendTableViewController: UITableViewController {
     let IDENTIFIER_ACTION_TABLE_CELL = "ActionTableViewCell"
     let IDENTIFIER_BAR_CHART_TABLE_CELL = "BarChartTableViewCell"
     let IDENTIFIER_TREND_TABLE_CELL = "TrendTableViewCell"
-    var currentMonth: Int?
-    var currentYear: Int?
+    var currentMonth: Int!
+    var currentYear: Int!
     var fromMonth: Int = 1
-    var toMonth: Int?
-    var fromYear: Int?
-    var toYear: Int?
+    var toMonth: Int!
+    var fromYear: Int!
+    var toYear: Int!
     
     var fromDate: NSDate? {
         didSet {
-            if let toDate = toDate {
+            if let _ = self.toDate {
                 if isNetIncome {
                     self.requestDataWithNetIncome()
                 }else {
-                    dataListDefaultCell = self.requestTransaction(fromDate!,
-                                                                  toDate: toDate,
-                                                                  categoryType: currentCategoryType,
-                                                                  wallet: DataManager.shareInstance.currentWallet,
-                                                                  groupBy: currentGroupBy,
-                                                                  functionType: FunctionType.Sum,
-                                                                  resultType: NSFetchRequestResultType.DictionaryResultType)!
+                    requestDataExpenseIncome()
                 }
                 self.tableView.reloadData()
             }
@@ -46,17 +40,11 @@ class TrendTableViewController: UITableViewController {
     }
     var toDate: NSDate? {
         didSet {
-            if let fromDate = fromDate {
+            if let _ = self.toDate {
                 if isNetIncome {
                     self.requestDataWithNetIncome()
                 }else {
-                    dataListDefaultCell = self.requestTransaction(fromDate,
-                                                                  toDate: toDate!,
-                                                                  categoryType: currentCategoryType,
-                                                                  wallet: DataManager.shareInstance.currentWallet,
-                                                                  groupBy: currentGroupBy,
-                                                                  functionType: FunctionType.Sum,
-                                                                  resultType: NSFetchRequestResultType.DictionaryResultType)!
+                    requestDataExpenseIncome()
                 }
                 self.tableView.reloadData()
             }
@@ -67,10 +55,10 @@ class TrendTableViewController: UITableViewController {
     var currentCategoryType = CategoryType.Expense
     var currentGroupBy = GroupBy.MonthAndYear
     var isNetIncome = false
-    var dataListDefaultCell = [AnyObject]()
-    var dataListNetIncome = [Dictionary<String, AnyObject>]()
-    
+    var dataListExpenseIncome = [Dictionary<String, AnyObject>]()
+    var dataListExpenseIncomeByCategory = [AnyObject]()
     var subViewPicker: UIView?
+    var viewGround: UIView?
     @IBOutlet weak var monthYearPickerView: MonthYearPickerView!
     
     override func viewDidLoad() {
@@ -84,7 +72,7 @@ class TrendTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TrendTableViewController.doneAction(_:)))
         self.tableView.addGestureRecognizer(tapGesture)
         self.tableView.allowsSelection = false
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TrendTableViewController.presentLeftMenuViewController(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(TrendTableViewController.presentLeftMenuViewController(_:)))
         currentMonth = NSDate.getCurrentMonth()
         currentYear = NSDate.getCurrentYear()
         fromYear = currentYear
@@ -136,11 +124,7 @@ class TrendTableViewController: UITableViewController {
         if section == 0 {
             return NUMBER_ROW_SECTION0
         }
-        if isNetIncome {
-            return dataListNetIncome.count+1
-        } else {
-            return dataListDefaultCell.count+1
-        }
+        return dataListExpenseIncome.count+1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -152,19 +136,19 @@ class TrendTableViewController: UITableViewController {
             if indexPath.row == 0 {
                 let barChartCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_BAR_CHART_TABLE_CELL, forIndexPath: indexPath) as! BarChartTableViewCell
                 if isNetIncome {
-                    barChartCell.setDataDictionaryNetIcome(dataListNetIncome)
+                    barChartCell.setDataDictionaryNetIcome(dataListExpenseIncome)
                 } else {
-                    barChartCell.setDataDictionaryExpenseIncome(dataListDefaultCell as! [Dictionary<String, NSObject>], fromDate: fromDate!, toDate: toDate!)
+                    barChartCell.setDataDictionaryExpenseIncome(dataListExpenseIncome, fromDate: fromDate!, toDate: toDate!, currentCategoryType: currentCategoryType)
                 }
                 return barChartCell
             } else {
                 let trendCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_TREND_TABLE_CELL, forIndexPath: indexPath) as! TrendTableViewCell
                 if isNetIncome {
-                    let dic = dataListNetIncome[indexPath.row-1]
+                    let dic = dataListExpenseIncome[indexPath.row-1]
                     trendCell.setDataTrendCellNetIncome(dic)
                 } else {
-                    let dic = dataListDefaultCell[indexPath.row-1] as! Dictionary<String, AnyObject>
-                    trendCell.setDataTrendCellDefault(dic)
+                    let dic = dataListExpenseIncome[indexPath.row-1]
+                    trendCell.setDataTrendCellDefault(dic, currentCategoryType: currentCategoryType)
                 }
                 return trendCell
             }
@@ -181,6 +165,10 @@ class TrendTableViewController: UITableViewController {
                     weakSelf.subViewPicker = customView
                     weakSelf.subViewPicker!.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2)
                     weakSelf.subViewPicker!.center = weakSelf.view.center
+                    weakSelf.viewGround = UIView(frame: UIScreen.mainScreen().bounds)
+                    weakSelf.viewGround!.backgroundColor = UIColor.lightGrayColor()
+                    weakSelf.viewGround!.alpha = 0.7
+                    weakSelf.view.addSubview(weakSelf.viewGround!)
                     weakSelf.view.addSubview(weakSelf.subViewPicker!)
                     weakSelf.monthYearPickerView.onDateSelected = { (nameMonth: String, indexMonth: Int, year: Int) in
                         switch date {
@@ -216,37 +204,22 @@ class TrendTableViewController: UITableViewController {
             case (SegmentGroupType.Expense, SegmentGroupByTrend.OverTime):
                 weakSelf.currentCategoryType = CategoryType.Expense
                 weakSelf.isNetIncome = false
-                let results = weakSelf.requestTransaction(weakSelf.fromDate!,
-                                                            toDate: weakSelf.toDate!,
-                                                            categoryType: CategoryType.Expense,
-                                                            wallet: DataManager.shareInstance.currentWallet,
-                                                            groupBy: GroupBy.MonthAndYear,
-                                                            functionType: FunctionType.Sum,
-                                                            resultType: NSFetchRequestResultType.DictionaryResultType)
-                if let resultsList = results as? [Dictionary<String, AnyObject>] {
-                    weakSelf.dataListDefaultCell = resultsList
-                    weakSelf.tableView.reloadData()
-                }
+                weakSelf.requestDataExpenseIncome()
+                weakSelf.tableView.reloadData()
                 break
             case (SegmentGroupType.Expense, SegmentGroupByTrend.Category):
+                weakSelf.currentCategoryType = CategoryType.Expense
                 weakSelf.isNetIncome = false
+                weakSelf.tableView.reloadData()
                 break
             case (SegmentGroupType.Income, SegmentGroupByTrend.OverTime):
                 weakSelf.currentCategoryType = CategoryType.Income
                 weakSelf.isNetIncome = false
-                let results = weakSelf.requestTransaction(weakSelf.fromDate!,
-                                                            toDate: weakSelf.toDate!,
-                                                            categoryType: CategoryType.Income,
-                                                            wallet: DataManager.shareInstance.currentWallet,
-                                                            groupBy: GroupBy.MonthAndYear,
-                                                            functionType: FunctionType.Sum,
-                                                            resultType: NSFetchRequestResultType.DictionaryResultType)
-                if let resultsList = results as? [Dictionary<String, AnyObject>] {
-                    weakSelf.dataListDefaultCell = resultsList
-                    weakSelf.tableView.reloadData()
-                }
+                weakSelf.requestDataExpenseIncome()
+                weakSelf.tableView.reloadData()
                 break
             case (SegmentGroupType.Income, SegmentGroupByTrend.Category):
+                weakSelf.currentCategoryType = CategoryType.Income
                 weakSelf.isNetIncome = false
                 break
             default:
@@ -255,6 +228,41 @@ class TrendTableViewController: UITableViewController {
                 weakSelf.requestDataWithNetIncome()
                 break
             }
+        }
+    }
+    
+    func requestDataExpenseIncome() {
+        let arr = self.requestTransaction(fromDate!,
+                                            toDate: toDate!,
+                                            categoryType: currentCategoryType,
+                                            wallet: DataManager.shareInstance.currentWallet,
+                                            groupBy: currentGroupBy,
+                                            functionType: FunctionType.Sum,
+                                            resultType: NSFetchRequestResultType.DictionaryResultType)!
+        var arrMonths = [String]()
+        self.dataListExpenseIncome.removeAll()
+        let countMonth = self.toDate!.months(from: self.fromDate!)
+        for i in 0...countMonth {
+            arrMonths.append(DataPageView.getMonthPage(i, toDate: self.fromDate!).1)
+        }
+        
+        for month in arrMonths {
+            var dict: Dictionary<String, AnyObject> = ["monthString" : month, "expense" : 0.0, "income" : 0.0]
+            for item in arr {
+                let monthString = item["monthString"] as! String
+                if monthString == month {
+                    dict["monthString"] = monthString
+                    if currentCategoryType == CategoryType.Expense {
+                        let expenseValue = item["sumOfAmount"] as! Double
+                        dict["expense"] = expenseValue
+                    }
+                    if currentCategoryType == CategoryType.Income{
+                        let incomeValue = item["sumOfAmount"] as! Double
+                        dict["income"] = incomeValue
+                    }
+                }
+            }
+            self.dataListExpenseIncome.append(dict)
         }
     }
     
@@ -274,14 +282,14 @@ class TrendTableViewController: UITableViewController {
                                                           functionType: FunctionType.Sum,
                                                           resultType: NSFetchRequestResultType.DictionaryResultType)
         var arrMonths = [String]()
-        self.dataListNetIncome.removeAll()
+        self.dataListExpenseIncome.removeAll()
         let countMonth = self.toDate!.months(from: self.fromDate!)
         for i in 0...countMonth {
             arrMonths.append(DataPageView.getMonthPage(i, toDate: self.fromDate!).1)
         }
         
         for month in arrMonths {
-            var dict:Dictionary<String, AnyObject> = ["monthString" : month, "expense" : 0.0, "income" : 0.0]
+            var dict: Dictionary<String, AnyObject> = ["monthString" : month, "expense" : 0.0, "income" : 0.0]
             for expense in resultsExpense! {
                 let monthString = expense["monthString"] as! String
                 let expenseValue = expense["sumOfAmount"] as! Double
@@ -298,7 +306,7 @@ class TrendTableViewController: UITableViewController {
                     dict["income"] = incomeValue
                 }
             }
-            self.dataListNetIncome.append(dict)
+            self.dataListExpenseIncome.append(dict)
         }
         self.tableView.reloadData()
     }
@@ -315,6 +323,7 @@ class TrendTableViewController: UITableViewController {
     }
     
     @IBAction func doneAction(sender: AnyObject) {
+        viewGround?.removeFromSuperview()
         subViewPicker?.removeFromSuperview()
     }
 }

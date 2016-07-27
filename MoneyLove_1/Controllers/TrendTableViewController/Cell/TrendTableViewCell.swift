@@ -30,11 +30,19 @@ class TrendTableViewCell: UITableViewCell {
         moneyIcomeLabel.text = "\(money)"
     }
     
-    func setDataTrendCellDefault(dataDic: Dictionary<String, AnyObject>) {
+    func setDataTrendCellDefault(dataDic: Dictionary<String, AnyObject>, currentCategoryType: CategoryType) {
         let nameMonth = dataDic["monthString"] as! String
-        let moneyIcome = dataDic["sumOfAmount"] as! Int
-        monthLabel.text = nameMonth
-        moneyIcomeLabel.text = "\(moneyIcome)"
+        if currentCategoryType  == CategoryType.Income {
+            monthLabel.text = nameMonth
+            let moneyIcome = dataDic["income"] as! Int
+            moneyIcomeLabel.text = "\(moneyIcome)"
+        }
+        
+        if currentCategoryType  == CategoryType.Expense {
+            monthLabel.text = nameMonth
+            let moneyExpense = dataDic["expense"] as! Int
+            moneyIcomeLabel.text = "\(moneyExpense)"
+        }
         moneyExpenseLabel.hidden = true
     }
     

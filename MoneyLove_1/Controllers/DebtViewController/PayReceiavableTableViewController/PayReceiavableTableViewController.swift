@@ -8,12 +8,15 @@
 
 import UIKit
 import TabPageViewController
+import CoreData
 
 class PayReceiavableTableViewController: UITableViewController {
     
     let IDENTIFIER_CELL_PAY_RECEIAVABLE = "PayReceiavableTableViewCell"
-    let arr = ["A","B","C","D","E"]
+    var arrTranSaction = [Transaction]()
     var color: UIColor!
+    var isDebt = false
+    let context = AppDelegate.shareInstance.managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,34 @@ class PayReceiavableTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         //TODO
-        //reload data
+        requestData()
+    }
+    
+    func requestData() {
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        let arraySortDescriptor = [sortDescriptor]
+
+        let request = NSFetchRequest(entityName: Transaction.CLASS_NAME)
+        request.sortDescriptors = arraySortDescriptor
+        if isDebt {
+            request.predicate = NSPredicate.predicateWithDebtOrLoanTransaction(true)
+            do {
+                if let arrTransaction = try context.executeFetchRequest(request) as? [Transaction] {
+                    arrTranSaction = arrTransaction
+                }
+            } catch let error as NSError {
+                print("Could not fetch \(error), \(error.userInfo)")
+            }
+        } else {
+            request.predicate = NSPredicate.predicateWithDebtOrLoanTransaction(false)
+            do {
+                if let arrTransaction = try context.executeFetchRequest(request) as? [Transaction] {
+                    arrTranSaction = arrTransaction
+                }
+            } catch let error as NSError {
+                print("Could not fetch \(error), \(error.userInfo)")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,17 +72,13 @@ class PayReceiavableTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arr.count
+        return arrTranSaction.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_CELL_PAY_RECEIAVABLE, forIndexPath: indexPath) as! PayReceiavableTableViewCell
-        cell.nameDebts.text = "\(arr[indexPath.row])"
-        cell.numberTransaction.text = "1 Transaction"
-        cell.totalDebts.text = "\(indexPath.row)"
-        if (color != nil) {
-            cell.totalDebts.textColor = color
-        }
+        let tran = arrTranSaction[indexPath.row]
+        cell.setDataPayReceiavableCell(tran, color: color)
         return cell
     }
 }
