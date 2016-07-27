@@ -13,7 +13,7 @@ import Foundation
 import CoreData
 
 extension Wallet {
-    @NSManaged var firstNumber: Double
+    @NSManaged var firstNumber: Int32
     @NSManaged var imageName: String?
     @NSManaged var name: String?
     @NSManaged var group: NSSet?

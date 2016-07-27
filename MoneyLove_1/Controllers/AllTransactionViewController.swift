@@ -100,6 +100,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     }
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -124,6 +125,9 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     func setUp() {
         dataTransaction = DataTransaction(frc: fetchedResultController, managedObjectContext: managedObjectContext)
         title = Transaction.CLASS_NAME
+        addButton.layer.cornerRadius = 20.0
+        self.view.bringSubviewToFront(addButton)
+
     }
     
     func changeWallet(notifi: NSNotification) {
@@ -469,6 +473,12 @@ extension AllTransactionViewController: CustomDateViewDelegate {
         selector.optionCurrentDate = NSDate()
         selector.optionStyles = [.Date, .Year]
         self.presentViewController(selector, animated: true, completion: nil)
+    }
+    
+    func customDateViewDoWhenCancel() {
+        if let subView = self.view.viewWithTag(5) {
+            subView.removeFromSuperview()
+        }
     }
 }
 extension AllTransactionViewController: WWCalendarTimeSelectorProtocol {

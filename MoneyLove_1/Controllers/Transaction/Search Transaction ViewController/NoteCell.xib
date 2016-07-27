@@ -14,25 +14,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-mw-cqc">
-                        <rect key="frame" x="16" y="13" width="38" height="82"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-mw-cqc">
+                        <rect key="frame" x="8" y="13" width="37" height="82"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter something to search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-KT-ZRx">
-                        <rect key="frame" x="74" y="46" width="312" height="17"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter something to search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-KT-ZRx">
+                        <rect key="frame" x="226" y="46" width="180" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="180" id="DOI-3x-nOf"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="qEh-mw-cqc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1G5-xH-x4T"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Hsw-KT-ZRx" secondAttribute="trailing" constant="20" id="5Iv-oy-NVv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Hsw-KT-ZRx" secondAttribute="trailing" id="5Iv-oy-NVv"/>
                     <constraint firstItem="qEh-mw-cqc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ieh-Mm-4uc"/>
                     <constraint firstItem="Hsw-KT-ZRx" firstAttribute="centerY" secondItem="qEh-mw-cqc" secondAttribute="centerY" id="NW9-90-axT"/>
                     <constraint firstItem="qEh-mw-cqc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="sNP-Z7-qCP"/>
-                    <constraint firstItem="Hsw-KT-ZRx" firstAttribute="leading" secondItem="qEh-mw-cqc" secondAttribute="trailing" constant="20" id="uIW-Ob-PnZ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

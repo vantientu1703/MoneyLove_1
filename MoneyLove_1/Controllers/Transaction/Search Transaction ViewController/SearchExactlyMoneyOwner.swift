@@ -9,13 +9,12 @@
 import UIKit
 
 protocol SearchExactlyMoneyDelegate: class {
-    func delegateDoWhenSave(money: Double)
+    func delegateDoWhenSave(money: Int32)
     func delegateDoWhenCancel()
 }
 
 class SearchExactlyMoneyOwner: NSObject {
-
-    var exactView: SearchExactlyMoneyView?
+    @IBOutlet var exactView: SearchExactlyMoneyView!
 }
 
 class SearchExactlyMoneyView: UIView {
@@ -27,10 +26,10 @@ class SearchExactlyMoneyView: UIView {
     
     @IBAction func clickToSave(sender: AnyObject) {
         let moneyStr = moneyTextField.text
-        if let money = Double(moneyStr!) {
+        if let money = Int32(moneyStr!) {
             delegate.delegateDoWhenSave(money)
         } else {
-            delegate.delegateDoWhenSave(0.0)
+            delegate.delegateDoWhenSave(0)
         }
         self.removeFromSuperview()
     }

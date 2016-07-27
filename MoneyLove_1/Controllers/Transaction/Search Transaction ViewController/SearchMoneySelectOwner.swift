@@ -8,17 +8,17 @@
 
 import UIKit
 protocol SearchMoneySelectDelegate: class {
-    func searchMoneyDoWhenSave(from: Double, to: Double)
+    func searchMoneyDoWhenSave(from: Int32, to: Int32)
     func searchMoneyDoWhenCancel()
 }
 class SearchMoneySelectOwner: NSObject {
-    var moneyRangeView: SearchMoneySelectView?
 
+    @IBOutlet var moneyRangeView: SearchMoneySelectView!
 }
 
 class SearchMoneySelectView: UIView {
-    var moneyNumberFrom: Double!
-    var moneyNumberTo: Double!
+    var moneyNumberFrom: Int32!
+    var moneyNumberTo: Int32!
     weak var delegate: SearchMoneySelectDelegate!
     @IBOutlet weak var moneyFrom: UITextField!
     @IBOutlet weak var moneyTo: UITextField!
@@ -34,22 +34,22 @@ class SearchMoneySelectView: UIView {
     
     func getTextFromTextField() {
         if let textFrom = moneyFrom.text {
-            if let from = Double(textFrom) {
+            if let from = Int32(textFrom) {
                 moneyNumberFrom = from
             } else {
-                moneyNumberFrom = 0.0
+                moneyNumberFrom = 0
             }
         } else {
-            moneyNumberFrom = 0.0
+            moneyNumberFrom = 0
         }
         if let textTo = moneyTo.text {
-            if let numberTo = Double(textTo) {
+            if let numberTo = Int32(textTo) {
                 moneyNumberTo = numberTo
             } else {
-                moneyNumberTo = 0.0
+                moneyNumberTo = 0
             }
         } else {
-            moneyNumberTo = 0.0
+            moneyNumberTo = 0
         }
     }
     

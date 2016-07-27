@@ -43,12 +43,6 @@ class CategoryRequestedCell: UITableViewCell {
         }
     }
     
-    var color: UIColor {
-        didSet {
-            self.backgroundColor = color
-        }
-    }
-    
     var moneyLabelTextColor: UIColor = UIColor.blackColor() {
         didSet {
             moneyNumberLabel.textColor = moneyLabelTextColor
@@ -56,14 +50,12 @@ class CategoryRequestedCell: UITableViewCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        moneyNumber = "0.000"
-        color = UIColor.whiteColor()
+        moneyNumber = "0"
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        moneyNumber = "0.000"
-        color = UIColor.whiteColor()
+        moneyNumber = "0"
         super.init(coder: aDecoder)
     }
     override func awakeFromNib() {
@@ -89,7 +81,6 @@ class CategoryRequestedCell: UITableViewCell {
             }
             moneyNumber = "\(money)"
             imagePath = data!.getCategoryImagePathInSection(indexPath.section)
-            color = UIColor.lightGrayColor()
         } else {
             categoryName = data?.getCategoryNameForTransaction(indexPath)
             let money = data!.getMoneyNumberInIndexPath(indexPath)
@@ -101,7 +92,19 @@ class CategoryRequestedCell: UITableViewCell {
             }
             moneyNumber =  "\(money)"
             imagePath = data?.getCategoryImageNameForTransaction(indexPath)
-            color = UIColor.whiteColor()
         }
+    }
+    
+    func configureCellInSearchTransaction(indexPath: NSIndexPath, data: DataResultTransaction?) {
+        categoryName = data?.getCategoryNameForTransaction(indexPath)
+        let money = data!.getMoneyNumberInIndexPath(indexPath)
+        let type = data!.getCategoryTypeInIndexPath(indexPath)!
+        if !type  {
+            moneyLabelTextColor = UIColor.redColor()
+        } else {
+            moneyLabelTextColor = UIColor.blueColor()
+        }
+        moneyNumber =  "\(money)"
+        imagePath = data?.getCategoryImageNameForTransaction(indexPath)
     }
 }

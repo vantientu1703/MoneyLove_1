@@ -51,13 +51,6 @@ class DateRequestedCell: UITableViewCell {
             }
         }
     }
-    var color: UIColor =  UIColor.whiteColor() {
-        didSet {
-            self.backgroundColor = color
-            containerView.backgroundColor = color
-        }
-    }
-
     var moneyLabelTextColor: UIColor = UIColor.blackColor() {
         didSet {
             if let moneyNumberLAbel = moneyNumberLAbel {
@@ -98,7 +91,6 @@ class DateRequestedCell: UITableViewCell {
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }
-            color = UIColor.lightGrayColor()
             money = "\(sum!)"
         } else {
             let stringOfDate = data?.getTimeForTransaction(indexPath)
@@ -117,7 +109,25 @@ class DateRequestedCell: UITableViewCell {
                 moneyLabelTextColor = UIColor.blueColor()
             }
             money = "\(moneyNumber)"
-            color = UIColor.whiteColor()
         }
+    }
+    
+    func configureCellInSearchTransaction(indexPath: NSIndexPath, data: DataResultTransaction?) {
+        var sum = data?.getSumOfAllMoneyInIndexPath(indexPath.section)
+        let stringOfDate = data?.getHeaderTitleInIndexPath(indexPath.section)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let date = dateFormatter.dateFromString(stringOfDate!)
+        let dateComponents = stringOfDate?.componentsSeparatedByString("-")
+        dateStr = dateComponents![0]
+        monthAndYear = dateComponents![1] + " - " + dateComponents![2]
+        weekDay = NSDate.dayOfTheWeek(date!)
+        if sum < 0 {
+            moneyLabelTextColor = UIColor.redColor()
+            sum = sum! * -1
+        } else {
+            moneyLabelTextColor = UIColor.blueColor()
+        }
+        money = "\(sum!)"
     }
 }

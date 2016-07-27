@@ -87,7 +87,17 @@ extension NSFetchRequest {
             sumED.expression = sumExpression
             sumED.name = "sumOfAmount"
             sumED.expressionResultType = .DoubleAttributeType
-            fetchRequest.propertiesToFetch = ["monthString", sumED]
+            switch groupBy {
+            case .MonthAndYear:
+                fetchRequest.propertiesToFetch = ["monthString", sumED]
+                break
+            case .DayMonthYear:
+                fetchRequest.propertiesToFetch = ["dayString", sumED]
+                break
+            default:
+                fetchRequest.propertiesToFetch = ["group", sumED]
+
+            }
             break
         case .Max:
             let sumExpression = NSExpression(format: "max:(moneyNumber)")

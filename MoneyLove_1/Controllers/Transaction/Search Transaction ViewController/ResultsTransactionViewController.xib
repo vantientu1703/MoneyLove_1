@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultsTransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
+                <outlet property="myTableView" destination="bhh-e7-hd7" id="RxZ-bA-jhi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,6 +18,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bhh-e7-hd7">
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="2yR-91-QMm"/>
+                        <outlet property="delegate" destination="-1" id="N3N-Zn-o2y"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -27,6 +32,7 @@
                 <constraint firstAttribute="trailing" secondItem="bhh-e7-hd7" secondAttribute="trailing" id="hcP-fm-Gie"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="-17" y="304"/>
         </view>
     </objects>
 </document>
