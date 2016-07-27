@@ -68,10 +68,18 @@
 		517A0C701D4764820008626D /* SearchSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C621D4764820008626D /* SearchSelectTableViewController.xib */; };
 		517A0C711D4764820008626D /* SearchTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C631D4764820008626D /* SearchTransactionViewController.swift */; };
 		517A0C721D4764820008626D /* SearchTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C641D4764820008626D /* SearchTransactionViewController.xib */; };
+		517A0C771D47A50E0008626D /* DataResultTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C761D47A50E0008626D /* DataResultTransaction.swift */; };
+		517A0C7A1D47ADA20008626D /* SearchOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C781D47ADA20008626D /* SearchOverViewCell.swift */; };
+		517A0C7B1D47ADA20008626D /* SearchOverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C791D47ADA20008626D /* SearchOverViewCell.xib */; };
+		517A0C7F1D47E3350008626D /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A0C7D1D47E3350008626D /* LabelCell.swift */; };
+		517A0C801D47E3350008626D /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517A0C7E1D47E3350008626D /* LabelCell.xib */; };
 		5194B3201D333EE600F419FC /* DataPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194B31F1D333EE600F419FC /* DataPageView.swift */; };
 		51C5A4A51D40CB5D0060A5C5 /* MonthlyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51312F031D35CD8B00775EFD /* MonthlyReportViewController.swift */; };
 		51F0E6DE1D37772F00102190 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0E6DD1D37772F00102190 /* MonthYearPickerView.swift */; };
 		51F0E6E01D3779E900102190 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F0E6DF1D3779E900102190 /* DatePickerView.xib */; };
+		51F93E941D48469A00464DC9 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E931D48469A00464DC9 /* question.png */; };
+		51F93E961D4846B000464DC9 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E951D4846B000464DC9 /* pen.png */; };
+		51F93E981D4846C000464DC9 /* addContact.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E971D4846C000464DC9 /* addContact.png */; };
 		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
 		51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */; };
 		51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */; };
@@ -257,9 +265,17 @@
 		517A0C621D4764820008626D /* SearchSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchSelectTableViewController.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchSelectTableViewController.xib"; sourceTree = "<group>"; };
 		517A0C631D4764820008626D /* SearchTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTransactionViewController.swift; path = "Controllers/Transaction/Search Transaction ViewController/SearchTransactionViewController.swift"; sourceTree = "<group>"; };
 		517A0C641D4764820008626D /* SearchTransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTransactionViewController.xib; path = "Controllers/Transaction/Search Transaction ViewController/SearchTransactionViewController.xib"; sourceTree = "<group>"; };
+		517A0C761D47A50E0008626D /* DataResultTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataResultTransaction.swift; sourceTree = "<group>"; };
+		517A0C781D47ADA20008626D /* SearchOverViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOverViewCell.swift; sourceTree = "<group>"; };
+		517A0C791D47ADA20008626D /* SearchOverViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchOverViewCell.xib; sourceTree = "<group>"; };
+		517A0C7D1D47E3350008626D /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		517A0C7E1D47E3350008626D /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		5194B31F1D333EE600F419FC /* DataPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataPageView.swift; path = Manager/DataPageView.swift; sourceTree = "<group>"; };
 		51F0E6DD1D37772F00102190 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Controllers/TrendTableViewController/MonthYearPickerView.swift; sourceTree = "<group>"; };
 		51F0E6DF1D3779E900102190 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		51F93E931D48469A00464DC9 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question.png; path = Resources/question.png; sourceTree = "<group>"; };
+		51F93E951D4846B000464DC9 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pen.png; path = Resources/pen.png; sourceTree = "<group>"; };
+		51F93E971D4846C000464DC9 /* addContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addContact.png; path = Resources/addContact.png; sourceTree = "<group>"; };
 		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
 		51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendTableViewController.swift; path = Controllers/TrendTableViewController/TrendTableViewController.swift; sourceTree = "<group>"; };
 		51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrendTableViewController.xib; path = Controllers/TrendTableViewController/TrendTableViewController.xib; sourceTree = "<group>"; };
@@ -459,8 +475,7 @@
 				517A0C621D4764820008626D /* SearchSelectTableViewController.xib */,
 				517A0C731D4769B00008626D /* Search Cell */,
 				517A0C741D4769C40008626D /* Search Select View */,
-				517A0C591D4764820008626D /* ResultsTransactionViewController.swift */,
-				517A0C5A1D4764820008626D /* ResultsTransactionViewController.xib */,
+				517A0C751D47A4DB0008626D /* Results Controller */,
 			);
 			name = "Search Transaction ViewController";
 			sourceTree = "<group>";
@@ -496,6 +511,8 @@
 				516040CC1D37608C00AB9A74 /* DateCell.xib */,
 				516040CD1D37608C00AB9A74 /* TextCell.swift */,
 				516040CE1D37608C00AB9A74 /* TextCell.xib */,
+				517A0C7D1D47E3350008626D /* LabelCell.swift */,
+				517A0C7E1D47E3350008626D /* LabelCell.xib */,
 			);
 			name = "Transaction Cells";
 			sourceTree = "<group>";
@@ -552,6 +569,26 @@
 				517A0C601D4764820008626D /* SearchMoneySelectView.xib */,
 			);
 			name = "Search Select View";
+			sourceTree = "<group>";
+		};
+		517A0C751D47A4DB0008626D /* Results Controller */ = {
+			isa = PBXGroup;
+			children = (
+				517A0C761D47A50E0008626D /* DataResultTransaction.swift */,
+				517A0C591D4764820008626D /* ResultsTransactionViewController.swift */,
+				517A0C5A1D4764820008626D /* ResultsTransactionViewController.xib */,
+				517A0C7C1D47AE6E0008626D /* Search Result Cell */,
+			);
+			name = "Results Controller";
+			sourceTree = "<group>";
+		};
+		517A0C7C1D47AE6E0008626D /* Search Result Cell */ = {
+			isa = PBXGroup;
+			children = (
+				517A0C781D47ADA20008626D /* SearchOverViewCell.swift */,
+				517A0C791D47ADA20008626D /* SearchOverViewCell.xib */,
+			);
+			name = "Search Result Cell";
 			sourceTree = "<group>";
 		};
 		51FC24A01D2DE5710067CC71 /* DebtViewController */ = {
@@ -767,6 +804,9 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51F93E951D4846B000464DC9 /* pen.png */,
+				51F93E971D4846C000464DC9 /* addContact.png */,
+				51F93E931D48469A00464DC9 /* question.png */,
 				E5279F121D4703450018F9BE /* ic_category.png */,
 				E5279F131D4703450018F9BE /* ic_debt.png */,
 				E5279F141D4703450018F9BE /* ic_report.png */,
@@ -1037,6 +1077,7 @@
 				E5FEA4DB1D3F4CB2001A806E /* wallet4.png in Resources */,
 				E5FEA4D81D3F4CB2001A806E /* wallet1.png in Resources */,
 				E5AD1A941D3F19C80088BBF7 /* Icon.plist in Resources */,
+				517A0C801D47E3350008626D /* LabelCell.xib in Resources */,
 				E5FEA4FC1D3F4CD6001A806E /* cocktail.png in Resources */,
 				E5FEA5041D3F56B8001A806E /* ic_money.png in Resources */,
 				516040D21D37608C00AB9A74 /* TextCell.xib in Resources */,
@@ -1045,11 +1086,13 @@
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				517A0C6A1D4764820008626D /* SearchCell.xib in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */,
+				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
 				E5279F101D46FE760018F9BE /* ic_add.png in Resources */,
 				5153B1EE1D2F8B2400413269 /* NetIcomeTableViewCell.xib in Resources */,
 				E5FEA4F01D3F4CC3001A806E /* watermelon.png in Resources */,
 				E5279F111D46FE760018F9BE /* ic_manager.png in Resources */,
+				51F93E981D4846C000464DC9 /* addContact.png in Resources */,
 				E5279F171D4703450018F9BE /* ic_category.png in Resources */,
 				517A0C721D4764820008626D /* SearchTransactionViewController.xib in Resources */,
 				517A0C661D4764820008626D /* NoteCell.xib in Resources */,
@@ -1058,15 +1101,17 @@
 				517A0C681D4764820008626D /* ResultsTransactionViewController.xib in Resources */,
 				517A0C6C1D4764820008626D /* SearchExactlyMoneyView.xib in Resources */,
 				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
+				51F93E961D4846B000464DC9 /* pen.png in Resources */,
+				51F93E941D48469A00464DC9 /* question.png in Resources */,
 				514518201D3C6E0F00185609 /* DateRequestedCell.xib in Resources */,
 				E5279F191D4703450018F9BE /* ic_report.png in Resources */,
-				51312F0A1D35CD8B00775EFD /* PageReportViewController.xib in Resources */,
 				E5FEA4E91D3F4CC3001A806E /* apple.png in Resources */,
 				E5279F1A1D4703450018F9BE /* ic_transaction.png in Resources */,
 				E5FEA4E01D3F4CB2001A806E /* wallet9.png in Resources */,
 				E5FEA5021D3F4DAA001A806E /* pricetag.png in Resources */,
 				E5FEA4DE1D3F4CB2001A806E /* wallet7.png in Resources */,
 				E5FEA4D71D3F4CB2001A806E /* wallet.png in Resources */,
+				517A0C7B1D47ADA20008626D /* SearchOverViewCell.xib in Resources */,
 				EF8CD2411D38843D00890491 /* AddCategoriesTableViewCell.xib in Resources */,
 				EF76F9481D37764A00175D5C /* WalletManagerViewController.xib in Resources */,
 				E5FEA4EA1D3F4CC3001A806E /* coffee.png in Resources */,
@@ -1191,6 +1236,7 @@
 				514783491D42007500E50A04 /* Extension_NSPredicate.swift in Sources */,
 				EFCF63421D2F878D002BB378 /* BottomTableViewCell.swift in Sources */,
 				517A0C671D4764820008626D /* ResultsTransactionViewController.swift in Sources */,
+				517A0C7F1D47E3350008626D /* LabelCell.swift in Sources */,
 				51F0E6DE1D37772F00102190 /* MonthYearPickerView.swift in Sources */,
 				5145181F1D3C6E0F00185609 /* DateRequestedCell.swift in Sources */,
 				EFCF63361D2F458E002BB378 /* SelectWalletViewController.swift in Sources */,
@@ -1205,6 +1251,7 @@
 				EFCF633A1D2F655B002BB378 /* TotalMoneyTableViewCell.swift in Sources */,
 				EF76F9421D37478100175D5C /* AddWalletViewController.swift in Sources */,
 				EF5C481D1D2E5D5D0040B82E /* (null) in Sources */,
+				517A0C771D47A50E0008626D /* DataResultTransaction.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
 				517A0C691D4764820008626D /* SearchCell.swift in Sources */,
 				E5AD1A921D3F193C0088BBF7 /* ManagerIcon.swift in Sources */,
@@ -1229,7 +1276,6 @@
 				51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */,
 				EF76F94B1D3776AD00175D5C /* WalletManagerTableViewCell.swift in Sources */,
 				E5E0605F1D44FEC700AF95F9 /* Transaction+CoreDataProperties.swift in Sources */,
-				5153B1CA1D2F48C800413269 /* PayReceiavableTableView.swift in Sources */,
 				E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */,
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,
 				517A0C6D1D4764820008626D /* SearchMoneySelectOwner.swift in Sources */,
@@ -1247,6 +1293,7 @@
 				EF8CD2401D38843D00890491 /* AddCategoriesTableViewCell.swift in Sources */,
 				EF35271E1D2CAB5F009D6F58 /* MoneyLove_1.xcdatamodeld in Sources */,
 				EF76F9471D37764A00175D5C /* WalletManagerViewController.swift in Sources */,
+				517A0C7A1D47ADA20008626D /* SearchOverViewCell.swift in Sources */,
 				517A0C711D4764820008626D /* SearchTransactionViewController.swift in Sources */,
 				51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */,
 				5194B3201D333EE600F419FC /* DataPageView.swift in Sources */,

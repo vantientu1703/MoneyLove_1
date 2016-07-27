@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchTransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
@@ -16,17 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-4y-TnW">
-                    <rect key="frame" x="0.0" y="64" width="320" height="379"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-4y-TnW">
+                    <rect key="frame" x="0.0" y="64" width="320" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="amR-At-R7i"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="YxX-gq-e9B"/>
                         <outlet property="delegate" destination="-1" id="6qN-Al-hgA"/>
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brF-d4-Z9y">
-                    <rect key="frame" x="0.0" y="463" width="320" height="30"/>
-                    <state key="normal" title="Search Transaction"/>
+                    <rect key="frame" x="0.0" y="384" width="320" height="50"/>
+                    <color key="backgroundColor" red="0.073536012619999994" green="1" blue="0.25887284459999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="rb5-6p-Q0W"/>
+                    </constraints>
+                    <state key="normal" title="Search Transaction">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="clickToSearch:" destination="-1" eventType="touchUpInside" id="dHf-F7-m1u"/>
                     </connections>
@@ -34,13 +42,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="U3D-4y-TnW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="2/3" id="Oeq-Wv-3AF"/>
                 <constraint firstAttribute="trailing" secondItem="brF-d4-Z9y" secondAttribute="trailing" id="TIc-hv-mgt"/>
                 <constraint firstItem="U3D-4y-TnW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UCR-Ha-iIR"/>
-                <constraint firstItem="brF-d4-Z9y" firstAttribute="top" secondItem="U3D-4y-TnW" secondAttribute="bottom" constant="20" id="atq-EF-hBh"/>
                 <constraint firstItem="U3D-4y-TnW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="d8i-Q8-PiJ"/>
                 <constraint firstAttribute="trailing" secondItem="U3D-4y-TnW" secondAttribute="trailing" id="dit-PJ-6B9"/>
                 <constraint firstItem="brF-d4-Z9y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xlj-9s-4XB"/>
+                <constraint firstItem="brF-d4-Z9y" firstAttribute="top" secondItem="U3D-4y-TnW" secondAttribute="bottom" constant="20" id="zLP-xJ-Kvh"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

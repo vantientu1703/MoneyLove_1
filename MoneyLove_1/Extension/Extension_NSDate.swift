@@ -71,8 +71,7 @@ extension NSDate {
         comp.day -= 1
         comp.to12pm()
         return cal.dateByAddingComponents(comp, toDate: self.startOfMonth()!, options: [])!
-    }
-    
+    }    
     class func convertTimeIntervalToDateString(time: NSTimeInterval) -> String {
         let date = NSDate(timeIntervalSinceReferenceDate: time)
         let dateFormatter = NSDateFormatter()

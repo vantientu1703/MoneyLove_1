@@ -10,6 +10,7 @@ import UIKit
 protocol CustomDateViewDelegate: class {
     func delegateDoWhenSave(startingDate: NSDate, endingDate: NSDate)
     func delegateDoWhenShowCalendarVC(label: UILabel)
+    func customDateViewDoWhenCancel()
 }
 
 class CustomDateViewOwner: NSObject {
@@ -20,37 +21,41 @@ class CustomDateView: UIView {
     weak var delegate: CustomDateViewDelegate!
     @IBOutlet weak var startingDate: UILabel!
     @IBOutlet weak var endingDate: UILabel!
-    var start: NSDate? {
+    var start: NSDate = NSDate.startOfDay(NSDate()) {
         didSet {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
-            if let start = start {
-                startingDate.text = dateFormatter.stringFromDate(start)
-            }
+            startingDate.text = dateFormatter.stringFromDate(start)
         }
     }
-    var end :NSDate? {
+    var end :NSDate = NSDate.endOfDay(NSDate()) {
         didSet {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
-            if let end = end {
-                endingDate.text = dateFormatter.stringFromDate(end)
-            }
+            endingDate.text = dateFormatter.stringFromDate(end)
         }
     }
     class func presentInViewController(viewController: CustomDateViewDelegate) {
         let owner = CustomDateViewOwner()
-        NSBundle.mainBundle().loadNibNamed("CustomDateView", owner: owner, options: nil)
-        owner.customDateView.delegate = viewController
-        let tapGestureOfStartingDate = UITapGestureRecognizer(target: owner.customDateView, action: #selector(CustomDateView.clickToShowCalendar(_:)))
-        let tapGestureOfEndingDate = UITapGestureRecognizer(target: owner.customDateView, action: #selector(CustomDateView.clickToShowCalendar(_:)))
-        owner.customDateView.startingDate.addGestureRecognizer(tapGestureOfStartingDate)
-        owner.customDateView.endingDate.addGestureRecognizer(tapGestureOfEndingDate)
-        let vc = viewController as? AllTransactionViewController
-        if let vc = vc {
-            owner.customDateView.frame = vc.view.bounds
-            owner.customDateView.tag = 5
-            vc.view.addSubview(owner.customDateView)
+        if let customDateView = NSBundle.mainBundle().loadNibNamed("CustomDateView", owner: owner, options: nil).first as? CustomDateView {
+            owner.customDateView = customDateView
+            owner.customDateView!.delegate = viewController
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let startDateStr = dateFormatter.stringFromDate(owner.customDateView!.start)
+            let endDateStr = dateFormatter.stringFromDate(owner.customDateView!.end)
+            customDateView.startingDate.text = startDateStr
+            customDateView.endingDate.text = endDateStr
+            let tapGestureOfStartingDate = UITapGestureRecognizer(target: owner.customDateView, action: #selector(CustomDateView.clickToShowCalendar(_:)))
+            let tapGestureOfEndingDate = UITapGestureRecognizer(target: owner.customDateView, action: #selector(CustomDateView.clickToShowCalendar(_:)))
+            owner.customDateView!.startingDate.addGestureRecognizer(tapGestureOfStartingDate)
+            owner.customDateView!.endingDate.addGestureRecognizer(tapGestureOfEndingDate)
+            let vc = viewController as? UIViewController
+            if let vc = vc {
+                owner.customDateView!.frame = vc.view.bounds
+                owner.customDateView!.tag = 5
+                vc.view.addSubview(owner.customDateView!)
+            }
         }
     }
     
@@ -60,10 +65,10 @@ class CustomDateView: UIView {
     }
     
     @IBAction func clickToSave(sender: AnyObject) {
-        delegate.delegateDoWhenSave(start!, endingDate: end!)
+        delegate.delegateDoWhenSave(start, endingDate: end)
         self.removeFromSuperview()
     }
     @IBAction func clickToCancel(sender: AnyObject) {
-        self.removeFromSuperview()
+        delegate.customDateViewDoWhenCancel()
     }
 }

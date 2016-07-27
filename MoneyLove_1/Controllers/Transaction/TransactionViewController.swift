@@ -22,6 +22,38 @@ enum RowType: Int  {
     case Note
     case Contact
     case Date
+    static let rowTypes = [Category, MoneyNumber, Note, Contact, Date]
+    
+    func title() -> String {
+        switch self {
+        case .Category:
+            return "Select Category"
+        case .MoneyNumber:
+            return "Enter amount of money"
+        case .Note:
+            return "Enter something to remember"
+        case .Contact:
+            return "With"
+        default:
+            return ""
+        }
+    }
+    
+    func imageName() -> String {
+        switch self {
+        case .Category:
+            return "question"
+        case .MoneyNumber:
+            return ""
+        case .Note:
+            return "pen"
+        case .Contact:
+            return "addContact"
+        default:
+            return ""
+        }
+
+    }
 }
 
 enum ErrorValue {
@@ -33,14 +65,9 @@ enum ErrorValue {
 class TransactionViewController: UIViewController, NSFetchedResultsControllerDelegate {
     let NUMBER_ROW = 5
     let HEIGHT_CELL_TRANSACTION_DEFAULT: CGFloat = 50.0
-    let HEIGHT_CELL_DEFAULT: CGFloat = 65
     let TEXT_CELL_INDENTIFIER = "TextCell"
     let DATE_CELL_IDENTIFIER = "DateCell"
     let LABEL_CELL_IDENTIFIER = "LabelCell"
-    let CATEGORY_LABEL_TEXT = "Select Category"
-    let MONEY_PLACE_HOLDER = "Enter amount of money"
-    let CONTACT_LABEL_TEXT = "With"
-    let NOTE_LABEL_TEXT = "Note"
     let INCOME_TITLE = "INCOME"
     let EXPENSE_TITLE = "EXPENSE"
     let DEBT_AND_LOAN_TITLE = "DEBT AND LOAN"
@@ -53,7 +80,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     var managedTransactionObject:Transaction!
     var fetchedResultsController: NSFetchedResultsController?
     weak var delegate: TransactionViewControllerDelegate?
-    var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money:Double, group: Group?, wallet: Wallet?) = ("", 0.0, "", 0.0, nil, nil)
+    var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money: Int32, group: Group?, wallet: Wallet?) = ("", 0, "", 0, nil, nil)
     var isNewTransaction = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +117,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     func registerCell() {
+        myTableView.registerNib(UINib.init(nibName: "LabelCell", bundle: nil), forCellReuseIdentifier: LABEL_CELL_IDENTIFIER)
         myTableView.registerNib(UINib.init(nibName: "TextCell", bundle: nil), forCellReuseIdentifier: TEXT_CELL_INDENTIFIER)
         myTableView.registerNib(UINib.init(nibName: "DateCell", bundle: nil), forCellReuseIdentifier: DATE_CELL_IDENTIFIER)
     }
@@ -130,10 +158,10 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         let noteIndexPath = NSIndexPath(forRow: RowType.Note.rawValue, inSection: 0)
         let moneyTextField = myTableView.cellForRowAtIndexPath(moneyIndexPath) as! TextCell
         let noteTextField = myTableView.cellForRowAtIndexPath(noteIndexPath) as! TextCell
-        if let moneyNumber = Double(moneyTextField.myTextField.text!) {
+        if let moneyNumber = Int32(moneyTextField.myTextField.text!) {
             transactionCache.money = moneyNumber
         } else {
-            transactionCache.money = 0.0
+            transactionCache.money = 0
         }
         transactionCache.note = noteTextField.myTextField.text
     }
@@ -166,6 +194,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
             if isNewTransaction {
                 self.insertTransaction()
                 NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
             }
             self.assignFromCacheToManagedObject()
             DataManager.shareInstance.saveManagedObjectContext()
@@ -190,49 +219,53 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case RowType.Category.rawValue, RowType.Contact.rawValue:
-            var labelCell = tableView.dequeueReusableCellWithIdentifier(LABEL_CELL_IDENTIFIER)
-            if labelCell == nil {
-                labelCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: LABEL_CELL_IDENTIFIER)
-            }
+        let rowType = RowType.rowTypes[indexPath.row]
+        switch rowType {
+        case .Category, .Contact:
+            let labelCell = tableView.dequeueReusableCellWithIdentifier(LABEL_CELL_IDENTIFIER, forIndexPath: indexPath) as! LabelCell
             if indexPath.row == RowType.Category.rawValue{
                 if let group = transactionCache.group {
                     let groupName = group.name!
                     if groupName.isEmpty {
-                        labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
+                        labelCell.nameLabel.text = rowType.title()
+                        labelCell.nameLabel.textColor = UIColor.lightGrayColor()
                     } else {
-                        labelCell?.textLabel?.text = groupName
-                    }
+                        labelCell.nameLabel.text = groupName
+                        labelCell.nameLabel.textColor = UIColor.blackColor()                    }
                     let groupImageName = group.imageName!
                     if !groupImageName.isEmpty {
-                        labelCell?.imageView?.image = UIImage(named: groupImageName)
+                        labelCell.imageLabelCell.image = UIImage(named: groupImageName)
                     } else {
-                        labelCell?.imageView?.image = UIImage(named: "default")
+                        labelCell.imageLabelCell.image = UIImage(named: rowType.imageName())
                     }
-                } else {
-                    labelCell!.textLabel!.text = CATEGORY_LABEL_TEXT
-                    labelCell?.imageView?.image = UIImage(named: "default")
+                    } else {
+                    labelCell.nameLabel.text = rowType.title()
+                    labelCell.nameLabel.textColor = UIColor.lightGrayColor()
+                    labelCell.imageLabelCell.image = UIImage(named: rowType.imageName())
                 }
             } else {
+                labelCell.imageLabelCell.image = UIImage(named: "addContact")
                 if let people = transactionCache.people {
                     if people.isEmpty {
-                        labelCell?.textLabel?.text = CONTACT_LABEL_TEXT
+                        labelCell.nameLabel.text = rowType.title()
+                        labelCell.nameLabel.textColor = UIColor.lightGrayColor()
                     } else {
-                        labelCell?.textLabel?.text = transactionCache.people
-                        
+                        labelCell.nameLabel.text = transactionCache.people
+                        labelCell.nameLabel.textColor = UIColor.blackColor()
                     }
                 }else {
-                    labelCell?.textLabel?.text = CONTACT_LABEL_TEXT
+                    labelCell.nameLabel.text = rowType.title()
+                    labelCell.nameLabel.textColor = UIColor.lightGrayColor()
                 }
             }
-            return labelCell!
-        case RowType.MoneyNumber.rawValue, RowType.Note.rawValue:
+            return labelCell
+        case .MoneyNumber, .Note:
             let textCell = tableView.dequeueReusableCellWithIdentifier(TEXT_CELL_INDENTIFIER, forIndexPath: indexPath) as! TextCell
-            if indexPath.row == RowType.Note.rawValue {
-                textCell.myTextField.placeholder = NOTE_LABEL_TEXT
+            if rowType == .Note {
+                textCell.myTextField.placeholder = rowType.title()
                 textCell.myTextField.keyboardType = UIKeyboardType.Default
                 textCell.myTextField.tag = NOTE_TEXT_FIELD_TAG
+                textCell.myImageView.image = UIImage(named: rowType.imageName())
                 if let note = transactionCache.note {
                     textCell.myTextField.text = note
                 } else {
@@ -241,12 +274,11 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
-                textCell.myTextField.placeholder = MONEY_PLACE_HOLDER
-                textCell.myTextField.text = "\(transactionCache.money)"
+                textCell.myTextField.placeholder = rowType.title()
             }
             textCell.myTextField.delegate = self
             return textCell
-        case RowType.Date.rawValue:
+        case .Date:
             let dateCell = tableView.dequeueReusableCellWithIdentifier(DATE_CELL_IDENTIFIER, forIndexPath: indexPath) as! DateCell
             let dateObj = NSDate(timeIntervalSinceReferenceDate: transactionCache.date)
             let dateMoment = moment(dateObj)
@@ -258,13 +290,11 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             dateCell.dayLabel.text = "\(day)"
             dateCell.monthAndYearLabel.text = month + " " + "\(year)"
             return dateCell
-        default:
-            return UITableViewCell()
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return HEIGHT_CELL_DEFAULT
+        return HEIGHT_CELL_TRANSACTION_DEFAULT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -380,9 +410,9 @@ extension TabPageViewController: SearchGroupDelegate {
 
 extension TransactionViewController: CategoriesViewControllerDelegate {
     func delegateDoWhenRowSelected(group: Group) {
-        let categoryCell = myTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
-        categoryCell?.imageView?.image = UIImage(named: group.imageName!)
-        categoryCell?.textLabel?.text = group.name
+        let categoryCell = myTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! LabelCell
+        categoryCell.imageLabelCell.image = UIImage(named: group.imageName!)
+        categoryCell.nameLabel.text = group.name
         transactionCache.group = group
         isSelectedCategory = true
         self.navigationController?.popViewControllerAnimated(true)

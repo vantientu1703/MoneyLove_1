@@ -19,18 +19,18 @@ import UIKit
 import UIKit
 enum SelectRowType: Int {
     case Wallet = 0
-    case MoneyNumber
-    case CategoryType
-    case Time
-    case Category
-    case Note
+    case MoneyNumber = 1
+    case CategoryType = 2
+    case Time = 3
+    case Category = 4
+    case Note = 5
     static let arrayTypes = [Wallet, MoneyNumber, CategoryType, Time, Category, Note]
-   func title() -> String {
+    func title() -> String {
         switch self {
         case .Wallet:
             return "Wallet"
         case .MoneyNumber:
-            return "MoneyNumber"
+            return "Money number"
         case .CategoryType:
             return "Type"
         case .Time:
@@ -53,7 +53,6 @@ class SearchTransactionViewController: UIViewController {
     var groupName: String!
     var categoryType: String!
     var predicates = [NSPredicate?](count: SelectRowType.arrayTypes.count, repeatedValue: nil)
-    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,20 +67,34 @@ class SearchTransactionViewController: UIViewController {
         tableView.registerNib(UINib.init(nibName: "NoteCell", bundle: nil), forCellReuseIdentifier: NOTE_CELL_IDENTIFIER)
     }
     
-    func getPredicateFromNote() -> NSPredicate? {
+    func getPredicateFromNote() {
         let noteCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: SelectRowType.Note.rawValue, inSection: 0)) as! NoteCell
         let noteString = noteCell.textField.text
         var notePredicate: NSPredicate? = nil
-//        if let note = noteString {
-//             notePredicate = NSPredicate(format: "note == %@", note)
-//        }
-        return notePredicate
+        if let note = noteString {
+            notePredicate = NSPredicate(format: "note == %@", note)
+        }
+        predicates[SelectRowType.Note.rawValue] = notePredicate
+    }
+    
+    func getCompoundPredicate() -> NSPredicate {
+        self.getPredicateFromNote()
+        var predicateArr = [NSPredicate]()
+        for predicate in predicates {
+            if let predicate  = predicate {
+                predicateArr.append(predicate)
+            }
+        }
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicateArr)
+        return compoundPredicate
     }
     
     @IBAction func clickToSearch(sender: AnyObject) {
-//        let note = self.getPredicateFromNote()
-//        let notePredicate = NSPredicate(format: "note == %@", note)
-        
+        let resultVC = ResultsTransactionViewController(nibName: "ResultsTransactionViewController", bundle: nil)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        resultVC.managedObjectContext = appDelegate.managedObjectContext
+        resultVC.predicate = self.getCompoundPredicate()
+        navigationController?.pushViewController(resultVC, animated: true)
     }
 }
 
@@ -92,23 +105,23 @@ extension SearchTransactionViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellType = SelectRowType.arrayTypes[indexPath.row]
-        if indexPath.row == cellType.rawValue {
+        if cellType == .Note {
             let noteCell = tableView.dequeueReusableCellWithIdentifier(NOTE_CELL_IDENTIFIER, forIndexPath: indexPath) as! NoteCell
-            noteCell.textField.delegate = self
             return noteCell
         } else {
             let searchCell = tableView.dequeueReusableCellWithIdentifier(CELL_SELECTED_IDENTIFIER, forIndexPath: indexPath) as! SearchCell
             searchCell.typeLabel.text = cellType.title()
+            searchCell.typeLabel.textColor = UIColor.lightGrayColor()
             if indexPath.row == SelectRowType.Wallet.rawValue {
-                searchCell.nameTypeLabel.text = walletName
+                searchCell.nameTypeLabel.text = walletName == nil ? "All" : walletName
             } else if indexPath.row == SelectRowType.MoneyNumber.rawValue {
-                searchCell.nameTypeLabel.text = moneyNumber
+                searchCell.nameTypeLabel.text = moneyNumber == nil ? "All" : moneyNumber
             } else if indexPath.row == SelectRowType.CategoryType.rawValue {
-                searchCell.nameTypeLabel.text = categoryType
+                searchCell.nameTypeLabel.text = categoryType == nil ? "All" : categoryType
             } else if indexPath.row == SelectRowType.Time.rawValue {
-                searchCell.nameTypeLabel.text = dateString
+                searchCell.nameTypeLabel.text = dateString == nil ? "All" : dateString
             } else {
-                searchCell.nameTypeLabel.text = groupName
+                searchCell.nameTypeLabel.text = groupName == nil ? "All" : groupName
             }
             return searchCell
         }
@@ -120,7 +133,7 @@ extension SearchTransactionViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let rowType = SelectRowType.arrayTypes[indexPath.row]
-        if indexPath.row != rowType.rawValue && indexPath.row != rowType.rawValue {
+        if rowType != .Note && rowType != .Category {
             let childVC = SearchSelectTableViewController(nibName: "SearchSelectTableViewController", bundle: nil)
             childVC.delegate = self
             childVC.rowSelected = rowType
@@ -138,10 +151,6 @@ extension SearchTransactionViewController: UITableViewDataSource, UITableViewDel
     }
 }
 
-extension SearchTransactionViewController: UITextFieldDelegate {
-    
-}
-
 extension SearchTransactionViewController: SearchSelectTableViewDelegate {
     func searchWithWallet(wallet: Wallet) {
         walletName = wallet.name
@@ -152,7 +161,7 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
     }
     
     func searchWithCategory(caseType: CategorySearchType) {
-        var predicate: NSPredicate!
+        var predicate: NSPredicate? = nil
         if caseType == .Income {
             categoryType = "Income"
             predicate = NSPredicate(format: "group.type == true")
@@ -167,60 +176,88 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
         tableView.reloadRowsAtIndexPaths([categoryTypeIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    func searchWithMoney(from: Double?, to: Double?, caseType: MoneySearchType) {
-        let predicate = NSPredicate(format: "moneyNumber >= %@ AND moneyNumber <= %@", from!, to!)
+    func searchWithMoney(from: Int32?, to: Int32?, caseType: MoneySearchType) {
+        let predicate = NSPredicate(format: "moneyNumber >= %f AND moneyNumber <= %f", from!, to!)
         predicates[SelectRowType.MoneyNumber.rawValue] = predicate
-        moneyNumber = "From ... To ... "
+        moneyNumber = "From \(from!)đ to \(to!)đ "
         let moneyIndexPath = NSIndexPath(forRow: SelectRowType.MoneyNumber.rawValue, inSection: 0)
         tableView.reloadRowsAtIndexPaths([moneyIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-
+        
     }
     
     func searchWithDates(startDate: NSDate?, endDate: NSDate?, caseType: TimeSearchType) {
-        let predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate!, endDate!)
+        let startOfDay = NSDate.startOfDay(startDate!)
+        let endOfDay = NSDate.endOfDay(endDate!)
+        let predicate = NSPredicate(format: "date >= %@ AND date <= %@", startOfDay, endOfDay)
         predicates[SelectRowType.Time.rawValue] = predicate
-        dateString = "Before... And... After"
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let dateFrom = dateFormatter.stringFromDate(startDate!)
+        let dateTo = dateFormatter.stringFromDate(endDate!)
+        dateString = "From \(dateFrom)  to \(dateTo)"
         let dateIndexPath = NSIndexPath(forRow: SelectRowType.Time.rawValue, inSection: 0)
         tableView.reloadRowsAtIndexPaths([dateIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    func searchWithDate(dateL: NSDate?, caseType: TimeSearchType) {
-        var predicate: NSPredicate!
+    func searchWithDate(date: NSDate?, caseType: TimeSearchType) {
+        var predicate: NSPredicate? = nil
+        var startOfDay:NSDate!
+        var endOfDay: NSDate!
+        if caseType != .All {
+            startOfDay = NSDate.startOfDay(date!)
+            endOfDay = NSDate.endOfDay(date!)
+        }
         switch caseType {
         case .Before:
-            dateString = "Before"
-            predicate = NSPredicate(format: "date <= %@", dateL!)
+            dateString = "Before "
+            predicate = NSPredicate(format: "date <= %@", endOfDay)
             break
         case .After:
-            dateString = "After"
-            predicate = NSPredicate(format: "date >= %@", dateL!)
+            dateString = "After "
+            predicate = NSPredicate(format: "date >= %@", startOfDay)
             break
         case .Accurate:
-            dateString = ""
-            predicate = NSPredicate(format: "date == %@", dateL!)
-        default: break
+            dateString = "Accurate "
+            predicate = NSPredicate(format: "date >= %@ AND date <= %@", startOfDay, endOfDay)
+        default:
+            dateString = "All "
+        }
+        
+        if caseType != .All {
+            if let date = date {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                let dateStr = dateFormatter.stringFromDate(date)
+                dateString = dateString + "\(dateStr)"
+            }
         }
         predicates[SelectRowType.Time.rawValue] = predicate
         let dateIndexPath = NSIndexPath(forRow: SelectRowType.Time.rawValue, inSection: 0)
         tableView.reloadRowsAtIndexPaths([dateIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-
     }
     
-    func searchWithMoney(money: Double?, caseType: MoneySearchType) {
+    func searchWithMoney(money: Int32?, caseType: MoneySearchType) {
         var predicate: NSPredicate!
         switch caseType {
         case .Fewer:
-            moneyNumber = "Fewer"
-            predicate = NSPredicate(format: "moneyNumber <= %@", money!)
+            moneyNumber = "Fewer "
+            predicate = NSPredicate(format: "moneyNumber <= %f", money!)
             break
         case .More:
-            moneyNumber = "More"
-            predicate = NSPredicate(format: "moneyNumber >= %@", money!)
+            moneyNumber = "More "
+            predicate = NSPredicate(format: "moneyNumber >= %f", money!)
             break
         case .Accurate:
-            moneyNumber = ""
-            predicate = NSPredicate(format: "moneyNumber == %@", money!)
-        default: break
+            moneyNumber = "Accurate "
+            predicate = NSPredicate(format: "moneyNumber == %f", money!)
+        default:
+            moneyNumber = "All "
+            break
+        }
+        if caseType != .All {
+            if let money = money {
+                moneyNumber = moneyNumber + "\(money)"
+            }
         }
         predicates[SelectRowType.MoneyNumber.rawValue] = predicate
         let moneyIndexPath = NSIndexPath(forRow: SelectRowType.MoneyNumber.rawValue, inSection: 0)
@@ -231,8 +268,10 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
 extension SearchTransactionViewController: CategoriesViewControllerDelegate {
     func delegateDoWhenRowSelected(group: Group) {
         let categoryIndexPath = NSIndexPath(forRow: SelectRowType.Category.rawValue, inSection: 0)
-        let categoryCell = tableView.cellForRowAtIndexPath(categoryIndexPath)
-        categoryCell?.textLabel?.text = group.name!
-        tableView.reloadRowsAtIndexPaths([categoryIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        groupName = group.name!
+        self.tableView.reloadRowsAtIndexPaths([categoryIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.navigationController?.popViewControllerAnimated(true)
+        let predicate = NSPredicate(format: "group.name == %@", group.name!)
+        predicates[SelectRowType.Category.rawValue] = predicate
     }
 }

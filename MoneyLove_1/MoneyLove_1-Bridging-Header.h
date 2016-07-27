@@ -8,7 +8,5 @@
 
 #ifndef MoneyLove_1_Bridging_Header_h
 #define MoneyLove_1_Bridging_Header_h
-
 #import "RESideMenu.h"
-
 #endif /* MoneyLove_1_Bridging_Header_h */

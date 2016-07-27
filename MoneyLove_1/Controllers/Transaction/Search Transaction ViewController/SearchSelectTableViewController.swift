@@ -76,9 +76,9 @@ enum TimeSearchType: Int {
 protocol SearchSelectTableViewDelegate: class {
     func searchWithWallet(wallet: Wallet)
     func searchWithDates(startDate: NSDate?, endDate: NSDate?, caseType: TimeSearchType)
-    func searchWithDate(dateL: NSDate?, caseType: TimeSearchType)
-    func searchWithMoney(from: Double?, to: Double?, caseType: MoneySearchType)
-    func searchWithMoney(money: Double?, caseType: MoneySearchType)
+    func searchWithDate(date: NSDate?, caseType: TimeSearchType)
+    func searchWithMoney(from: Int32?, to: Int32?, caseType: MoneySearchType)
+    func searchWithMoney(money: Int32?, caseType: MoneySearchType)
     func searchWithCategory(caseType: CategorySearchType)
 }
 
@@ -140,25 +140,31 @@ class SearchSelectTableViewController: UIViewController {
             SearchExactlyMoneyView.presentInViewController(self)
         } else if indexPath.row == MoneySearchType.Middle.rawValue {
             SearchMoneySelectView.presentInViewController(self)
+        } else {
+            delegate.searchWithMoney(nil, caseType: .All)
+            self.removeFromParentVC()
         }
     }
     
     func didSelectCategorySearchType(indexPath: NSIndexPath) {
         let categorySearchType = CategorySearchType.categoryCases[indexPath.row]
         delegate.searchWithCategory(categorySearchType)
-
+        self.removeFromParentVC()
     }
     
     func didSelectTimeSearchType(indexPath: NSIndexPath) {
         timeSearchType = TimeSearchType.timecases[indexPath.row]
-        if indexPath.row == TimeSearchType.Before.rawValue || indexPath.row == TimeSearchType.After.rawValue || indexPath.row == TimeSearchType.Accurate.rawValue {
+        if timeSearchType == .Before || timeSearchType == .After || timeSearchType == .Accurate {
             let selector = WWCalendarTimeSelector.instantiate()
             selector.delegate = self
             selector.optionCurrentDate = NSDate(timeIntervalSinceReferenceDate: NSDate.timeIntervalSinceReferenceDate())
             selector.optionStyles = [.Date, .Year]
             self.presentViewController(selector, animated: true, completion: nil)
-        } else if indexPath.row == TimeSearchType.Middle.rawValue {
+        } else if timeSearchType == .Middle {
             CustomDateView.presentInViewController(self)
+        } else {
+            delegate.searchWithDate(nil, caseType: .All)
+            self.removeFromParentVC()
         }
     }
     
@@ -191,7 +197,6 @@ extension SearchSelectTableViewController: UITableViewDataSource, UITableViewDel
         if cellDefault == nil {
             cellDefault = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CELL_DEFAULT_IDENTIFIER)
         }
-        
         if rowSelected == .Wallet {
             if let allWallets = allWallets {
                 cellDefault?.textLabel?.text = allWallets[indexPath.row].name
@@ -219,6 +224,7 @@ extension SearchSelectTableViewController: UITableViewDataSource, UITableViewDel
             if let allWallets = allWallets {
                 let walletSelected = allWallets[indexPath.row]
                 delegate.searchWithWallet(walletSelected)
+                self.removeFromParentVC()
             }
         } else if rowSelected == .MoneyNumber {
             self.didSelectMoneySearchType(indexPath)
@@ -242,22 +248,28 @@ extension SearchSelectTableViewController: UIGestureRecognizerDelegate {
 }
 
 extension SearchSelectTableViewController: SearchExactlyMoneyDelegate {
-    func delegateDoWhenSave(money: Double) {
+    func delegateDoWhenSave(money: Int32) {
         delegate.searchWithMoney(money, caseType: moneySearchType)
         self.removeFromParentVC()
     }
     func delegateDoWhenCancel() {
+        if let subView = self.view.viewWithTag(5) {
+            subView.removeFromSuperview()
+        }
         self.removeFromParentVC()
     }
 }
 
 extension SearchSelectTableViewController: SearchMoneySelectDelegate {
-    func searchMoneyDoWhenSave(from: Double, to: Double) {
+    func searchMoneyDoWhenSave(from: Int32, to: Int32) {
         delegate.searchWithMoney(from, to: to, caseType: moneySearchType)
         self.removeFromParentVC()
     }
     
     func searchMoneyDoWhenCancel() {
+        if let subView = self.view.viewWithTag(5) {
+            subView.removeFromSuperview()
+        }
         self.removeFromParentVC()
     }
 }
@@ -275,6 +287,13 @@ extension SearchSelectTableViewController: CustomDateViewDelegate {
         selector.optionCurrentDate = NSDate()
         selector.optionStyles = [.Date, .Year]
         self.presentViewController(selector, animated: true, completion: nil)
+    }
+    
+    func customDateViewDoWhenCancel() {
+        if let subView = self.view.viewWithTag(5) {
+            subView.removeFromSuperview()
+        }
+        self.removeFromParentVC()
     }
 }
 
