@@ -29,6 +29,6 @@ class CategoryTableViewCell: UITableViewCell {
         let name = dic["groupImage"] as! String
         imageCategory.image = UIImage(named: name)
         nameTransaction.text = "\(dic["groupName"] as! String)"
-        totalMoney.text = "\(dic["totalMoney"] as! Int)"
+        totalMoney.text = "\((dic["totalMoney"] as! Int).stringFormatedWithSepator)"
     }
 }

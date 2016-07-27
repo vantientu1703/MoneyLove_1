@@ -10,6 +10,8 @@ import UIKit
 
 class NetIcomeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var netIncome: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +22,4 @@ class NetIcomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

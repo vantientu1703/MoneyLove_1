@@ -21,6 +21,7 @@ class TrendTableViewController: UITableViewController {
     let IDENTIFIER_PIE_CHART_TABLE_CELL = "PieChartCategoryTableViewCell"
     let IDENTIFIER_TREND_TABLE_CELL = "TrendTableViewCell"
     let IDENTIFIER_CATEGORY_TABLE_CELL = "CategoryTableViewCell"
+    let NAME_VIEW = "TREND"
     var currentMonth: Int!
     var currentYear: Int!
     var fromMonth: Int = 1
@@ -59,8 +60,20 @@ class TrendTableViewController: UITableViewController {
         registerCell()
         let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: #selector(TrendTableViewController.changeWallet(_:)), name: "changeWallet", object: nil)
         self.navigationItem.leftBarButtonItem = leftButton
+        self.title = NAME_VIEW
         setupInit()
+    }
+    
+    func changeWallet(notifi: NSNotification) {
+        checkRequestData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "changeWallet", object: nil)
     }
     
     func setupInit() {

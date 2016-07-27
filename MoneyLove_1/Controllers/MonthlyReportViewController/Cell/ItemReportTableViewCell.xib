@@ -14,34 +14,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="352" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurent.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yi9-Ry-f1n">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yi9-Ry-f1n">
                         <rect key="frame" x="8" y="8" width="49" height="49"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="49" id="PUD-Dc-B54"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNx-fI-zib">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNx-fI-zib">
                         <rect key="frame" x="65" y="8" width="96" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="96" id="QnV-eg-rzo"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08/07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVO-Vq-yIQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVO-Vq-yIQ">
                         <rect key="frame" x="65" y="39" width="96" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="96" id="E2D-uZ-Dx3"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="700000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4V1-tO-u79">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4V1-tO-u79">
                         <rect key="frame" x="169" y="22" width="175" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -58,10 +58,13 @@
                     <constraint firstItem="qVO-Vq-yIQ" firstAttribute="leading" secondItem="Yi9-Ry-f1n" secondAttribute="trailing" constant="8" id="tIy-OH-YGr"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="dateTransaction" destination="qVO-Vq-yIQ" id="alv-dH-7xy"/>
+                <outlet property="imageTransaction" destination="Yi9-Ry-f1n" id="Qsa-hu-esR"/>
+                <outlet property="nameTransaction" destination="qNx-fI-zib" id="8V3-CO-OtZ"/>
+                <outlet property="totalMoney" destination="4V1-tO-u79" id="IbH-DA-2JC"/>
+            </connections>
             <point key="canvasLocation" x="541" y="422"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="restaurent.png" width="48" height="48"/>
-    </resources>
 </document>

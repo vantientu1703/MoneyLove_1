@@ -10,6 +10,9 @@ import UIKit
 
 class BalanceTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var openBalance: UILabel!
+    @IBOutlet weak var endBalance: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +22,16 @@ class BalanceTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setDataBalance(open: Int, end: Int) {
+        openBalance.text = open.stringFormatedWithSepator
+        endBalance.text = end.stringFormatedWithSepator
+    }
+    
+    override func prepareForReuse() {
+        openBalance.text = "0"
+        endBalance.text = "0"
     }
     
 }

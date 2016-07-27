@@ -95,8 +95,11 @@ extension NSFetchRequest {
             case .DayMonthYear:
                 fetchRequest.propertiesToFetch = ["dayString", sumED]
                 break
-            default:
+            case .Category:
                 fetchRequest.propertiesToFetch = ["group", sumED]
+                break
+            default:
+                fetchRequest.propertiesToFetch = [sumED]
                 break
             }
         case .Max:
@@ -105,8 +108,20 @@ extension NSFetchRequest {
             sumED.expression = sumExpression
             sumED.name = "maxOfAmount"
             sumED.expressionResultType = .DoubleAttributeType
-            fetchRequest.propertiesToFetch = ["dayString", sumED]
-            break
+            switch groupBy {
+            case .MonthAndYear:
+                fetchRequest.propertiesToFetch = ["monthString", sumED]
+                break
+            case .DayMonthYear:
+                fetchRequest.propertiesToFetch = ["dayString", sumED]
+                break
+            case .Category:
+                fetchRequest.propertiesToFetch = ["group", sumED]
+                break
+            default:
+                fetchRequest.propertiesToFetch = ["dayString", "group", sumED]
+                break
+            }
         }
         switch groupBy {
         case .MonthAndYear:

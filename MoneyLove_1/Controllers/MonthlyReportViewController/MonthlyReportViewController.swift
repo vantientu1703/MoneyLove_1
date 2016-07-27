@@ -9,12 +9,15 @@
 import UIKit
 
 class MonthlyReportViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    
+    let NAME_VIEW = "MONTHLY REPORT"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
             target: self, action: #selector(MonthlyReportViewController.presentLeftMenuViewController(_:)))
         self.navigationItem.leftBarButtonItem = leftButton
+        self.title = NAME_VIEW
         self.setViewControllers([viewControllerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
         self.didMoveToParentViewController(self)
         self.dataSource = self
@@ -43,6 +46,9 @@ class MonthlyReportViewController: UIPageViewController, UIPageViewControllerDel
         let itemReportVC = viewController as! ItemReportViewController
         var index = itemReportVC.pageIndex as Int
         index += 1
+        if index > 0 {
+            return nil
+        }
         return self.viewControllerAtIndex(index)
     }
 }

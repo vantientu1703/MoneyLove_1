@@ -612,7 +612,6 @@
 		51FC24A01D2DE5710067CC71 /* DebtViewController */ = {
 			isa = PBXGroup;
 			children = (
-				51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */,
 				51FC252D1D2E07B50067CC71 /* PayReceiavableTableViewController */,
 			);
 			name = DebtViewController;
@@ -1116,7 +1115,6 @@
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				517A0C6A1D4764820008626D /* SearchCell.xib in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
-				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
 				E5279F101D46FE760018F9BE /* ic_add.png in Resources */,
 				5153B1EE1D2F8B2400413269 /* NetIcomeTableViewCell.xib in Resources */,
@@ -1313,7 +1311,6 @@
 				E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */,
 				51FC25361D2E36350067CC71 /* ActionTableViewCell.swift in Sources */,
 				517A0C6D1D4764820008626D /* SearchMoneySelectOwner.swift in Sources */,
-				51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */,
 				517A0C6B1D4764820008626D /* SearchExactlyMoneyOwner.swift in Sources */,
 				5153B1EF1D2F8B2400413269 /* PieChartTableViewCell.swift in Sources */,
 				E5E0606E1D4631AF00AF95F9 /* Constant.swift in Sources */,

@@ -80,19 +80,19 @@ class BarChartTableViewCell: UITableViewCell {
         for i in 0 ..< dataList.count {
             let dicItem = dataList[i]
             let xIndex = i
-            let expenseValue = dicItem["expense"] as! Double
-            let incomeValue = (dicItem["income"] as! Double) * (-1)
+            let expenseValue = dicItem["expense"] as! Double * (-1)
+            let incomeValue = (dicItem["income"] as! Double)
             let date = ""
             var entry: BarChartDataEntry = BarChartDataEntry(values: [expenseValue], xIndex: xIndex)
             values.append(entry)
             dates.append(date)
-            colors.append(green)
+            colors.append(red)
             entry = BarChartDataEntry(values: [incomeValue], xIndex: xIndex)
             values.append(entry)
             dates.append(date)
-            colors.append(red)
+            colors.append(green)
         }
-        let set = BarChartDataSet(yVals: values, label: "Values")
+        let set = BarChartDataSet(yVals: values, label: "")
         set.barSpace = 0.4
         set.colors = colors;
         set.valueColors = colors

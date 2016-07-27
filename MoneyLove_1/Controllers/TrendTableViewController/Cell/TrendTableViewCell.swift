@@ -35,13 +35,13 @@ class TrendTableViewCell: UITableViewCell {
         if currentCategoryType  == CategoryType.Income {
             monthLabel.text = nameMonth
             let moneyIcome = dataDic["income"] as! Int
-            moneyIcomeLabel.text = "\(moneyIcome)"
+            moneyIcomeLabel.text = "\(moneyIcome.stringFormatedWithSepator)"
         }
         
         if currentCategoryType  == CategoryType.Expense {
             monthLabel.text = nameMonth
             let moneyExpense = dataDic["expense"] as! Int
-            moneyIcomeLabel.text = "\(moneyExpense)"
+            moneyIcomeLabel.text = "\(moneyExpense.stringFormatedWithSepator)"
         }
         moneyExpenseLabel.hidden = true
     }
