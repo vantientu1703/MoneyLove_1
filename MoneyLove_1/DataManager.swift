@@ -246,5 +246,17 @@ class DataManager : NSObject {
         }
         return nil
     }
-
+    
+    func getAllGroups() -> [Group]? {
+        let fetchRequest = NSFetchRequest(entityName: Group.CLASS_NAME)
+        do {
+            if let groups = try manageObjectContext.executeFetchRequest(fetchRequest) as? [Group] {
+                return groups
+            }
+        } catch {
+            let requestError = error as NSError
+            print("\(requestError), \(requestError.userInfo)")
+        }
+        return nil
+    }
 }

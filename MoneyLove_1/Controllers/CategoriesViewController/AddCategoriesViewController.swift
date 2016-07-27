@@ -61,7 +61,6 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
     var newIndexPath: NSIndexPath!
     let HEIGHT_CELL_ADDCATEGORIES: CGFloat = 50.0
     let IDENTIFIER_ADDCATEGORIES_TABLEVIEWCELL = "AddCategoriesTableViewCell"
-    let TITLE_BUTTON_DONE = "Done"
     let NEW_CATEGORY = "New Category"
     let arrTitles = Row.allTitles
     var wallet: Wallet!
@@ -84,7 +83,18 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.configForCell()
         self.title = NEW_CATEGORY
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: TITLE_BUTTON_DONE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
+        if statusEdit == EDIT {
+            let rightButton = UIBarButtonItem(title: DONE_TITLE, style: UIBarButtonItemStyle.Plain,
+                target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
+            self.navigationItem.rightBarButtonItem = rightButton
+        } else {
+            let rightButton = UIBarButtonItem(title: ADD_TITLE, style: UIBarButtonItemStyle.Plain,
+                target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
+            self.navigationItem.rightBarButtonItem = rightButton
+            if let font = UIFont(name: "Arial", size: FONT_SIZE) {
+                rightButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
+            }
+        }
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddCategoriesViewController.tapped(_:)))
         self.view.addGestureRecognizer(tapGesture)
         self.automaticallyAdjustsScrollViewInsets = false
@@ -146,6 +156,16 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
                 pass = false
             }
             if pass {
+                if let arrCategories = DataManager.shareInstance.getAllGroups() {
+                    for group in  arrCategories {
+                        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+                        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
+                        if group.name == cell.txtCategoryName.text {
+                            self.labelNote.text = CATEGORY_IS_EXISTED
+                            return
+                        }
+                    }
+                }
                 let newCategory = DataManager.shareInstance.addNewGroup(self.fetchedResultController)
                 newCategory?.name = cell.txtCategoryName.text!
                 newCategory?.imageName = imageNameCategory
@@ -230,7 +250,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
             self.indexPath = indexPath
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let walletManagerVC = WalletManagerViewController()
-            walletManagerVC.statusPush = "push"
+            walletManagerVC.statusPush = PUSH_TITLE
             walletManagerVC.delegate = self
             walletManagerVC.managedObjectContext = appDelegate.managedObjectContext
             self.navigationController?.pushViewController(walletManagerVC, animated: true)
@@ -244,7 +264,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
 extension AddCategoriesViewController: WalletManagerViewControllerDelegate {
     func didSelectWallet(wallet: Wallet) {
         self.wallet = wallet
-        self.imageNameWallet = wallet.imageName! == "" ? "Default" : wallet.imageName!
+        self.imageNameWallet = wallet.imageName! == "" ? DEFAULT : wallet.imageName!
         let cell = tableView.cellForRowAtIndexPath(self.indexPath)
         cell?.imageView?.image = UIImage(named: imageNameWallet)
         cell?.textLabel?.text = wallet.name

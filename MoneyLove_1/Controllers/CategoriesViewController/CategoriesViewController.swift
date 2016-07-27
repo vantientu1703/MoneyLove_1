@@ -78,14 +78,12 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     
     func configureNavigationBar() {
         if !isFromTransaction {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain,
+                target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
         } else {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CategoriesViewController.clickToBack(_:)))
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain,
+                target: self, action: #selector(CategoriesViewController.clickToBack(_:)))
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
     }
     
     override func presentLeftMenuViewController(sender: AnyObject!) {
@@ -230,7 +228,8 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     }
     //MARK DELETE CategoryItem
     func showAlertController(categoryItem: Group) {
-        let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete category?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let alertControlelr = UIAlertController(title: REMINDER_TITLE, message: MESSAGE_REMINDER_CATEGORY,
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
         let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
             DataManager.shareInstance.removeGroup(categoryItem, fetchedResultsController: self!.fetchedResultController)
             NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)

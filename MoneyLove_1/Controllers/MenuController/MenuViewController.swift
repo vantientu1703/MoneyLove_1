@@ -8,6 +8,7 @@
 
 import UIKit
 import TabPageViewController
+import CoreData
 
 protocol MenuViewControllerDelegate: class {
     func showWalletViewController()
@@ -85,6 +86,7 @@ enum VIEWCONTROLLER: Int {
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let CACHE_NAME = "Group_Cache"
     @IBOutlet weak var labelTotalMoneyOfWallet: UILabel!
     @IBOutlet weak var labelWalletName: UILabel!
     @IBOutlet weak var imageViewWallet: UIImageView!
@@ -101,7 +103,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         self.regisClassForCell()
-        self.getWalletDefault()
+        if let arrWallets = DataManager.shareInstance.getAllWallets() {
+            let number = arrWallets.count
+            if number > 0 {
+                self.getWalletDefault()
+            }
+        }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.getWalletDefault), name: POST_CURRENT_WALLET, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.hiddenSelectWalletViewController), name: MESSAGE_ADD_NEW_TRANSACTION, object: nil)
     }
@@ -109,6 +116,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func hiddenSelectWalletViewController() {
         self.isShowSelectWallet = true
         self.showSelectWalletViewController()
+        self.getWalletDefault()
     }
     
     func getWalletDefault() {
@@ -117,10 +125,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.labelWalletName.text = wallet.name
             if wallet.firstNumber >= 0 {
                 self.labelTotalMoneyOfWallet.textColor = UIColor.blueColor()
-                self.labelTotalMoneyOfWallet.text = "\(wallet.firstNumber) đ"
+                let number = Int(wallet.firstNumber)
+                let myString = number.stringFormatedWithSepator
+                self.labelTotalMoneyOfWallet.text = "\(myString) đ"
             } else {
                 self.labelTotalMoneyOfWallet.textColor = UIColor.redColor()
-                self.labelTotalMoneyOfWallet.text = "\(-wallet.firstNumber) đ"
+                let number = Int(-wallet.firstNumber)
+                let myString = number.stringFormatedWithSepator
+                self.labelTotalMoneyOfWallet.text = "\(myString) đ"
             }
         }
     }
@@ -203,8 +215,7 @@ extension TabPageViewController: RESideMenuDelegate {
     }
     
     func add(sender: AnyObject) {
-//        let transaction = TransactionViewController(nibName: "TransactionViewController", bundle: nil)
-//        self.navigationController?.pushViewController(transaction, animated: true)
+        //TODO
     }
 }
 
