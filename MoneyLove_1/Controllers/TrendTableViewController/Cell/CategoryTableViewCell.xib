@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="CategoryTableViewCell" customModule="MoneyLove_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="371" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S9r-jG-PMa">
+                        <rect key="frame" x="8" y="8" width="53" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="S9r-jG-PMa" secondAttribute="height" multiplier="1:1" id="WK4-Lp-hhX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Transaction" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cm-go-Hql">
+                        <rect key="frame" x="69" y="20" width="116" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="G4v-V3-9OB"/>
+                            <constraint firstAttribute="width" constant="116" id="Trb-Ht-i7D"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFc-GQ-9gC">
+                        <rect key="frame" x="213" y="20" width="150" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="zFI-86-hxj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yFc-GQ-9gC" firstAttribute="leading" secondItem="4Cm-go-Hql" secondAttribute="trailing" constant="28" id="9mA-fA-hrg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="S9r-jG-PMa" secondAttribute="bottom" id="ON9-N8-Hcz"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="S9r-jG-PMa" secondAttribute="leading" id="RyZ-du-Nll"/>
+                    <constraint firstItem="yFc-GQ-9gC" firstAttribute="centerY" secondItem="4Cm-go-Hql" secondAttribute="centerY" id="VZ6-q8-RhH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yFc-GQ-9gC" secondAttribute="trailing" id="e8C-Wy-0mS"/>
+                    <constraint firstItem="4Cm-go-Hql" firstAttribute="leading" secondItem="S9r-jG-PMa" secondAttribute="trailing" constant="8" id="eEg-7g-h6T"/>
+                    <constraint firstItem="4Cm-go-Hql" firstAttribute="centerY" secondItem="S9r-jG-PMa" secondAttribute="centerY" id="ghV-wz-qZM"/>
+                    <constraint firstAttribute="topMargin" secondItem="S9r-jG-PMa" secondAttribute="top" id="ig7-jK-OzJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageCategory" destination="S9r-jG-PMa" id="PBu-R0-KJP"/>
+                <outlet property="nameTransaction" destination="4Cm-go-Hql" id="Sdl-FF-Q1p"/>
+                <outlet property="totalMoney" destination="yFc-GQ-9gC" id="TQs-62-HHa"/>
+            </connections>
+            <point key="canvasLocation" x="477.5" y="369"/>
+        </tableViewCell>
+    </objects>
+</document>

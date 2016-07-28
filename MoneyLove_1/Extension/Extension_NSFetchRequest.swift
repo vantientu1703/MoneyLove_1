@@ -96,9 +96,8 @@ extension NSFetchRequest {
                 break
             default:
                 fetchRequest.propertiesToFetch = ["group", sumED]
-
+                break
             }
-            break
         case .Max:
             let sumExpression = NSExpression(format: "max:(moneyNumber)")
             let sumED = NSExpressionDescription()
@@ -115,7 +114,7 @@ extension NSFetchRequest {
         case .DayMonthYear:
             fetchRequest.propertiesToGroupBy = ["dayString"]
         default:
-            fetchRequest.propertiesToGroupBy = ["group.name"]
+            fetchRequest.propertiesToGroupBy = ["group"]
         }
         fetchRequest.resultType = resultType
         return fetchRequest
