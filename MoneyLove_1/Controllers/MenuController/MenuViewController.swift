@@ -206,9 +206,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIView.animateWithDuration(10.0, animations: { () -> Void in
                 self.selectVC.view.frame = CGRectMake(0.0, 125.0, UIScreen.mainScreen().bounds.size.width - 100.0, UIScreen.mainScreen().bounds.size.height - 130.0)
             }) { Bool -> Void in
-                self.addChildViewController(self.selectVC)
-                self.selectVC.didMoveToParentViewController(self)
-                self.view.addSubview(self.selectVC.view)
+                if self.selectVC != nil {
+                    self.addChildViewController(self.selectVC)
+                    self.selectVC.didMoveToParentViewController(self)
+                    self.view.addSubview(self.selectVC.view)
+                }
             }
             self.isShowSelectWallet = true
             self.buttonShowWalletList.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
