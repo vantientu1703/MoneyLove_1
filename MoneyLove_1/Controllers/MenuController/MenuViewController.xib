@@ -12,6 +12,7 @@
                 <outlet property="labelWalletName" destination="vOg-IA-zTA" id="Qlh-Ob-HVQ"/>
                 <outlet property="tableView" destination="9oW-e0-wBN" id="xZO-o3-ORe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewAccount" destination="NYC-8O-dAO" id="IEr-hl-QqB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

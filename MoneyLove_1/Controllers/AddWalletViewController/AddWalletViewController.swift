@@ -41,8 +41,8 @@ class AddWalletViewController: UIViewController {
             self.txtNameWallet.text = self.walletItem?.name
             self.txtStartMoneyWallet.text = "\(self.walletItem!.firstNumber)"
         } else {
-            let rightButton = UIBarButtonItem(title: ADD_TITLE,style: UIBarButtonItemStyle.Plain,
-                target: self,action: #selector(AddWalletViewController.addWalletButton(_:)))
+            let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_BUTTON_ADD), style: UIBarButtonItemStyle.Plain,
+                target: self, action: #selector(AddWalletViewController.addWalletButton(_:)))
             if let font = UIFont(name: "Arial", size: FONT_SIZE) {
                 rightButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
             }

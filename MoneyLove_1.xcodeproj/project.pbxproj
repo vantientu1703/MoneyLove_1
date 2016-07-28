@@ -104,6 +104,9 @@
 		E5279F1B1D4703450018F9BE /* ic_trends.png in Resources */ = {isa = PBXBuildFile; fileRef = E5279F161D4703450018F9BE /* ic_trends.png */; };
 		E5279F1E1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5279F1C1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift */; };
 		E5279F1F1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5279F1D1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib */; };
+		E56B25931D49EF71002447A9 /* ic_add_categories.png in Resources */ = {isa = PBXBuildFile; fileRef = E56B25921D49EF71002447A9 /* ic_add_categories.png */; };
+		E56B25951D49F7CF002447A9 /* ic_home.png in Resources */ = {isa = PBXBuildFile; fileRef = E56B25941D49F7CF002447A9 /* ic_home.png */; };
+		E56B25991D49FE2F002447A9 /* ic_three_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = E56B25981D49FE2F002447A9 /* ic_three_dot.png */; };
 		E5AD1A891D3F0F480088BBF7 /* IconManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A871D3F0F480088BBF7 /* IconManagerViewController.swift */; };
 		E5AD1A8A1D3F0F480088BBF7 /* IconManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5AD1A881D3F0F480088BBF7 /* IconManagerViewController.xib */; };
 		E5AD1A8D1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A8B1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift */; };
@@ -305,6 +308,9 @@
 		E5279F161D4703450018F9BE /* ic_trends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_trends.png; path = Resources/ic_trends.png; sourceTree = "<group>"; };
 		E5279F1C1D4703CA0018F9BE /* MenuViewControllerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewControllerTableViewCell.swift; path = Controllers/MenuController/MenuViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		E5279F1D1D4703CA0018F9BE /* MenuViewControllerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewControllerTableViewCell.xib; path = Controllers/MenuController/MenuViewControllerTableViewCell.xib; sourceTree = "<group>"; };
+		E56B25921D49EF71002447A9 /* ic_add_categories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_add_categories.png; path = Resources/ic_add_categories.png; sourceTree = "<group>"; };
+		E56B25941D49F7CF002447A9 /* ic_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_home.png; path = Resources/ic_home.png; sourceTree = "<group>"; };
+		E56B25981D49FE2F002447A9 /* ic_three_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_three_dot.png; path = Resources/ic_three_dot.png; sourceTree = "<group>"; };
 		E5AD1A871D3F0F480088BBF7 /* IconManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconManagerViewController.swift; path = Controllers/IconManagerViewController/IconManagerViewController.swift; sourceTree = "<group>"; };
 		E5AD1A881D3F0F480088BBF7 /* IconManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IconManagerViewController.xib; path = Controllers/IconManagerViewController/IconManagerViewController.xib; sourceTree = "<group>"; };
 		E5AD1A8B1D3F10930088BBF7 /* IconManagerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconManagerCollectionViewCell.swift; path = Controllers/IconManagerViewController/IconManagerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -816,6 +822,9 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E56B25981D49FE2F002447A9 /* ic_three_dot.png */,
+				E56B25941D49F7CF002447A9 /* ic_home.png */,
+				E56B25921D49EF71002447A9 /* ic_add_categories.png */,
 				51F93E951D4846B000464DC9 /* pen.png */,
 				51F93E971D4846C000464DC9 /* addContact.png */,
 				51F93E931D48469A00464DC9 /* question.png */,
@@ -1069,11 +1078,13 @@
 				EFCF63311D2F3FA1002BB378 /* ic_down.png in Resources */,
 				EF3527201D2CAB5F009D6F58 /* Assets.xcassets in Resources */,
 				EFCF63321D2F3FA1002BB378 /* ic_three_dots.png in Resources */,
+				E56B25951D49F7CF002447A9 /* ic_home.png in Resources */,
 				EFCF63431D2F878D002BB378 /* BottomTableViewCell.xib in Resources */,
 				E5279F181D4703450018F9BE /* ic_debt.png in Resources */,
 				E5FEA4DD1D3F4CB2001A806E /* wallet6.png in Resources */,
 				EFCF633B1D2F655B002BB378 /* TotalMoneyTableViewCell.xib in Resources */,
 				E5279F0D1D46FCA60018F9BE /* ic_total_money.png in Resources */,
+				E56B25931D49EF71002447A9 /* ic_add_categories.png in Resources */,
 				516040EA1D3769B500AB9A74 /* cancel-cross.png in Resources */,
 				516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */,
 				E5FEA5061D3F5AB0001A806E /* ic_question.png in Resources */,
@@ -1125,6 +1136,7 @@
 				E5FEA4D71D3F4CB2001A806E /* wallet.png in Resources */,
 				517A0C7B1D47ADA20008626D /* SearchOverViewCell.xib in Resources */,
 				EF8CD2411D38843D00890491 /* AddCategoriesTableViewCell.xib in Resources */,
+				E56B25991D49FE2F002447A9 /* ic_three_dot.png in Resources */,
 				EF76F9481D37764A00175D5C /* WalletManagerViewController.xib in Resources */,
 				E5FEA4EA1D3F4CC3001A806E /* coffee.png in Resources */,
 				EF76F94C1D3776AD00175D5C /* WalletManagerTableViewCell.xib in Resources */,

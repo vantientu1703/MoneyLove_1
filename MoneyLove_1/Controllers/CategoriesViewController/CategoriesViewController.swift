@@ -61,6 +61,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         self.title = TITLE_CATEGORIES
         self.view.backgroundColor = UIColor.grayColor()
         addButtonCategories.layer.cornerRadius = 20.0
+        addButtonCategories.backgroundColor = COLOR_NAVIGATION
         self.configureNavigationBar()
         self.configTableViewCell()
         self.performRequest()
@@ -78,20 +79,14 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     
     func configureNavigationBar() {
         if !isFromTransaction {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain,
+            let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
                 target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
-        } else {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain,
-                target: self, action: #selector(CategoriesViewController.clickToBack(_:)))
+            self.navigationItem.leftBarButtonItem = leftButton
         }
     }
     
     override func presentLeftMenuViewController(sender: AnyObject!) {
         self.sideMenuViewController.presentLeftMenuViewController()
-    }
-    
-    func clickToBack(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func buttonAddCategoriesPress(sender: AnyObject) {

@@ -88,7 +88,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
                 target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
             self.navigationItem.rightBarButtonItem = rightButton
         } else {
-            let rightButton = UIBarButtonItem(title: ADD_TITLE, style: UIBarButtonItemStyle.Plain,
+            let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_BUTTON_ADD), style: UIBarButtonItemStyle.Plain,
                 target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
             self.navigationItem.rightBarButtonItem = rightButton
             if let font = UIFont(name: "Arial", size: FONT_SIZE) {

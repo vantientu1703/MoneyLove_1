@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.shareInstance.currentWallet = DataManager.shareInstance.getWalletDefault()
             }
         }
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = UIColor.whiteColor()
-        navigationBarAppearace.barTintColor = UIColor.greenColor()
+        navigationBarAppearace.barTintColor = COLOR_NAVIGATION
+        navigationBarAppearace.titleTextAttributes = titleDict as? [String : AnyObject]
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         return true
     }

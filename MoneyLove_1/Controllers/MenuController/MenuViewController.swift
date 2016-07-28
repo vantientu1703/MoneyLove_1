@@ -40,7 +40,10 @@ enum VIEWCONTROLLER: Int {
             return customPageVC
         case DebtsViewControllers:
             let tabPageVC: TabPageViewController = TabPageViewController.create()
-            tabPageVC.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
+            let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+                                             target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
+            tabPageVC.navigationItem.leftBarButtonItem = leftButton
+//            tabPageVC.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
             tabPageVC.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Add, target: tabPageVC, action: #selector(TabPageViewController.add(_:)))
             let payableVC = PayReceiavableTableViewController(nibName: "PayReceiavableTableViewController", bundle: nil)
             payableVC.isDebt = true
@@ -87,6 +90,7 @@ enum VIEWCONTROLLER: Int {
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let CACHE_NAME = "Group_Cache"
+    @IBOutlet weak var viewAccount: UIView!
     @IBOutlet weak var labelTotalMoneyOfWallet: UILabel!
     @IBOutlet weak var labelWalletName: UILabel!
     @IBOutlet weak var imageViewWallet: UIImageView!
@@ -109,10 +113,20 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.getWalletDefault()
             }
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.getWalletDefault), name: POST_CURRENT_WALLET, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.hiddenSelectWalletViewController), name: MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+        self.viewAccount.backgroundColor = COLOR_NAVIGATION
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.getWalletDefault),
+            name: POST_CURRENT_WALLET, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.hiddenSelectWalletViewController),
+            name: MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MenuViewController.presentAllTransactionViewController(_:)),
+            name: PRESENT_ALL_TRANSACTION_VC, object: nil)
     }
     
+    func presentAllTransactionViewController(sender: AnyObject) {
+        let vc: UIViewController = CustomPageViewController()
+        self.sideMenuViewController.setContentViewController(UINavigationController(rootViewController: vc), animated: true)
+        self.sideMenuViewController.hideMenuViewController()
+    }
     func hiddenSelectWalletViewController() {
         self.isShowSelectWallet = true
         self.showSelectWalletViewController()
@@ -120,6 +134,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getWalletDefault() {
+        self.showSelectWalletViewController()
+        self.sideMenuViewController.hideMenuViewController()
         if let wallet = DataManager.shareInstance.currentWallet {
             self.imageViewWallet.image = UIImage(named: wallet.imageName!)
             self.labelWalletName.text = wallet.name
