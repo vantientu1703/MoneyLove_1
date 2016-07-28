@@ -125,11 +125,10 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
             let alertControlelr = UIAlertController(title: "Reminder", message: "Are you make sure delete wallet?",
                 preferredStyle: UIAlertControllerStyle.ActionSheet)
             let actionOk = UIAlertAction(title: OK_TITLE, style: .Destructive, handler: { [weak self](UIAlertAction) in
-                let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath)
-                DataManager.shareInstance.removeWallet(walletItem as! Wallet, fetchedResultsController: self!.fetchedResultController)
-                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+                let walletItem = self?.fetchedResultController.objectAtIndexPath(indexPath) as! Wallet
+                let currentWallet = DataManager.shareInstance.currentWallet
+                DataManager.shareInstance.removeWallet(walletItem, fetchedResultsController: self!.fetchedResultController)
                 DataManager.shareInstance.saveManagedObjectContext()
-                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
                 if let arrWallets = DataManager.shareInstance.getAllWallets() {
                     let number = arrWallets.count
                     if number == 0 {
@@ -139,13 +138,14 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
                         let nav = UINavigationController(rootViewController: addWalletVC)
                         self?.presentViewController(nav, animated: true, completion: nil)
                     } else {
-                        if walletItem as! Wallet == DataManager.shareInstance.currentWallet {
+                        if walletItem == currentWallet {
                             let randomIndex = Int(arc4random_uniform(UInt32(arrWallets.count)))
                             DataManager.shareInstance.currentWallet = arrWallets[randomIndex]
                             NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
                         }
                     }
                 }
+                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
                 })
             let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: { (UIAlertAction) in
             })
