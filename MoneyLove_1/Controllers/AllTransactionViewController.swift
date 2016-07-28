@@ -125,6 +125,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     func setUp() {
         dataTransaction = DataTransaction(frc: fetchedResultController, managedObjectContext: managedObjectContext)
         addButton.layer.cornerRadius = 20.0
+        addButton.backgroundColor = COLOR_NAVIGATION
         self.view.bringSubviewToFront(addButton)
 
     }

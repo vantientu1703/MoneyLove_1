@@ -92,7 +92,9 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
             case IndexPathSection.Section_TotalMoney.rawValue:
                 let totalMoneyCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_TOTALMONEYTABLEVIEWCELL, forIndexPath: indexPath) as! TotalMoneyTableViewCell
                 let numberOfMoney = DataManager.shareInstance.getMoneyOfAllWallets()
-                totalMoneyCell.labelTotalMoney.text = "\(numberOfMoney) đ"
+                let stringMoney = Int64(numberOfMoney).stringFormatedWithSepator
+                totalMoneyCell.labelTotalMoney.text = "\(stringMoney) đ"
+                totalMoneyCell.labelTotalMoney.textColor = UIColor.blueColor()
                 return totalMoneyCell
             case IndexPathSection.Section_Wallet.rawValue:
                 let walletCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_WALETTTABLEVIEWCELL, forIndexPath: indexPath) as! WalletTableViewCell
@@ -114,6 +116,7 @@ class SelectWalletViewController: UIViewController, UITableViewDataSource, UITab
                 return walletCell
             case IndexPathSection.Section_Bottom.rawValue:
                 let bottomCell = tableView.dequeueReusableCellWithIdentifier(IDENTIFIER_BOTTOMTABLEVIEWCELL, forIndexPath: indexPath) as! BottomTableViewCell
+                bottomCell.labelAddWallet.textColor = COLOR_NAVIGATION
                 if indexPath.row == 0 {
                     bottomCell.labelAddWallet.text = TITLE_ADD_WALLET
                     bottomCell.imageViewBottom.image = UIImage(named: IC_ADD_WALLET)

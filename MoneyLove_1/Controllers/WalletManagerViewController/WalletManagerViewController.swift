@@ -42,6 +42,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         addButtonWallet.layer.cornerRadius = 20.0
+        addButtonWallet.backgroundColor = COLOR_NAVIGATION
         self.automaticallyAdjustsScrollViewInsets = false
         if let arrWallets = DataManager.shareInstance.getAllWallets() {
             let number = arrWallets.count
@@ -80,8 +81,9 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     
     func configureNavigationBar() {
         self.title = TITLE_WALLET_MANAGER
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain,
-            target: self, action: #selector(WalletManagerViewController.cancelButton(_:)));
+        let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+            target: self, action: #selector(WalletManagerViewController.cancelButton(_:)))
+        self.navigationItem.leftBarButtonItem = leftButton
         self.configRegisterForCell()
     }
     
@@ -167,10 +169,10 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
+    //MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if statusPush == "push" {
+        if statusPush == PUSH_TITLE {
             if let wallet = self.fetchedResultController.objectAtIndexPath(indexPath) as? Wallet {
                 self.delegate?.didSelectWallet(wallet)
                 self.navigationController?.popViewControllerAnimated(true)
@@ -178,6 +180,10 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
         } else {
             if let walletItem = self.fetchedResultController.objectAtIndexPath(indexPath) as? Wallet {
                 DataManager.shareInstance.currentWallet = walletItem
+                DataManager.shareInstance.saveManagedObjectContext()
+                NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(PRESENT_ALL_TRANSACTION_VC, object: nil)
             }
         }
     }

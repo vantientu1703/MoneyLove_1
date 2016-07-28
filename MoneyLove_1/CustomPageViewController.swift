@@ -13,13 +13,14 @@ class CustomPageViewController: UIPageViewController {
     var timeMode:TimeMode! = .Day
         override func viewDidLoad() {
         super.viewDidLoad()
+        let title = DataManager.shareInstance.currentWallet.name
+        self.title = title
         self.setViewControllers([viewControllerAtIndex(0)], direction: .Forward, animated: true, completion: nil)
         self.didMoveToParentViewController(self)
         self.dataSource = self
         self.delegate = self
         self.configureNavigationBar()
     }
-    
     
     func viewControllerAtIndex(index: Int) -> UIViewController {
         let allTransVC: AllTransactionViewController = AllTransactionViewController(nibName: "AllTransactionViewController", bundle: nil)
@@ -40,8 +41,10 @@ class CustomPageViewController: UIPageViewController {
         self.sideMenuViewController.presentLeftMenuViewController()
     }
     func configureNavigationBar() {
-        let leftButton = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self.getCurrentViewController(), action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
-        let rightButton = UIBarButtonItem(title:"...", style: UIBarButtonItemStyle.Plain, target: self.getCurrentViewController() , action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
+        let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+            target: self, action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
+        let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_THREE_DOTS), style: UIBarButtonItemStyle.Plain,
+            target: self, action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
         self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton
         title = DataManager.shareInstance.currentWallet.name

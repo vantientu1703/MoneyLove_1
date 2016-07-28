@@ -57,8 +57,9 @@ class TrendTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self,
-        action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+        let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+            target: self, action: #selector(UIViewController.presentLeftMenuViewController(_:)))
+        self.navigationItem.leftBarButtonItem = leftButton
         setupInit()
     }
     
@@ -66,8 +67,9 @@ class TrendTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TrendTableViewController.doneAction(_:)))
         self.tableView.addGestureRecognizer(tapGesture)
         self.tableView.allowsSelection = false
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: self,
-             action: #selector(TrendTableViewController.presentLeftMenuViewController(_:)))
+        let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+                                         target: self, action: #selector(TrendTableViewController.presentLeftMenuViewController(_:)))
+        self.navigationItem.leftBarButtonItem = leftButton
         currentMonth = NSDate.getCurrentMonth()
         currentYear = NSDate.getCurrentYear()
         fromYear = currentYear
