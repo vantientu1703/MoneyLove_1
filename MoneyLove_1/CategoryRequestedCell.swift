@@ -72,14 +72,13 @@ class CategoryRequestedCell: UITableViewCell {
     func configureCell(indexPath: NSIndexPath, data: DataTransaction?, isHeader: Bool) {
         if isHeader {
             categoryName = data?.getHeaderTitleInIndexPath(indexPath.section)
-            var money = data!.getSumOfAllMoneyInIndexPath(indexPath.section)
+            let money = data!.getSumOfAllMoneyInIndexPath(indexPath.section)
             if money < 0 {
                 moneyLabelTextColor = UIColor.redColor()
-                money = money * -1
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }
-            moneyNumber = "\(money)"
+            moneyNumber = money.stringFormatedWithSepator
             imagePath = data!.getCategoryImagePathInSection(indexPath.section)
         } else {
             categoryName = data?.getCategoryNameForTransaction(indexPath)
@@ -90,7 +89,7 @@ class CategoryRequestedCell: UITableViewCell {
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }
-            moneyNumber =  "\(money)"
+            moneyNumber =  money.stringFormatedWithSepator
             imagePath = data?.getCategoryImageNameForTransaction(indexPath)
         }
     }
@@ -104,7 +103,7 @@ class CategoryRequestedCell: UITableViewCell {
         } else {
             moneyLabelTextColor = UIColor.blueColor()
         }
-        moneyNumber =  "\(money)"
+        moneyNumber =  money.stringFormatedWithSepator
         imagePath = data?.getCategoryImageNameForTransaction(indexPath)
     }
 }

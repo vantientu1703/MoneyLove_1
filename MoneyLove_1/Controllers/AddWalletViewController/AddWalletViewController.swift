@@ -50,8 +50,18 @@ class AddWalletViewController: UIViewController {
         }
         txtNameWallet.delegate = self
         txtStartMoneyWallet.delegate = self
+        txtStartMoneyWallet.addTarget(self, action: #selector(AddWalletViewController.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
         txtStartMoneyWallet.keyboardType = UIKeyboardType.NumberPad
     }
+    
+    func formatString(textField: UITextField) {
+        let textArray = textField.text!.componentsSeparatedByString(",")
+        let newText = textArray.joinWithSeparator("")
+        let number = Int64(newText)
+        let stringFormatted = number?.stringFormatedWithSepator
+        textField.text = stringFormatted
+    }
+
     
     @IBAction func pressButtonIcon(sender: AnyObject) {
         let iconManagerVC = IconManagerViewController(nibName: IDENTIFIER_ICONMANAGER_VIEWCONTROLLER, bundle: nil)
@@ -95,7 +105,7 @@ class AddWalletViewController: UIViewController {
         }
         if pass {
             walletItem?.name = txtNameWallet.text
-            walletItem?.firstNumber = Int32(txtStartMoneyWallet.text!)!
+            walletItem?.firstNumber = Int64(txtStartMoneyWallet.text!)!
             walletItem?.imageName = self.imageName
             DataManager.shareInstance.saveManagedObjectContext()
             NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
@@ -129,7 +139,9 @@ class AddWalletViewController: UIViewController {
             }
             let walletItem = DataManager.shareInstance.addNewWallet(self.fetchedResultController)
             walletItem!.name = txtNameWallet.text
-            walletItem!.firstNumber = Int32(txtStartMoneyWallet.text!)!
+            let arrayText = txtStartMoneyWallet.text!.componentsSeparatedByString(",")
+            let newNumberText = arrayText.joinWithSeparator("")
+            walletItem!.firstNumber = Int64(newNumberText)!
             walletItem!.imageName = self.imageName
             DataManager.shareInstance.saveManagedObjectContext()
             if statusEdit == WALLET_MANAGER_ISEMPTY {
@@ -153,28 +165,6 @@ extension AddWalletViewController: IconManagerViewControllerDelegate {
 }
 
 extension AddWalletViewController: UITextFieldDelegate {
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        //TODO
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        //TODO
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        //TODO
-        stringA.appendContentsOf(string)
-        print(stringA)
-        return true
-    }
-    
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        print(1)
-        return true
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         txtNameWallet.resignFirstResponder()
         txtStartMoneyWallet.resignFirstResponder()

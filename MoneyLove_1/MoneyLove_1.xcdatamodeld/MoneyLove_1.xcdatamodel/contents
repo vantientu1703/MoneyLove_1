@@ -11,7 +11,7 @@
     <entity name="Transaction" representedClassName=".Transaction" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dayString" optional="YES" attributeType="String" defaultValueString="01" syncable="YES"/>
-        <attribute name="moneyNumber" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="moneyNumber" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="monthString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personRelated" optional="YES" attributeType="String" syncable="YES"/>
@@ -19,7 +19,7 @@
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wallet" inverseName="transaction" inverseEntity="Wallet" syncable="YES"/>
     </entity>
     <entity name="Wallet" representedClassName=".Wallet" syncable="YES">
-        <attribute name="firstNumber" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="firstNumber" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="imageName" attributeType="String" defaultValueString="image" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="wallet" syncable="YES"/>
         <relationship name="group" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Group" inverseName="wallet" inverseEntity="Group" syncable="YES"/>

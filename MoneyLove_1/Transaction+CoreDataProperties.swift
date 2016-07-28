@@ -15,7 +15,7 @@ import CoreData
 extension Transaction {
     @NSManaged var date: NSTimeInterval
     @NSManaged var dayString: String?
-    @NSManaged var moneyNumber: Int32
+    @NSManaged var moneyNumber: Int64
     @NSManaged var monthString: String?
     @NSManaged var note: String?
     @NSManaged var personRelated: String?

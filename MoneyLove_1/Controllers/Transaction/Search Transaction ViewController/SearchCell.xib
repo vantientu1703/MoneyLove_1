@@ -34,7 +34,7 @@
                     <constraint firstItem="fcP-Dq-aDe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="CEz-op-a3L"/>
                     <constraint firstItem="fcP-Dq-aDe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FyT-gm-AfV"/>
                     <constraint firstAttribute="trailingMargin" secondItem="O0h-rK-0E4" secondAttribute="trailing" id="KDU-Ol-fY1"/>
-                    <constraint firstItem="O0h-rK-0E4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fcP-Dq-aDe" secondAttribute="trailing" id="Ox4-pT-LM0"/>s
+                    <constraint firstItem="O0h-rK-0E4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fcP-Dq-aDe" secondAttribute="trailing" id="Ox4-pT-LM0"/>
                     <constraint firstItem="O0h-rK-0E4" firstAttribute="centerY" secondItem="fcP-Dq-aDe" secondAttribute="centerY" id="hKy-oA-T2a"/>
                     <constraint firstItem="fcP-Dq-aDe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="xCf-SR-Ncc"/>
                 </constraints>

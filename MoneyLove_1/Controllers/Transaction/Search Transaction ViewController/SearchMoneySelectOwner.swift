@@ -8,17 +8,24 @@
 
 import UIKit
 protocol SearchMoneySelectDelegate: class {
-    func searchMoneyDoWhenSave(from: Int32, to: Int32)
+    func searchMoneyDoWhenSave(from: Int64, to: Int64)
     func searchMoneyDoWhenCancel()
 }
 class SearchMoneySelectOwner: NSObject {
-
     @IBOutlet var moneyRangeView: SearchMoneySelectView!
+    
+    func formatString(textField: UITextField) {
+        let textArray = textField.text!.componentsSeparatedByString(",")
+        let newText = textArray.joinWithSeparator("")
+        let number = Int64(newText)
+        let stringFormatted = number?.stringFormatedWithSepator
+        textField.text = stringFormatted
+    }
 }
 
 class SearchMoneySelectView: UIView {
-    var moneyNumberFrom: Int32!
-    var moneyNumberTo: Int32!
+    var moneyNumberFrom: Int64!
+    var moneyNumberTo: Int64!
     weak var delegate: SearchMoneySelectDelegate!
     @IBOutlet weak var moneyFrom: UITextField!
     @IBOutlet weak var moneyTo: UITextField!
@@ -34,7 +41,7 @@ class SearchMoneySelectView: UIView {
     
     func getTextFromTextField() {
         if let textFrom = moneyFrom.text {
-            if let from = Int32(textFrom) {
+            if let from = Int64(textFrom) {
                 moneyNumberFrom = from
             } else {
                 moneyNumberFrom = 0
@@ -43,7 +50,7 @@ class SearchMoneySelectView: UIView {
             moneyNumberFrom = 0
         }
         if let textTo = moneyTo.text {
-            if let numberTo = Int32(textTo) {
+            if let numberTo = Int64(textTo) {
                 moneyNumberTo = numberTo
             } else {
                 moneyNumberTo = 0
@@ -58,6 +65,8 @@ class SearchMoneySelectView: UIView {
         if let moneySelectView = NSBundle.mainBundle().loadNibNamed("SearchMoneySelectView", owner: owner, options: nil).first as? SearchMoneySelectView {
             owner.moneyRangeView = moneySelectView
             owner.moneyRangeView!.delegate = vc
+            owner.moneyRangeView.moneyFrom.addTarget(owner, action: #selector(SearchMoneySelectOwner.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
+            owner.moneyRangeView.moneyTo.addTarget(owner, action: #selector(SearchMoneySelectOwner.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             let vc = vc as? UIViewController
             if let vc = vc {
                 owner.moneyRangeView!.frame = vc.view.bounds

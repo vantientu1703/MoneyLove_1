@@ -46,7 +46,7 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     let TIME_MODE = "Time Mode"
     let HEIGHT_OF_NORMALCELL: CGFloat = 50.0
     let HEIGHT_OF_HEADERCELL: CGFloat = 50.0
-    let HEIGHT_OF_OVERVIEWCELL: CGFloat = 150.0
+    let HEIGHT_OF_OVERVIEWCELL: CGFloat = 180.0
     var startDate: NSDate?
     var endDate: NSDate?
     var isSelectedStartDateLabel: Bool!
@@ -124,7 +124,6 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
     
     func setUp() {
         dataTransaction = DataTransaction(frc: fetchedResultController, managedObjectContext: managedObjectContext)
-        title = Transaction.CLASS_NAME
         addButton.layer.cornerRadius = 20.0
         self.view.bringSubviewToFront(addButton)
 

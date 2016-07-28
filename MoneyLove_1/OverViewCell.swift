@@ -63,15 +63,15 @@ class OverViewCell: UITableViewCell {
     
     func configureCell(data: DataTransaction?) {
         let result = data!.getSumOfAllExpenseAndIncome()
-        expense = "\(result.0)"
-        income = "\(result.1)"
+        expense = result.0.stringFormatedWithSepator
+        income = result.1.stringFormatedWithSepator
         let netNumber = result.1 - result.0
         if netNumber < 0 {
             netLabel.textColor = UIColor.redColor()
         } else {
             netLabel.textColor = UIColor.blueColor()
         }
-        net = "\(abs(result.0 - result.1))"
+        net = netNumber.stringFormatedWithSepator
         if result.0 + result.1 == 0 {
             self.hidden = true
         } else {

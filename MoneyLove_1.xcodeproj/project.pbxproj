@@ -84,6 +84,7 @@
 		51F93E941D48469A00464DC9 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E931D48469A00464DC9 /* question.png */; };
 		51F93E961D4846B000464DC9 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E951D4846B000464DC9 /* pen.png */; };
 		51F93E981D4846C000464DC9 /* addContact.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E971D4846C000464DC9 /* addContact.png */; };
+		51F97DC91D49D3D900FAB96F /* Extension_Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */; };
 		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
 		51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */; };
 		51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */; };
@@ -110,7 +111,6 @@
 		E5AD1A901D3F18FA0088BBF7 /* IconItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A8F1D3F18FA0088BBF7 /* IconItem.swift */; };
 		E5AD1A921D3F193C0088BBF7 /* ManagerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AD1A911D3F193C0088BBF7 /* ManagerIcon.swift */; };
 		E5AD1A941D3F19C80088BBF7 /* Icon.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5AD1A931D3F19C80088BBF7 /* Icon.plist */; };
-		E5E0605A1D44808300AF95F9 /* Extension_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E060591D44808300AF95F9 /* Extension_String.swift */; };
 		E5E0605C1D44F53400AF95F9 /* DataWalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0605B1D44F53400AF95F9 /* DataWalletManager.swift */; };
 		E5E0605F1D44FEC700AF95F9 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0605D1D44FEC700AF95F9 /* Transaction+CoreDataProperties.swift */; };
 		E5E060601D44FEC700AF95F9 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0605E1D44FEC700AF95F9 /* Transaction.swift */; };
@@ -284,6 +284,7 @@
 		51F93E931D48469A00464DC9 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question.png; path = Resources/question.png; sourceTree = "<group>"; };
 		51F93E951D4846B000464DC9 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pen.png; path = Resources/pen.png; sourceTree = "<group>"; };
 		51F93E971D4846C000464DC9 /* addContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addContact.png; path = Resources/addContact.png; sourceTree = "<group>"; };
+		51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_Integer.swift; sourceTree = "<group>"; };
 		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
 		51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendTableViewController.swift; path = Controllers/TrendTableViewController/TrendTableViewController.swift; sourceTree = "<group>"; };
 		51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrendTableViewController.xib; path = Controllers/TrendTableViewController/TrendTableViewController.xib; sourceTree = "<group>"; };
@@ -311,7 +312,6 @@
 		E5AD1A8F1D3F18FA0088BBF7 /* IconItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IconItem.swift; path = Model/IconItem.swift; sourceTree = "<group>"; };
 		E5AD1A911D3F193C0088BBF7 /* ManagerIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerIcon.swift; path = Controllers/IconManagerViewController/ManagerIcon.swift; sourceTree = "<group>"; };
 		E5AD1A931D3F19C80088BBF7 /* Icon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Icon.plist; sourceTree = "<group>"; };
-		E5E060591D44808300AF95F9 /* Extension_String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_String.swift; sourceTree = "<group>"; };
 		E5E0605B1D44F53400AF95F9 /* DataWalletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataWalletManager.swift; sourceTree = "<group>"; };
 		E5E0605D1D44FEC700AF95F9 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5E0605E1D44FEC700AF95F9 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 				514783461D42007500E50A04 /* Extension_NSPredicate.swift */,
 				514783471D42007500E50A04 /* Extension_UIColor.swift */,
 				5147834D1D4200EC00E50A04 /* Extension_NSDate.swift */,
-				E5E060591D44808300AF95F9 /* Extension_String.swift */,
+				51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1097,7 +1097,7 @@
 				E5FEA5001D3F4CD6001A806E /* store.png in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				517A0C6A1D4764820008626D /* SearchCell.xib in Resources */,
-				5153B1CB1D2F48C800413269 /* PayReceiavableTableView.xib in Resources */,
+				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				5153B1CB1D2F48C800413269 /* PayReceiavableTableViewCell.xib in Resources */,
 				516040D61D37609400AB9A74 /* TransactionViewController.xib in Resources */,
 				E5279F101D46FE760018F9BE /* ic_add.png in Resources */,
@@ -1240,7 +1240,6 @@
 				E5AD1A901D3F18FA0088BBF7 /* IconItem.swift in Sources */,
 				5147834E1D4200EC00E50A04 /* Extension_NSDate.swift in Sources */,
 				516040D11D37608C00AB9A74 /* TextCell.swift in Sources */,
-				E5E0605A1D44808300AF95F9 /* Extension_String.swift in Sources */,
 				51312EFE1D35CAD500775EFD /* AppDelegate.swift in Sources */,
 				E5AD1A891D3F0F480088BBF7 /* IconManagerViewController.swift in Sources */,
 				EF5C480D1D2E4ABF0040B82E /* RESideMenu.m in Sources */,
@@ -1286,6 +1285,7 @@
 				5153B1EB1D2F8B2400413269 /* ItemReportTableViewCell.swift in Sources */,
 				512D19BF1D3DDADA00BB287C /* CustomPageViewController.swift in Sources */,
 				5137A08A1D486FB000A1BE97 /* PieChartCategoryTableViewCell.swift in Sources */,
+				51F97DC91D49D3D900FAB96F /* Extension_Integer.swift in Sources */,
 				515AAD151D3CC8E800DA65EC /* PayReceiavableTableViewCell.swift in Sources */,
 				51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */,
 				EF76F94B1D3776AD00175D5C /* WalletManagerTableViewCell.swift in Sources */,

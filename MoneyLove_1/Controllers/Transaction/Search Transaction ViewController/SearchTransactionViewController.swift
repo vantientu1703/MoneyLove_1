@@ -176,7 +176,7 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
         tableView.reloadRowsAtIndexPaths([categoryTypeIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    func searchWithMoney(from: Int32?, to: Int32?, caseType: MoneySearchType) {
+    func searchWithMoney(from: Int64?, to: Int64?, caseType: MoneySearchType) {
         let predicate = NSPredicate(format: "moneyNumber >= %f AND moneyNumber <= %f", from!, to!)
         predicates[SelectRowType.MoneyNumber.rawValue] = predicate
         moneyNumber = "From \(from!)đ to \(to!)đ "
@@ -236,20 +236,20 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
         tableView.reloadRowsAtIndexPaths([dateIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    func searchWithMoney(money: Int32?, caseType: MoneySearchType) {
+    func searchWithMoney(money: Int64?, caseType: MoneySearchType) {
         var predicate: NSPredicate!
         switch caseType {
         case .Fewer:
             moneyNumber = "Fewer "
-            predicate = NSPredicate(format: "moneyNumber <= %f", money!)
+            predicate = NSPredicate(format: "moneyNumber <= %d", money!)
             break
         case .More:
             moneyNumber = "More "
-            predicate = NSPredicate(format: "moneyNumber >= %f", money!)
+            predicate = NSPredicate(format: "moneyNumber >= %d", money!)
             break
         case .Accurate:
             moneyNumber = "Accurate "
-            predicate = NSPredicate(format: "moneyNumber == %f", money!)
+            predicate = NSPredicate(format: "moneyNumber == %d", money!)
         default:
             moneyNumber = "All "
             break

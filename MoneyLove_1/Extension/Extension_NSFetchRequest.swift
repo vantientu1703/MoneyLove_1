@@ -13,6 +13,7 @@ enum GroupBy {
     case MonthAndYear
     case DayMonthYear
     case Category
+    case None
 }
 
 enum CategoryType {
@@ -113,8 +114,12 @@ extension NSFetchRequest {
             break
         case .DayMonthYear:
             fetchRequest.propertiesToGroupBy = ["dayString"]
-        default:
+            break
+        case .Category:
             fetchRequest.propertiesToGroupBy = ["group"]
+            break
+        default:
+            break
         }
         fetchRequest.resultType = resultType
         return fetchRequest

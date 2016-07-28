@@ -77,8 +77,8 @@ protocol SearchSelectTableViewDelegate: class {
     func searchWithWallet(wallet: Wallet)
     func searchWithDates(startDate: NSDate?, endDate: NSDate?, caseType: TimeSearchType)
     func searchWithDate(date: NSDate?, caseType: TimeSearchType)
-    func searchWithMoney(from: Int32?, to: Int32?, caseType: MoneySearchType)
-    func searchWithMoney(money: Int32?, caseType: MoneySearchType)
+    func searchWithMoney(from: Int64?, to: Int64?, caseType: MoneySearchType)
+    func searchWithMoney(money: Int64?, caseType: MoneySearchType)
     func searchWithCategory(caseType: CategorySearchType)
 }
 
@@ -137,7 +137,7 @@ class SearchSelectTableViewController: UIViewController {
     func didSelectMoneySearchType(indexPath: NSIndexPath) {
         moneySearchType = MoneySearchType.moneyNumberCases[indexPath.row]
         if indexPath.row == MoneySearchType.Fewer.rawValue || indexPath.row == MoneySearchType.More.rawValue || indexPath.row == MoneySearchType.Accurate.rawValue {
-            SearchExactlyMoneyView.presentInViewController(self)
+            SearchExactlyMoneyView.presentInViewController(self, caseType: moneySearchType)
         } else if indexPath.row == MoneySearchType.Middle.rawValue {
             SearchMoneySelectView.presentInViewController(self)
         } else {
@@ -248,7 +248,7 @@ extension SearchSelectTableViewController: UIGestureRecognizerDelegate {
 }
 
 extension SearchSelectTableViewController: SearchExactlyMoneyDelegate {
-    func delegateDoWhenSave(money: Int32) {
+    func delegateDoWhenSave(money: Int64) {
         delegate.searchWithMoney(money, caseType: moneySearchType)
         self.removeFromParentVC()
     }
@@ -261,7 +261,7 @@ extension SearchSelectTableViewController: SearchExactlyMoneyDelegate {
 }
 
 extension SearchSelectTableViewController: SearchMoneySelectDelegate {
-    func searchMoneyDoWhenSave(from: Int32, to: Int32) {
+    func searchMoneyDoWhenSave(from: Int64, to: Int64) {
         delegate.searchWithMoney(from, to: to, caseType: moneySearchType)
         self.removeFromParentVC()
     }
@@ -299,25 +299,24 @@ extension SearchSelectTableViewController: CustomDateViewDelegate {
 
 extension SearchSelectTableViewController: WWCalendarTimeSelectorProtocol {
     func WWCalendarTimeSelectorDone(selector: WWCalendarTimeSelector, date: NSDate) {
-        if isSelectedStartDateLabel {
-            if let customDateView = self.view.viewWithTag(5) as? CustomDateView {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy"
-                let startDateStr = dateFormatter.stringFromDate(date)
-                customDateView.startingDate.text = startDateStr
+        if let customDateView = self.view.viewWithTag(5) as? CustomDateView {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let dateStr = dateFormatter.stringFromDate(date)
+            if isSelectedStartDateLabel {
+                customDateView.startingDate.text = dateStr
                 customDateView.start = date
-            }
-        } else {
-            if let customDateView = self.view.viewWithTag(5) as? CustomDateView {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy"
-                let endDateStr = dateFormatter.stringFromDate(date)
-                customDateView.endingDate.text = endDateStr
+            } else {
+                customDateView.endingDate.text = dateStr
                 customDateView.end = date
             }
+        } else {
+            delegate.searchWithDate(date, caseType: timeSearchType)
         }
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.removeFromParentVC()
     }
+    
     func WWCalendarTimeSelectorCancel(selector: WWCalendarTimeSelector, date: NSDate) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
