@@ -110,7 +110,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let arrWallets = DataManager.shareInstance.getAllWallets() {
             let number = arrWallets.count
             if number > 0 {
-                self.getWalletDefault()
+                self.getCurrentWallet()
             }
         }
         self.viewAccount.backgroundColor = COLOR_NAVIGATION
@@ -135,6 +135,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getWalletDefault() {
         self.showSelectWalletViewController()
+        self.sideMenuViewController.hideMenuViewController()
+        if let wallet = DataManager.shareInstance.currentWallet {
+            self.imageViewWallet.image = UIImage(named: wallet.imageName!)
+            self.labelWalletName.text = wallet.name
+            if wallet.firstNumber >= 0 {
+                self.labelTotalMoneyOfWallet.textColor = UIColor.blueColor()
+                let number = Int(wallet.firstNumber)
+                let myString = number.stringFormatedWithSepator
+                self.labelTotalMoneyOfWallet.text = "\(myString) đ"
+            } else {
+                self.labelTotalMoneyOfWallet.textColor = UIColor.redColor()
+                let number = Int(-wallet.firstNumber)
+                let myString = number.stringFormatedWithSepator
+                self.labelTotalMoneyOfWallet.text = "\(myString) đ"
+            }
+        }
+    }
+    
+    func getCurrentWallet() {
         self.sideMenuViewController.hideMenuViewController()
         if let wallet = DataManager.shareInstance.currentWallet {
             self.imageViewWallet.image = UIImage(named: wallet.imageName!)

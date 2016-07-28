@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
@@ -17,27 +18,31 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6PK-h0-rUN">
-                    <rect key="frame" x="10" y="64" width="300" height="281"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6PK-h0-rUN">
+                    <rect key="frame" x="10" y="64" width="300" height="302"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="9kS-VU-YIw"/>
                         <outlet property="delegate" destination="-1" id="NPX-QZ-UCO"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfm-L5-qCs">
-                    <rect key="frame" x="265" y="528" width="45" height="30"/>
-                    <state key="normal" title="Delete"/>
-                    <connections>
-                        <action selector="clickToDelete:" destination="-1" eventType="touchUpInside" id="k9L-FK-yNw"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0D-QH-iAU">
-                    <rect key="frame" x="30" y="374" width="260" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0D-QH-iAU">
+                    <rect key="frame" x="30" y="395" width="260" height="0.0"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfm-L5-qCs">
+                    <rect key="frame" x="280" y="528" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cfm-L5-qCs" secondAttribute="height" id="BhO-W7-lP5"/>
+                        <constraint firstAttribute="width" constant="30" id="R0s-cw-2Rf"/>
+                    </constraints>
+                    <state key="normal" title="Delete" image="Delete-50.png"/>
+                    <connections>
+                        <action selector="clickToDelete:" destination="-1" eventType="touchUpInside" id="k9L-FK-yNw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -55,4 +60,7 @@
             <point key="canvasLocation" x="417" y="462"/>
         </view>
     </objects>
+    <resources>
+        <image name="Delete-50.png" width="50" height="50"/>
+    </resources>
 </document>

@@ -13,14 +13,6 @@ protocol SearchMoneySelectDelegate: class {
 }
 class SearchMoneySelectOwner: NSObject {
     @IBOutlet var moneyRangeView: SearchMoneySelectView!
-    
-    func formatString(textField: UITextField) {
-        let textArray = textField.text!.componentsSeparatedByString(",")
-        let newText = textArray.joinWithSeparator("")
-        let number = Int64(newText)
-        let stringFormatted = number?.stringFormatedWithSepator
-        textField.text = stringFormatted
-    }
 }
 
 class SearchMoneySelectView: UIView {
@@ -41,8 +33,10 @@ class SearchMoneySelectView: UIView {
     
     func getTextFromTextField() {
         if let textFrom = moneyFrom.text {
-            if let from = Int64(textFrom) {
-                moneyNumberFrom = from
+            let arrayText = textFrom.componentsSeparatedByString(",")
+            let newNumberText = arrayText.joinWithSeparator("")
+            if let money = Int64(newNumberText) {
+                moneyNumberFrom = money
             } else {
                 moneyNumberFrom = 0
             }
@@ -50,8 +44,10 @@ class SearchMoneySelectView: UIView {
             moneyNumberFrom = 0
         }
         if let textTo = moneyTo.text {
-            if let numberTo = Int64(textTo) {
-                moneyNumberTo = numberTo
+            let arrayText = textTo.componentsSeparatedByString(",")
+            let newNumberText = arrayText.joinWithSeparator("")
+            if let money = Int64(newNumberText) {
+                moneyNumberFrom = money
             } else {
                 moneyNumberTo = 0
             }
@@ -65,8 +61,8 @@ class SearchMoneySelectView: UIView {
         if let moneySelectView = NSBundle.mainBundle().loadNibNamed("SearchMoneySelectView", owner: owner, options: nil).first as? SearchMoneySelectView {
             owner.moneyRangeView = moneySelectView
             owner.moneyRangeView!.delegate = vc
-            owner.moneyRangeView.moneyFrom.addTarget(owner, action: #selector(SearchMoneySelectOwner.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
-            owner.moneyRangeView.moneyTo.addTarget(owner, action: #selector(SearchMoneySelectOwner.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
+            owner.moneyRangeView.moneyFrom.addTarget(owner.moneyRangeView, action: #selector(SearchMoneySelectView.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
+            owner.moneyRangeView.moneyTo.addTarget(owner.moneyRangeView, action: #selector(SearchMoneySelectView.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             let vc = vc as? UIViewController
             if let vc = vc {
                 owner.moneyRangeView!.frame = vc.view.bounds
@@ -77,5 +73,14 @@ class SearchMoneySelectView: UIView {
             print("Unable to load nib file Search Exactly Money View")
         }
     }
+    
+    func formatString(textField: UITextField) {
+        let textArray = textField.text!.componentsSeparatedByString(",")
+        let newText = textArray.joinWithSeparator("")
+        let number = Int64(newText)
+        let stringFormatted = number?.stringFormatedWithSepator
+        textField.text = stringFormatted
+    }
+    
 }
 

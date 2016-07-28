@@ -28,7 +28,7 @@
                                 <constraint firstAttribute="width" constant="30" id="rFc-zw-NuF"/>
                                 <constraint firstAttribute="height" constant="30" id="tIW-W1-BFG"/>
                             </constraints>
-                            <state key="normal" image="briefcase.png"/>
+                            <state key="normal" image="question.png"/>
                             <connections>
                                 <action selector="pressButtonIcon:" destination="-1" eventType="touchUpInside" id="pQn-2s-TFi"/>
                             </connections>
@@ -129,7 +129,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="briefcase.png" width="32" height="32"/>
         <image name="ic_money.png" width="32" height="32"/>
+        <image name="question.png" width="50" height="50"/>
     </resources>
 </document>

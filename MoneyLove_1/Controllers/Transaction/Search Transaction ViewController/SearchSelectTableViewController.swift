@@ -159,6 +159,14 @@ class SearchSelectTableViewController: UIViewController {
             selector.delegate = self
             selector.optionCurrentDate = NSDate(timeIntervalSinceReferenceDate: NSDate.timeIntervalSinceReferenceDate())
             selector.optionStyles = [.Date, .Year]
+            selector.optionTopPanelBackgroundColor = UIColor.darkGrayColor()
+            selector.optionSelectorPanelBackgroundColor = COLOR_NAVIGATION
+            selector.optionButtonFontColorCancel = UIColor.darkGrayColor()
+            selector.optionButtonFontColorDone = UIColor.darkGrayColor()
+            selector.optionCalendarBackgroundColorTodayHighlight = COLOR_NAVIGATION
+            selector.optionCalendarBackgroundColorTodayFlash = COLOR_NAVIGATION
+            selector.optionCalendarBackgroundColorPastDatesHighlight = COLOR_NAVIGATION
+            selector.optionCalendarBackgroundColorFutureDatesHighlight = COLOR_NAVIGATION
             self.presentViewController(selector, animated: true, completion: nil)
         } else if timeSearchType == .Middle {
             CustomDateView.presentInViewController(self)
@@ -284,8 +292,16 @@ extension SearchSelectTableViewController: CustomDateViewDelegate {
         isSelectedStartDateLabel = label.tag == 1
         let selector = WWCalendarTimeSelector.instantiate()
         selector.delegate = self
-        selector.optionCurrentDate = NSDate()
+        selector.optionCurrentDate = NSDate(timeIntervalSinceReferenceDate: NSDate.timeIntervalSinceReferenceDate())
         selector.optionStyles = [.Date, .Year]
+        selector.optionTopPanelBackgroundColor = UIColor.darkGrayColor()
+        selector.optionSelectorPanelBackgroundColor = COLOR_NAVIGATION
+        selector.optionButtonFontColorCancel = UIColor.darkGrayColor()
+        selector.optionButtonFontColorDone = UIColor.darkGrayColor()
+        selector.optionCalendarBackgroundColorTodayHighlight = COLOR_NAVIGATION
+        selector.optionCalendarBackgroundColorTodayFlash = COLOR_NAVIGATION
+        selector.optionCalendarBackgroundColorPastDatesHighlight = COLOR_NAVIGATION
+        selector.optionCalendarBackgroundColorFutureDatesHighlight = COLOR_NAVIGATION
         self.presentViewController(selector, animated: true, completion: nil)
     }
     
@@ -310,11 +326,12 @@ extension SearchSelectTableViewController: WWCalendarTimeSelectorProtocol {
                 customDateView.endingDate.text = dateStr
                 customDateView.end = date
             }
+            self.dismissViewControllerAnimated(true, completion: nil)
         } else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+            self.removeFromParentVC()
             delegate.searchWithDate(date, caseType: timeSearchType)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.removeFromParentVC()
     }
     
     func WWCalendarTimeSelectorCancel(selector: WWCalendarTimeSelector, date: NSDate) {

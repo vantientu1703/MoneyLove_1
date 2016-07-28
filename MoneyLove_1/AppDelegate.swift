@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         DataManager.shareInstance.addWalletDefault()
-        DataManager.shareInstance.addCategoriesDefault()
         if let arrWallets = DataManager.shareInstance.getAllWallets() {
             let number = arrWallets.count
             if number > 0 {

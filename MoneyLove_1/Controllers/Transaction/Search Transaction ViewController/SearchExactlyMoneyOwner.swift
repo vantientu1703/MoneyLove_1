@@ -15,13 +15,6 @@ protocol SearchExactlyMoneyDelegate: class {
 
 class SearchExactlyMoneyOwner: NSObject {
     @IBOutlet var exactView: SearchExactlyMoneyView!
-    func formatString(textField: UITextField) {
-        let textArray = textField.text!.componentsSeparatedByString(",")
-        let newText = textArray.joinWithSeparator("")
-        let number = Int64(newText)
-        let stringFormatted = number?.stringFormatedWithSepator
-        textField.text = stringFormatted
-    }
 }
 
 class SearchExactlyMoneyView: UIView {
@@ -34,7 +27,9 @@ class SearchExactlyMoneyView: UIView {
     
     @IBAction func clickToSave(sender: AnyObject) {
         let moneyStr = moneyTextField.text
-        if let money = Int64(moneyStr!) {
+        let arrayText = moneyStr!.componentsSeparatedByString(",")
+        let newNumberText = arrayText.joinWithSeparator("")
+        if let money = Int64(newNumberText) {
             delegate.delegateDoWhenSave(money)
         } else {
             delegate.delegateDoWhenSave(0)
@@ -49,7 +44,7 @@ class SearchExactlyMoneyView: UIView {
             owner.exactView!.delegate = vc
             let dateType = caseType.title()
             owner.exactView.typeLabel.text = dateType
-            owner.exactView.moneyTextField.addTarget(owner, action: #selector(SearchExactlyMoneyOwner.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
+            owner.exactView.moneyTextField.addTarget(owner.exactView, action: #selector(SearchExactlyMoneyView.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             let vc = vc as? UIViewController
             if let vc = vc {
                 owner.exactView!.frame = vc.view.bounds
@@ -60,4 +55,12 @@ class SearchExactlyMoneyView: UIView {
             print("Unable to load nib file Search Exactly Money View")
         }
     }
+    func formatString(textField: UITextField) {
+        let textArray = textField.text!.componentsSeparatedByString(",")
+        let newText = textArray.joinWithSeparator("")
+        let number = Int64(newText)
+        let stringFormatted = number?.stringFormatedWithSepator
+        textField.text = stringFormatted
+    }
+
 }

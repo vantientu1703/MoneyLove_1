@@ -18,7 +18,7 @@ enum Row: Int {
     func imageName() -> String {
         switch self {
         case .CategoryName:
-            return "ic_question"
+            return "question"
         case .CategoryType:
             return "ic_type"
         case .CategoryWallet:

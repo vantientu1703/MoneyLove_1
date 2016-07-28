@@ -43,6 +43,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     var typeExpense: Bool = false
     var isFromTransaction = false
     var delegate: CategoriesViewControllerDelegate!
+    
     lazy var fetchedResultController: NSFetchedResultsController = {
         let fetchedRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: self.managedObjectContext)
@@ -71,6 +72,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         NSFetchedResultsController.deleteCacheWithName(self.CACHE_NAME)
         do {
             try self.fetchedResultController.performFetch()
+            tableView.reloadData()
         } catch {
             let performError = error as NSError
             print("\(performError), \(performError.userInfo)")

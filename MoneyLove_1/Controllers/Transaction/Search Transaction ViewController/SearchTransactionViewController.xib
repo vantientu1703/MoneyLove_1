@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchTransactionViewController" customModule="MoneyLove_1" customModuleProvider="target">
             <connections>
+                <outlet property="searchButton" destination="brF-d4-Z9y" id="628-47-p7H"/>
                 <outlet property="tableView" destination="U3D-4y-TnW" id="Av7-Sf-FYQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,7 +29,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brF-d4-Z9y">
                     <rect key="frame" x="0.0" y="384" width="320" height="50"/>
-                    <color key="backgroundColor" red="0.073536012619999994" green="1" blue="0.25887284459999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="rb5-6p-Q0W"/>
                     </constraints>

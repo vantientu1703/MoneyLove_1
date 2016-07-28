@@ -141,6 +141,8 @@ class DataManager : NSObject {
             debtCategory.subType = 2
             do {
                 try context.save()
+                loanCategory.wallet = DataManager.shareInstance.currentWallet
+                debtCategory.wallet = DataManager.shareInstance.currentWallet
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "addedCategoriesDefault")
             } catch {
                 let saveError = error as NSError
@@ -165,9 +167,10 @@ class DataManager : NSObject {
             do {
                 try context.save()
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "addedWalletDefault")
+                self.addCategoriesDefault()
                 let categoriesDefault = self.getCategoriesDefaults()
-                cashWallet.group = NSSet(array: categoriesDefault)
                 atmWallet.group = NSSet(array: categoriesDefault)
+                cashWallet.group = NSSet(array: categoriesDefault)
             } catch {
                 let saveError = error as NSError
                 print("\(saveError), \(saveError.userInfo)")
