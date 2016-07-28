@@ -44,6 +44,7 @@ class CustomPageViewController: UIPageViewController {
         let rightButton = UIBarButtonItem(title:"...", style: UIBarButtonItemStyle.Plain, target: self.getCurrentViewController() , action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
         self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton
+        title = DataManager.shareInstance.currentWallet.name
     }
 }
 

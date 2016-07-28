@@ -52,7 +52,6 @@ enum RowType: Int  {
         default:
             return ""
         }
-
     }
 }
 
@@ -80,7 +79,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     var managedTransactionObject:Transaction!
     var fetchedResultsController: NSFetchedResultsController?
     weak var delegate: TransactionViewControllerDelegate?
-    var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money: Int32, group: Group?, wallet: Wallet?) = ("", 0, "", 0, nil, nil)
+    var transactionCache:(note: String?, date: NSTimeInterval, people: String?, money: Int64, group: Group?, wallet: Wallet?) = ("", 0, "", 0, nil, nil)
     var isNewTransaction = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,7 +157,9 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         let noteIndexPath = NSIndexPath(forRow: RowType.Note.rawValue, inSection: 0)
         let moneyTextField = myTableView.cellForRowAtIndexPath(moneyIndexPath) as! TextCell
         let noteTextField = myTableView.cellForRowAtIndexPath(noteIndexPath) as! TextCell
-        if let moneyNumber = Int32(moneyTextField.myTextField.text!) {
+        let arrayText = moneyTextField.myTextField.text!.componentsSeparatedByString(",")
+        let newNumberText = arrayText.joinWithSeparator("")
+        if let moneyNumber = Int64(newNumberText) {
             transactionCache.money = moneyNumber
         } else {
             transactionCache.money = 0
@@ -180,6 +181,14 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
             return .NoCategory
         }
         return .Pass
+    }
+    
+    func formatString(textField: UITextField) {
+        let textArray = textField.text!.componentsSeparatedByString(",")
+        let newText = textArray.joinWithSeparator("")
+        let number = Int64(newText)
+        let stringFormatted = number?.stringFormatedWithSepator
+        textField.text = stringFormatted
     }
     
     @IBAction func clickToCancel(sender: AnyObject) {
@@ -231,14 +240,15 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                         labelCell.nameLabel.textColor = UIColor.lightGrayColor()
                     } else {
                         labelCell.nameLabel.text = groupName
-                        labelCell.nameLabel.textColor = UIColor.blackColor()                    }
+                        labelCell.nameLabel.textColor = UIColor.blackColor()
+                    }
                     let groupImageName = group.imageName!
                     if !groupImageName.isEmpty {
                         labelCell.imageLabelCell.image = UIImage(named: groupImageName)
                     } else {
                         labelCell.imageLabelCell.image = UIImage(named: rowType.imageName())
                     }
-                    } else {
+                } else {
                     labelCell.nameLabel.text = rowType.title()
                     labelCell.nameLabel.textColor = UIColor.lightGrayColor()
                     labelCell.imageLabelCell.image = UIImage(named: rowType.imageName())
@@ -275,8 +285,9 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
                 textCell.myTextField.placeholder = rowType.title()
+                textCell.myTextField.font = UIFont.systemFontOfSize(20, weight: UIFontWeightThin)
+                textCell.myTextField.addTarget(self, action: #selector(TransactionViewController.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             }
-            textCell.myTextField.delegate = self
             return textCell
         case .Date:
             let dateCell = tableView.dequeueReusableCellWithIdentifier(DATE_CELL_IDENTIFIER, forIndexPath: indexPath) as! DateCell
@@ -351,38 +362,6 @@ extension TransactionViewController: WWCalendarTimeSelectorProtocol {
     }
 }
 
-extension TransactionViewController: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing",textField.text)
-        return true
-    }
-    
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        print("textFieldShouldEndEditing",textField.text)
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        print("textFieldDidBeginEditing",textField.text)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print(textField.text)
-        return true
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        return true
-    }
-    
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        return true
-    }
-}
-
 extension TabPageViewController {
     func clickToBack(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
@@ -410,11 +389,10 @@ extension TabPageViewController: SearchGroupDelegate {
 
 extension TransactionViewController: CategoriesViewControllerDelegate {
     func delegateDoWhenRowSelected(group: Group) {
-        let categoryCell = myTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! LabelCell
-        categoryCell.imageLabelCell.image = UIImage(named: group.imageName!)
-        categoryCell.nameLabel.text = group.name
+        let categoryIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         transactionCache.group = group
         isSelectedCategory = true
+        myTableView.reloadRowsAtIndexPaths([categoryIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         self.navigationController?.popViewControllerAnimated(true)
     }
 }

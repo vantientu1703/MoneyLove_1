@@ -76,7 +76,7 @@ class DateRequestedCell: UITableViewCell {
     
     func configureCell(indexPath: NSIndexPath, data: DataTransaction?, isHeader: Bool) {
         if isHeader {
-            var sum = data?.getSumOfAllMoneyInIndexPath(indexPath.section)
+            let sum = data?.getSumOfAllMoneyInIndexPath(indexPath.section)
             let stringOfDate = data?.getHeaderTitleInIndexPath(indexPath.section)
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -87,11 +87,10 @@ class DateRequestedCell: UITableViewCell {
             weekDay = NSDate.dayOfTheWeek(date!)
             if sum < 0 {
                 moneyLabelTextColor = UIColor.redColor()
-                sum = sum! * -1
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }
-            money = "\(sum!)"
+            money = sum!.stringFormatedWithSepator
         } else {
             let stringOfDate = data?.getTimeForTransaction(indexPath)
             let dateFormatter = NSDateFormatter()
@@ -108,7 +107,7 @@ class DateRequestedCell: UITableViewCell {
             } else {
                 moneyLabelTextColor = UIColor.blueColor()
             }
-            money = "\(moneyNumber)"
+            money = moneyNumber.stringFormatedWithSepator
         }
     }
     
@@ -124,10 +123,9 @@ class DateRequestedCell: UITableViewCell {
         weekDay = NSDate.dayOfTheWeek(date!)
         if sum < 0 {
             moneyLabelTextColor = UIColor.redColor()
-            sum = sum! * -1
         } else {
             moneyLabelTextColor = UIColor.blueColor()
         }
-        money = "\(sum!)"
+        money = sum!.stringFormatedWithSepator
     }
 }

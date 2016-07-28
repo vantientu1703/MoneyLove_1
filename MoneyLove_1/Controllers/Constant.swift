@@ -25,17 +25,3 @@ let PUSH_TITLE = "push"
 let WALLET_IS_EXISTED = "Wallet was existed"
 let DEFAULT = "Default"
 let MESSAGE_REMINDER_CATEGORY = "Are you make sure delete category?"
-struct Number {
-    static let formatterWithSepator: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
-        formatter.groupingSeparator = ","
-        formatter.numberStyle = .DecimalStyle
-        return formatter
-    }()
-}
-
-extension IntegerType {
-    var stringFormatedWithSepator: String {
-        return Number.formatterWithSepator.stringFromNumber(hashValue) ?? ""
-    }
-}

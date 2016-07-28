@@ -18,10 +18,10 @@ class DataResultTransaction: NSObject {
         super.init()
     }
     
-    func getSumOfAllExpenseAndIncome () -> (Int32,  Int32) {
+    func getSumOfAllExpenseAndIncome () -> (Int64,  Int64) {
         let results = fetchedResultsController.fetchedObjects
-        var sumExpense: Int32 = 0
-        var sumIncome: Int32 = 0
+        var sumExpense: Int64 = 0
+        var sumIncome: Int64 = 0
         if let myResults = results {
             for item in myResults {
                 let trans = item as! Transaction
@@ -37,13 +37,13 @@ class DataResultTransaction: NSObject {
         return (sumExpense, sumIncome)
     }
     
-    func getSumOfAllMoneyInIndexPath(section: Int) -> Int32 {
+    func getSumOfAllMoneyInIndexPath(section: Int) -> Int64 {
         print("Group:")
         if let sections = fetchedResultsController.sections {
             if sections.count > 0 {
                 let group = sections[section]
                 let resultsInSection = group.objects
-                var sum: Int32 = 0
+                var sum: Int64 = 0
                 if let results = resultsInSection {
                     for item in results {
                         let trans = item as! Transaction
@@ -74,7 +74,7 @@ class DataResultTransaction: NSObject {
         return ""
     }
     
-    func getMoneyNumberInIndexPath(indexPath: NSIndexPath) -> Int32 {
+    func getMoneyNumberInIndexPath(indexPath: NSIndexPath) -> Int64 {
         let result = fetchedResultsController.objectAtIndexPath(indexPath) as! Transaction
         let money = result.moneyNumber
         return money

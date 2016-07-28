@@ -34,7 +34,7 @@
                     <constraint firstItem="4lz-Uk-7k0" firstAttribute="leading" secondItem="ef5-QX-K71" secondAttribute="trailing" constant="20" id="B8p-E1-4o8"/>
                     <constraint firstAttribute="bottomMargin" secondItem="4lz-Uk-7k0" secondAttribute="bottom" constant="10" id="Gzh-F2-hDx"/>
                     <constraint firstItem="ef5-QX-K71" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aXs-7v-EDw"/>
-                    <constraint firstItem="4lz-Uk-7k0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="luM-J3-6y1"/>
+                    <constraint firstItem="4lz-Uk-7k0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="luM-J3-6y1"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4lz-Uk-7k0" secondAttribute="trailing" constant="10" id="zYK-wW-jsp"/>
                 </constraints>
                 <variation key="default">
