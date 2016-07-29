@@ -26,7 +26,7 @@ class PieChartCategoryTableViewCell: UITableViewCell {
     }
     
     //MARK: CHARTBYCATERGORY
-    func setDataCharCategory(data: [Dictionary<String, AnyObject>]) {
+    func setDataCharCategory(data: [[String: AnyObject]]) {
         var groupName = [String]()
         var value = [Double]()
         for dic in data {

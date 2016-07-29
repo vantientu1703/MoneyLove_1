@@ -40,11 +40,6 @@ enum VIEWCONTROLLER: Int {
             return customPageVC
         case DebtsViewControllers:
             let tabPageVC: TabPageViewController = TabPageViewController.create()
-            let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
-                                             target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
-            tabPageVC.navigationItem.leftBarButtonItem = leftButton
-//            tabPageVC.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: MENU_TITLE, style: UIBarButtonItemStyle.Plain, target: tabPageVC, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
-            tabPageVC.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Add, target: tabPageVC, action: #selector(TabPageViewController.add(_:)))
             let payableVC = PayReceiavableTableViewController(nibName: "PayReceiavableTableViewController", bundle: nil)
             payableVC.isDebt = true
             payableVC.color = UIColor.greenColor()
@@ -253,6 +248,16 @@ extension TabPageViewController: RESideMenuDelegate {
     
     func add(sender: AnyObject) {
         //TODO
+    }
+    
+    override public func viewDidAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+            target: self, action: #selector(TabPageViewController.presentLeftMenuViewController(_:)))
+        self.navigationItem.leftBarButtonItem = leftButton
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        self.navigationController?.navigationBar.backgroundColor = COLOR_NAVIGATION
     }
 }
 

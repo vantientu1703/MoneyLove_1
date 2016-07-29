@@ -38,7 +38,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCV-sA-50q">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCV-sA-50q">
                         <rect key="frame" x="157" y="8" width="251" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Xfd-3B-tZR"/>
@@ -52,7 +52,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlu-3x-UNh">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlu-3x-UNh">
                         <rect key="frame" x="157" y="36" width="251" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.36141856709999998" green="0.63417336170000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,6 +76,10 @@
                     <constraint firstItem="pM3-6t-gTM" firstAttribute="height" secondItem="DAd-ku-IIV" secondAttribute="height" id="sMp-uU-RDM"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="endBalance" destination="Dlu-3x-UNh" id="PMs-U1-szZ"/>
+                <outlet property="openBalance" destination="WCV-sA-50q" id="0QO-ci-1BB"/>
+            </connections>
             <point key="canvasLocation" x="480" y="372"/>
         </tableViewCell>
     </objects>
