@@ -32,24 +32,16 @@ class SearchOverViewCell: UITableViewCell {
             }
         }
     }
-    
-    var color: UIColor {
-        didSet {
-            self.backgroundColor = UIColor.darkGrayColor()
-        }
-    }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        color = UIColor.whiteColor()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        color = UIColor.whiteColor()
         super.init(coder: aDecoder)
     }
     
@@ -65,7 +57,6 @@ class SearchOverViewCell: UITableViewCell {
         if result.0 + result.1 == 0 {
             self.hidden = true
         } else {
-            color = UIColor.lightGrayColor()
             self.hidden = false
         }
     }

@@ -85,6 +85,8 @@
 		51F93E961D4846B000464DC9 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E951D4846B000464DC9 /* pen.png */; };
 		51F93E981D4846C000464DC9 /* addContact.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F93E971D4846C000464DC9 /* addContact.png */; };
 		51F97DC91D49D3D900FAB96F /* Extension_Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */; };
+		51F97DCB1D4A108C00FAB96F /* Delete-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F97DCA1D4A108C00FAB96F /* Delete-50.png */; };
+		51F97DCD1D4A240700FAB96F /* ic_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F97DCC1D4A240700FAB96F /* ic_home.png */; };
 		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
 		51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */; };
 		51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */; };
@@ -288,6 +290,8 @@
 		51F93E951D4846B000464DC9 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pen.png; path = Resources/pen.png; sourceTree = "<group>"; };
 		51F93E971D4846C000464DC9 /* addContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addContact.png; path = Resources/addContact.png; sourceTree = "<group>"; };
 		51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_Integer.swift; sourceTree = "<group>"; };
+		51F97DCA1D4A108C00FAB96F /* Delete-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Delete-50.png"; path = "Resources/Delete-50.png"; sourceTree = "<group>"; };
+		51F97DCC1D4A240700FAB96F /* ic_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_home.png; path = Resources/ic_home.png; sourceTree = "<group>"; };
 		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
 		51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendTableViewController.swift; path = Controllers/TrendTableViewController/TrendTableViewController.swift; sourceTree = "<group>"; };
 		51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrendTableViewController.xib; path = Controllers/TrendTableViewController/TrendTableViewController.xib; sourceTree = "<group>"; };
@@ -822,7 +826,9 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51F97DCC1D4A240700FAB96F /* ic_home.png */,
 				E56B25981D49FE2F002447A9 /* ic_three_dot.png */,
+				51F97DCA1D4A108C00FAB96F /* Delete-50.png */,
 				E56B25941D49F7CF002447A9 /* ic_home.png */,
 				E56B25921D49EF71002447A9 /* ic_add_categories.png */,
 				51F93E951D4846B000464DC9 /* pen.png */,
@@ -1089,6 +1095,7 @@
 				516040CA1D37600600AB9A74 /* AllTransactionViewController.xib in Resources */,
 				E5FEA5061D3F5AB0001A806E /* ic_question.png in Resources */,
 				514783501D42260000E50A04 /* CustomDateView.xib in Resources */,
+				51F97DCB1D4A108C00FAB96F /* Delete-50.png in Resources */,
 				E5FEA4ED1D3F4CC3001A806E /* salad.png in Resources */,
 				EF5C481A1D2E58890040B82E /* MenuViewController.xib in Resources */,
 				EFCF63371D2F458E002BB378 /* SelectWalletViewController.xib in Resources */,
@@ -1168,6 +1175,7 @@
 				5153B1EA1D2F8B2400413269 /* BalanceTableViewCell.xib in Resources */,
 				5153B1F41D2F8B5B00413269 /* ItemReportViewController.xib in Resources */,
 				EF76F9431D37478100175D5C /* AddWalletViewController.xib in Resources */,
+				51F97DCD1D4A240700FAB96F /* ic_home.png in Resources */,
 				516040D01D37608C00AB9A74 /* DateCell.xib in Resources */,
 				5153B1FE1D2F8BE600413269 /* restaurent.png in Resources */,
 				EF35271B1D2CAB5F009D6F58 /* Main.storyboard in Resources */,

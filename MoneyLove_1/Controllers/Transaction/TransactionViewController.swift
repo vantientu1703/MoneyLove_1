@@ -86,6 +86,7 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
         self.myTableView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         self.automaticallyAdjustsScrollViewInsets = false
         self.configureNavigationBar()
+        self.title = "Add Transaction"
         self.registerCell()
         if !isNewTransaction {
             isSelectedCategory = true
@@ -283,6 +284,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             } else {
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
+                textCell.myTextField.text = transactionCache.money == 0 ? nil : transactionCache.money.stringFormatedWithSepator
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
                 textCell.myTextField.placeholder = rowType.title()
                 textCell.myTextField.font = UIFont.systemFontOfSize(20, weight: UIFontWeightThin)

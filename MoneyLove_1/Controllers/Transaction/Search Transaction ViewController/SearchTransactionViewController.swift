@@ -54,9 +54,11 @@ class SearchTransactionViewController: UIViewController {
     var categoryType: String!
     var predicates = [NSPredicate?](count: SelectRowType.arrayTypes.count, repeatedValue: nil)
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.scrollEnabled = false
+        searchButton.backgroundColor = COLOR_NAVIGATION
         self.automaticallyAdjustsScrollViewInsets = false
         self.registerCell()
         
@@ -179,7 +181,7 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
     func searchWithMoney(from: Int64?, to: Int64?, caseType: MoneySearchType) {
         let predicate = NSPredicate(format: "moneyNumber >= %f AND moneyNumber <= %f", from!, to!)
         predicates[SelectRowType.MoneyNumber.rawValue] = predicate
-        moneyNumber = "From \(from!)đ to \(to!)đ "
+        moneyNumber = "From \(from!.stringFormatedWithSepator)đ to \(to!.stringFormatedWithSepator)đ "
         let moneyIndexPath = NSIndexPath(forRow: SelectRowType.MoneyNumber.rawValue, inSection: 0)
         tableView.reloadRowsAtIndexPaths([moneyIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         
@@ -256,7 +258,7 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
         }
         if caseType != .All {
             if let money = money {
-                moneyNumber = moneyNumber + "\(money)"
+                moneyNumber = moneyNumber + "\(money.stringFormatedWithSepator)"
             }
         }
         predicates[SelectRowType.MoneyNumber.rawValue] = predicate

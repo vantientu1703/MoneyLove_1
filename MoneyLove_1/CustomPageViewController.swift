@@ -20,6 +20,12 @@ class CustomPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         self.configureNavigationBar()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeWallet(_:)), name: "changeWallet", object: nil)
+
+    }
+    
+    func changeWallet(notifcation: NSNotification) {
+        title = DataManager.shareInstance.currentWallet.name
     }
     
     func viewControllerAtIndex(index: Int) -> UIViewController {
@@ -42,9 +48,9 @@ class CustomPageViewController: UIPageViewController {
     }
     func configureNavigationBar() {
         let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
-            target: self, action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
+            target: self.getCurrentViewController(), action: #selector(AllTransactionViewController.presentLeftMenuViewController(_:)))
         let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_THREE_DOTS), style: UIBarButtonItemStyle.Plain,
-            target: self, action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
+            target: self.getCurrentViewController(), action: #selector(AllTransactionViewController.clickToChangeMode(_:)))
         self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton
         title = DataManager.shareInstance.currentWallet.name

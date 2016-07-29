@@ -110,7 +110,6 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
         self.registerCell()
     }
     
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         myTableView.reloadData()
@@ -368,6 +367,7 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
 extension AllTransactionViewController: TransactionViewControllerDelegate {
     func delegateDoWhenDeleteTrans(transRemoved: Transaction) {
         DataManager.shareInstance.removeTrans(transRemoved, fetchedResultsController: self.fetchedResultController)
+        navigationController?.popViewControllerAnimated(true)
     }
 }
 
@@ -470,8 +470,16 @@ extension AllTransactionViewController: CustomDateViewDelegate {
         isSelectedStartDateLabel = label.tag == 1
         let selector = WWCalendarTimeSelector.instantiate()
         selector.delegate = self
-        selector.optionCurrentDate = NSDate()
+        selector.optionCurrentDate = NSDate(timeIntervalSinceReferenceDate: NSDate.timeIntervalSinceReferenceDate())
         selector.optionStyles = [.Date, .Year]
+        selector.optionTopPanelBackgroundColor = UIColor.darkGrayColor()
+        selector.optionSelectorPanelBackgroundColor = COLOR_NAVIGATION
+        selector.optionButtonFontColorCancel = UIColor.darkGrayColor()
+        selector.optionButtonFontColorDone = UIColor.darkGrayColor()
+        selector.optionCalendarBackgroundColorTodayHighlight = COLOR_NAVIGATION
+        selector.optionCalendarBackgroundColorTodayFlash = COLOR_NAVIGATION
+        selector.optionCalendarBackgroundColorPastDatesHighlight = COLOR_NAVIGATION
+        selector.optionCalendarBackgroundColorFutureDatesHighlight = COLOR_NAVIGATION
         self.presentViewController(selector, animated: true, completion: nil)
     }
     

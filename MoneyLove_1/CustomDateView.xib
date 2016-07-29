@@ -150,7 +150,7 @@
                             </variation>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="F6v-mY-YNJ" firstAttribute="leading" secondItem="tr9-FF-Uzc" secondAttribute="leading" constant="30" id="8uG-OQ-Gdp"/>
                         <constraint firstItem="F6v-mY-YNJ" firstAttribute="centerX" secondItem="tr9-FF-Uzc" secondAttribute="centerX" id="EHE-Rz-Y6y"/>
@@ -183,7 +183,7 @@
                 <outlet property="endingDate" destination="5I4-Ts-O0E" id="F7n-lK-wXl"/>
                 <outlet property="startingDate" destination="wOv-dN-QHA" id="xwr-yz-AV6"/>
             </connections>
-            <point key="canvasLocation" x="541" y="213.5"/>
+            <point key="canvasLocation" x="251" y="337.5"/>
         </view>
     </objects>
 </document>

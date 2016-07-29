@@ -13,7 +13,6 @@ import Foundation
 import CoreData
 
 extension Group {
-
     @NSManaged var imageName: String?
     @NSManaged var name: String?
     @NSManaged var subType: Int16
