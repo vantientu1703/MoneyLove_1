@@ -104,8 +104,11 @@ class AddWalletViewController: UIViewController {
             pass = false
         }
         if pass {
+            let moneyStr = txtStartMoneyWallet.text
+            let arrayText = moneyStr!.componentsSeparatedByString(",")
+            let newNumberText = arrayText.joinWithSeparator("")
             walletItem?.name = txtNameWallet.text
-            walletItem?.firstNumber = Int64(txtStartMoneyWallet.text!)!
+            walletItem?.firstNumber = Int64(newNumberText)!
             walletItem?.imageName = self.imageName
             DataManager.shareInstance.saveManagedObjectContext()
             NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)

@@ -87,7 +87,6 @@
 		51F97DC91D49D3D900FAB96F /* Extension_Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */; };
 		51F97DCB1D4A108C00FAB96F /* Delete-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F97DCA1D4A108C00FAB96F /* Delete-50.png */; };
 		51F97DCD1D4A240700FAB96F /* ic_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F97DCC1D4A240700FAB96F /* ic_home.png */; };
-		51FC24A31D2DE58E0067CC71 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */; };
 		51FC24A71D2DE6010067CC71 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */; };
 		51FC24A81D2DE6010067CC71 /* TrendTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */; };
 		51FC252B1D2E07A90067CC71 /* PayReceiavableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC25291D2E07A90067CC71 /* PayReceiavableTableViewController.swift */; };
@@ -292,7 +291,6 @@
 		51F97DC81D49D3D900FAB96F /* Extension_Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_Integer.swift; sourceTree = "<group>"; };
 		51F97DCA1D4A108C00FAB96F /* Delete-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Delete-50.png"; path = "Resources/Delete-50.png"; sourceTree = "<group>"; };
 		51F97DCC1D4A240700FAB96F /* ic_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_home.png; path = Resources/ic_home.png; sourceTree = "<group>"; };
-		51FC24A11D2DE58E0067CC71 /* DebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtViewController.swift; path = Controllers/DebtViewController/DebtViewController.swift; sourceTree = "<group>"; };
 		51FC24A51D2DE6010067CC71 /* TrendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrendTableViewController.swift; path = Controllers/TrendTableViewController/TrendTableViewController.swift; sourceTree = "<group>"; };
 		51FC24A61D2DE6010067CC71 /* TrendTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrendTableViewController.xib; path = Controllers/TrendTableViewController/TrendTableViewController.xib; sourceTree = "<group>"; };
 		51FC25291D2E07A90067CC71 /* PayReceiavableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayReceiavableTableViewController.swift; path = Controllers/DebtViewController/PayReceiavableTableViewController/PayReceiavableTableViewController.swift; sourceTree = "<group>"; };
@@ -1036,7 +1034,7 @@
 				TargetAttributes = {
 					EF3527111D2CAB5F009D6F58 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = DWAR2ZV53F;
+						DevelopmentTeam = 3ESZLRY25L;
 					};
 					EF3527281D2CAB5F009D6F58 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1474,7 +1472,7 @@
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = MoneyLove_1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
+				PRODUCT_BUNDLE_IDENTIFIER = "quangHuyDev.MoneyLove-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MoneyLove_1/MoneyLove_1-Bridging-Header.h";
@@ -1492,7 +1490,7 @@
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = MoneyLove_1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vantientu.MoneyLove-1";
+				PRODUCT_BUNDLE_IDENTIFIER = "quangHuyDev.MoneyLove-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MoneyLove_1/MoneyLove_1-Bridging-Header.h";

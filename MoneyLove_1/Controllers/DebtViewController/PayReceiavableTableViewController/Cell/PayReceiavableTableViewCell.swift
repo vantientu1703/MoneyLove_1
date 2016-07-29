@@ -32,7 +32,7 @@ class PayReceiavableTableViewCell: UITableViewCell {
             nameDebts.text = "Someone"
         }
         numberTransaction.text = NSDate.convertTimeIntervalToDateString(tran.date)
-        totalDebts.text = "\(Int(tran.moneyNumber).stringFormatedWithSepator)"
+        totalDebts.text = "\(Int64(tran.moneyNumber).stringFormatedWithSepator)"
         if (color != nil) {
             totalDebts.textColor = color
         }

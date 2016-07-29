@@ -22,6 +22,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     let ACTION_DELETE = "Delete"
     let ACTION_EDIT = "Edit"
     let HEIHT_CELL_WALLETMANAGER: CGFloat = 60.0
+    let notificationCenter = NSNotificationCenter.defaultCenter()
     weak var delegate: WalletManagerViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButtonWallet: UIButton!
@@ -93,10 +94,12 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     }
     
     func cancelButton(sender: AnyObject) {
-        if statusPush == "push" {
+        if statusPush == PUSH_TITLE {
             self.navigationController?.popViewControllerAnimated(true)
         } else if statusPush == WALLET_MANAGER_ISEMPTY {
             self.sideMenuViewController.presentLeftMenuViewController()
+        } else if statusPush == MESSAGE_CHANGE_WALLET {
+            self.navigationController?.popViewControllerAnimated(true)
         } else {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -141,11 +144,11 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
                         if walletItem == currentWallet {
                             let randomIndex = Int(arc4random_uniform(UInt32(arrWallets.count)))
                             DataManager.shareInstance.currentWallet = arrWallets[randomIndex]
-                            NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
+                            self!.notificationCenter.postNotificationName(POST_CURRENT_WALLET, object: nil)
                         }
                     }
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+                self!.notificationCenter.postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
                 })
             let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: { (UIAlertAction) in
             })
@@ -177,13 +180,21 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
                 self.delegate?.didSelectWallet(wallet)
                 self.navigationController?.popViewControllerAnimated(true)
             }
+        } else if statusPush == MESSAGE_CHANGE_WALLET {
+            if let walletItem = self.fetchedResultController.objectAtIndexPath(indexPath) as? Wallet {
+                DataManager.shareInstance.currentWallet = walletItem
+                DataManager.shareInstance.saveManagedObjectContext()
+                notificationCenter.postNotificationName(POST_CURRENT_WALLET, object: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                notificationCenter.postNotificationName(PRESENT_ALL_TRANSACTION_VC, object: nil)
+            }
         } else {
             if let walletItem = self.fetchedResultController.objectAtIndexPath(indexPath) as? Wallet {
                 DataManager.shareInstance.currentWallet = walletItem
                 DataManager.shareInstance.saveManagedObjectContext()
-                NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
+                notificationCenter.postNotificationName(POST_CURRENT_WALLET, object: nil)
                 self.dismissViewControllerAnimated(true, completion: nil)
-                NSNotificationCenter.defaultCenter().postNotificationName(PRESENT_ALL_TRANSACTION_VC, object: nil)
+                notificationCenter.postNotificationName(PRESENT_ALL_TRANSACTION_VC, object: nil)
             }
         }
     }

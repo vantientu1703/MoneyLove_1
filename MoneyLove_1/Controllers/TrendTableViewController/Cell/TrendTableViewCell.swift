@@ -49,11 +49,11 @@ class TrendTableViewCell: UITableViewCell {
     func setDataTrendCellNetIncome(dataDic: Dictionary<String, AnyObject>) {
         moneyExpenseLabel.hidden = false
         let nameMonth = dataDic["monthString"] as! String
-        let moneyIcome = dataDic["income"] as! Double
-        let moneyExpense = dataDic["expense"] as! Double
+        let moneyIcome = Int64(dataDic["income"] as! Double)
+        let moneyExpense = Int64(dataDic["expense"] as! Double)
         monthLabel.text = nameMonth
-        moneyIcomeLabel.text = "\(moneyIcome)"
-        moneyExpenseLabel.text = "\(moneyExpense)"
+        moneyIcomeLabel.text = "\(moneyIcome.stringFormatedWithSepator)"
+        moneyExpenseLabel.text = "\(moneyExpense.stringFormatedWithSepator)"
     }
     
     override func prepareForReuse() {
