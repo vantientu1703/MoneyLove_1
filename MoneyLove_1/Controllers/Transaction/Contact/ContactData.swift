@@ -15,7 +15,7 @@ class ContactData {
     var handleClosure:((vc: ContactViewController)->())?
     func getDataFromUserContact(handleVC: ContactViewController) -> [CNContact]? {
         let status = CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts)
-        guard status == CNAuthorizationStatus.Denied || status == CNAuthorizationStatus.Restricted else {
+        guard status != CNAuthorizationStatus.Denied && status != CNAuthorizationStatus.Restricted else {
             handleClosure!(vc: handleVC)
             return nil
         }

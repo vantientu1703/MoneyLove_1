@@ -13,6 +13,7 @@ class AddWalletViewController: UIViewController {
     
     var walletItem: Wallet?
     @IBOutlet weak var buttonIcon: UIButton!
+    @IBOutlet weak var labelAmount: UILabel!
     @IBOutlet weak var txtStartMoneyWallet: UITextField!
     @IBOutlet weak var txtNameWallet: UITextField!
     @IBOutlet weak var labelNote: UILabel!
@@ -24,6 +25,7 @@ class AddWalletViewController: UIViewController {
     let SELECT_IMAGE_WALLET = "Select image for wallet,please"
     var imageName = ""
     var stringA = ""
+    let LABEL_AMOUNT_MONEY = "AMOUNT"
     override func viewDidLoad() {
         super.viewDidLoad()
         if statusEdit == WALLET_MANAGER_ISEMPTY {
@@ -39,7 +41,10 @@ class AddWalletViewController: UIViewController {
             self.imageName = self.walletItem!.imageName!
             self.buttonIcon.setImage(UIImage(named: self.imageName), forState: UIControlState.Normal)
             self.txtNameWallet.text = self.walletItem?.name
-            self.txtStartMoneyWallet.text = "\(self.walletItem!.firstNumber)"
+            let numberMoney = Int64(self.walletItem!.firstNumber)
+            self.txtStartMoneyWallet.text = "\(numberMoney.stringFormatedWithSepator)"
+            self.txtStartMoneyWallet.enabled = false
+            self.labelAmount.text = LABEL_AMOUNT_MONEY
         } else {
             let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_BUTTON_ADD), style: UIBarButtonItemStyle.Plain,
                 target: self, action: #selector(AddWalletViewController.addWalletButton(_:)))

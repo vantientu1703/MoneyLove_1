@@ -47,7 +47,7 @@ class SearchMoneySelectView: UIView {
             let arrayText = textTo.componentsSeparatedByString(",")
             let newNumberText = arrayText.joinWithSeparator("")
             if let money = Int64(newNumberText) {
-                moneyNumberFrom = money
+                moneyNumberTo = money
             } else {
                 moneyNumberTo = 0
             }
