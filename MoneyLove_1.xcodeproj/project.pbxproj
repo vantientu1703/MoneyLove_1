@@ -123,6 +123,8 @@
 		E5E0606B1D44FF8A00AF95F9 /* Wallet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E060691D44FF8A00AF95F9 /* Wallet+CoreDataProperties.swift */; };
 		E5E0606C1D44FF8A00AF95F9 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0606A1D44FF8A00AF95F9 /* Wallet.swift */; };
 		E5E0606E1D4631AF00AF95F9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0606D1D4631AF00AF95F9 /* Constant.swift */; };
+		E5FB8B951D4B35AD00C10A70 /* ic_lauchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FB8B941D4B35AD00C10A70 /* ic_lauchscreen.png */; };
+		E5FB8B971D4B370100C10A70 /* ic_launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FB8B961D4B370100C10A70 /* ic_launchscreen.png */; };
 		E5FEA4D61D3F4CB2001A806E /* purse.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CB1D3F4CB2001A806E /* purse.png */; };
 		E5FEA4D71D3F4CB2001A806E /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CC1D3F4CB2001A806E /* wallet.png */; };
 		E5FEA4D81D3F4CB2001A806E /* wallet1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FEA4CD1D3F4CB2001A806E /* wallet1.png */; };
@@ -328,6 +330,8 @@
 		E5E060691D44FF8A00AF95F9 /* Wallet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Wallet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E5E0606A1D44FF8A00AF95F9 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		E5E0606D1D4631AF00AF95F9 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = Controllers/Constant.swift; sourceTree = "<group>"; };
+		E5FB8B941D4B35AD00C10A70 /* ic_lauchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_lauchscreen.png; path = Resources/ic_lauchscreen.png; sourceTree = "<group>"; };
+		E5FB8B961D4B370100C10A70 /* ic_launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launchscreen.png; path = Resources/ic_launchscreen.png; sourceTree = "<group>"; };
 		E5FEA4CB1D3F4CB2001A806E /* purse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purse.png; path = Resources/wallet/purse.png; sourceTree = "<group>"; };
 		E5FEA4CC1D3F4CB2001A806E /* wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wallet.png; path = Resources/wallet/wallet.png; sourceTree = "<group>"; };
 		E5FEA4CD1D3F4CB2001A806E /* wallet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wallet1.png; path = Resources/wallet/wallet1.png; sourceTree = "<group>"; };
@@ -823,6 +827,8 @@
 		EF35274E1D2CB619009D6F58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5FB8B961D4B370100C10A70 /* ic_launchscreen.png */,
+				E5FB8B941D4B35AD00C10A70 /* ic_lauchscreen.png */,
 				51F97DCC1D4A240700FAB96F /* ic_home.png */,
 				E56B25981D49FE2F002447A9 /* ic_three_dot.png */,
 				51F97DCA1D4A108C00FAB96F /* Delete-50.png */,
@@ -1129,6 +1135,7 @@
 				516040E21D3767F100AB9A74 /* SearchGroupViewController.xib in Resources */,
 				51F93E961D4846B000464DC9 /* pen.png in Resources */,
 				51F93E941D48469A00464DC9 /* question.png in Resources */,
+				E5FB8B951D4B35AD00C10A70 /* ic_lauchscreen.png in Resources */,
 				514518201D3C6E0F00185609 /* DateRequestedCell.xib in Resources */,
 				E5279F191D4703450018F9BE /* ic_report.png in Resources */,
 				E5FEA4E91D3F4CC3001A806E /* apple.png in Resources */,
@@ -1146,6 +1153,7 @@
 				514518241D3C6E2200185609 /* CategoryRequestedCell.xib in Resources */,
 				51FC252C1D2E07A90067CC71 /* PayReceiavableTableViewController.xib in Resources */,
 				517A0C6E1D4764820008626D /* SearchMoneySelectView.xib in Resources */,
+				E5FB8B971D4B370100C10A70 /* ic_launchscreen.png in Resources */,
 				51FC25371D2E36350067CC71 /* ActionTableViewCell.xib in Resources */,
 				E5AD1A8E1D3F10930088BBF7 /* IconManagerCollectionViewCell.xib in Resources */,
 				E5FEA4FD1D3F4CD6001A806E /* grocery.png in Resources */,

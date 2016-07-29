@@ -179,7 +179,7 @@ extension SearchTransactionViewController: SearchSelectTableViewDelegate {
     }
     
     func searchWithMoney(from: Int64?, to: Int64?, caseType: MoneySearchType) {
-        let predicate = NSPredicate(format: "moneyNumber >= %f AND moneyNumber <= %f", from!, to!)
+        let predicate = NSPredicate(format: "moneyNumber >= %d AND moneyNumber <= %d", from!, to!)
         predicates[SelectRowType.MoneyNumber.rawValue] = predicate
         moneyNumber = "From \(from!.stringFormatedWithSepator)đ to \(to!.stringFormatedWithSepator)đ "
         let moneyIndexPath = NSIndexPath(forRow: SelectRowType.MoneyNumber.rawValue, inSection: 0)

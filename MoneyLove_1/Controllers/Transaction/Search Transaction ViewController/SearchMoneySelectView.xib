@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LJ-pE-XhO">
-                    <rect key="frame" x="80" y="189" width="322" height="154"/>
+                    <rect key="frame" x="80" y="158.5" width="322" height="154"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Middle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWT-jf-pFm">
                             <rect key="frame" x="8" y="10" width="52" height="21"/>
@@ -115,7 +115,7 @@
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="5LJ-pE-XhO" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="2/3" id="6Dp-N0-1Kh"/>
-                <constraint firstItem="5LJ-pE-XhO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7ik-BN-dfv"/>
+                <constraint firstItem="5LJ-pE-XhO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-30" id="7ik-BN-dfv"/>
                 <constraint firstItem="5LJ-pE-XhO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="foc-Bc-1OI"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
