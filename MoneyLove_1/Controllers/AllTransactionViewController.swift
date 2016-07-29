@@ -201,7 +201,8 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
             let walletVC = WalletManagerViewController(nibName: "WalletManagerViewController", bundle: nil)
             walletVC.managedObjectContext = self!.managedObjectContext
             walletVC.delegate = self!
-            self?.presentViewController(walletVC, animated: true, completion: nil)
+            walletVC.statusPush = MESSAGE_CHANGE_WALLET
+            self?.navigationController?.pushViewController(walletVC, animated: true)
             })
         let comeBackToDay = UIAlertAction(title: COME_BACK_TODAY, style: UIAlertActionStyle.Default, handler: {[weak self] (alertAction) -> () in
             self?.timeMode = .Today

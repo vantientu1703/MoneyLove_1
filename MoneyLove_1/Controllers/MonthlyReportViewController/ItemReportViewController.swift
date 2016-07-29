@@ -32,7 +32,7 @@ class ItemReportViewController: UIViewController {
     let HEADER_INCOME = "INCOME"
     let HEADER_EXPENSE = "EXPENSE"
     let HEADER_BIG_EXPSENSE = "Biggest Expense"
-    let NUMBER_SECTION = 7
+    let NUMBER_SECTION = 5
     let NUMBER_ROW_SECTION = 1
     var fromDate: NSDate!
     var toDate: NSDate!

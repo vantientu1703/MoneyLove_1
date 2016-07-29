@@ -30,3 +30,4 @@ let COLOR_NAVIGATION = UIColor.init(red: 0, green: 204, blue: 0)
 let IMAGE_BUTTON_ADD = "ic_add_categories"
 let IMAGE_NAME_MENU = "ic_home"
 let IMAGE_THREE_DOTS = "ic_three_dot"
+let MESSAGE_CHANGE_WALLET = "change wallet"
