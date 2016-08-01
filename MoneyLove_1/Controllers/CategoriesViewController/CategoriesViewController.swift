@@ -43,7 +43,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     var typeExpense: Bool = false
     var isFromTransaction = false
     var delegate: CategoriesViewControllerDelegate!
-    
+    var selecteCategory = ""
     lazy var fetchedResultController: NSFetchedResultsController = {
         let fetchedRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: self.managedObjectContext)
@@ -66,6 +66,9 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         self.configureNavigationBar()
         self.configTableViewCell()
         self.performRequest()
+        if self.selecteCategory != SELECT_CATEGORY {
+            self.tableView.allowsSelection = false
+        }
     }
     
     func performRequest() {

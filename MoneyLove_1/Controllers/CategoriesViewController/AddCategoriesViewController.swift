@@ -79,6 +79,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
     let INCOME = "Income"
     var categoryItem: Group!
     var arrTiltes: [String]!
+    var selectedType = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configForCell()
@@ -87,13 +88,11 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
             let rightButton = UIBarButtonItem(title: DONE_TITLE, style: UIBarButtonItemStyle.Plain,
                 target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
             self.navigationItem.rightBarButtonItem = rightButton
+            self.selectedType = true
         } else {
-            let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_BUTTON_ADD), style: UIBarButtonItemStyle.Plain,
+            let rightButton = UIBarButtonItem(title: DONE_TITLE, style: UIBarButtonItemStyle.Plain,
                 target: self, action: #selector(AddCategoriesViewController.doneAddCategotiesPress(_:)))
             self.navigationItem.rightBarButtonItem = rightButton
-            if let font = UIFont(name: "Arial", size: FONT_SIZE) {
-                rightButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
-            }
         }
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddCategoriesViewController.tapped(_:)))
         self.view.addGestureRecognizer(tapGesture)
@@ -153,6 +152,10 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
             }
             if imageNameWallet.isEmpty {
                 self.labelNote.text = SELECT_WALLET
+                pass = false
+            }
+            if !selectedType {
+                self.labelNote.text = SELECT_TYPE
                 pass = false
             }
             if pass {
@@ -239,6 +242,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
         self.view.endEditing(true)
         switch indexPath.row {
         case Row.CategoryType.rawValue:
+            self.selectedType = true
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             if typeBool {
                 cell?.textLabel?.text = EXPENSE
