@@ -44,6 +44,7 @@ class SearchExactlyMoneyView: UIView {
             owner.exactView!.delegate = vc
             let dateType = caseType.title()
             owner.exactView.typeLabel.text = dateType
+            owner.exactView.moneyTextField.delegate = owner.exactView
             owner.exactView.moneyTextField.addTarget(owner.exactView, action: #selector(SearchExactlyMoneyView.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             let vc = vc as? UIViewController
             if let vc = vc {
@@ -62,5 +63,14 @@ class SearchExactlyMoneyView: UIView {
         let stringFormatted = number?.stringFormatedWithSepator
         textField.text = stringFormatted
     }
+}
 
+extension SearchExactlyMoneyView: UITextFieldDelegate {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = MAX_LENGTH_CHARACTER
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+    }
 }

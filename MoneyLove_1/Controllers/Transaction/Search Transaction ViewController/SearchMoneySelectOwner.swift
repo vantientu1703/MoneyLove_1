@@ -61,6 +61,8 @@ class SearchMoneySelectView: UIView {
         if let moneySelectView = NSBundle.mainBundle().loadNibNamed("SearchMoneySelectView", owner: owner, options: nil).first as? SearchMoneySelectView {
             owner.moneyRangeView = moneySelectView
             owner.moneyRangeView!.delegate = vc
+            owner.moneyRangeView.moneyFrom.delegate = owner.moneyRangeView
+            owner.moneyRangeView.moneyTo.delegate = owner.moneyRangeView
             owner.moneyRangeView.moneyFrom.addTarget(owner.moneyRangeView, action: #selector(SearchMoneySelectView.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             owner.moneyRangeView.moneyTo.addTarget(owner.moneyRangeView, action: #selector(SearchMoneySelectView.formatString(_:)), forControlEvents: UIControlEvents.EditingChanged)
             let vc = vc as? UIViewController
@@ -84,3 +86,12 @@ class SearchMoneySelectView: UIView {
     
 }
 
+extension SearchMoneySelectView: UITextFieldDelegate {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = MAX_LENGTH_CHARACTER
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+    }
+}
