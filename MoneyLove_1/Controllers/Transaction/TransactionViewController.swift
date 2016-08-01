@@ -171,9 +171,15 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     func checkValue() -> ErrorValue {
         let moneyIndexPath = NSIndexPath(forRow: RowType.MoneyNumber.rawValue, inSection: 0)
         let moneyTextField = myTableView.cellForRowAtIndexPath(moneyIndexPath) as! TextCell
+        
         if let moneyString = moneyTextField.myTextField.text {
-            if let moneyNumber = Double(moneyString) {
-                if moneyNumber == 0.0 {
+            let arrayText = moneyString.componentsSeparatedByString(",")
+            let newNumberText = arrayText.joinWithSeparator("")
+            if newNumberText == "" {
+                return .NoMoney
+            }
+            if let moneyNumber = Int64(newNumberText) {
+                if moneyNumber == 0 {
                     return .NoMoney
                 }
             }
@@ -198,13 +204,21 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     
     @IBAction func clickToSave(sender: AnyObject) {
         self.retrieveTextFromTextField()
+        self.view.endEditing(true)
         switch self.checkValue()  {
         case .Pass:
             errorLabel.text = ""
             if isNewTransaction {
                 self.insertTransaction()
-                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
-                NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
+            } else {
+                let typeOfTrans = managedTransactionObject.group!.type
+                let moneyNumber = managedTransactionObject.moneyNumber
+                if typeOfTrans {
+                   DataManager.shareInstance.currentWallet.firstNumber -= moneyNumber
+                } else {
+                    DataManager.shareInstance.currentWallet.firstNumber += moneyNumber
+
+                }
             }
             self.assignFromCacheToManagedObject()
             DataManager.shareInstance.saveManagedObjectContext()
@@ -220,6 +234,13 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     @IBAction func clickToDelete(sender: AnyObject) {
+        let typeOfTrans = managedTransactionObject.group!.type
+        let moneyNumber = managedTransactionObject.moneyNumber
+        if typeOfTrans {
+            DataManager.shareInstance.currentWallet.firstNumber -= moneyNumber
+        } else {
+            DataManager.shareInstance.currentWallet.firstNumber += moneyNumber
+        }
         delegate?.delegateDoWhenDeleteTrans(managedTransactionObject)
     }
 }
@@ -284,6 +305,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             } else {
                 textCell.myTextField.keyboardType = UIKeyboardType.NumberPad
+                textCell.myTextField.delegate = self
                 textCell.myTextField.text = transactionCache.money == 0 ? nil : transactionCache.money.stringFormatedWithSepator
                 textCell.myTextField.tag = MONEY_NUMBER_TEXT_FIELD_TAG
                 textCell.myTextField.placeholder = rowType.title()
@@ -397,5 +419,15 @@ extension TransactionViewController: CategoriesViewControllerDelegate {
         isSelectedCategory = true
         myTableView.reloadRowsAtIndexPaths([categoryIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         self.navigationController?.popViewControllerAnimated(true)
+    }
+}
+
+extension TransactionViewController: UITextFieldDelegate {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = MAX_LENGTH_CHARACTER
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
     }
 }

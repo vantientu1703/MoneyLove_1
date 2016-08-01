@@ -26,7 +26,7 @@ class ContactViewController: UIViewController {
     var data = [String]()
     var results = [String]()
     var searchActive = false
-    
+    var isCleared = false
     override func viewDidLoad() {
         super.viewDidLoad()
         contactData = ContactData()
@@ -104,19 +104,34 @@ extension ContactViewController: UITableViewDataSource, UITableViewDelegate {
             contact = self.contactData!.names[indexPath.row]
             fullName = contact.givenName + " " + contact.familyName
         }
-        if contactSearchBar.text?.isEmpty == true {
-            contactSearchBar.text = fullName
-        } else {
-            contactSearchBar.text = contactSearchBar.text! + ", " + fullName
+        
+        let check = self.checkExisted(fullName)
+        if !check {
+            if let text = contactSearchBar.text {
+                if text.isEmpty {
+                    contactSearchBar.text = fullName
+                } else {
+                    contactSearchBar.text = contactSearchBar.text! + ", " + fullName
+                }
+                results.append(fullName)
+                contactSearchBar.text = results.joinWithSeparator(",") + ","
+            }
         }
-        results.append(fullName)
-        contactSearchBar.text = results.joinWithSeparator(",") + ","
+    }
+    
+    func checkExisted(name: String) -> Bool {
+        for item in results {
+            if item == name {
+                return true
+            }
+        }
+        return false
     }
 }
 
 extension ContactViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true;
+        isCleared = !searchActive
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
@@ -129,22 +144,29 @@ extension ContactViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
-        results = (searchBar.text?.componentsSeparatedByString(","))!
-        searchBar.text = searchBar.text! + ","
+        if let text = searchBar.text {
+            results = text.componentsSeparatedByString(",")
+            let lastChar = text[text.endIndex.predecessor()]
+            if lastChar != "," {
+                searchBar.text = searchBar.text! + ","
+            }
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = contactData!.data.filter( { (text) -> Bool in
-            let tmp: NSString = text
-            let arrayTemp = searchText.componentsSeparatedByString(",")
-            let lastStr = arrayTemp.last
-            let range = tmp.rangeOfString(lastStr!, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return range.location != NSNotFound
-        })
-        if (filtered.count == 0) {
-            searchActive = false;
+        if searchText == "" {
+            searchActive = false
+            isCleared = true
+            results.removeAll()
         } else {
-            searchActive = true;
+            filtered = contactData!.data.filter({(text) -> Bool in
+                let tmp: NSString = text
+                let arrayTemp = searchText.componentsSeparatedByString(",")
+                let lastStr = arrayTemp.last
+                let range = tmp.rangeOfString(lastStr!, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                return range.location != NSNotFound
+            })
+            searchActive = filtered.count > 0
         }
         self.myTableView.reloadData()
     }

@@ -33,3 +33,4 @@ let IMAGE_THREE_DOTS = "ic_three_dot"
 let MESSAGE_CHANGE_WALLET = "change wallet"
 let SELECT_TYPE = "Select type,please!"
 let SELECT_CATEGORY = "Select category"
+let MAX_LENGTH_CHARACTER = 15
