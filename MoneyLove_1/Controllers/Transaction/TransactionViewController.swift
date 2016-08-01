@@ -316,6 +316,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             let categoryVC = CategoriesViewController(nibName: "CategoriesViewController", bundle: nil)
             categoryVC.managedObjectContext = AppDelegate.shareInstance.managedObjectContext
             categoryVC.isFromTransaction = true
+            categoryVC.selecteCategory = SELECT_CATEGORY
             categoryVC.delegate = self
             self.navigationController?.pushViewController(categoryVC, animated: true)
         case RowType.Contact.rawValue:

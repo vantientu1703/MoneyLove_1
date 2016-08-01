@@ -36,8 +36,8 @@ class AddWalletViewController: UIViewController {
                 target: self,action: #selector(AddWalletViewController.cancelButton(_:)))
         }
         if statusEdit == EDIT {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: DONE_TITLE,style: UIBarButtonItemStyle.Plain,
-                target: self,action: #selector(AddWalletViewController.buttonEditWallet(_:)))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
+                target: self, action: #selector(AddWalletViewController.buttonEditWallet(_:)))
             self.imageName = self.walletItem!.imageName!
             self.buttonIcon.setImage(UIImage(named: self.imageName), forState: UIControlState.Normal)
             self.txtNameWallet.text = self.walletItem?.name
@@ -46,11 +46,8 @@ class AddWalletViewController: UIViewController {
             self.txtStartMoneyWallet.enabled = false
             self.labelAmount.text = LABEL_AMOUNT_MONEY
         } else {
-            let rightButton = UIBarButtonItem(image: UIImage(named: IMAGE_BUTTON_ADD), style: UIBarButtonItemStyle.Plain,
+            let rightButton = UIBarButtonItem(title: DONE_TITLE, style: UIBarButtonItemStyle.Plain,
                 target: self, action: #selector(AddWalletViewController.addWalletButton(_:)))
-            if let font = UIFont(name: "Arial", size: FONT_SIZE) {
-                rightButton.setTitleTextAttributes([NSFontAttributeName: font], forState: UIControlState.Normal)
-            }
             self.navigationItem.rightBarButtonItem = rightButton
         }
         txtNameWallet.delegate = self
