@@ -100,8 +100,12 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
         tapGesture.delegate = self
         if statusEdit == EDIT {
             typeBool = self.categoryItem.type
+            self.wallet = categoryItem.wallet
             self.imageNameWallet = (self.categoryItem.wallet?.imageName)!
             self.imageNameCategory = self.categoryItem.imageName!
+        } else {
+            self.wallet = DataManager.shareInstance.currentWallet
+            self.imageNameWallet = self.wallet.imageName!
         }
     }
     
@@ -133,7 +137,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
             if pass {
                 self.categoryItem.name = cell.txtCategoryName.text!
                 self.categoryItem.imageName = imageNameCategory
-                self.categoryItem.wallet = DataManager.shareInstance.currentWallet
+                self.categoryItem.wallet = self.wallet
                 self.categoryItem.type = typeBool
                 self.categoryItem.subType = typeBool ? 1 : 0
                 DataManager.shareInstance.saveManagedObjectContext()
@@ -159,7 +163,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
                 pass = false
             }
             if pass {
-                if let arrCategories = DataManager.shareInstance.getAllGroups() {
+                if let arrCategories = DataManager.shareInstance.getAllGroups(self.wallet) {
                     for group in  arrCategories {
                         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
                         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
@@ -172,7 +176,7 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
                 let newCategory = DataManager.shareInstance.addNewGroup(self.fetchedResultController)
                 newCategory?.name = cell.txtCategoryName.text!
                 newCategory?.imageName = imageNameCategory
-                newCategory?.wallet = DataManager.shareInstance.currentWallet
+                newCategory?.wallet = self.wallet
                 newCategory?.type = typeBool
                 newCategory?.subType = typeBool ? 1 : 0
                 DataManager.shareInstance.saveManagedObjectContext()
@@ -224,8 +228,13 @@ class AddCategoriesViewController: UIViewController, UITableViewDelegate, UITabl
                     cell!.textLabel!.text = self.categoryItem.wallet?.name
                 }
             } else {
-                cell?.imageView?.image = UIImage(named: rowIndex.imageName())
-                cell?.textLabel?.text = rowIndex.title()
+                if indexPath.row == 1 {
+                    cell?.imageView?.image = UIImage(named: rowIndex.imageName())
+                    cell?.textLabel?.text = rowIndex.title()
+                } else {
+                    cell?.imageView?.image = UIImage(named: self.wallet.imageName!)
+                    cell?.textLabel?.text = self.wallet.name
+                }
             }
             return cell!
         }

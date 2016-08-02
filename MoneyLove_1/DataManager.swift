@@ -219,8 +219,10 @@ class DataManager : NSObject {
         return nil
     }
     
-    func getAllGroups() -> [Group]? {
+    func getAllGroups(wallet: Wallet!) -> [Group]? {
         let fetchRequest = NSFetchRequest(entityName: Group.CLASS_NAME)
+        let predicateWallet = NSPredicate(format: "wallet.name == %@", wallet.name!)
+        fetchRequest.predicate = predicateWallet
         do {
             if let groups = try manageObjectContext.executeFetchRequest(fetchRequest) as? [Group] {
                 return groups
