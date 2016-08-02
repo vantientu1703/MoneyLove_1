@@ -31,7 +31,10 @@ class ContactViewController: UIViewController {
     }
     var searchActive = false
     var isCleared = false
-    var textBefore: String!
+    lazy var textBefore: String! = {[weak self] in
+        let str = self!.results.joinWithSeparator(",") + ","
+        return str
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         contactData = ContactData()
@@ -44,6 +47,7 @@ class ContactViewController: UIViewController {
         contactData?.handleClosure = handleClosure
         contactData?.getDataFromUserContact(self)
         contactSearchBar.delegate = self
+        contactSearchBar.returnKeyType = UIReturnKeyType.Done
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,12 +115,13 @@ extension ContactViewController: UITableViewDataSource, UITableViewDelegate {
                 if text.isEmpty {
                     contactSearchBar.text = fullName
                 } else {
-                    contactSearchBar.text = contactSearchBar.text! + ", " + fullName
+                    contactSearchBar.text = contactSearchBar.text! + "," + fullName
                 }
                 results.append(fullName)
                 contactSearchBar.text = results.joinWithSeparator(",") + ","
             }
         }
+        textBefore = contactSearchBar.text
     }
     
     func checkExisted(name: String) -> Bool {
@@ -154,36 +159,44 @@ extension ContactViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if results.count > 0 && searchText.characters.count < textBefore.characters.count {
+        if searchText.characters.count > textBefore.characters.count {
+            if searchText.characters.last == "," {
+                results = textBefore.componentsSeparatedByString(",")
+            } else {
+                let arrayTemp = searchText.componentsSeparatedByString(",")
+                let lastStr = arrayTemp.last
+                filtered = contactData!.data.filter({(text) -> Bool in
+                    let tmp: NSString = text
+                    let range = tmp.rangeOfString(lastStr!, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                    return range.location != NSNotFound
+                })
+                searchActive = filtered.count > 0
+                self.myTableView.reloadData()
+            }
+        } else {
             if searchText == "" {
                 searchActive = false
                 isCleared = true
                 results.removeAll()
                 self.myTableView.reloadData()
             } else {
-                let arrayTemp = searchText.componentsSeparatedByString(",")
-                if arrayTemp.count > results.count && arrayTemp.last != "" {
+                if textBefore.characters.last != "," {
+                    var arrayTemp = textBefore.componentsSeparatedByString(",")
+                    arrayTemp.removeLast()
                     searchBar.text = results.joinWithSeparator(",") + ","
                 } else {
                     results.removeLast()
                     if results.count > 0 {
                         searchBar.text = results.joinWithSeparator(",") + ","
                     } else {
-                        searchBar.text = results.joinWithSeparator(",")
+                        searchBar.text = ""
+                        searchActive = false
+                        isCleared = true
+                        self.myTableView.reloadData()
                     }
                 }
             }
-        } else {
-            let arrayTemp = searchText.componentsSeparatedByString(",")
-            let lastStr = arrayTemp.last
-            filtered = contactData!.data.filter({(text) -> Bool in
-                let tmp: NSString = text
-                let range = tmp.rangeOfString(lastStr!, options: NSStringCompareOptions.CaseInsensitiveSearch)
-                return range.location != NSNotFound
-            })
-            searchActive = filtered.count > 0
-            self.myTableView.reloadData()
         }
-        textBefore = searchText
+        textBefore = searchBar.text
     }
 }

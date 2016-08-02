@@ -44,6 +44,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     var isFromTransaction = false
     var delegate: CategoriesViewControllerDelegate!
     var selecteCategory = ""
+    let CHANGE_WALLET = "changeWallet"
     lazy var fetchedResultController: NSFetchedResultsController = {
         let fetchedRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: self.managedObjectContext)
@@ -73,7 +74,7 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
             self.tableView.allowsSelection = false
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector:
-            #selector(CategoriesViewController.changeWallet(_:)), name: "changeWallet", object: nil)
+            #selector(CategoriesViewController.changeWallet(_:)), name: CHANGE_WALLET, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

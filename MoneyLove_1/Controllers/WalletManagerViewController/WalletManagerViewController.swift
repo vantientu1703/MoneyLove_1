@@ -82,9 +82,11 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     
     func configureNavigationBar() {
         self.title = TITLE_WALLET_MANAGER
-        let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
-            target: self, action: #selector(WalletManagerViewController.cancelButton(_:)))
-        self.navigationItem.leftBarButtonItem = leftButton
+        if statusPush != PUSH_TITLE {
+            let leftButton = UIBarButtonItem(image: UIImage(named: IMAGE_NAME_MENU), style: UIBarButtonItemStyle.Plain,
+                target: self, action: #selector(WalletManagerViewController.cancelButton(_:)))
+            self.navigationItem.leftBarButtonItem = leftButton
+        }
         self.configRegisterForCell()
     }
     
@@ -94,9 +96,7 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
     }
     
     func cancelButton(sender: AnyObject) {
-        if statusPush == PUSH_TITLE {
-            self.navigationController?.popViewControllerAnimated(true)
-        } else if statusPush == WALLET_MANAGER_ISEMPTY {
+        if statusPush == WALLET_MANAGER_ISEMPTY {
             self.sideMenuViewController.presentLeftMenuViewController()
         } else if statusPush == MESSAGE_CHANGE_WALLET {
             self.navigationController?.popViewControllerAnimated(true)
