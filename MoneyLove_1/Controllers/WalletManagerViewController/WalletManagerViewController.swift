@@ -148,7 +148,6 @@ class WalletManagerViewController: UIViewController, RESideMenuDelegate, UITable
                         }
                     }
                 }
-                self!.notificationCenter.postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
                 })
             let actionCancel = UIAlertAction(title: CANCEL_TITLE, style: .Default, handler: { (UIAlertAction) in
             })
