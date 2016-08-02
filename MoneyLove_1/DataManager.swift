@@ -124,33 +124,6 @@ class DataManager : NSObject {
         }
     }
     
-    func addCategoriesDefault() {
-        let added = NSUserDefaults.standardUserDefaults().boolForKey("addedCategoriesDefault")
-        if !added {
-            let context = AppDelegate.shareInstance.managedObjectContext
-            let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: context)
-            let loanCategory = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Group
-            loanCategory.name = "Loan"
-            loanCategory.type = false
-            loanCategory.imageName = "store"
-            loanCategory.subType = 2
-            let debtCategory = NSEntityDescription.insertNewObjectForEntityForName(entity!.name!, inManagedObjectContext: context) as! Group
-            debtCategory.name = "Debt"
-            debtCategory.type = true
-            debtCategory.imageName = "photo"
-            debtCategory.subType = 2
-            do {
-                try context.save()
-                loanCategory.wallet = DataManager.shareInstance.currentWallet
-                debtCategory.wallet = DataManager.shareInstance.currentWallet
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "addedCategoriesDefault")
-            } catch {
-                let saveError = error as NSError
-                print("\(saveError), \(saveError.userInfo)")
-            }
-        }
-    }
-    
     func addWalletDefault() {
         let added = NSUserDefaults.standardUserDefaults().boolForKey("addedWalletDefault")
         if !added {
@@ -167,10 +140,6 @@ class DataManager : NSObject {
             do {
                 try context.save()
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "addedWalletDefault")
-                self.addCategoriesDefault()
-                let categoriesDefault = self.getCategoriesDefaults()
-                atmWallet.group = NSSet(array: categoriesDefault)
-                cashWallet.group = NSSet(array: categoriesDefault)
             } catch {
                 let saveError = error as NSError
                 print("\(saveError), \(saveError.userInfo)")

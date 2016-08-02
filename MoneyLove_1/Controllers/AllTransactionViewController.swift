@@ -126,7 +126,6 @@ class AllTransactionViewController: UIViewController, RESideMenuDelegate {
         addButton.layer.cornerRadius = 20.0
         addButton.backgroundColor = COLOR_NAVIGATION
         self.view.bringSubviewToFront(addButton)
-
     }
     
     func changeWallet(notifi: NSNotification) {
