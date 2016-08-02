@@ -350,6 +350,14 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
             selector.delegate = self
             selector.optionCurrentDate = NSDate(timeIntervalSinceReferenceDate: transactionCache.date)
             selector.optionStyles = [.Date, .Year]
+            selector.optionTopPanelBackgroundColor = UIColor.darkGrayColor()
+            selector.optionSelectorPanelBackgroundColor = COLOR_NAVIGATION
+            selector.optionButtonFontColorCancel = UIColor.darkGrayColor()
+            selector.optionButtonFontColorDone = UIColor.darkGrayColor()
+            selector.optionCalendarBackgroundColorTodayHighlight = COLOR_NAVIGATION
+            selector.optionCalendarBackgroundColorTodayFlash = COLOR_NAVIGATION
+            selector.optionCalendarBackgroundColorPastDatesHighlight = COLOR_NAVIGATION
+            selector.optionCalendarBackgroundColorFutureDatesHighlight = COLOR_NAVIGATION
             self.presentViewController(selector, animated: true, completion: nil)
         default:
             break

@@ -175,4 +175,12 @@ extension AddWalletViewController: UITextFieldDelegate {
         txtStartMoneyWallet.resignFirstResponder()
         return true
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = MAX_LENGTH_CHARACTER
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+            currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+    }
 }

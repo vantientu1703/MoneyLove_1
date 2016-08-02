@@ -342,7 +342,6 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
                 } else {
                     DataManager.shareInstance.currentWallet.firstNumber -= newMoneyNumber
                 }
-                DataManager.shareInstance.currentWallet.firstNumber += newTypeOfTrans ? newMoneyNumber : -newMoneyNumber
                 myTableView.insertRowsAtIndexPaths([newIndexPathOfTableView], withRowAnimation: .Fade)
             }
             break;
