@@ -49,10 +49,13 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         let entity = NSEntityDescription.entityForName(Group.CLASS_NAME, inManagedObjectContext: self.managedObjectContext)
         fetchedRequest.entity = entity
         fetchedRequest.fetchBatchSize = 20
-        let sortDescriptor = NSSortDescriptor(key: "subType", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "type", ascending: true)
         let arraySortDescriptor = [sortDescriptor]
         fetchedRequest.sortDescriptors = arraySortDescriptor
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchedRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "subType", cacheName: self.CACHE_NAME)
+        let predicateWallet = NSPredicate(format: "wallet.name == %@", DataManager.shareInstance.currentWallet.name!)
+        fetchedRequest.predicate = predicateWallet
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchedRequest,
+            managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "type", cacheName: self.CACHE_NAME)
         aFetchedResultsController.delegate = self
         return aFetchedResultsController
     }()
@@ -69,6 +72,19 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
         if self.selecteCategory != SELECT_CATEGORY {
             self.tableView.allowsSelection = false
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            #selector(CategoriesViewController.changeWallet(_:)), name: "changeWallet", object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.performRequest()
+    }
+    
+    func changeWallet(notification: NSNotification) {
+        let predicateWallet = NSPredicate(format: "wallet.name == %@", DataManager.shareInstance.currentWallet.name!)
+        fetchedResultController.fetchRequest.predicate = predicateWallet
+        self.performRequest()
     }
     
     func performRequest() {
@@ -133,71 +149,20 @@ class CategoriesViewController: UIViewController, RESideMenuDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        if let numberOfSections = self.fetchedResultController.sections?.count {
-            if numberOfSections == 1 {
-                return nil
-            } else if numberOfSections == 2 {
-                if indexPath.section == 1 {
-                    return nil
-                } else {
-                    let categoryItem = self.fetchedResultController.objectAtIndexPath(indexPath) as! Group
-                    let editAction = UITableViewRowAction(style: .Default, title: EDIT) { [weak self](action, index) in
-                        let addCategoriesVC = AddCategoriesViewController()
-                        addCategoriesVC.statusEdit = EDIT
-                        addCategoriesVC.categoryItem = categoryItem
-                        self?.navigationController?.pushViewController(addCategoriesVC, animated: true)
-                    }
-                    editAction.backgroundColor = UIColor.greenColor()
-                    
-                    let deleteAction = UITableViewRowAction(style: .Default, title: DELETE_TITLE) { [weak self](action, index) in
-                        self!.showAlertController(categoryItem)
-                    }
-                    deleteAction.backgroundColor = UIColor.redColor()
-                    return [deleteAction, editAction]
-                }
-            } else {
-                if indexPath.section == 2 {
-                    return nil
-                } else {
-                    let categoryItem = self.fetchedResultController.objectAtIndexPath(indexPath) as! Group
-                    let deleteAction = UITableViewRowAction(style: .Default, title: DELETE_TITLE) { [weak self](action, index) in
-                        self!.showAlertController(categoryItem)
-                    }
-                    deleteAction.backgroundColor = UIColor.redColor()
-                    
-                    let editAction = UITableViewRowAction(style: .Default, title: EDIT) { [weak self](action, index) in
-                        let addCategoriesVC = AddCategoriesViewController()
-                        addCategoriesVC.statusEdit = EDIT
-                        addCategoriesVC.categoryItem = categoryItem
-                        self?.navigationController?.pushViewController(addCategoriesVC, animated: true)
-                    }
-                    editAction.backgroundColor = UIColor.greenColor()
-                    return [deleteAction, editAction]
-                }
-            }
+        let categoryItem = self.fetchedResultController.objectAtIndexPath(indexPath) as! Group
+        let editAction = UITableViewRowAction(style: .Default, title: EDIT) { [weak self](action, index) in
+            let addCategoriesVC = AddCategoriesViewController()
+            addCategoriesVC.statusEdit = EDIT
+            addCategoriesVC.categoryItem = categoryItem
+            self?.navigationController?.pushViewController(addCategoriesVC, animated: true)
         }
-        return nil
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if let numberOfSections = self.fetchedResultController.sections?.count {
-            if numberOfSections == 1 {
-                return false
-            } else if numberOfSections == 2 {
-                if indexPath.section == 1 {
-                    return false
-                } else {
-                    return true
-                }
-            } else {
-                if indexPath.section == 2 {
-                    return false
-                } else {
-                    return true
-                }
-            }
+        editAction.backgroundColor = UIColor.greenColor()
+        
+        let deleteAction = UITableViewRowAction(style: .Default, title: DELETE_TITLE) { [weak self](action, index) in
+            self!.showAlertController(categoryItem)
         }
-        return false
+        deleteAction.backgroundColor = UIColor.redColor()
+        return [deleteAction, editAction]
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
