@@ -24,9 +24,14 @@ class ContactViewController: UIViewController {
     @IBOutlet weak var contactSearchBar: UISearchBar!
     var filtered = [String]()
     var data = [String]()
-    var results = [String]()
+    var results = [String]() {
+        didSet {
+            textBefore = results.joinWithSeparator(",") + ","
+        }
+    }
     var searchActive = false
     var isCleared = false
+    var textBefore: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         contactData = ContactData()
@@ -46,11 +51,6 @@ class ContactViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.configureNavigationBar()
         myTableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func configureNavigationBar() {
@@ -154,20 +154,36 @@ extension ContactViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            searchActive = false
-            isCleared = true
-            results.removeAll()
+        if results.count > 0 && searchText.characters.count < textBefore.characters.count {
+            if searchText == "" {
+                searchActive = false
+                isCleared = true
+                results.removeAll()
+                self.myTableView.reloadData()
+            } else {
+                let arrayTemp = searchText.componentsSeparatedByString(",")
+                if arrayTemp.count > results.count && arrayTemp.last != "" {
+                    searchBar.text = results.joinWithSeparator(",") + ","
+                } else {
+                    results.removeLast()
+                    if results.count > 0 {
+                        searchBar.text = results.joinWithSeparator(",") + ","
+                    } else {
+                        searchBar.text = results.joinWithSeparator(",")
+                    }
+                }
+            }
         } else {
+            let arrayTemp = searchText.componentsSeparatedByString(",")
+            let lastStr = arrayTemp.last
             filtered = contactData!.data.filter({(text) -> Bool in
                 let tmp: NSString = text
-                let arrayTemp = searchText.componentsSeparatedByString(",")
-                let lastStr = arrayTemp.last
                 let range = tmp.rangeOfString(lastStr!, options: NSStringCompareOptions.CaseInsensitiveSearch)
                 return range.location != NSNotFound
             })
             searchActive = filtered.count > 0
+            self.myTableView.reloadData()
         }
-        self.myTableView.reloadData()
+        textBefore = searchText
     }
 }
