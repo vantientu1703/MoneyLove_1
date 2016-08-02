@@ -204,13 +204,21 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     
     @IBAction func clickToSave(sender: AnyObject) {
         self.retrieveTextFromTextField()
+        self.view.endEditing(true)
         switch self.checkValue()  {
         case .Pass:
             errorLabel.text = ""
             if isNewTransaction {
                 self.insertTransaction()
-                NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
-                NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
+            } else {
+                let typeOfTrans = managedTransactionObject.group!.type
+                let moneyNumber = managedTransactionObject.moneyNumber
+                if typeOfTrans {
+                   DataManager.shareInstance.currentWallet.firstNumber -= moneyNumber
+                } else {
+                    DataManager.shareInstance.currentWallet.firstNumber += moneyNumber
+
+                }
             }
             self.assignFromCacheToManagedObject()
             DataManager.shareInstance.saveManagedObjectContext()
@@ -226,6 +234,13 @@ class TransactionViewController: UIViewController, NSFetchedResultsControllerDel
     }
     
     @IBAction func clickToDelete(sender: AnyObject) {
+        let typeOfTrans = managedTransactionObject.group!.type
+        let moneyNumber = managedTransactionObject.moneyNumber
+        if typeOfTrans {
+            DataManager.shareInstance.currentWallet.firstNumber -= moneyNumber
+        } else {
+            DataManager.shareInstance.currentWallet.firstNumber += moneyNumber
+        }
         delegate?.delegateDoWhenDeleteTrans(managedTransactionObject)
     }
 }

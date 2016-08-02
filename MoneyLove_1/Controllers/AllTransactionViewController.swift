@@ -334,7 +334,16 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
         }
         switch (type) {
         case .Insert:
+            let newTrans = fetchedResultController.objectAtIndexPath(newIndexPath!) as! Transaction
+            let newTypeOfTrans = newTrans.group!.type
+            let newMoneyNumber = newTrans.moneyNumber
             if let newIndexPathOfTableView = newIndexPathOfTableView {
+                if newTypeOfTrans {
+                    DataManager.shareInstance.currentWallet.firstNumber += newMoneyNumber
+                } else {
+                    DataManager.shareInstance.currentWallet.firstNumber -= newMoneyNumber
+                }
+                DataManager.shareInstance.currentWallet.firstNumber += newTypeOfTrans ? newMoneyNumber : -newMoneyNumber
                 myTableView.insertRowsAtIndexPaths([newIndexPathOfTableView], withRowAnimation: .Fade)
             }
             break;
@@ -344,7 +353,17 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
             }
             break;
         case .Update:
+            let oldTrans = fetchedResultController.objectAtIndexPath(indexPath!) as! Transaction
+            let oldTypeOfTrans = oldTrans.group!.type
+            let oldMoneyNumber = oldTrans.moneyNumber
+
             if let indexPathOfTableView = indexPathOfTableView {
+                if oldTypeOfTrans {
+                   DataManager.shareInstance.currentWallet.firstNumber += oldMoneyNumber
+                } else {
+                    DataManager.shareInstance.currentWallet.firstNumber -= oldMoneyNumber
+
+                }
                 myTableView.reloadRowsAtIndexPaths([indexPathOfTableView], withRowAnimation: .Fade)
             }
             break;
@@ -361,7 +380,8 @@ extension AllTransactionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         myTableView.endUpdates()
-        DataManager.shareInstance.currentWallet.firstNumber = DataManager.shareInstance.getMoneyOfCurrentWallet()
+        NSNotificationCenter.defaultCenter().postNotificationName(MESSAGE_ADD_NEW_TRANSACTION, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(POST_CURRENT_WALLET, object: nil)
     }
 }
 
@@ -449,6 +469,8 @@ extension AllTransactionViewController: UITableViewDelegate, UITableViewDataSour
             transVC.isNewTransaction = false
             transVC.managedTransactionObject = trans as! Transaction
             navigationController?.pushViewController(transVC, animated: true)
+        } else if indexPath.section == SectionType.OverviewSection.rawValue {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
 }

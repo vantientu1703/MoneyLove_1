@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ur-m5-Umd">
-                        <rect key="frame" x="28" y="468" width="323" height="1"/>
+                        <rect key="frame" x="28" y="468" width="343" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Mxb-Il-tOq"/>
@@ -64,14 +64,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dua-qL-h7R">
-                        <rect key="frame" x="28" y="352" width="323" height="1"/>
+                        <rect key="frame" x="28" y="352" width="343" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="4Ha-9R-JwR"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="603-gN-3qW">
-                        <rect key="frame" x="28" y="237" width="323" height="1"/>
+                        <rect key="frame" x="28" y="237" width="343" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="fCO-Jx-7Zi"/>
@@ -176,7 +176,7 @@
                     <constraint firstItem="6K5-0B-lCL" firstAttribute="height" secondItem="exV-3e-dfh" secondAttribute="height" id="Tv3-Xd-mP6"/>
                     <constraint firstItem="CXb-uO-CwG" firstAttribute="height" secondItem="603-gN-3qW" secondAttribute="height" id="Uxd-aD-Aul"/>
                     <constraint firstItem="0jC-ne-dbV" firstAttribute="height" secondItem="exV-3e-dfh" secondAttribute="height" id="Vbf-37-ds6"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="603-gN-3qW" secondAttribute="trailing" constant="20" id="Vbp-kW-JDc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="603-gN-3qW" secondAttribute="trailing" id="Vbp-kW-JDc"/>
                     <constraint firstItem="8Wy-Xp-tkq" firstAttribute="centerY" secondItem="0jC-ne-dbV" secondAttribute="centerY" id="X86-Z5-Zqh"/>
                     <constraint firstItem="fk9-aD-17y" firstAttribute="top" secondItem="Dua-qL-h7R" secondAttribute="bottom" id="Xrj-Lc-jMg"/>
                     <constraint firstItem="4hD-Jt-1wE" firstAttribute="top" secondItem="8Wy-Xp-tkq" secondAttribute="bottom" id="Y4g-FI-FMV"/>
